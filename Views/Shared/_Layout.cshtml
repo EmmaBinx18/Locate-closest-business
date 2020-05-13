@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model string[]
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -10,17 +12,39 @@
 <body>
     <header>
         <div class="top-modal">
-            <h2>To get more information on South Africa and Covid-19, <a href="https://sacoronavirus.co.za/">https://sacoronavirus.co.za</a></h2>
+            <h2>To get more information on South Africa and Covid-19, <a href="https://sacoronavirus.co.za/"><i>click here</i></a></h2>
+            <h2>We are currently on <b>STAGE 4</b> of lockdown</h2>
         </div>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
+        <div class="modal fade" tabindex="-1" id="searchModal" data-keyboard="false" data-backdrop="static">  
+            <div class="modal-dialog modal-lg">  
+                <div class="modal-content">  
+                    <button type="button" class="close" data-dismiss="modal">×</button>  
+                    <h4 class="modal-title">Search for essential service businesses near you</h4>  
+                    <form>  
+                        <div class="form-group">  
+                            <select class="form-control" id="essentialServiceOptions">
+                                @foreach (var service in Model)
+                                {
+                                    <option>@service</option>
+                                }
+                            </select>
+                        </div> 
+                    </form>  
+                    <button type="submit" class="searchButton">SEARCH</button>   
+                    <br/><br/><br/>
+                </div>  
+            </div>  
+        </div>
     </div>
     <footer class="footer">
         <div>
-            <img src="~/images/search.svg" id="openSearchModal"/>
+            <img src="~/images/search.svg" id="openSearchModal" data-toggle="modal" data-target="#searchModal"/>
+            @* <a href="#", data-toggle="modal" data-target="#searchModal">Open Modal</a> *@
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
