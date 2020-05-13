@@ -23,6 +23,11 @@ namespace Locate_closest_business.Controllers
             return View();
         }
 
+        public IActionResult SearchModal()  
+        {  
+            return View();  
+        } 
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
