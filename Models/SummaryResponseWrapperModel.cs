@@ -6,7 +6,7 @@ namespace Locate_closest_business.Models
     public class SummaryResponseWrapperModel
     {
         public GlobalModel Global {get; set;}
-        public List<CountryModel> Countries { get; set; }
+        public List<CountrySummaryModel> Countries { get; set; }
     }
 
     public class GlobalModel

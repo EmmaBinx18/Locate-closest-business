@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Locate_closest_business.Models
 {
-    public class CountryModel
+    public class CountrySummaryModel
     {
         public string Country { get; set; }
         public string ISO2 { get; set; }

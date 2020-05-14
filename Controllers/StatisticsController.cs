@@ -9,7 +9,7 @@ using Locate_closest_business.Models;
 using System.Net.Http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-
+using Newtonsoft.Json.Linq;
 
 
 namespace Locate_closest_business.Controllers
@@ -21,11 +21,8 @@ namespace Locate_closest_business.Controllers
             try
             {
                 Task<SummaryResponseWrapperModel> task = Task.Run<SummaryResponseWrapperModel>(async () => await GetCovidSummary());
+                task.Wait();
                 SummaryResponseWrapperModel APIResponse = task.Result;
-                if (APIResponse == null)
-                {
-                    return RedirectToAction("HttpRequestError");
-                }
 
                 SummaryModel requestedSummary = new SummaryModel();
                 requestedSummary.Global = APIResponse.Global;
@@ -35,20 +32,17 @@ namespace Locate_closest_business.Controllers
             catch (Exception exp)
             {
                 Console.WriteLine(exp.Message);
-                return NotFound();
+                return RedirectToAction("HttpRequestError");
             }
         }
 
         public IActionResult ListedCountries()
         {
-             try
+            try
             {
-                Task<List<CountryModel>> task = Task.Run<List<CountryModel>>(async () => await GetListedCountries());
-                List<CountryModel> APIResponse = task.Result;
-                if (APIResponse == null)
-                {
-                    return NotFound();
-                }
+                Task<List<CountrySummaryModel>> task = Task.Run<List<CountrySummaryModel>>(async () => await GetListedCountries());
+                task.Wait();
+                List<CountrySummaryModel> APIResponse = task.Result;
 
                 ViewBag.listOfCountries = task.Result.OrderBy(o=>o.Country).ToList();
                 return View();
@@ -56,7 +50,59 @@ namespace Locate_closest_business.Controllers
             catch (Exception exp)
             {
                 Console.WriteLine(exp.Message);
-                return NotFound();
+                return RedirectToAction("HttpRequestError");
+            }
+        }
+
+        public String SpecificCountryStatistics([FromQuery]string pCountrySlug)
+        {
+            var jsonContents = new
+            {
+                errorMessage = "HttpRequestError"
+            };
+            string errorJSON = JsonConvert.SerializeObject(jsonContents);
+
+            try
+            {
+                Task<JObject> task = Task.Run<JObject>(async () => await GetSpecificCountryInfo(pCountrySlug));
+                task.Wait();
+                JObject APIResponse = task.Result;
+
+                if (APIResponse == null)
+                {
+                    return errorJSON;
+                }
+
+                String successJSON = JsonConvert.SerializeObject(JObject.FromObject(APIResponse));
+                return successJSON;
+            }
+            catch (Exception exp)
+            {
+                if (exp.Message.Contains("No such host is known."))
+                {
+                    Console.WriteLine(exp.Message);
+                    return errorJSON;
+                }
+                else if (exp.Message.Contains("Response status code does not indicate success: 404 (Not Found)"))
+                {
+                    Console.WriteLine(exp.Message);
+                    var incorrectParamsContent = new
+                    {
+                        errorMessage = "SpecifiedCountrySlugNotFound"
+                    };
+                    string incorrectParamsJSON = JsonConvert.SerializeObject(incorrectParamsContent);
+                    return incorrectParamsJSON;
+                }
+                else
+                {
+                    Console.WriteLine(exp.Message);
+                    var unexpectedErrorContent = new
+                    {
+                        errorMessage = exp.Message
+                    };
+                    string unexpectedErrorJSON = JsonConvert.SerializeObject(unexpectedErrorContent);
+                    return unexpectedErrorJSON;
+                }
             }
         }
 

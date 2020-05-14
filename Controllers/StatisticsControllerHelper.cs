@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Locate_closest_business.Models;
 using System.Net.Http;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 
 
@@ -40,7 +41,7 @@ namespace Locate_closest_business.Controllers
             }
         }
 
-        private async Task<List<CountryModel>> GetListedCountries()
+        private async Task<List<CountrySummaryModel>> GetListedCountries()
         {
             try
             {
@@ -49,7 +50,7 @@ namespace Locate_closest_business.Controllers
                 task.EnsureSuccessStatusCode();
                 var payload = task.Content.ReadAsStringAsync();
 
-                return JsonConvert.DeserializeObject<List<CountryModel>>(payload.Result);
+                return JsonConvert.DeserializeObject<List<CountrySummaryModel>>(payload.Result);
             }
             catch(HttpRequestException ex)
             {
@@ -57,5 +58,20 @@ namespace Locate_closest_business.Controllers
                 return null;
             }
         }
+
+        private async Task<JObject> GetSpecificCountryInfo(string pCountrySlug)
+        {
+            HttpClient _httpClient = new HttpClient();
+            Console.WriteLine(string.Format("https://api.covid19api.com/dayone/country/" + pCountrySlug + "/status/confirmed"));
+            var task = await _httpClient.GetAsync(string.Format("https://api.covid19api.com/dayone/country/" + pCountrySlug + "/status/confirmed")).ConfigureAwait(false);
+            task.EnsureSuccessStatusCode();
+            var payload = task.Content.ReadAsStringAsync();
+            List<SpecificCountryStatisticsModel> ListOfStatisticSnapshots = JsonConvert.DeserializeObject<List<SpecificCountryStatisticsModel>>(payload.Result);
+            ListOfStatisticSnapshots = ListOfStatisticSnapshots.OrderByDescending(o=>o.Date).ToList();
+            
+            JObject resultJSON =  JObject.FromObject(ListOfStatisticSnapshots[0]);
+            return resultJSON;
+        }
+
     }
 }

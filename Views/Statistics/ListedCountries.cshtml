@@ -1,4 +1,4 @@
-@model Locate_closest_business.Models.CountryModel
+@model Locate_closest_business.Models.CountrySummaryModel
 
 @{
     ViewData["Title"] = "Countries";
@@ -14,7 +14,7 @@
         <dt>
             All Listed Countries
         </dt>
-        @foreach (CountryModel item in ViewBag.listOfCountries)
+        @foreach (CountrySummaryModel item in ViewBag.listOfCountries)
         {
             <dd>@item.Country</dd>
         }
