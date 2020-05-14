@@ -23,19 +23,15 @@
             @Html.DisplayNameFor(model => model.Global.TotalRecovered) @Html.DisplayFor(model => model.Global.TotalRecovered)<br>
         </dd>
         <dt>
-            Countries
+            @Model.Country.Country
         </dt>
-        @foreach (CountriesModel item in Model.Countries)
-        {
-            <dd>@item.Country</dd>
-            <dd style="text-indent:50px">New Confirmed @item.NewConfirmed</dd>
-            <dd style="text-indent:50px">Total Confirmed  @item.TotalConfirmed</dd>
-            <dd style="text-indent:50px">New Deaths @item.NewDeaths</dd>
-            <dd style="text-indent:50px">Total Deaths  @item.TotalDeaths</dd>
-            <dd style="text-indent:50px">New Recovered  @item.NewRecovered</dd>
-            <dd style="text-indent:50px">Total Recovered  @item.TotalRecovered</dd>
-            <dd style="text-indent:50px">Date Recorded  @item.Date</dd>
+            <dd style="text-indent:50px">New Confirmed @Model.Country.NewConfirmed</dd>
+            <dd style="text-indent:50px">Total Confirmed  @Model.Country.TotalConfirmed</dd>
+            <dd style="text-indent:50px">New Deaths @Model.Country.NewDeaths</dd>
+            <dd style="text-indent:50px">Total Deaths  @Model.Country.TotalDeaths</dd>
+            <dd style="text-indent:50px">New Recovered  @Model.Country.NewRecovered</dd>
+            <dd style="text-indent:50px">Total Recovered  @Model.Country.TotalRecovered</dd>
+            <dd style="text-indent:50px">Date Recorded  @Model.Country.Date</dd>
             <br>
-        }
     </dl>
 </div>

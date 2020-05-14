@@ -1,0 +1,22 @@
+@model Locate_closest_business.Models.CountryModel
+
+@{
+    ViewData["Title"] = "Countries";
+}
+
+<h2>@ViewData["Title"]</h2>
+<hr />
+
+
+    <h1 class="display-4">Countries</h1>
+    <div>
+    <dl class="dl-horizontal">
+        <dt>
+            All Listed Countries
+        </dt>
+        @foreach (CountryModel item in ViewBag.listOfCountries)
+        {
+            <dd>@item.Country</dd>
+        }
+    </dl>
+</div>

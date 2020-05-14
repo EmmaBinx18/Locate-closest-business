@@ -57,11 +57,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Alles\\Grad Program\\C# & dotNet\\Locate Closest Business Project\\Locate-closest-business.csproj",
+      "projectUniqueName": "D:\\Alles\\Grad Program\\C# & dotNet\\Project\\Locate-closest-business.csproj",
       "projectName": "Locate-closest-business",
-      "projectPath": "D:\\Alles\\Grad Program\\C# & dotNet\\Locate Closest Business Project\\Locate-closest-business.csproj",
+      "projectPath": "D:\\Alles\\Grad Program\\C# & dotNet\\Project\\Locate-closest-business.csproj",
       "packagesPath": "C:\\Users\\hexb\\.nuget\\packages\\",
-      "outputPath": "D:\\Alles\\Grad Program\\C# & dotNet\\Locate Closest Business Project\\obj\\",
+      "outputPath": "D:\\Alles\\Grad Program\\C# & dotNet\\Project\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\hexb\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -103,6 +103,16 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[3.1.0, 3.1.0]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[3.1.0, 3.1.0]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -111,7 +121,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

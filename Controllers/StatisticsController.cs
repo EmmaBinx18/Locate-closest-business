@@ -14,35 +14,55 @@ using Newtonsoft.Json.Serialization;
 
 namespace Locate_closest_business.Controllers
 {
-    public class StatisticsController : Controller
+    public partial class StatisticsController : Controller
     {
         public IActionResult Summary()
         {
-            Task<SummaryModel> task = Task.Run<SummaryModel>(async () => await GetCovidSummary());
-            SummaryModel summary = task.Result;//async request here
-
-            if (summary == null)
+            try
             {
+                Task<SummaryResponseWrapperModel> task = Task.Run<SummaryResponseWrapperModel>(async () => await GetCovidSummary());
+                SummaryResponseWrapperModel APIResponse = task.Result;
+                if (APIResponse == null)
+                {
+                    return RedirectToAction("HttpRequestError");
+                }
+
+                SummaryModel requestedSummary = new SummaryModel();
+                requestedSummary.Global = APIResponse.Global;
+                requestedSummary.Country = APIResponse.Countries.Find(i => i.Country == "South Africa");
+                return View(requestedSummary);
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine(exp.Message);
                 return NotFound();
             }
-
-            return View(summary);
         }
 
-        public async Task<SummaryModel> GetCovidSummary()
+        public IActionResult ListedCountries()
         {
-            HttpClient _httpClient = new HttpClient();
-            var task =
-                await
-                    // ReSharper disable once UseStringInterpolation
-                    _httpClient.GetAsync(string.Format("https://api.covid19api.com/summary")).ConfigureAwait(false);
+             try
+            {
+                Task<List<CountryModel>> task = Task.Run<List<CountryModel>>(async () => await GetListedCountries());
+                List<CountryModel> APIResponse = task.Result;
+                if (APIResponse == null)
+                {
+                    return NotFound();
+                }
 
-            task.EnsureSuccessStatusCode();
+                ViewBag.listOfCountries = task.Result.OrderBy(o=>o.Country).ToList();
+                return View();
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine(exp.Message);
+                return NotFound();
+            }
+        }
 
-            var payload = task.Content.ReadAsStringAsync();
-
-            return JsonConvert.DeserializeObject<SummaryModel>(await payload.ConfigureAwait(false),
-                new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
+        public IActionResult HttpRequestError()
+        {
+            return View();
         }
     }
 }
