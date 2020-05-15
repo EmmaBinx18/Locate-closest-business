@@ -59,7 +59,7 @@ namespace Locate_closest_business.Controllers
             }
         }
 
-        private async Task<JObject> GetSpecificCountryInfo(string pCountrySlug)
+        private async Task<SpecificCountryStatisticsModel> GetSpecificCountryInfo(string pCountrySlug)
         {
             HttpClient _httpClient = new HttpClient();
             Console.WriteLine(string.Format("https://api.covid19api.com/dayone/country/" + pCountrySlug + "/status/confirmed"));
@@ -69,8 +69,7 @@ namespace Locate_closest_business.Controllers
             List<SpecificCountryStatisticsModel> ListOfStatisticSnapshots = JsonConvert.DeserializeObject<List<SpecificCountryStatisticsModel>>(payload.Result);
             ListOfStatisticSnapshots = ListOfStatisticSnapshots.OrderByDescending(o=>o.Date).ToList();
             
-            JObject resultJSON =  JObject.FromObject(ListOfStatisticSnapshots[0]);
-            return resultJSON;
+            return ListOfStatisticSnapshots[0];
         }
 
     }

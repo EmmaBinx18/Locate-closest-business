@@ -54,44 +54,40 @@ namespace Locate_closest_business.Controllers
             }
         }
 
-        public String SpecificCountryStatistics([FromQuery]string pCountrySlug)
+        public JsonResult SpecificCountryStatistics([FromQuery]string pCountrySlug)
         {
-            var jsonContents = new
+            var errorJSON = new
             {
-                errorMessage = "HttpRequestError"
+                errorMessage = "External_API_Unreachable"
             };
-            string errorJSON = JsonConvert.SerializeObject(jsonContents);
 
             try
             {
-                Task<JObject> task = Task.Run<JObject>(async () => await GetSpecificCountryInfo(pCountrySlug));
+                Task<SpecificCountryStatisticsModel> task = Task.Run<SpecificCountryStatisticsModel>(async () => await GetSpecificCountryInfo(pCountrySlug));
                 task.Wait();
-                JObject APIResponse = task.Result;
+                SpecificCountryStatisticsModel APIResponse = task.Result;
 
                 if (APIResponse == null)
                 {
-                    return errorJSON;
+                    return Json(errorJSON);
                 }
-
-                String successJSON = JsonConvert.SerializeObject(JObject.FromObject(APIResponse));
-                return successJSON;
+                return Json(APIResponse);
             }
             catch (Exception exp)
             {
                 if (exp.Message.Contains("No such host is known."))
                 {
                     Console.WriteLine(exp.Message);
-                    return errorJSON;
+                    return Json(errorJSON);
                 }
                 else if (exp.Message.Contains("Response status code does not indicate success: 404 (Not Found)"))
                 {
                     Console.WriteLine(exp.Message);
                     var incorrectParamsContent = new
                     {
-                        errorMessage = "SpecifiedCountrySlugNotFound"
+                        errorMessage = "Specified_Country_Slug_Not_Found"
                     };
-                    string incorrectParamsJSON = JsonConvert.SerializeObject(incorrectParamsContent);
-                    return incorrectParamsJSON;
+                    return Json(incorrectParamsContent);
                 }
                 else
                 {
@@ -100,8 +96,7 @@ namespace Locate_closest_business.Controllers
                     {
                         errorMessage = exp.Message
                     };
-                    string unexpectedErrorJSON = JsonConvert.SerializeObject(unexpectedErrorContent);
-                    return unexpectedErrorJSON;
+                    return Json(unexpectedErrorContent);
                 }
             }
         }
