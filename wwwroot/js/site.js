@@ -1,8 +1,4 @@
-﻿$(document).ready(function () {  
-    $("#openSearchModal").click(function () { 
-        $("#searchModal").modal('show');  
-    });  
-    
+﻿$(document).ready(function () {      
     $("#openRegisterBusinessModal").click(function () { 
         $("#registerBusinessModal").modal('show');  
     });

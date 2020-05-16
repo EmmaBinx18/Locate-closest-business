@@ -40,11 +40,6 @@ namespace Locate_closest_business.Controllers
             return View();
         }
 
-        public IActionResult SearchModal()
-        {
-            return View(essentialServiceOptions);
-        }
-
         public IActionResult RegisterBusiness()
         {
             return View();
