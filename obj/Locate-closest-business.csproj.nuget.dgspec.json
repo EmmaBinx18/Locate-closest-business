@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bbdnet1724\\Documents\\BBD\\Grad Program\\C# Level-Up\\Locate-closest-business\\Locate-closest-business.csproj": {}
+    "C:\\Users\\Ngoni\\Desktop\\BBD\\C#\\Project\\Locate-closest-business\\Locate-closest-business.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bbdnet1724\\Documents\\BBD\\Grad Program\\C# Level-Up\\Locate-closest-business\\Locate-closest-business.csproj": {
+    "C:\\Users\\Ngoni\\Desktop\\BBD\\C#\\Project\\Locate-closest-business\\Locate-closest-business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bbdnet1724\\Documents\\BBD\\Grad Program\\C# Level-Up\\Locate-closest-business\\Locate-closest-business.csproj",
+        "projectUniqueName": "C:\\Users\\Ngoni\\Desktop\\BBD\\C#\\Project\\Locate-closest-business\\Locate-closest-business.csproj",
         "projectName": "Locate-closest-business",
-        "projectPath": "C:\\Users\\bbdnet1724\\Documents\\BBD\\Grad Program\\C# Level-Up\\Locate-closest-business\\Locate-closest-business.csproj",
-        "packagesPath": "C:\\Users\\bbdnet1724\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bbdnet1724\\Documents\\BBD\\Grad Program\\C# Level-Up\\Locate-closest-business\\obj\\",
+        "projectPath": "C:\\Users\\Ngoni\\Desktop\\BBD\\C#\\Project\\Locate-closest-business\\Locate-closest-business.csproj",
+        "packagesPath": "C:\\Users\\Ngoni\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ngoni\\Desktop\\BBD\\C#\\Project\\Locate-closest-business\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\bbdnet1724\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Ngoni\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
