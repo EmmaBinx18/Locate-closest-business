@@ -50,7 +50,7 @@ namespace Locate_closest_business
             {
                 endpoints.MapControllerRoute(
                     name: "registerBusiness",
-                    pattern: "{controller=Home}/{action=RegisterBusinessModal}");
+                    pattern: "{controller=Home}/{action=RegisterBusiness}");
 
                 endpoints.MapControllerRoute(
                     name: "search",

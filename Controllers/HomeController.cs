@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Dynamic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Locate_closest_business.Models;
@@ -46,9 +45,18 @@ namespace Locate_closest_business.Controllers
             return View(essentialServiceOptions);
         }
 
-        public IActionResult RegisterBusinessModal()
+        public IActionResult RegisterBusiness()
         {
-            return View(essentialServiceOptions);
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult RegisterBusiness(BusinessModel business)
+        {
+            if(ModelState.IsValid){
+                return RedirectToAction("");
+            }
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -12,8 +12,15 @@
         $("#step2").css("display", "block");
     });
 
-    $("#step2 .nextButton").click(function() {
-        $("#step2").css("display", "none");
-        $("#step3").css("display", "block");
+    $("input").focus(function() {
+        $(".errorSpace").css("display", "none");
+    });
+
+    $("textarea").focus(function() {
+        $(".errorSpace").css("display", "none");
+    });
+
+    $("select").focus(function() {
+        $(".errorSpace").css("display", "none");
     });
 });
