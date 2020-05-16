@@ -16,6 +16,13 @@
         "dependencies": {
           "jQuery": "1.8.0"
         }
+      },
+      "Microsoft.jQuery.Unobtrusive.Validation/3.2.11": {
+        "type": "package",
+        "dependencies": {
+          "jQuery": "1.8.0",
+          "jQuery.Validation": "1.8.0.1"
+        }
       }
     }
   },
@@ -65,11 +72,25 @@
         "microsoft.jquery.unobtrusive.ajax.3.2.6.nupkg.sha512",
         "microsoft.jquery.unobtrusive.ajax.nuspec"
       ]
+    },
+    "Microsoft.jQuery.Unobtrusive.Validation/3.2.11": {
+      "sha512": "8qGe1q3vV5Fwbpb0OSI8SxSiIBeFt9sgAvFvPwgZuuL+PZ+z0VsPB5yeqT+SrvPKpyVpN33MLhgvSW5Zf07IsQ==",
+      "type": "package",
+      "path": "microsoft.jquery.unobtrusive.validation/3.2.11",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Content/Scripts/jquery.validate.unobtrusive.js",
+        "Content/Scripts/jquery.validate.unobtrusive.min.js",
+        "microsoft.jquery.unobtrusive.validation.3.2.11.nupkg.sha512",
+        "microsoft.jquery.unobtrusive.validation.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Microsoft.jQuery.Unobtrusive.Ajax >= *",
+      "Microsoft.jQuery.Unobtrusive.Ajax >= 3.2.6",
+      "Microsoft.jQuery.Unobtrusive.Validation >= 3.2.11",
       "jQuery.Validation >= 1.19.1"
     ]
   },
@@ -110,7 +131,11 @@
         "dependencies": {
           "Microsoft.jQuery.Unobtrusive.Ajax": {
             "target": "Package",
-            "version": "[*, )"
+            "version": "[3.2.6, )"
+          },
+          "Microsoft.jQuery.Unobtrusive.Validation": {
+            "target": "Package",
+            "version": "[3.2.11, )"
           },
           "jQuery.Validation": {
             "target": "Package",
