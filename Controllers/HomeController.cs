@@ -36,7 +36,17 @@ namespace Locate_closest_business.Controllers
             _logger = logger;
         }
 
-        public ViewResult Index()
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult SearchModal()
+        {
+            return View(essentialServiceOptions);
+        }
+
+        public IActionResult RegisterBusinessModal()
         {
             return View(essentialServiceOptions);
         }

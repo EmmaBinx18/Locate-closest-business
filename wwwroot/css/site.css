@@ -11,7 +11,7 @@
   text-align: center;
 }
 
-h2, a {
+h2, h3, a {
   font-size: 1.1rem;
   font-weight: normal;
 }
@@ -38,9 +38,15 @@ a:hover {
   margin-left: 3%;
 }
 
-.modal-content {
+#searchModal .modal-content {
   width: 600px !important;
   margin: 30% auto !important;
+  text-align: center;
+}
+
+#registerBusinessModal .modal-content {
+  width: 900px !important;
+  margin: 20% auto !important;
   text-align: center;
 }
 
@@ -54,10 +60,20 @@ a:hover {
   margin-top: 2%;
 }
 
-.form-control{
+#searchModal .form-control{
   width: 70%;
   display: inline;
   margin-top: 6%;
+}
+
+#registerBusinessModal .form-control{
+  width: 36%;
+  display: inline;
+  margin-left: 2.5%;
+}
+
+#registerBusinessModal #idNumbers, #registerBusinessModal #address{
+  width: 74.5% !important;
 }
 
 .searchButton{
@@ -83,4 +99,29 @@ a:hover {
 
 .registerBusinessButton:hover{
   font-size: 1.1rem;
+}
+
+#registerBusinessModal h3{
+  margin-top: 4%;
+  padding: 20px;
+}
+
+.nextButton, .submitRequestButton{
+  background-color: rgb(182, 0, 0);
+  border: none;
+  border-radius: 0.25rem;
+  color: white;
+  padding: 6px;
+  width: 20%;
+  box-shadow: rgb(99, 99, 99) 5px 8px 12px -8px;
+  margin-top: 2%;
+  margin-left: 75%;
+}
+
+.nextButton:hover, .submitRequestButton:hover{
+  font-size: 1.14rem;
+}
+
+#step2, #step3{
+  display: none;
 }

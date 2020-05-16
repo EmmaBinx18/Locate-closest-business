@@ -20536,6 +20536,16 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\bbdnet1724\\Documents\\BBD\\Grad Program\\C# Level-Up\\Locate-closest-business\\Views\\Home\\RegisterBusinessModal.cshtml",
+      "TargetPath": "Views\\Home\\RegisterBusinessModal.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\bbdnet1724\\Documents\\BBD\\Grad Program\\C# Level-Up\\Locate-closest-business\\Views\\Home\\SearchModal.cshtml",
+      "TargetPath": "Views\\Home\\SearchModal.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\bbdnet1724\\Documents\\BBD\\Grad Program\\C# Level-Up\\Locate-closest-business\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
