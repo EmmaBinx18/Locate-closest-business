@@ -1,8 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Locate_closest_business</RootNamespace>
   </PropertyGroup>
-
+  <ItemGroup>
+    <PackageReference Include="Microsoft.jQuery.Unobtrusive.Ajax" Version="*"/>
+    <PackageReference Include="jQuery.Validation" Version="1.19.1"/>
+  </ItemGroup>
 </Project>

@@ -35,6 +35,16 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.jQuery.Unobtrusive.Ajax": {
+              "target": "Package",
+              "version": "[*, )"
+            },
+            "jQuery.Validation": {
+              "target": "Package",
+              "version": "[1.19.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

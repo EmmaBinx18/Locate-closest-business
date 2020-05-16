@@ -51,7 +51,7 @@ namespace Locate_closest_business.Controllers
             if(ModelState.IsValid){
                 return RedirectToAction("");
             }
-            return View();
+            return View(business);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
