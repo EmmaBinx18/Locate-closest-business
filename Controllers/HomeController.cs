@@ -36,7 +36,7 @@ namespace Locate_closest_business.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public ViewResult Index()
         {
             return View(essentialServiceOptions);
         }

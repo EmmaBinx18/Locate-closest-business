@@ -20,26 +20,6 @@
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
-        <div class="modal fade" tabindex="-1" id="searchModal" data-keyboard="false" data-backdrop="static">  
-            <div class="modal-dialog modal-lg">  
-                <div class="modal-content">  
-                    <button type="button" class="close" data-dismiss="modal">×</button>  
-                    <h4 class="modal-title">Search for essential service businesses near you</h4>  
-                    <form>  
-                        <div class="form-group">  
-                            <select class="form-control" id="essentialServiceOptions">
-                                @foreach (var service in Model)
-                                {
-                                    <option>@service</option>
-                                }
-                            </select>
-                        </div> 
-                    </form>  
-                    <button type="submit" class="searchButton">SEARCH</button>   
-                    <br/><br/><br/>
-                </div>  
-            </div>  
-        </div>
     </div>
     <footer class="footer">
         <div>
