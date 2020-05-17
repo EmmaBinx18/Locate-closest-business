@@ -21,4 +21,8 @@
     $("select").focus(function() {
         $(".errorSpace").css("display", "none");
     });
+
+    $("#stagesButton").click(function() {
+        $("#stages").toggle();
+    });
 });

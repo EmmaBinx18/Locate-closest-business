@@ -41,7 +41,7 @@ a:hover {
   position: fixed;
   left: 0;
   bottom: 0;
-  width: 100%;
+  width: 30%;
 }
 
 #searchModal{
@@ -88,7 +88,7 @@ img{
   margin-left: 22px;
 }
 
-.registerBusinessButton{
+.registerBusinessButton, .stagesButton{
   margin-left: 3%;
   border-radius: 6px;
   background-color: white;
@@ -137,4 +137,45 @@ img{
   width: 60%;
   margin: auto;
   margin-top: 54.5%;
+}
+
+#stages{
+  display: none;
+  width: 100%;
+  border: grey;
+  box-shadow: rgb(99, 99, 99) 5px 8px 12px -8px;
+  margin-left: 3%;
+  border-radius: 6px;
+  background-color: white;
+  margin-bottom: 2%;
+  padding: 20px;
+}
+
+tr{
+  border-radius: 6px;
+}
+
+td{
+  padding: 8px;
+  border-radius: 6px;
+}
+
+#stage5{
+  background-color: #f8ccc8;
+}
+
+#stage4{
+  background-color: #FFD7A1;
+}
+
+#stage3{
+  background-color: #fceec9;
+}
+
+#stage2{
+  background-color: #c7ebf1;
+}
+
+#stage1{
+  background-color: #bff0de;
 }
