@@ -125,26 +125,3 @@ img{
 #step2, #step3{
   display: none;
 }
-
-.errorSpace{
-  text-align: left;
-  width: 80%;
-  margin-left: 14%;
-  margin-bottom: 2%;
-}
-
-.errorLeftText{
-  margin-left: 21%;
-}
-
-.errorLeftText2{
-  margin-left: 26%;
-}
-
-.errorLeftText3{
-  margin-left: 17%;
-}
-
-.errorLeftText4{
-  margin-left: 49%;
-}
