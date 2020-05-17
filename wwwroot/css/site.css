@@ -125,3 +125,9 @@ img{
 #step2, #step3{
   display: none;
 }
+
+.form-control:focus
+{
+  border-color: rgba(182, 0, 0);
+  box-shadow: 0 0 0 0.2rem rgba(182, 0, 0, 0.5);
+}
