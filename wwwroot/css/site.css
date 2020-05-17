@@ -31,7 +31,7 @@ a:hover {
   font-size: 1.2rem;
 }
 
-.close{
+#registerBusinessModal .close{
   width: 10%;
   margin-left:90%;
   margin-top: 2%;
@@ -130,4 +130,11 @@ img{
 {
   border-color: rgba(182, 0, 0);
   box-shadow: 0 0 0 0.2rem rgba(182, 0, 0, 0.5);
+}
+
+#successful{
+  text-align: center;
+  width: 60%;
+  margin: auto;
+  margin-top: 54.5%;
 }

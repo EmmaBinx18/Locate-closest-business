@@ -1,6 +1,8 @@
 ﻿$(document).ready(function () {      
     $("#openRegisterBusinessModal").click(function () { 
         $("#registerBusinessModal").modal('show');  
+        $("#step1").css("display", "block");
+        $("#step2").css("display", "none");
     });
     
     $("#step1 .nextButton").click(function() {

@@ -4,6 +4,20 @@
 
 @model Locate_closest_business.Models.BusinessModel;  
 
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#successful").css("display", "@ViewBag.SuccessfulSubmit");
+    });
+</script>
+
+<div class="alert alert-success" role="alert" id="successful">
+    Your request has been successfully submitted
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
 <div class="modal fade" tabindex="-1" id="registerBusinessModal" data-keyboard="false" data-backdrop="static">  
     <div class="modal-dialog modal-lg" id="step1">  
         <div class="modal-content">  
