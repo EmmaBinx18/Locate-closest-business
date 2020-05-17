@@ -34,5 +34,9 @@ namespace Locate_closest_business.Models
 
        [Required(ErrorMessage="Please enter the address of the company")]
        public string Address { get; set; }
+
+       public string Address_Latitude { get; set; }
+       
+       public string Address_longitude { get; set; }
     }
 }

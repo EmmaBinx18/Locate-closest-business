@@ -4,9 +4,12 @@
 
 @model Locate_closest_business.Models.BusinessModel;
 
-<script src="~/jquery.min.js"></script>
-<script src="~/jquery.validate.min.js"></script>
-<script src="~/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCsrxUyNDXzcp31HUoSxsLg3wlSHGvww3g"></script>
+<script src="~/js/autoComplete.js"></script>
+
 
 <div class="modal fade" tabindex="-1" id="registerBusinessModal" data-keyboard="false" data-backdrop="static">  
     <div class="modal-dialog modal-lg" id="step1">  
@@ -90,7 +93,9 @@
                     @Html.ValidationMessageFor(model => model.NumEmployees, "", new { @class = "text-danger errorLeftText4" })
                 </div>
                 <div class="form-group">  
-                    @Html.TextAreaFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @placeholder="Company's physical address" } })
+                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @placeholder="Company's physical address", @id = "Address" } })
+                    @Html.HiddenFor(m => Model.Address_Latitude, new { @id = "Address_Latitude" })  
+                    @Html.HiddenFor(m => Model.Address_longitude, new { @id = "Address_longitude" }) 
                 </div>
                 <div class="errorSpace">
                     @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
