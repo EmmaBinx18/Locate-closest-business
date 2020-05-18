@@ -36,6 +36,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "FirebaseDatabase.net": {
+              "target": "Package",
+              "version": "[4.0.4, )"
+            },
             "Microsoft.jQuery.Unobtrusive.Ajax": {
               "target": "Package",
               "version": "[3.2.6, )"

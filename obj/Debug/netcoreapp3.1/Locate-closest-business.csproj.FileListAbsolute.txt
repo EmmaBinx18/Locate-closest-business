@@ -74,3 +74,7 @@ C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\obj\Debug\netcorea
 C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\obj\Debug\netcoreapp3.1\Locate-closest-business.pdb
 C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\obj\Debug\netcoreapp3.1\Locate-closest-business.genruntimeconfig.cache
 C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\obj\Debug\netcoreapp3.1\Locate-closest-business.csproj.CopyComplete
+C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\bin\Debug\netcoreapp3.1\Firebase.dll
+C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\bin\Debug\netcoreapp3.1\LiteDB.dll
+C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\bin\Debug\netcoreapp3.1\System.Reactive.dll

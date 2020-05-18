@@ -1,13 +1,27 @@
 {
   "version": 2,
-  "dgSpecHash": "gxyBTHPF6v/CLoxJ4B7jpjbdORVxfhFlNUMSqI8JsKxVehVpq2AFjKo7SFP9Eifn/6JCLcNoVaulIhh2ji0lHg==",
+  "dgSpecHash": "L8y9RcwX0tts47z7yrYyhWVmLQMhhts7MS3w2jYwUHLa6bt7tuxwoHk4UVURzQ17XG8zujIP6sGVsdRQjBbdkw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Ngoni\\Desktop\\BBD\\C#\\Project\\Locate-closest-business\\Locate-closest-business.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Ngoni\\.nuget\\packages\\firebasedatabase.net\\4.0.4\\firebasedatabase.net.4.0.4.nupkg.sha512",
     "C:\\Users\\Ngoni\\.nuget\\packages\\jquery\\1.8.0\\jquery.1.8.0.nupkg.sha512",
     "C:\\Users\\Ngoni\\.nuget\\packages\\jquery.validation\\1.19.1\\jquery.validation.1.19.1.nupkg.sha512",
+    "C:\\Users\\Ngoni\\.nuget\\packages\\litedb\\4.1.4\\litedb.4.1.4.nupkg.sha512",
     "C:\\Users\\Ngoni\\.nuget\\packages\\microsoft.jquery.unobtrusive.ajax\\3.2.6\\microsoft.jquery.unobtrusive.ajax.3.2.6.nupkg.sha512",
-    "C:\\Users\\Ngoni\\.nuget\\packages\\microsoft.jquery.unobtrusive.validation\\3.2.11\\microsoft.jquery.unobtrusive.validation.3.2.11.nupkg.sha512"
+    "C:\\Users\\Ngoni\\.nuget\\packages\\microsoft.jquery.unobtrusive.validation\\3.2.11\\microsoft.jquery.unobtrusive.validation.3.2.11.nupkg.sha512",
+    "C:\\Users\\Ngoni\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Ngoni\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\Ngoni\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
+    "C:\\Users\\Ngoni\\.nuget\\packages\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",
+    "C:\\Users\\Ngoni\\.nuget\\packages\\system.reactive\\4.0.0\\system.reactive.4.0.0.nupkg.sha512",
+    "C:\\Users\\Ngoni\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
+    "C:\\Users\\Ngoni\\.nuget\\packages\\system.reflection.primitives\\4.3.0\\system.reflection.primitives.4.3.0.nupkg.sha512",
+    "C:\\Users\\Ngoni\\.nuget\\packages\\system.reflection.typeextensions\\4.3.0\\system.reflection.typeextensions.4.3.0.nupkg.sha512",
+    "C:\\Users\\Ngoni\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",
+    "C:\\Users\\Ngoni\\.nuget\\packages\\system.runtime.interopservices.windowsruntime\\4.3.0\\system.runtime.interopservices.windowsruntime.4.3.0.nupkg.sha512",
+    "C:\\Users\\Ngoni\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
+    "C:\\Users\\Ngoni\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

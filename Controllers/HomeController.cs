@@ -5,6 +5,10 @@ using System.Dynamic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Locate_closest_business.Models;
+using Firebase.Database;
+using Firebase.Database.Query;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Locate_closest_business.Controllers
 {
@@ -46,10 +50,17 @@ namespace Locate_closest_business.Controllers
         }
 
         [HttpPost]
-        public IActionResult RegisterBusiness(BusinessModel business)
+        public async Task<IActionResult> RegisterBusiness(BusinessModel business)
         {
+            System.Console.WriteLine("Function called!");
             if(ModelState.IsValid){
+                System.Console.WriteLine("Businesses/"+ business.AddressTown);
+                var firebaseClient = new FirebaseClient("https://locatebusinesses-5a037.firebaseio.com/");
+                var result = await firebaseClient
+                .Child("Businesses/"+ business.AddressTown)
+                .PostAsync(business);
                 return RedirectToAction("");
+
             }
             return View(business);
         }
