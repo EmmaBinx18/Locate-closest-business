@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "6V/E1fs2ccTTkas3fH4qrafCVr4fesFsj48ujC9HXi1lAzjiP4KbcMEtp1f445tPM5q7vII1ejfM7WiBR1kwug==",
+  "dgSpecHash": "Fb9DvpeFlk+gt8UQTum1DO+gfEc9rs39o8dfTmWbinpFNgNXB47PdbKNYySkI+nEKF0gRv6sG9VgKFHD7OyY8w==",
   "success": true,
   "projectFilePath": "C:\\Users\\bbdnet1724\\Documents\\BBD\\Grad Program\\C# Level-Up\\Locate-closest-business\\Locate-closest-business.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\bbdnet1724\\.nuget\\packages\\jquery\\1.8.0\\jquery.1.8.0.nupkg.sha512",
+    "C:\\Users\\bbdnet1724\\.nuget\\packages\\jquery.validation\\1.19.1\\jquery.validation.1.19.1.nupkg.sha512",
+    "C:\\Users\\bbdnet1724\\.nuget\\packages\\microsoft.jquery.unobtrusive.ajax\\3.2.6\\microsoft.jquery.unobtrusive.ajax.3.2.6.nupkg.sha512",
+    "C:\\Users\\bbdnet1724\\.nuget\\packages\\microsoft.jquery.unobtrusive.validation\\3.2.11\\microsoft.jquery.unobtrusive.validation.3.2.11.nupkg.sha512"
+  ],
   "logs": []
 }

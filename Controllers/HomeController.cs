@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Dynamic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Locate_closest_business.Models;
@@ -21,6 +20,23 @@ namespace Locate_closest_business.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        public IActionResult RegisterBusiness()
+        {
+            ViewBag.SuccessfulSubmit = "none";
+            return View(new BusinessModel());
+        }
+
+        [HttpPost]
+        public IActionResult RegisterBusiness(BusinessModel business)
+        {
+            if(ModelState.IsValid){
+                ViewBag.SuccessfulSubmit = "block";
+                return RedirectToAction("");
+            }
+            
+            return View(business);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

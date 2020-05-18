@@ -3,45 +3,82 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Locate_closest_business</title>
+    <title>Locate_closest_business</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Locate_closest_business</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <div class="top-modal">
+            <h2>To get more information on South Africa and Covid-19, <a href="https://sacoronavirus.co.za/"><i>click here</i></a></h2>
+            <h2>We are currently on <b>STAGE 4</b> of lockdown</h2>
+        </div>
+        <div id="searchModal">  
+            <div class="modal-content"> 
+                <h4 class="modal-title">Search for essential service businesses near you</h4>  
+                <form>  
+                    <div class="form-group">  
+                        <select class="form-control" id="essentialServiceOptions">
+                            <option>Agriculture, hunting, forestry, fishing</option>
+                            <option>Electricity, Gas, Water supply</option>
+                            <option>Manufacturing</option>
+                            <option>Construction and related services</option>
+                            <option>Wholesale, Retail trade, Spaza shops</option>
+                            <option>Information and Communication services</option>
+                            <option>Media and Entertainment</option>
+                            <option>Financial and Business services</option>
+                            <option>Accommodation for quarantine, essential services</option>
+                            <option>Food services (Deliveries)</option>
+                            <option>Transport, Storage, Communication services</option>
+                            <option>Mining and Quarrying</option>
+                            <option>Repair and Related Emergency services</option>
+                            <option>Supply Chain</option>
+                            <option>Health, Social and Personal services</option>
+                        </select><img src="~/images/search.svg">
+                    </div> 
+                </form>   
+                <br/>
+            </div>  
+        </div>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - Locate_closest_business - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
+    <footer class="footer">
+        <div id="stages">
+            <table>
+                <tr id="stage5">
+                    <td>STAGE 5 <br/>Drastic measures are required to contain the spread of the virus to save lives</td>
+                </tr>
+                <tr><td></td></tr>
+                <tr id="stage4">
+                    <td>STAGE 4 <br/>Extreme precautions required to limit community transmission and outbreaks, while allowing some activity to resume</td>
+                </tr>
+                <tr><td></td></tr>
+                <tr id="stage3">
+                    <td>STAGE 3 <br/>Easing of some restrictions, including on work and social activities, to address a high risk of transmission</td>
+                </tr>
+                <tr><td></td></tr>
+                <tr id="stage2">
+                    <td>STAGE 2 <br/>Physical distancing and restrictions on some leisure and social activities to prevent a resurgence of the virus</td>
+                </tr>
+                <tr><td></td></tr>
+                <tr id="stage1">
+                    <td>STAGE 1 <br/>Most normal activity can resume, with precautions and health guidelines followed at all times</td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <button id="openRegisterBusinessModal" class="registerBusinessButton" >Register Your Business</button><button id="stagesButton" class="stagesButton" >Stages</button>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>  
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script> 
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
