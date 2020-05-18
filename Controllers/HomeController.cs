@@ -30,7 +30,7 @@ namespace Locate_closest_business.Controllers
 
         public IActionResult RegisterBusiness()
         {
-            ViewBag.SuccessfulSubmit = "none";
+            ViewBag.SuccessfulSubmit = false;
             return View(new BusinessModel());
         }
 
@@ -38,7 +38,7 @@ namespace Locate_closest_business.Controllers
         public IActionResult RegisterBusiness(BusinessModel business)
         {
             if(ModelState.IsValid){
-                ViewBag.SuccessfulSubmit = "block";
+                ViewBag.SuccessfulSubmit = true;
                 HashPassword(business);
                 return RedirectToAction("");
             }

@@ -144,13 +144,6 @@ img{
   box-shadow: 0 0 0 0.2rem rgba(182, 0, 0, 0.5);
 }
 
-#successful{
-  text-align: center;
-  width: 60%;
-  margin: auto;
-  margin-top: 54.5%;
-}
-
 #stages{
   display: none;
   width: 100%;
