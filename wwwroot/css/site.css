@@ -57,7 +57,7 @@ a:hover {
 
 #registerBusinessModal .modal-content {
   width: 900px !important;
-  margin: 8% auto !important;
+  margin: 4% auto !important;
   text-align: center;
 }
 
@@ -178,4 +178,13 @@ td{
 
 #stage1{
   background-color: #bff0de;
+}
+
+.recoveryPassword{
+  width: 75.5% !important;
+}
+
+.passwordLabel{
+  color: grey;
+  margin-top: 3%;
 }
