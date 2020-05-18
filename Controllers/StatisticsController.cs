@@ -31,7 +31,7 @@ namespace Locate_closest_business.Controllers
             }
             catch (Exception exp)
             {
-                Console.WriteLine(exp.Message);
+                Console.WriteLine(exp);
                 return RedirectToAction("HttpRequestError");
             }
         }
@@ -49,7 +49,7 @@ namespace Locate_closest_business.Controllers
             }
             catch (Exception exp)
             {
-                Console.WriteLine(exp.Message);
+                Console.WriteLine("StatisticsController.ListedCountries Exception::" + exp);
                 return RedirectToAction("HttpRequestError");
             }
         }
@@ -77,12 +77,12 @@ namespace Locate_closest_business.Controllers
             {
                 if (exp.Message.Contains("No such host is known."))
                 {
-                    Console.WriteLine(exp.Message);
+                    Console.WriteLine(exp);
                     return Json(errorJSON);
                 }
                 else if (exp.Message.Contains("Response status code does not indicate success: 404 (Not Found)"))
                 {
-                    Console.WriteLine(exp.Message);
+                    Console.WriteLine(exp);
                     var incorrectParamsContent = new
                     {
                         errorMessage = "Specified_Country_Slug_Not_Found"
@@ -91,7 +91,7 @@ namespace Locate_closest_business.Controllers
                 }
                 else
                 {
-                    Console.WriteLine(exp.Message);
+                    Console.WriteLine(exp);
                     var unexpectedErrorContent = new
                     {
                         errorMessage = exp.Message

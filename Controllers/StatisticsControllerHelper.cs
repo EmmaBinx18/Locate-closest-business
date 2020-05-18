@@ -54,7 +54,7 @@ namespace Locate_closest_business.Controllers
             }
             catch(HttpRequestException ex)
             {
-                Console.WriteLine("HttpRequestException caught:: " + ex.Message);
+                Console.WriteLine("HttpRequestException caught:: " + ex);
                 return null;
             }
         }
