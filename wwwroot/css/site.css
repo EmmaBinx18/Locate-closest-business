@@ -106,19 +106,31 @@ img{
   padding: 20px;
 }
 
-.nextButton, .submitRequestButton{
+.nextButton, .submitRequestButton, .viewBusinessesButton{
   background-color: rgb(182, 0, 0);
   border: none;
   border-radius: 0.25rem;
   color: white;
   padding: 6px;
-  width: 20%;
   box-shadow: rgb(99, 99, 99) 5px 8px 12px -8px;
   margin-top: 2%;
-  margin-left: 41%;
 }
 
-.nextButton:hover, .submitRequestButton:hover{
+.nextButton{
+  width: 15%;
+  margin-left: 2%;
+}
+
+.viewBusinessesButton{
+  width: 35%;
+}
+
+.submitRequestButton{
+  margin-left: 41%;
+  width: 20%;
+}
+
+.nextButton:hover, .submitRequestButton:hover, .viewBusinessesButton:hover{
   font-size: 1.14rem;
 }
 
