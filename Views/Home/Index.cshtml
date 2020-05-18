@@ -1,1 +1,90 @@
-﻿
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Custom</title>
+</head>
+<body>
+    <meta name="viewport" content="width=device-width" />
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQRiWyuhSZ6G9D9Vf_0ASwehF47JKi-Q0&libraries=places"></script>
+    <script type="text/javascript">
+        var map;
+        var service;
+        var infowindow;
+        var usersPosition;
+        var myStyles = [
+            {
+                featureType: "poi",
+                elementType: "labels",
+                stylers: [
+                    { visibility: "off" }
+                ]
+            }
+        ];
+
+        window.onload = function () {
+            if (this.navigator.geolocation) {
+                this.navigator.geolocation.getCurrentPosition(function (position) {
+                    usersPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                    infowindow = new google.maps.InfoWindow();
+
+                    map = new google.maps.Map(
+                        document.getElementById('dvMap'), { center: usersPosition, zoom: 18, styles: myStyles });
+
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: usersPosition,
+                        label: "You Are Here"
+                    });
+                })
+            }
+        }
+
+        function searchStuff() {
+            var request = {
+                location: usersPosition,
+                radius: '2000',
+                type: ['clothing_store'],
+                //openNow: 'true',
+                fields: 'business_status'
+            };
+            map.setZoom(14);
+            service = new google.maps.places.PlacesService(map);
+            service.nearbySearch(request, callback);
+
+        }
+
+        function callback(results, status) {
+            if (status == google.maps.places.PlacesServiceStatus.OK) {
+                for (var i = 0; i < results.length; i++) {
+                    createMarker(results[i]);
+                }
+            }
+        }
+
+        function createMarker(place) {
+            if (place.business_status == "OPERATIONAL") {
+
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: place.geometry.location,
+                        label: place.name
+                    });
+
+                    google.maps.event.addListener(marker, 'click', function () {
+                        infowindow.setContent(place.business_status);
+                        infowindow.open(map, this);
+                    });
+            }         
+        }
+    </script>
+
+
+    <button type="button" onclick="javascript:searchStuff()">Click Me!</button>
+    <div class="card-body">
+        <div id="dvMap" class="card" style="width: 100%; height: 800px">
+        </div>
+    </div>
+</body>
+</html>  
