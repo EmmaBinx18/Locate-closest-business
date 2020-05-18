@@ -22,6 +22,12 @@ namespace Locate_closest_business.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Search(string searchOption)
+        {
+            return RedirectToAction("");
+        }
+
         public IActionResult RegisterBusiness()
         {
             ViewBag.SuccessfulSubmit = "none";

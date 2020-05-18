@@ -16,9 +16,9 @@
         <div id="searchModal">  
             <div class="modal-content"> 
                 <h4 class="modal-title">Search for essential service businesses near you</h4>  
-                <form>  
+                <form id="searchForm" action="/Home/Search" method="Post">  
                     <div class="form-group">  
-                        <select class="form-control" id="essentialServiceOptions">
+                        <select name="searchOption" class="form-control" id="essentialServiceOptions">
                             <option value="{'1':'airport', '2':'taxi_stand', '3':'train_station'}">Airport, Taxi Station, Train Station</option>
                             <option value="{'1':'atm', '2':'bank'}">ATM, Bank</option>
                             <option value="{'1':'dentist', '2':'doctor', '3':'hospital', '4':'physiotherapist'}">Doctor, Dentis, Hospital, Physiotherapist</option>
@@ -28,7 +28,7 @@
                             <option value="{'1':'gas_station'}">Gas Station</option>
                             <option value="{'1':'veterinary_care'}">Veterinary Care</option>
                             <option value="{'1':'clothing_store, '2':'convenience_store', '3': 'department_store', '4':'shopping_mall', '5':'supermarket'}">Wholesale, Retail trade</option>
-                        </select><img src="~/images/search.svg">
+                        </select><span><input class="searchIcon" type="image" src="~/images/search.svg" border="0" alt="Submit" /></span>
                     </div> 
                 </form>   
                 <br/>
