@@ -30,7 +30,6 @@ namespace Locate_closest_business.Controllers
 
         public IActionResult RegisterBusiness()
         {
-            ViewBag.SuccessfulSubmit = false;
             return View(new BusinessModel());
         }
 
