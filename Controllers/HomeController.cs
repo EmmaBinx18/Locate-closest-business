@@ -33,6 +33,7 @@ namespace Locate_closest_business.Controllers
         {
             if(ModelState.IsValid){
                 ViewBag.SuccessfulSubmit = "block";
+                HashPassword(business);
                 return RedirectToAction("");
             }
             
@@ -43,6 +44,15 @@ namespace Locate_closest_business.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        private static string GenerateSalt(){
+            return BCrypt.Net.BCrypt.GenerateSalt(12);
+        }
+
+        private static void HashPassword(BusinessModel business)
+        {
+            business.RecoveryPassword = BCrypt.Net.BCrypt.HashPassword(business.RecoveryPassword, GenerateSalt());
         }
     }
 }

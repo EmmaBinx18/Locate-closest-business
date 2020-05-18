@@ -36,6 +36,14 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "BCrypt-Official": {
+              "target": "Package",
+              "version": "[*, )"
+            },
+            "BCrypt.Net": {
+              "target": "Package",
+              "version": "[*, )"
+            },
             "Microsoft.jQuery.Unobtrusive.Ajax": {
               "target": "Package",
               "version": "[3.2.6, )"
