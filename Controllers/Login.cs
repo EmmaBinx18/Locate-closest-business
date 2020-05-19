@@ -24,7 +24,7 @@ namespace Locate_closest_business.Controllers
             if (ModelState.GetValidationState("Email") == ModelValidationState.Valid
                 && ModelState.GetFieldValidationState("Password") == ModelValidationState.Valid){
                 //On succesful validation:
-                //loggedInUser = user;
+                //loggedInUser = found user;
                 return RedirectToAction("");
             }
             return View(user);
