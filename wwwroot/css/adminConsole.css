@@ -1,0 +1,93 @@
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+#sidebar {
+    width: 350px;
+    min-height: 100vh;
+    background: rgb(73, 73, 73);
+    color: #fff;
+    position: absolute;
+    left: 0;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+#sidebar .sidebar-header {
+    text-align: center;
+    margin-top: 10%;
+}
+
+#sidebar h3{
+    font-size: 1.6rem;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 15px;
+    font-size: 1.1em;
+    display: block;
+}
+#sidebar ul li a:hover {
+    color: black;
+    background: #fff;
+}
+
+#sidebar ul li.active > a, a[aria-expanded="true"] {
+    color: #fff;
+    background: rgb(46, 46, 46);
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+}
+
+.adminContainer{
+    width: 100%;
+    position: relative;
+    left: 12%;
+}
+
+.addAdmin, .adminUsers{
+    border: 1px solid grey;
+    width: 100%;
+    margin: auto;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.addAdmin{
+    margin-top: 5%;
+}
+
+.adminUsers{
+    margin-top: 6%;
+}
+
+.adminContainer .form-control{
+    width: 40% !important;
+    display: inline;
+    margin-top: 1%;
+    margin-left: 2%;
+}
+
+.addAdminButton{
+    width: 14%;
+}
+
+.adminContainer h2{
+    font-size: 1.8rem;
+}
