@@ -1,4 +1,28 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿$(document).ready(function () {      
+    $("#openRegisterBusinessModal").click(function () { 
+        $("#registerBusinessModal").modal('show');  
+        $("#step1").css("display", "block");
+        $("#step2").css("display", "none");
+    });
+    
+    $("#step1 .nextButton").click(function() {
+        $("#step1").css("display", "none");
+        $("#step2").css("display", "block");
+    });
 
-// Write your JavaScript code.
+    $("input").focus(function() {
+        $(".errorSpace").css("display", "none");
+    });
+
+    $("textarea").focus(function() {
+        $(".errorSpace").css("display", "none");
+    });
+
+    $("select").focus(function() {
+        $(".errorSpace").css("display", "none");
+    });
+
+    $("#stagesButton").click(function() {
+        $("#stages").toggle();
+    });
+});
