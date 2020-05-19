@@ -1,10 +1,10 @@
 ﻿$(document).ready(function () {      
     $.get("/Login/LoggedIn", function (data) {  
         if(data == true){
-            $("#loginButton").html('LOGIN');
+            $("#loginButton").html('Login');
         }  
         else{
-            $("#loginButton").html('LOGOUT');  
+            $("#loginButton").html('Logout');  
         }
     }); 
 
@@ -27,14 +27,14 @@
         }
         else{
             $.get("/Login/Logout", function () {
-                $("#loginButton").html('LOGIN');
+                $("#loginButton").html('Login');
             });
         }
     });
 
     $('#adminLogout').click(function () {
         $.get("/Login/Logout", function () {
-            $("#loginButton").html('LOGIN');
+            $("#loginButton").html('Login');
         });
     });
     
