@@ -47,6 +47,8 @@ a:hover {
 #searchModal{
   margin-top: 2%;
   margin-left: 2.6%;
+  position: absolute;
+  left: 0;
 }
 
 #searchModal .modal-content {
@@ -99,7 +101,7 @@ img{
   width: 20%;
 }
 
-.nextButton:hover, .submitRequestButton:hover, .viewBusinessesButton:hover, .loginButton, .signupButton{
+.nextButton:hover, .submitRequestButton:hover, .viewBusinessesButton:hover, .loginButton, .signupButton, .stagesButton{
   font-size: 1.12rem;
 }
 

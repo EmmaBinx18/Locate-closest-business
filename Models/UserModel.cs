@@ -18,10 +18,12 @@ namespace Locate_closest_business.Models
        [Phone]
        public string Phone { get; set; }
 
-       [Required]
+       [Required(AllowEmptyStrings = false)]
+       [MinLength(8)]
        public string Password { get; set; }
 
-       [Required]
+       [Required(AllowEmptyStrings = false)]
+       [Compare("Password")]
        public string ConfirmPassword { get; set; }
     }
 }

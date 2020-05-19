@@ -30,8 +30,7 @@ namespace Locate_closest_business.Controllers
 
         public IActionResult RegisterBusiness()
         {
-            // return RedirectToAction("Signup");
-            return View(new BusinessModel());
+            return View();
         }
 
         [HttpPost]
@@ -51,8 +50,12 @@ namespace Locate_closest_business.Controllers
             return View();
         }
 
-        public IActionResult Signup()
-        {
+        [HttpPost]
+        public IActionResult Login(UserModel user){
+            return View();
+        }
+
+        public IActionResult Signup(){
             return View();
         }
 

@@ -48,13 +48,9 @@ namespace Locate_closest_business
 
             app.UseEndpoints(endpoints =>
             {
-                // endpoints.MapControllerRoute(
-                //     name: "registerBusiness",
-                //     pattern: "{controller=Home}/{action=RegisterBusiness}");
-
                 endpoints.MapControllerRoute(
-                    name: "registerBusiness",
-                    pattern: "{controller=Home}/{action=Signup}");
+                    name: "index",
+                    pattern: "{controller=Home}/{action=Index}");
             });
         }
     }
