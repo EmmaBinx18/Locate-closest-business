@@ -10,7 +10,7 @@
 
     $("#openRegisterBusinessModal").click(function () {
         $.get("/Login/LoggedIn", function (data) {  
-            if(data == true){
+            if(data == false){
                 $("#loginModal").modal('show');
             }  
             else{

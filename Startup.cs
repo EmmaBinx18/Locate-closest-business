@@ -50,7 +50,7 @@ namespace Locate_closest_business
             {
                 endpoints.MapControllerRoute(
                     name: "index",
-                    pattern: "{controller=Admin}/{action=Admin}");
+                    pattern: "{controller=Home}/{action=Index}");
             });
         }
     }

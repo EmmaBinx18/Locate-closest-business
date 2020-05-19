@@ -25,7 +25,7 @@ namespace Locate_closest_business.Controllers
         [HttpPost]
         public IActionResult AddAdmin(UserModel user){
             if(ModelState.IsValid){
-                return RedirectAction("");
+                return RedirectToAction("");
             }
             return View(user);
         }

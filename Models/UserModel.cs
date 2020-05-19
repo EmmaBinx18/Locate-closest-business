@@ -25,5 +25,6 @@ namespace Locate_closest_business.Models
        [Required(AllowEmptyStrings = false)]
        [Compare("Password")]
        public string ConfirmPassword { get; set; }
+
     }
 }

@@ -41,6 +41,13 @@ namespace Locate_closest_business.Controllers
             return loggedInUser == null;
         }
 
+        public UserModel GetLoggedInUser(){
+            UserModel user = new UserModel();
+            user.FirstName = "Emma";
+            return user;
+            // return loggedInUser;
+        }
+
         public void Logout(){
             loggedInUser = null;
         }

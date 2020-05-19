@@ -77,7 +77,7 @@ ul ul a {
     margin-top: 6%;
 }
 
-.form-control{
+.adminContainer .form-control{
     width: 40% !important;
     display: inline;
     margin-top: 1%;
@@ -88,6 +88,6 @@ ul ul a {
     width: 14%;
 }
 
-h2{
+.adminContainer h2{
     font-size: 1.8rem;
 }
