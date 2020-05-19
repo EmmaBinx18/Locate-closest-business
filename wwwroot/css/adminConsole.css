@@ -5,11 +5,52 @@
 }
 
 #sidebar {
-    min-width: 250px;
-    max-width: 250px;
+    width: 350px;
     min-height: 100vh;
+    background: rgb(73, 73, 73);
+    color: #fff;
+    position: absolute;
+    left: 0;
 }
 
 #sidebar.active {
     margin-left: -250px;
+}
+
+#sidebar .sidebar-header {
+    text-align: center;
+    margin-top: 10%;
+}
+
+#sidebar h3{
+    font-size: 1.6rem;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 15px;
+    font-size: 1.1em;
+    display: block;
+}
+#sidebar ul li a:hover {
+    color: black;
+    background: #fff;
+}
+
+#sidebar ul li.active > a, a[aria-expanded="true"] {
+    color: #fff;
+    background: rgb(46, 46, 46);
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
 }
