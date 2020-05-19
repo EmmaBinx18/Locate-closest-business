@@ -34,8 +34,5 @@ namespace Locate_closest_business.Models
 
        [Required]
        public string Address { get; set; }
-
-       [Required]
-       public string RecoveryPassword { get; set; }
     }
 }

@@ -79,10 +79,6 @@
                     <div class="form-group">  
                         @Html.TextAreaFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @placeholder="Company's physical address" } })
                     </div>
-                    <div class="form-group">
-                        <label class="passwordLabel">*Please note: this password is to be used to view and edit you business requests</label>
-                        @Html.EditorFor(model => model.RecoveryPassword, new { htmlAttributes = new { @class = "form-control recoveryPassword", @placeholder="Business Recovery Password" } })
-                    </div>
                 </form> 
                 <input type="submit" class="submitRequestButton" value="SUBMIT REQUEST" />   
                 <br/><br/>
