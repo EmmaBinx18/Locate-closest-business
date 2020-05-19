@@ -1,20 +1,8 @@
 ﻿$(document).ready(function () {      
-    $("#openRegisterBusinessModal").click(function () {
-        var url = "/Login/LoggedIn";  
-        $.get(url, function (data) {  
-            if(data == true){
-                $("#loginModal").modal('show');
-            }  
-            else{
-                $("#registerBusinessModal").modal('show');  
-                $("#step1").css("display", "block");
-                $("#step2").css("display", "none");
-            }
-        }); 
-    });
-
-    $('#loginButton').click(function () {
-        $("#loginModal").modal('show');
+    $("#openRegisterBusinessModal").click(function () { 
+        $("#registerBusinessModal").modal('show');  
+        $("#step1").css("display", "block");
+        $("#step2").css("display", "none");
     });
     
     $("#step1 .nextButton").click(function() {
@@ -22,17 +10,19 @@
         $("#step2").css("display", "block");
     });
 
+    $("input").focus(function() {
+        $(".errorSpace").css("display", "none");
+    });
+
+    $("textarea").focus(function() {
+        $(".errorSpace").css("display", "none");
+    });
+
+    $("select").focus(function() {
+        $(".errorSpace").css("display", "none");
+    });
+
     $("#stagesButton").click(function() {
         $("#stages").toggle();
-    });
-
-    $(".signUpLink").click(function(){
-        $("#signupModal").modal('show');
-        $("#loginModal").modal('hide');
-    });
-
-    $(".loginLink").click(function(){
-        $("#loginModal").modal('show');
-        $("#signupModal").modal('hide');
     });
 });
