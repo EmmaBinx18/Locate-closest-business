@@ -22,17 +22,22 @@ namespace Locate_closest_business.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Search(string searchOption)
+        {
+            return RedirectToAction("");
+        }
+
         public IActionResult RegisterBusiness()
         {
-            ViewBag.SuccessfulSubmit = "none";
-            return View(new BusinessModel());
+            return View();
         }
 
         [HttpPost]
         public IActionResult RegisterBusiness(BusinessModel business)
         {
             if(ModelState.IsValid){
-                ViewBag.SuccessfulSubmit = "block";
+                ViewBag.SuccessfulSubmit = true;
                 return RedirectToAction("");
             }
             
@@ -43,6 +48,12 @@ namespace Locate_closest_business.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [HttpPost]
+        public IActionResult Login(string email, string password)
+        {
+            return RedirectToAction("");
         }
     }
 }
