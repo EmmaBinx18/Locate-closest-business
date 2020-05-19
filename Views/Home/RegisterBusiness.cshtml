@@ -1,22 +1,15 @@
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    var formSubmitSuccess = ViewBag.SuccessfulSubmit;
 }
 
 @model Locate_closest_business.Models.BusinessModel;  
 
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $("#successful").css("display", "@ViewBag.SuccessfulSubmit");
-    });
+<script type="text/javascript">
+    var success = '@formSubmitSuccess';
+    if(success == true){
+        alert('Your request has been successfully submitted');
+    }
 </script>
-
-<div class="alert alert-success" role="alert" id="successful">
-    Your request has been successfully submitted
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
 
 <div class="modal fade" tabindex="-1" id="registerBusinessModal" data-keyboard="false" data-backdrop="static">  
     <div class="modal-dialog modal-lg" id="step1">  
@@ -28,8 +21,9 @@
                     “All enterprises operating within the borders of the Republic of South Africa are expected to be closed during the lockdown period. Only enterprises which produce and/or provide, and/or distribute goods and services listed are exempted from the restrictions contemplated in the regulation issued in terms of the Disaster Management Act. Note, absolute minimum staff necessary to operate safely.”
                 </i>
             </h3>  
-            <button type="submit" class="nextButton">NEXT</button>   
             <br/>
+            <span><button class="viewBusinessesButton">VIEW MY BUSINESS REQUESTS</button><button class="nextButton">NEXT</button> </span> 
+            <br/><br/>
         </div>  
     </div>  
 
