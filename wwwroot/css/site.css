@@ -9,6 +9,8 @@
   margin: 1% auto 0px;
   border-radius: 8px;
   text-align: center;
+  position: absolute;
+  left: 2.5%;
 }
 
 h2, h3, a {
@@ -55,6 +57,7 @@ a:hover {
   width: 480px !important;
   text-align: center;
   box-shadow: rgb(99, 99, 99) 10px 13px 22px -8px;
+  margin-top: 20%;
 }
 
 .modal-title{
@@ -86,7 +89,7 @@ img{
   font-size: 1.1rem;
 }
 
-.nextButton, .submitRequestButton, .viewBusinessesButton, .loginButton, .signupButton{
+.nextButton, .submitRequestButton, .viewBusinessesButton, .loginButton, .signupButton, .addAdminButton{
   background-color: rgb(182, 0, 0);
   border: none;
   border-radius: 0.25rem;
@@ -101,7 +104,12 @@ img{
   width: 20%;
 }
 
-.nextButton:hover, .submitRequestButton:hover, .viewBusinessesButton:hover, .loginButton:hover, .signupButton:hover{
+.nextButton:hover, 
+.submitRequestButton:hover, 
+.viewBusinessesButton:hover, 
+.loginButton:hover, 
+.signupButton:hover,
+.addAdminButton:hover{
   font-size: 1.12rem;
 }
 

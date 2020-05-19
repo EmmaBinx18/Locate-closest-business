@@ -32,19 +32,10 @@
             <div class="modal-content">  
                 <button type="button" class="close" data-dismiss="modal">×</button>  
                 <h4 class="modal-title">Register your business as an essential service</h4><br/>  
-                <h4>Director/Member Details</h4>
-                <br/><br/>
+                <br/>
                 <form id="registrationForm">
                     <div class="form-group">  
-                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @placeholder="First Name" } })          
-                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", @placeholder="Last Name" } })      
-                    </div>
-                    <div class="form-group"> 
-                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder="Email" } }) 
-                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", @placeholder="Phone" } })
-                    </div>
-                    <div class="form-group">  
-                        @Html.TextAreaFor(model => model.MemberIds, new { htmlAttributes = new { @class = "form-control", @placeholder="Provide all ID/Passport numbers of the current directors/members" } })
+                        @Html.TextAreaFor(model => model.MemberIds, new { @class = "form-control", placeholder="Provide all ID/Passport numbers of the current directors/members"})
                     </div>
 
                     <br/><h4>Company Details</h4><br/>
@@ -75,7 +66,7 @@
                         @Html.EditorFor(model => model.NumEmployees, new { htmlAttributes = new { @class = "form-control", @placeholder="Number Of Employees" } })
                     </div>
                     <div class="form-group">  
-                        @Html.TextAreaFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @placeholder="Company's physical address" } })
+                        @Html.TextAreaFor(model => model.Address, new { @class = "form-control", placeholder="Company's physical address" })
                     </div>
                 </form> 
                 <input type="submit" class="submitRequestButton" value="SUBMIT REQUEST" />   

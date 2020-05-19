@@ -1,8 +1,16 @@
 ﻿$(document).ready(function () {      
+    $.get("/Login/LoggedIn", function (data) {  
+        if(data == true){
+            $("#loginButton").html('Login');
+        }  
+        else{
+            $("#loginButton").html('Logout');  
+        }
+    }); 
+
     $("#openRegisterBusinessModal").click(function () {
-        var url = "/Login/LoggedIn";  
-        $.get(url, function (data) {  
-            if(data == true){
+        $.get("/Login/LoggedIn", function (data) {  
+            if(data == false){
                 $("#loginModal").modal('show');
             }  
             else{
@@ -14,7 +22,20 @@
     });
 
     $('#loginButton').click(function () {
-        $("#loginModal").modal('show');
+        if($("#loginButton").html() == 'LOGIN'){
+            $("#loginModal").modal('show');
+        }
+        else{
+            $.get("/Login/Logout", function () {
+                $("#loginButton").html('Login');
+            });
+        }
+    });
+
+    $('#adminLogout').click(function () {
+        $.get("/Login/Logout", function () {
+            $("#loginButton").html('Login');
+        });
     });
     
     $("#step1 .nextButton").click(function() {
@@ -35,4 +56,9 @@
         $("#loginModal").modal('show');
         $("#signupModal").modal('hide');
     });
+
+    $(".list-unstyled a").click(function(){
+        $(".list-unstyled").find(".active").removeClass("active");
+        $(this).parent().addClass("active");
+     });
 });
