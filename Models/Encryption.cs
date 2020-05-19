@@ -11,9 +11,9 @@ namespace Locate_closest_business.Models
             return BCrypt.Net.BCrypt.HashPassword(password, GenerateSalt());
         }
 
-        private static string VerifyPassword(string password, string correctHash)
+        private static bool VerifyPassword(string password, string correctHash)
         {
-            return BCrypt.Verify(password, correctHash);
+            return BCrypt.Net.BCrypt.Verify(password, correctHash);
         }
     }
 }
