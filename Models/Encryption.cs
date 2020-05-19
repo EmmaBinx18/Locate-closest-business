@@ -6,12 +6,12 @@ namespace Locate_closest_business.Models
             return BCrypt.Net.BCrypt.GenerateSalt(12);
         }
 
-        private static string HashPassword(string password)
+        public static string HashPassword(string password)
         {
             return BCrypt.Net.BCrypt.HashPassword(password, GenerateSalt());
         }
 
-        private static bool VerifyPassword(string password, string correctHash)
+        public static bool VerifyPassword(string password, string correctHash)
         {
             return BCrypt.Net.BCrypt.Verify(password, correctHash);
         }

@@ -32,7 +32,6 @@ namespace Locate_closest_business.Controllers
 
         public bool LoggedIn()
         {
-            // return Json(loggedInUser == null, System.Web.Mvc.JsonRequestBehavior.AllowGet);
             return loggedInUser == null;
         }
 
@@ -44,8 +43,9 @@ namespace Locate_closest_business.Controllers
         public IActionResult Signup(UserModel user)
         {
             if(ModelState.IsValid){
-                // Need to hash password
-                // loggedInUser = user found
+                user.Password = Encryption.HashPassword(user.Password);
+                user.ConfirmPassword = user.Password;
+                loggedInUser = user;
                 return RedirectToAction("");
             }
             return View(user);
