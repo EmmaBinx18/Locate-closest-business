@@ -22,6 +22,14 @@ namespace Locate_closest_business.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult AddAdmin(UserModel user){
+            if(ModelState.IsValid){
+                return RedirectAction("");
+            }
+            return View(user);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

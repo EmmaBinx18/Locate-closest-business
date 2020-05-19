@@ -54,3 +54,40 @@ ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
 }
+
+.adminContainer{
+    width: 100%;
+    position: relative;
+    left: 12%;
+}
+
+.addAdmin, .adminUsers{
+    border: 1px solid grey;
+    width: 100%;
+    margin: auto;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.addAdmin{
+    margin-top: 5%;
+}
+
+.adminUsers{
+    margin-top: 6%;
+}
+
+.form-control{
+    width: 40% !important;
+    display: inline;
+    margin-top: 1%;
+    margin-left: 2%;
+}
+
+.addAdminButton{
+    width: 14%;
+}
+
+h2{
+    font-size: 1.8rem;
+}
