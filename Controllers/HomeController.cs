@@ -30,6 +30,7 @@ namespace Locate_closest_business.Controllers
 
         public IActionResult RegisterBusiness()
         {
+            // return RedirectToAction("Signup");
             return View(new BusinessModel());
         }
 
@@ -45,10 +46,37 @@ namespace Locate_closest_business.Controllers
             return View(business);
         }
 
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        public IActionResult Signup()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Signup(UserModel user)
+        {
+            if(ModelState.IsValid){
+                // HashPassword(business);
+                return RedirectToAction("");
+            }
+            
+            return View(user);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [HttpPost]
+        public IActionResult Login(string email, string password)
+        {
+            return RedirectToAction("");
         }
 
         // private static string GenerateSalt(){

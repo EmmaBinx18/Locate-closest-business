@@ -37,3 +37,5 @@ C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-busine
 C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Home\RegisterBusiness.cshtml.g.cs
 C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\bin\Debug\netcoreapp3.1\package-lock.json
 C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\bin\Debug\netcoreapp3.1\BCrypt.Net.dll
+C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Home\Login.cshtml.g.cs
+C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Home\Signup.cshtml.g.cs

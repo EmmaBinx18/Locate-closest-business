@@ -31,17 +31,17 @@ a:hover {
   font-size: 1.2rem;
 }
 
-#registerBusinessModal .close{
-  width: 10%;
-  margin-left:90%;
-  margin-top: 2%;
-}
-
 .footer{
   position: fixed;
   left: 0;
   bottom: 0;
   width: 30%;
+}
+
+.close{
+  width: 10%;
+  margin-left:90%;
+  margin-top: 2%;
 }
 
 #searchModal{
@@ -53,12 +53,6 @@ a:hover {
   width: 480px !important;
   text-align: center;
   box-shadow: rgb(99, 99, 99) 10px 13px 22px -8px;
-}
-
-#registerBusinessModal .modal-content {
-  width: 900px !important;
-  margin: 4% auto !important;
-  text-align: center;
 }
 
 .modal-title{
@@ -77,17 +71,6 @@ img{
   margin-top: 6%;
 }
 
-#registerBusinessModal .form-control{
-  width: 36%;
-  display: inline;
-  margin-left: 2.5%;
-}
-
-#registerBusinessModal textarea{
-  width: 75% !important;
-  margin-left: 22px;
-}
-
 .registerBusinessButton, .stagesButton{
   margin-left: 3%;
   border-radius: 6px;
@@ -101,12 +84,7 @@ img{
   font-size: 1.1rem;
 }
 
-#registerBusinessModal h3{
-  margin-top: 4%;
-  padding: 20px;
-}
-
-.nextButton, .submitRequestButton, .viewBusinessesButton{
+.nextButton, .submitRequestButton, .viewBusinessesButton, .loginButton, .signupButton{
   background-color: rgb(182, 0, 0);
   border: none;
   border-radius: 0.25rem;
@@ -116,30 +94,16 @@ img{
   margin-top: 2%;
 }
 
-.nextButton{
-  width: 15%;
-  margin-left: 2%;
-}
-
-.viewBusinessesButton{
-  width: 35%;
-}
-
 .submitRequestButton{
   margin-left: 41%;
   width: 20%;
 }
 
-.nextButton:hover, .submitRequestButton:hover, .viewBusinessesButton:hover{
+.nextButton:hover, .submitRequestButton:hover, .viewBusinessesButton:hover, .loginButton, .signupButton{
   font-size: 1.12rem;
 }
 
-#step2, #step3{
-  display: none;
-}
-
-.form-control:focus
-{
+.form-control:focus{
   border-color: rgba(182, 0, 0);
   box-shadow: 0 0 0 0.2rem rgba(182, 0, 0, 0.5);
 }
@@ -183,15 +147,6 @@ td{
 
 #stage1{
   background-color: #bff0de;
-}
-
-.recoveryPassword{
-  width: 75.5% !important;
-}
-
-.passwordLabel{
-  color: grey;
-  margin-top: 3%;
 }
 
 .searchIcon{
