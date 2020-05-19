@@ -41,6 +41,10 @@ namespace Locate_closest_business.Controllers
             return loggedInUser == null;
         }
 
+        public void Logout(){
+            loggedInUser = null;
+        }
+
         public IActionResult Signup(){
             return View();
         }

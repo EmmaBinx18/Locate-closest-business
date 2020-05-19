@@ -1,7 +1,15 @@
 ﻿$(document).ready(function () {      
+    $.get("/Login/LoggedIn", function (data) {  
+        if(data == true){
+            $("#loginButton").html('LOGIN');
+        }  
+        else{
+            $("#loginButton").html('LOGOUT');  
+        }
+    }); 
+
     $("#openRegisterBusinessModal").click(function () {
-        var url = "/Login/LoggedIn";  
-        $.get(url, function (data) {  
+        $.get("/Login/LoggedIn", function (data) {  
             if(data == true){
                 $("#loginModal").modal('show');
             }  
@@ -14,7 +22,20 @@
     });
 
     $('#loginButton').click(function () {
-        $("#loginModal").modal('show');
+        if($("#loginButton").html() == 'LOGIN'){
+            $("#loginModal").modal('show');
+        }
+        else{
+            $.get("/Login/Logout", function () {
+                $("#loginButton").html('LOGIN');
+            });
+        }
+    });
+
+    $('#adminLogout').click(function () {
+        $.get("/Login/Logout", function () {
+            $("#loginButton").html('LOGIN');
+        });
     });
     
     $("#step1 .nextButton").click(function() {
