@@ -10,6 +10,8 @@ namespace Locate_closest_business.Controllers
 {
     public class HomeController : Controller
     {
+        UserModel loggedInUser = null;
+
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -51,8 +53,14 @@ namespace Locate_closest_business.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(UserModel user){
-            return View();
+        public IActionResult Login(UserModel user)
+        {
+            if (ModelState.IsValid(user.Email, user.Password)){
+                //On succesful validation:
+                //loggedInUser = user;
+                return RedirectToAction("");
+            }
+            return View(user);
         }
 
         public IActionResult Signup(){
@@ -66,7 +74,6 @@ namespace Locate_closest_business.Controllers
                 // HashPassword(business);
                 return RedirectToAction("");
             }
-            
             return View(user);
         }
 
@@ -81,14 +88,5 @@ namespace Locate_closest_business.Controllers
         {
             return RedirectToAction("");
         }
-
-        // private static string GenerateSalt(){
-        //     return BCrypt.Net.BCrypt.GenerateSalt(12);
-        // }
-
-        // private static void HashPassword(BusinessModel business)
-        // {
-        //     business.RecoveryPassword = BCrypt.Net.BCrypt.HashPassword(business.RecoveryPassword, GenerateSalt());
-        // }
     }
 }
