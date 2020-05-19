@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {      
     $("#openRegisterBusinessModal").click(function () {
-        var url = "/Home/LoggedIn";  
+        var url = "/Login/LoggedIn";  
         $.get(url, function (data) {  
             if(data == true){
                 $("#loginModal").modal('show');
