@@ -1,0 +1,86 @@
+@{
+    var formSubmitSuccess = ViewBag.SuccessfulSubmit;
+}
+
+@model Locate_closest_business.Models.BusinessModel;  
+
+<script type="text/javascript">
+    var success = '@formSubmitSuccess';
+    if(success == true){
+        alert('Your request has been successfully submitted');
+    }
+</script>
+
+<div class="modal fade" tabindex="-1" id="registerBusinessModal" data-keyboard="false" data-backdrop="static">  
+    <div class="modal-dialog modal-lg" id="step1">  
+        <div class="modal-content">  
+            <button type="button" class="close" data-dismiss="modal">×</button>  
+            <h4 class="modal-title">Register your business as an essential service</h4>  
+            <h3>
+                <i>
+                    “All enterprises operating within the borders of the Republic of South Africa are expected to be closed during the lockdown period. Only enterprises which produce and/or provide, and/or distribute goods and services listed are exempted from the restrictions contemplated in the regulation issued in terms of the Disaster Management Act. Note, absolute minimum staff necessary to operate safely.”
+                </i>
+            </h3>  
+            <br/>
+            <span><button class="viewBusinessesButton">VIEW MY BUSINESS REQUESTS</button><button class="nextButton">NEXT</button> </span> 
+            <br/><br/>
+        </div>  
+    </div>  
+
+    @using (Html.BeginForm()){
+        <div class="modal-dialog modal-lg" id="step2">  
+            <div class="modal-content">  
+                <button type="button" class="close" data-dismiss="modal">×</button>  
+                <h4 class="modal-title">Register your business as an essential service</h4><br/>  
+                <h4>Director/Member Details</h4>
+                <br/><br/>
+                <form id="registrationForm">
+                    <div class="form-group">  
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @placeholder="First Name" } })          
+                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", @placeholder="Last Name" } })      
+                    </div>
+                    <div class="form-group"> 
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder="Email" } }) 
+                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", @placeholder="Phone" } })
+                    </div>
+                    <div class="form-group">  
+                        @Html.TextAreaFor(model => model.MemberIds, new { htmlAttributes = new { @class = "form-control", @placeholder="Provide all ID/Passport numbers of the current directors/members" } })
+                    </div>
+
+                    <br/><h4>Company Details</h4><br/>
+                    <div class="form-group">  
+                        @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control", @placeholder="Registered Company Name" } })
+                        @Html.EditorFor(model => model.RegistrationNumber, new { htmlAttributes = new { @class = "form-control", @placeholder="Company Registration Number" } })
+                    </div>
+                    <div class="form-group">  
+                        @Html.DropDownListFor(model => model.Category,                
+                            new List<SelectListItem> { 
+                                new SelectListItem { Value = "Agriculture, hunting, forestry, fishing" , Text = "Agriculture, hunting, forestry, fishing" },
+                                new SelectListItem { Value = "Electricity, Gas, Water supply" , Text = "Electricity, Gas, Water supply" },
+                                new SelectListItem { Value = "Manufacturing" , Text = "Manufacturing" },
+                                new SelectListItem { Value = "Construction and related services" , Text = "Construction and related services" },
+                                new SelectListItem { Value = "Wholesale, Retail trade, Spaza shops" , Text = "Wholesale, Retail trade, Spaza shops" },
+                                new SelectListItem { Value = "Information and Communication services" , Text = "Information and Communication services" },
+                                new SelectListItem { Value = "Media and Entertainment" , Text = "Media and Entertainment" },
+                                new SelectListItem { Value = "Financial and Business services" , Text = "Financial and Business services" },
+                                new SelectListItem { Value = "Accommodation for quarantine, essential services" , Text = "Accommodation for quarantine, essential services" },
+                                new SelectListItem { Value = "Food services (Deliveries)" , Text = "Food services (Deliveries)" },
+                                new SelectListItem { Value = "Transport, Storage, Communication services" , Text = "Transport, Storage, Communication services" },
+                                new SelectListItem { Value = "Mining and Quarrying" , Text = "Mining and Quarrying" },
+                                new SelectListItem { Value = "Repair and Related Emergency services" , Text = "Repair and Related Emergency services" },
+                                new SelectListItem { Value = "Supply Chain" , Text = "Supply Chain" },
+                                new SelectListItem { Value = "Health, Social and Personal services" , Text = "Health, Social and Personal services" }
+                                },
+                            new { @class="form-control"})
+                        @Html.EditorFor(model => model.NumEmployees, new { htmlAttributes = new { @class = "form-control", @placeholder="Number Of Employees" } })
+                    </div>
+                    <div class="form-group">  
+                        @Html.TextAreaFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @placeholder="Company's physical address" } })
+                    </div>
+                </form> 
+                <input type="submit" class="submitRequestButton" value="SUBMIT REQUEST" />   
+                <br/><br/>
+            </div>  
+        </div>
+    }
+</div> 
