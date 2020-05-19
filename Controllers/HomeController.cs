@@ -41,7 +41,6 @@ namespace Locate_closest_business.Controllers
         {
             if(ModelState.IsValid){
                 ViewBag.SuccessfulSubmit = true;
-                // HashPassword(business);
                 return RedirectToAction("");
             }
             
@@ -63,6 +62,12 @@ namespace Locate_closest_business.Controllers
                 return RedirectToAction("");
             }
             return View(user);
+        }
+
+        public bool LoggedIn()
+        {
+            // return Json(loggedInUser == null, System.Web.Mvc.JsonRequestBehavior.AllowGet);
+            return loggedInUser == null;
         }
 
         public IActionResult Signup(){

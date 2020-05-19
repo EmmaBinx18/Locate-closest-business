@@ -9,5 +9,6 @@
     <PackageReference Include="Microsoft.jQuery.Unobtrusive.Validation" Version="3.2.11"/>
     <PackageReference Include="BCrypt.Net" Version="*"/>
     <PackageReference Include="BCrypt-Official" Version="*"/>
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="*"/>
   </ItemGroup>
 </Project>

@@ -1,8 +1,20 @@
 ﻿$(document).ready(function () {      
     $("#openRegisterBusinessModal").click(function () {
-        $("#registerBusinessModal").modal('show');  
-        $("#step1").css("display", "block");
-        $("#step2").css("display", "none");
+        var url = "/Home/LoggedIn";  
+        $.get(url, function (data) {  
+            if(data == true){
+                $("#loginModal").modal('show');
+            }  
+            else{
+                $("#registerBusinessModal").modal('show');  
+                $("#step1").css("display", "block");
+                $("#step2").css("display", "none");
+            }
+        }); 
+    });
+
+    $('#loginButton').click(function () {
+        $("#loginModal").modal('show');
     });
     
     $("#step1 .nextButton").click(function() {

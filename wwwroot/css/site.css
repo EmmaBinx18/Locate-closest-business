@@ -73,7 +73,7 @@ img{
   margin-top: 6%;
 }
 
-.registerBusinessButton, .stagesButton{
+#loginButton, .registerBusinessButton, .stagesButton{
   margin-left: 3%;
   border-radius: 6px;
   background-color: white;
@@ -82,7 +82,7 @@ img{
   box-shadow: rgb(99, 99, 99) 5px 8px 12px -8px;
 }
 
-.registerBusinessButton:hover{
+.registerBusinessButton:hover, .stagesButton:hover, #loginButton:hover{
   font-size: 1.1rem;
 }
 
@@ -101,7 +101,7 @@ img{
   width: 20%;
 }
 
-.nextButton:hover, .submitRequestButton:hover, .viewBusinessesButton:hover, .loginButton, .signupButton, .stagesButton{
+.nextButton:hover, .submitRequestButton:hover, .viewBusinessesButton:hover, .loginButton:hover, .signupButton:hover{
   font-size: 1.12rem;
 }
 
