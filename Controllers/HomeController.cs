@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Dynamic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Locate_closest_business.Models;
 
 namespace Locate_closest_business.Controllers
@@ -55,7 +56,8 @@ namespace Locate_closest_business.Controllers
         [HttpPost]
         public IActionResult Login(UserModel user)
         {
-            if (ModelState.IsValid(user.Email, user.Password)){
+            if (ModelState.GetValidationState("Email") == ModelValidationState.Valid
+                && ModelState.GetFieldValidationState("Password") == ModelValidationState.Valid){
                 //On succesful validation:
                 //loggedInUser = user;
                 return RedirectToAction("");
@@ -71,7 +73,8 @@ namespace Locate_closest_business.Controllers
         public IActionResult Signup(UserModel user)
         {
             if(ModelState.IsValid){
-                // HashPassword(business);
+                // Need to hash password
+                // loggedInUser = user found
                 return RedirectToAction("");
             }
             return View(user);
