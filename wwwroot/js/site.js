@@ -1,6 +1,41 @@
 ﻿$(document).ready(function () {      
-    $("#openRegisterBusinessModal").click(function () { 
-        $("#registerBusinessModal").modal('show');  
+    $.get("/Login/LoggedIn", function (data) {  
+        if(data == true){
+            $("#loginButton").html('Login');
+        }  
+        else{
+            $("#loginButton").html('Logout');  
+        }
+    }); 
+
+    $("#openRegisterBusinessModal").click(function () {
+        $.get("/Login/LoggedIn", function (data) {  
+            if(data == false){
+                $("#loginModal").modal('show');
+            }  
+            else{
+                $("#registerBusinessModal").modal('show');  
+                $("#step1").css("display", "block");
+                $("#step2").css("display", "none");
+            }
+        }); 
+    });
+
+    $('#loginButton').click(function () {
+        if($("#loginButton").html() == 'LOGIN'){
+            $("#loginModal").modal('show');
+        }
+        else{
+            $.get("/Login/Logout", function () {
+                $("#loginButton").html('Login');
+            });
+        }
+    });
+
+    $('#adminLogout').click(function () {
+        $.get("/Login/Logout", function () {
+            $("#loginButton").html('Login');
+        });
     });
     
     $("#step1 .nextButton").click(function() {
@@ -8,15 +43,22 @@
         $("#step2").css("display", "block");
     });
 
-    $("input").focus(function() {
-        $(".errorSpace").css("display", "none");
+    $("#stagesButton").click(function() {
+        $("#stages").toggle();
     });
 
-    $("textarea").focus(function() {
-        $(".errorSpace").css("display", "none");
+    $(".signUpLink").click(function(){
+        $("#signupModal").modal('show');
+        $("#loginModal").modal('hide');
     });
 
-    $("select").focus(function() {
-        $(".errorSpace").css("display", "none");
+    $(".loginLink").click(function(){
+        $("#loginModal").modal('show');
+        $("#signupModal").modal('hide');
     });
+
+    $(".list-unstyled a").click(function(){
+        $(".list-unstyled").find(".active").removeClass("active");
+        $(this).parent().addClass("active");
+     });
 });

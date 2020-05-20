@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "BCrypt.Net/0.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net35/BCrypt.Net.dll": {}
+        },
+        "runtime": {
+          "lib/net35/BCrypt.Net.dll": {}
+        }
+      },
       "FirebaseDatabase.net/4.0.4": {
         "type": "package",
         "dependencies": {
@@ -307,6 +316,19 @@
     }
   },
   "libraries": {
+    "BCrypt.Net/0.1.0": {
+      "sha512": "sST2w361Dxt9GGMfpOTiK50wXGV64Ybb1hiX3xjEWnhVYZNF43NuySGwADJa7X1R+bA53NsFR+tuDxcYiJeIOA==",
+      "type": "package",
+      "path": "bcrypt.net/0.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "bcrypt.net.0.1.0.nupkg.sha512",
+        "bcrypt.net.nuspec",
+        "lib/net35/BCrypt.Net.XML",
+        "lib/net35/BCrypt.Net.dll"
+      ]
+    },
     "FirebaseDatabase.net/4.0.4": {
       "sha512": "XkdKzFT4rU7x1GEO3v0bGmLT7eXDZ/kHa+77mCHn9LP2KjCEQqt1R5tIctwmlaOEVy66Eb4QxHJ5rjaG8Et1/A==",
       "type": "package",
@@ -1342,6 +1364,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "BCrypt.Net >= 0.1.0",
       "FirebaseDatabase.net >= 4.0.4",
       "Microsoft.jQuery.Unobtrusive.Ajax >= 3.2.6",
       "Microsoft.jQuery.Unobtrusive.Validation >= 3.2.11",
@@ -1355,11 +1378,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Ngoni\\Desktop\\BBD\\C#\\Project\\Locate-closest-business\\Locate-closest-business.csproj",
+      "projectUniqueName": "C:\\Users\\Ngoni\\Desktop\\BBD\\C#\\Project\\Locate-closest-business\\Locate-closest-business.csproj",
       "projectName": "Locate-closest-business",
-      "projectPath": "c:\\Users\\Ngoni\\Desktop\\BBD\\C#\\Project\\Locate-closest-business\\Locate-closest-business.csproj",
+      "projectPath": "C:\\Users\\Ngoni\\Desktop\\BBD\\C#\\Project\\Locate-closest-business\\Locate-closest-business.csproj",
       "packagesPath": "C:\\Users\\Ngoni\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Ngoni\\Desktop\\BBD\\C#\\Project\\Locate-closest-business\\obj\\",
+      "outputPath": "C:\\Users\\Ngoni\\Desktop\\BBD\\C#\\Project\\Locate-closest-business\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Ngoni\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -1384,6 +1407,10 @@
     "frameworks": {
       "netcoreapp3.1": {
         "dependencies": {
+          "BCrypt.Net": {
+            "target": "Package",
+            "version": "[0.1.0, )"
+          },
           "FirebaseDatabase.net": {
             "target": "Package",
             "version": "[4.0.4, )"
@@ -1426,5 +1453,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'BCrypt.Net 0.1.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "BCrypt.Net",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }

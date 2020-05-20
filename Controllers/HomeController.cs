@@ -70,10 +70,14 @@ namespace Locate_closest_business.Controllers
                     cmd.Parameters.AddWithValue("@AddressLatitude", business.AddressLatitude);
                     cmd.ExecuteNonQuery();
                 }
+                return RedirectToAction("");
+
             } else {
                 // Todo: Model is invalid, do error handling
+
+                return View(business);
             }
-            return RedirectToAction("RegisterBusiness");
+
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

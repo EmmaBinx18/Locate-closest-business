@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "mVnXFIuHwJTVzo4p8OQjESzVPLIVmdIN1ExwxMVu4F9IaOwN36UbQDh5YJreXRV9itsuuKGiFMW1R9G33Sz1Jg==",
+  "dgSpecHash": "VZX1BAcfJyIiVF8OOvBoKOrIM6NmL4xxDC10CYomzmdFrybFYmmYbH4WHFhIU2WkjHr+fduTY9uXP+eC2cNIVA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Ngoni\\Desktop\\BBD\\C#\\Project\\Locate-closest-business\\Locate-closest-business.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Ngoni\\.nuget\\packages\\bcrypt.net\\0.1.0\\bcrypt.net.0.1.0.nupkg.sha512",
     "C:\\Users\\Ngoni\\.nuget\\packages\\firebasedatabase.net\\4.0.4\\firebasedatabase.net.4.0.4.nupkg.sha512",
     "C:\\Users\\Ngoni\\.nuget\\packages\\jquery\\1.8.0\\jquery.1.8.0.nupkg.sha512",
     "C:\\Users\\Ngoni\\.nuget\\packages\\jquery.validation\\1.19.1\\jquery.validation.1.19.1.nupkg.sha512",
@@ -31,5 +32,16 @@
     "C:\\Users\\Ngoni\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
     "C:\\Users\\Ngoni\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'BCrypt.Net 0.1.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "BCrypt.Net",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }

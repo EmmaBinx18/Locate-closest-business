@@ -20531,6 +20531,16 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Ngoni\\Desktop\\BBD\\C#\\Project\\Locate-closest-business\\Views\\Login\\Signup.cshtml",
+      "TargetPath": "Views\\Login\\Signup.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Ngoni\\Desktop\\BBD\\C#\\Project\\Locate-closest-business\\Views\\Login\\Login.cshtml",
+      "TargetPath": "Views\\Login\\Login.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Ngoni\\Desktop\\BBD\\C#\\Project\\Locate-closest-business\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
       "FileKind": "mvc"
@@ -20538,6 +20548,11 @@
     {
       "FilePath": "c:\\Users\\Ngoni\\Desktop\\BBD\\C#\\Project\\Locate-closest-business\\Views\\_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Ngoni\\Desktop\\BBD\\C#\\Project\\Locate-closest-business\\Views\\Admin\\Admin.cshtml",
+      "TargetPath": "Views\\Admin\\Admin.cshtml",
       "FileKind": "mvc"
     },
     {
