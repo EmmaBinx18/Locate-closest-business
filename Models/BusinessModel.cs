@@ -30,7 +30,7 @@ namespace Locate_closest_business.Models
        public string Category { get; set; }
 
        [Required(ErrorMessage="Please enter the number of employees")]
-       public string NumEmployees { get; set; }
+       public int NumEmployees { get; set; }
 
        [Required(ErrorMessage="Please enter the address of the company")]
        public string Address { get; set; }

@@ -21,10 +21,9 @@ function initialize() {
                 }
             }
         }
-        console.log(town);
         $('#Address').val(place.formatted_address);  
         $('#AddressLatitude').val(place.geometry.location.lat());  
-        $('#AddressLongitude').val(place.geometry.location.lng()); 
+        $('#AddressLongitude').val(place.geometry.location.lng());  
         $('#AddressTown').val(town); 
     });
 }

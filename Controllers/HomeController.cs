@@ -5,10 +5,11 @@ using System.Dynamic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Locate_closest_business.Models;
-using Firebase.Database;
-using Firebase.Database.Query;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Locate_closest_business.Controllers
 {
@@ -50,19 +51,35 @@ namespace Locate_closest_business.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> RegisterBusiness(BusinessModel business)
+        public IActionResult RegisterBusiness(BusinessModel business)
         {
-            System.Console.WriteLine("Function called!");
-            if(ModelState.IsValid){
-                System.Console.WriteLine("Businesses/"+ business.AddressTown);
-                var firebaseClient = new FirebaseClient("https://locatebusinesses-5a037.firebaseio.com/");
-                var result = await firebaseClient
-                .Child("Businesses/"+ business.AddressTown)
-                .PostAsync(business);
-                return RedirectToAction("");
-
+            if (ModelState.IsValid)
+            {
+                // System.Console.WriteLine("Model valid!");
+                string CS = "data source=localhost\\SQLEXPRESS; database=EssentialBusinesses; integrated security=true;";
+                using (SqlConnection con = new SqlConnection(CS))
+                {
+                    SqlCommand cmd = new SqlCommand("spAddNewBusiness", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    con.Open();
+                    cmd.Parameters.AddWithValue("@FirstName", business.FirstName);
+                    cmd.Parameters.AddWithValue("@LastName", business.LastName);
+                    cmd.Parameters.AddWithValue("@Email", business.Email);
+                    cmd.Parameters.AddWithValue("@Phone", business.Phone);
+                    cmd.Parameters.AddWithValue("@CompanyName", business.CompanyName);
+                    cmd.Parameters.AddWithValue("@RegistrationNumber", business.RegistrationNumber);
+                    cmd.Parameters.AddWithValue("@Category", business.Category);
+                    cmd.Parameters.AddWithValue("@NumEmployees", business.NumEmployees);
+                    cmd.Parameters.AddWithValue("@Address", business.Address);
+                    cmd.Parameters.AddWithValue("@AddressTown", business.AddressTown);
+                    cmd.Parameters.AddWithValue("@AddressLongitude", business.AddressLongitude);
+                    cmd.Parameters.AddWithValue("@AddressLatitude", business.AddressLatitude);
+                    cmd.ExecuteNonQuery();
+                }
+            } else {
+                // Todo: Model is invalid, do error handling
             }
-            return View(business);
+            return RedirectToAction("RegisterBusiness");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
