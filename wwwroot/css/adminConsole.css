@@ -55,13 +55,13 @@ ul ul a {
     padding-left: 30px !important;
 }
 
-.adminContainer, .businessContainer{
+.adminContainer, .businessContainer, .profileContainer{
     width: 100%;
     position: relative;
     left: 12%;
 }
 
-.addAdmin, .adminUsers, .addBusiness, .businesses{
+.addAdmin, .adminUsers, .addBusiness, .businesses, .profileDetails{
     border: 1px solid grey;
     width: 100%;
     margin: auto;
@@ -70,7 +70,7 @@ ul ul a {
     box-shadow: rgb(99, 99, 99) 5px 8px 12px -8px;
 }
 
-.addAdmin, .addBusiness{
+.addAdmin, .addBusiness, .profileDetails{
     margin-top: 5%;
 }
 
@@ -79,7 +79,8 @@ ul ul a {
 }
 
 .adminContainer .form-control,
-.addBusiness .form-control{
+.addBusiness .form-control,
+.profileContainer .form-control{
     width: 40% !important;
     display: inline;
     margin-top: 1%;
@@ -87,10 +88,10 @@ ul ul a {
 }
 
 #businessContainer textarea{
-    width: 60% !important;
+    width: 82.5% !important;
 }
 
-.addAdminButton{
+.addAdminButton, .updateProfile{
     width: 14%;
 }
 
@@ -98,6 +99,6 @@ ul ul a {
     width: 18%;
 }
 
-.adminContainer h2{
+.adminContainer h2, .businessContainer h2, .profileContainer h2{
     font-size: 1.8rem;
 }

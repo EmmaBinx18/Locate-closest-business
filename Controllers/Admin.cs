@@ -38,12 +38,21 @@ namespace Locate_closest_business.Controllers
             BusinessManagementModel model = new BusinessManagementModel();
             model.NewBusiness = new BusinessModel();
             model.Businesses = new List<BusinessModel>(); //TODO: add business registration requests to list
-            return View();
+            return View(model);
         }
 
         public IActionResult Profile()
         {
-            return View();
+            return View(); //TODO: return logged in user details
+        }
+
+        [HttpPost]
+        public IActionResult Profile(UserModel user)
+        {
+            if(ModelState.IsValid){
+                return RedirectToAction("");
+            }
+            return View(user);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
