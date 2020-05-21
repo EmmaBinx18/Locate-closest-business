@@ -9,24 +9,6 @@ namespace Locate_closest_business.Controllers
 {
     public class HomeController : Controller
     {
-        string[] essentialServiceOptions = {
-            "Agriculture, hunting, forestry, fishing",
-            "Electricity, Gas, Water supply",
-            "Manufacturing",
-            "Construction and related services",
-            "Wholesale, Retail trade, Spaza shops",
-            "Information and Communication services",
-            "Media and Entertainment",
-            "Financial and Business services",
-            "Accommodation for quarantine, essential services",
-            "Food services (Deliveries)",
-            "Transport, Storage, Communication services",
-            "Mining and Quarrying",
-            "Repair and Related Emergency services",
-            "Supply Chain",
-            "Health, Social and Personal services"
-        };
-
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -39,6 +21,12 @@ namespace Locate_closest_business.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Search(string searchOption)
+        {
+            return RedirectToAction("");
+        }
+
         public IActionResult RegisterBusiness()
         {
             return View();
@@ -47,19 +35,16 @@ namespace Locate_closest_business.Controllers
         [HttpPost]
         public IActionResult RegisterBusiness(BusinessModel business)
         {
+              System.Console.WriteLine("Model valid!");
             if (ModelState.IsValid)
             {
-                // System.Console.WriteLine("Model valid!");
+                System.Console.WriteLine("Model valid!");
                 string CS = "data source=localhost\\SQLEXPRESS; database=EssentialBusinesses; integrated security=true;";
                 using (SqlConnection con = new SqlConnection(CS))
                 {
                     SqlCommand cmd = new SqlCommand("spAddNewBusiness", con);
                     cmd.CommandType = CommandType.StoredProcedure;
                     con.Open();
-                    cmd.Parameters.AddWithValue("@FirstName", business.FirstName);
-                    cmd.Parameters.AddWithValue("@LastName", business.LastName);
-                    cmd.Parameters.AddWithValue("@Email", business.Email);
-                    cmd.Parameters.AddWithValue("@Phone", business.Phone);
                     cmd.Parameters.AddWithValue("@CompanyName", business.CompanyName);
                     cmd.Parameters.AddWithValue("@RegistrationNumber", business.RegistrationNumber);
                     cmd.Parameters.AddWithValue("@Category", business.Category);
@@ -70,20 +55,25 @@ namespace Locate_closest_business.Controllers
                     cmd.Parameters.AddWithValue("@AddressLatitude", business.AddressLatitude);
                     cmd.ExecuteNonQuery();
                 }
+                ViewBag.SuccessfulSubmit = true;
                 return RedirectToAction("");
 
             } else {
-                // Todo: Model is invalid, do error handling
-
-                return View(business);
+                System.Console.WriteLine("Model invalid!");
+                  return View(business);
             }
-
-        }
+        }  
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [HttpPost]
+        public IActionResult Login(string email, string password)
+        {
+            return RedirectToAction("");
         }
     }
 }

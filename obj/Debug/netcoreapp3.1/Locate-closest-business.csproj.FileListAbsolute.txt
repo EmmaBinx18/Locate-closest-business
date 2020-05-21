@@ -74,10 +74,6 @@ C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\obj\Debug\netcorea
 C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\obj\Debug\netcoreapp3.1\Locate-closest-business.pdb
 C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\obj\Debug\netcoreapp3.1\Locate-closest-business.genruntimeconfig.cache
 C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\obj\Debug\netcoreapp3.1\Locate-closest-business.csproj.CopyComplete
-C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\bin\Debug\netcoreapp3.1\Firebase.dll
-C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\bin\Debug\netcoreapp3.1\LiteDB.dll
-C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
-C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\bin\Debug\netcoreapp3.1\System.Reactive.dll
 C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
 C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
 C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
@@ -85,6 +81,7 @@ C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\bin\Debug\netcorea
 C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 =======
+>>>>>>> 2d964b83289af261fcabe9ea6412f17889ac88c2
 C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\bin\Debug\netcoreapp3.1\BCrypt.Net.dll
 C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\bin\Debug\netcoreapp3.1\System.Web.Mvc.dll
 C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\bin\Debug\netcoreapp3.1\System.Web.Razor.dll
@@ -102,3 +99,10 @@ C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\bin\Debug\netcorea
 C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Admin.cshtml.g.cs
 C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Login\Login.cshtml.g.cs
 C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Login\Signup.cshtml.g.cs
+C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\bin\Debug\netcoreapp3.1\System.Web.Mvc.dll
+C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\bin\Debug\netcoreapp3.1\System.Web.Razor.dll
+C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\bin\Debug\netcoreapp3.1\System.Web.Helpers.dll
+C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\bin\Debug\netcoreapp3.1\System.Web.WebPages.Deployment.dll
+C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\bin\Debug\netcoreapp3.1\System.Web.WebPages.Razor.dll
+C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\bin\Debug\netcoreapp3.1\System.Web.WebPages.dll
+C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\bin\Debug\netcoreapp3.1\Microsoft.Web.Infrastructure.dll

@@ -36,13 +36,17 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "BCrypt-Official": {
+              "target": "Package",
+              "version": "[*, )"
+            },
             "BCrypt.Net": {
               "target": "Package",
-              "version": "[0.1.0, )"
+              "version": "[*, )"
             },
-            "FirebaseDatabase.net": {
+            "Microsoft.AspNet.Mvc": {
               "target": "Package",
-              "version": "[4.0.4, )"
+              "version": "[*, )"
             },
             "Microsoft.jQuery.Unobtrusive.Ajax": {
               "target": "Package",
