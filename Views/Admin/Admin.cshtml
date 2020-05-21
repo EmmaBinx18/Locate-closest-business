@@ -1,4 +1,4 @@
-@model Locate_closest_business.Models.UserModel;
+@model Locate_closest_business.Models.UserManagementModel;
 
 <div class="wrapper">
     <nav id="sidebar">
@@ -35,16 +35,16 @@
             @using (Html.BeginForm()){
                 <form id="addAdminForm" action="/Admin/AddAdmin" method="Post">  
                     <div class="form-group">  
-                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @placeholder="First Name" } })          
-                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", @placeholder="Last Name" } })      
+                        @Html.EditorFor(model => model.NewAdmin.FirstName, new { htmlAttributes = new { @class = "form-control", @placeholder="First Name" } })          
+                        @Html.EditorFor(model => model.NewAdmin.LastName, new { htmlAttributes = new { @class = "form-control", @placeholder="Last Name" } })      
                     </div> 
                     <div class="form-group">  
-                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder="Email" } })          
-                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", @placeholder="Phone" } })      
+                        @Html.EditorFor(model => model.NewAdmin.Email, new { htmlAttributes = new { @class = "form-control", @placeholder="Email" } })          
+                        @Html.EditorFor(model => model.NewAdmin.Phone, new { htmlAttributes = new { @class = "form-control", @placeholder="Phone" } })      
                     </div> 
                     <div class="form-group">  
-                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder="Password", @type="password" } })          
-                        @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", @placeholder="Confirm Password", @type="password" } })      
+                        @Html.EditorFor(model => model.NewAdmin.Password, new { htmlAttributes = new { @class = "form-control", @placeholder="Password", @type="password" } })          
+                        @Html.EditorFor(model => model.NewAdmin.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", @placeholder="Confirm Password", @type="password" } })      
                     </div> 
                     <br/>
                     <input type="submit" class="addAdminButton" value="ADD ADMIN" />
@@ -57,6 +57,8 @@
         <br/>
         <h2><b>Current Admin Users</b></h2>
         <br/>
-
+        @foreach(var admin in Model.AdminUsers){
+            
+        }
     </div>
 </div>
