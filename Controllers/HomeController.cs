@@ -30,7 +30,7 @@ namespace Locate_closest_business.Controllers
 
         public IActionResult RegisterBusiness()
         {
-            return View();
+            return View(new BusinessModel());
         }
 
         [HttpPost]

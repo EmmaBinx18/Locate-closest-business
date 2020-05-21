@@ -21,7 +21,7 @@ namespace Locate_closest_business.Controllers
 
         public IActionResult Login()
         {
-            return View();
+            return View(new UserModel());
         }
 
         [HttpPost]
@@ -31,6 +31,7 @@ namespace Locate_closest_business.Controllers
                 && ModelState.GetFieldValidationState("Password") == ModelValidationState.Valid){
                 //On succesful validation:
                 //loggedInUser = found user;
+                //If user is an admin -> redirect to admin return RedirectToAction("Admin/Admin");
                 return RedirectToAction("");
             }
             return View(user);
@@ -41,19 +42,13 @@ namespace Locate_closest_business.Controllers
             return loggedInUser == null;
         }
 
-        public UserModel GetLoggedInUser(){
-            UserModel user = new UserModel();
-            user.FirstName = "Emma";
-            return user;
-            // return loggedInUser;
-        }
-
         public void Logout(){
             loggedInUser = null;
         }
 
-        public IActionResult Signup(){
-            return View();
+        public IActionResult Signup()
+        {
+            return View(new UserModel());
         }
 
         [HttpPost]
