@@ -89,7 +89,7 @@ img{
   font-size: 1.1rem;
 }
 
-.nextButton, .submitRequestButton, .viewBusinessesButton, .loginButton, .signupButton, .addAdminButton{
+.nextButton, .submitRequestButton, .viewBusinessesButton, .loginButton, .signupButton, .addAdminButton, .registerNewBusinessButton{
   background-color: rgb(182, 0, 0);
   border: none;
   border-radius: 0.25rem;
@@ -109,7 +109,8 @@ img{
 .viewBusinessesButton:hover, 
 .loginButton:hover, 
 .signupButton:hover,
-.addAdminButton:hover{
+.addAdminButton:hover,
+.registerNewBusinessButton:hover{
   font-size: 1.12rem;
 }
 

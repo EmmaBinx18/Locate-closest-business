@@ -56,9 +56,4 @@
         $("#loginModal").modal('show');
         $("#signupModal").modal('hide');
     });
-
-    $(".list-unstyled a").click(function(){
-        $(".list-unstyled").find(".active").removeClass("active");
-        $(this).parent().addClass("active");
-     });
 });

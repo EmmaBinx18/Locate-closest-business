@@ -47,3 +47,5 @@ C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-busine
 C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Login\Signup.cshtml.g.cs
 C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Admin.cshtml.g.cs
+C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Admin\RegisteredBusiness.cshtml.g.cs
+C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Profile.cshtml.g.cs

@@ -55,37 +55,47 @@ ul ul a {
     padding-left: 30px !important;
 }
 
-.adminContainer{
+.adminContainer, .businessContainer{
     width: 100%;
     position: relative;
     left: 12%;
 }
 
-.addAdmin, .adminUsers{
+.addAdmin, .adminUsers, .addBusiness, .businesses{
     border: 1px solid grey;
     width: 100%;
     margin: auto;
     border-radius: 10px;
     text-align: center;
+    box-shadow: rgb(99, 99, 99) 5px 8px 12px -8px;
 }
 
-.addAdmin{
+.addAdmin, .addBusiness{
     margin-top: 5%;
 }
 
-.adminUsers{
+.adminUsers, .businesses{
     margin-top: 6%;
 }
 
-.adminContainer .form-control{
+.adminContainer .form-control,
+.addBusiness .form-control{
     width: 40% !important;
     display: inline;
     margin-top: 1%;
     margin-left: 2%;
 }
 
+#businessContainer textarea{
+    width: 60% !important;
+}
+
 .addAdminButton{
     width: 14%;
+}
+
+.registerNewBusinessButton{
+    width: 18%;
 }
 
 .adminContainer h2{

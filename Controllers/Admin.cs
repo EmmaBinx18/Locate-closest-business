@@ -30,6 +30,16 @@ namespace Locate_closest_business.Controllers
             return View(user);
         }
 
+        public IActionResult RegisteredBusiness()
+        {
+            return View();
+        }
+
+        public IActionResult Profile()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
