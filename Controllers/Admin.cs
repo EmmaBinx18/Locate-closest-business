@@ -19,7 +19,9 @@ namespace Locate_closest_business.Controllers
 
         public IActionResult Admin()
         {
-            return View();
+            UserManagementModel model = new UserManagementModel();
+            model.AdminUsers = new List<UserModel>(); //TODO: added admins to list
+            return View(model);
         }
 
         [HttpPost]
