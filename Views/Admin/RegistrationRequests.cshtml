@@ -1,33 +1,6 @@
 @model List<Locate_closest_business.Models.BusinessModel>;
 
-<div class="wrapper">
-    <nav id="sidebar">
-        <div class="sidebar-header">
-            <h3>Administration Console</h3>
-        </div>
-
-        <ul class="list-unstyled components">
-            <li>
-                <a href="/Admin/Admin">User Management</a>
-            </li>
-            <li>
-                <a href="/Admin/RegisterBusiness">Register a Business</a>
-            </li>
-            <li class="active">
-                <a href="/Admin/RegistrationRequests">Business Registration Requests</a>
-            </li>
-            <li>
-                <a href="/Admin/Profile">My Profile</a>
-            </li>
-            <li>
-                <a href="/Home/Index">Back to Home Page</a>
-            </li>
-            <li>
-                <a id="adminLogout" href="/Home/Index">Logout</a>
-            </li>
-        </ul>
-    </nav>
-</div>
+@Html.Partial("~/Views/Admin/Sidenav.cshtml")
 
 <div class="businessContainer">
     <div class="businesses">
