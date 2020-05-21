@@ -1,4 +1,4 @@
-@model Locate_closest_business.Models.BusinessModel;
+@model Locate_closest_business.Models.BusinessManagementModel;
 
 <div class="wrapper">
     <nav id="sidebar">
@@ -35,14 +35,14 @@
             @using (Html.BeginForm()){
                 <form id="addAdminForm" action="/Admin/AddAdmin" method="Post">  
                     <div class="form-group">  
-                        @Html.TextAreaFor(model => model.MemberIds, new { @class = "form-control", placeholder="Provide all ID/Passport numbers of the current directors/members"})
+                        @Html.TextAreaFor(model => model.NewBusiness.MemberIds, new { @class = "form-control", placeholder="Provide all ID/Passport numbers of the current directors/members"})
                     </div>
                     <div class="form-group">  
-                        @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control", @placeholder="Registered Company Name" } })
-                        @Html.EditorFor(model => model.RegistrationNumber, new { htmlAttributes = new { @class = "form-control", @placeholder="Company Registration Number" } })
+                        @Html.EditorFor(model => model.NewBusiness.CompanyName, new { htmlAttributes = new { @class = "form-control", @placeholder="Registered Company Name" } })
+                        @Html.EditorFor(model => model.NewBusiness.RegistrationNumber, new { htmlAttributes = new { @class = "form-control", @placeholder="Company Registration Number" } })
                     </div>
                     <div class="form-group">  
-                        @Html.DropDownListFor(model => model.Category,                
+                        @Html.DropDownListFor(model => model.NewBusiness.Category,                
                             new List<SelectListItem> { 
                                 new SelectListItem { Value = "Agriculture, hunting, forestry, fishing" , Text = "Agriculture, hunting, forestry, fishing" },
                                 new SelectListItem { Value = "Electricity, Gas, Water supply" , Text = "Electricity, Gas, Water supply" },
@@ -61,10 +61,10 @@
                                 new SelectListItem { Value = "Health, Social and Personal services" , Text = "Health, Social and Personal services" }
                                 },
                             new { @class="form-control"})
-                        @Html.EditorFor(model => model.NumEmployees, new { htmlAttributes = new { @class = "form-control", @placeholder="Number Of Employees" } })
+                        @Html.EditorFor(model => model.NewBusiness.NumEmployees, new { htmlAttributes = new { @class = "form-control", @placeholder="Number Of Employees" } })
                     </div>
                     <div class="form-group">  
-                        @Html.TextAreaFor(model => model.Address, new { @class = "form-control", placeholder="Company's physical address" })
+                        @Html.TextAreaFor(model => model.NewBusiness.Address, new { @class = "form-control", placeholder="Company's physical address" })
                     </div>
                     <br/>
                     <input type="submit" class="registerNewBusinessButton" value="REGISTER BUSINESS" />

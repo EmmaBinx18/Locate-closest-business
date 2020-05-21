@@ -20,7 +20,8 @@ namespace Locate_closest_business.Controllers
         public IActionResult Admin()
         {
             UserManagementModel model = new UserManagementModel();
-            model.AdminUsers = new List<UserModel>(); //TODO: added admins to list
+            model.NewAdmin = new UserModel();
+            model.AdminUsers = new List<UserModel>(); //TODO: add admins to list
             return View(model);
         }
 
@@ -34,6 +35,9 @@ namespace Locate_closest_business.Controllers
 
         public IActionResult RegisteredBusiness()
         {
+            BusinessManagementModel model = new BusinessManagementModel();
+            model.NewBusiness = new BusinessModel();
+            model.Businesses = new List<BusinessModel>(); //TODO: add business registration requests to list
             return View();
         }
 
