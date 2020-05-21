@@ -57,8 +57,17 @@
         <br/>
         <h2><b>Current Admin Users</b></h2>
         <br/>
-        @foreach(var admin in Model.AdminUsers){
-            
-        }
+        <table class="adminTable table table-striped">
+            <tbody>
+                @foreach(var admin in Model.AdminUsers){
+                    <tr scope="row">
+                        <td><img src="~/images/profile.svg"/></td>
+                        <td>@admin.FirstName @admin.LastName</td>
+                        <td>@admin.Email</td>
+                        <td>@admin.Phone</td>
+                    </tr>
+                }
+            </tbody>
+        </table><br/><br/>
     </div>
 </div>

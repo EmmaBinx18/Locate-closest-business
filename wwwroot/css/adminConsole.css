@@ -102,3 +102,17 @@ ul ul a {
 .adminContainer h2, .businessContainer h2, .profileContainer h2{
     font-size: 1.8rem;
 }
+
+.adminTable img{
+    width: 46px;
+}
+
+.table{
+    width: 95% !important;
+    margin: auto !important;
+}
+
+.adminUsers{
+    overflow-y: scroll;
+    height: 400px !important;
+}
