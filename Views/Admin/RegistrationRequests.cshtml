@@ -52,8 +52,16 @@
                         <td>@business.NumEmployees</td>
                         <td>@business.Address</td>
                         <td>
-                            <button>Confirm</button>
-                            <button>Deny</button>
+                            <form action="/Admin/ConfirmRegistration" method="Post">
+                                <input name="@business.RegistrationNumber" style="display: none;" value="@business.RegistrationNumber" />
+                                <input class="confirmButton" type="button" value="Confirm" />
+                            </form>
+                        </td>
+                        <td>
+                            <form action="/Admin/DenyRegistration" method="Post">
+                                <input name="@business.RegistrationNumber" style="display: none;" value="@business.RegistrationNumber" />
+                                <input class="denyButton" type="button" value="Deny" />
+                            </form>
                         </td>
                     </tr>
                 }

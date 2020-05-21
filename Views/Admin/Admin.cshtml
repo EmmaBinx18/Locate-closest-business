@@ -68,6 +68,12 @@
                         <td>@admin.FirstName @admin.LastName</td>
                         <td>@admin.Email</td>
                         <td>@admin.Phone</td>
+                        <td>
+                            <form action="/Admin/RemoveAdmin" method="Post">
+                                <input name="@admin.Email" style="display: none;" value="@admin.Email" />
+                                <input class="removeAdminButton" type="button" value="Remove Admin User" />
+                            </form>
+                        </td>
                     </tr>
                 }
             </tbody>

@@ -127,3 +127,29 @@ ul ul a {
     height: 850px !important;
     width: 1450px !important;
 }
+
+.confirmButton, .denyButton, .removeAdminButton{
+    border: none;
+    border-radius: 0.25rem;
+    color: white;
+    padding: 6px;
+    box-shadow: rgb(99, 99, 99) 5px 8px 12px -8px;
+}
+
+.confirmButton{
+    background-color: rgb(2, 177, 75);
+}
+
+.removeAdminButton{
+    background-color: rgb(182, 0, 0);
+    width: 180px;
+}
+
+.denyButton{
+    background-color: rgb(182, 0, 0);
+    width: 70px;
+}
+
+.businesses form{
+    width: 40%;
+}
