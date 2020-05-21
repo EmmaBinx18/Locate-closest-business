@@ -22,7 +22,7 @@
     });
 
     $('#loginButton').click(function () {
-        if($("#loginButton").html() == 'LOGIN'){
+        if($("#loginButton").html() == 'Login'){
             $("#loginModal").modal('show');
         }
         else{
