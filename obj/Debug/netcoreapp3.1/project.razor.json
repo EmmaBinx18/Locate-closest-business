@@ -20531,6 +20531,16 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\bbdnet1724\\Documents\\BBD\\Grad Program\\C# Level-Up\\Locate-closest-business\\Views\\Admin\\RegisterBusiness.cshtml",
+      "TargetPath": "Views\\Admin\\RegisterBusiness.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\bbdnet1724\\Documents\\BBD\\Grad Program\\C# Level-Up\\Locate-closest-business\\Views\\Admin\\RegistrationRequests.cshtml",
+      "TargetPath": "Views\\Admin\\RegistrationRequests.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\bbdnet1724\\Documents\\BBD\\Grad Program\\C# Level-Up\\Locate-closest-business\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
@@ -20558,11 +20568,6 @@
     {
       "FilePath": "c:\\Users\\bbdnet1724\\Documents\\BBD\\Grad Program\\C# Level-Up\\Locate-closest-business\\Views\\Login\\Login.cshtml",
       "TargetPath": "Views\\Login\\Login.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\bbdnet1724\\Documents\\BBD\\Grad Program\\C# Level-Up\\Locate-closest-business\\Views\\Admin\\RegisteredBusiness.cshtml",
-      "TargetPath": "Views\\Admin\\RegisteredBusiness.cshtml",
       "FileKind": "mvc"
     },
     {

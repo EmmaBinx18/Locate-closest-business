@@ -1,0 +1,63 @@
+@model List<Locate_closest_business.Models.BusinessModel>;
+
+<div class="wrapper">
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>Administration Console</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+            <li>
+                <a href="/Admin/Admin">User Management</a>
+            </li>
+            <li>
+                <a href="/Admin/RegisterBusiness">Register a Business</a>
+            </li>
+            <li class="active">
+                <a href="/Admin/RegistrationRequests">Business Registration Requests</a>
+            </li>
+            <li>
+                <a href="/Admin/Profile">My Profile</a>
+            </li>
+            <li>
+                <a href="/Home/Index">Back to Home Page</a>
+            </li>
+            <li>
+                <a id="adminLogout" href="/Home/Index">Logout</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<div class="businessContainer">
+    <div class="businesses">
+        <br/>
+        <h2><b>Registration Requests</b></h2>
+        <br/>
+        <table class="requestsTable table table-striped">
+            <thead>
+                <th scope="col">Company Name</th>
+                <th scope="col">Regsitration Number</th>
+                <th scope="col">Category</th>
+                <th scope="col">No. Employees</th>
+                <th scope="col">Address</th>
+                <th scope="col"></th>
+            </thead>
+            <tbody>
+                @foreach(var business in Model){
+                    <tr scope="row">
+                        <td>@business.CompanyName</td>
+                        <td>@business.RegistrationNumber</td>
+                        <td>@business.Category</td>
+                        <td>@business.NumEmployees</td>
+                        <td>@business.Address</td>
+                        <td>
+                            <button>Confirm</button>
+                            <button>Deny</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table><br/><br/>
+    </div>
+</div>

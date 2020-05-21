@@ -25,19 +25,35 @@ namespace Locate_closest_business.Controllers
             return View(model);
         }
 
+        public IActionResult RegisterBusiness()
+        {
+            return View(new BusinessModel());
+        }
+
         [HttpPost]
-        public IActionResult AddAdmin(UserModel user){
+        public IActionResult RegisterBusiness(UserModel user){
             if(ModelState.IsValid){
                 return RedirectToAction("");
             }
             return View(user);
         }
 
-        public IActionResult RegisteredBusiness()
+        public IActionResult RegistrationRequests()
         {
-            BusinessManagementModel model = new BusinessManagementModel();
-            model.NewBusiness = new BusinessModel();
-            model.Businesses = new List<BusinessModel>(); //TODO: add business registration requests to list
+            List<BusinessModel> model = new List<BusinessModel>();
+
+            BusinessModel business = new BusinessModel();
+            business.MemberIds = "";
+            business.CompanyName = "New Company";
+            business.RegistrationNumber = "1234567890";
+            business.Category = "Food Delivery";
+            business.NumEmployees = "24";
+            business.Address = "12 Apple Str, Randpark Ridge, Randburg, 2156";
+
+            model.Add(business);
+            model.Add(business);
+            model.Add(business);
+            model.Add(business);
             return View(model);
         }
 

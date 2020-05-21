@@ -55,10 +55,15 @@ ul ul a {
     padding-left: 30px !important;
 }
 
-.adminContainer, .businessContainer, .profileContainer{
+.adminContainer, .newBusinessContainer, .profileContainer{
     width: 100%;
     position: relative;
     left: 12%;
+}
+
+.businessContainer{
+    width: 100%;
+    position: relative;
 }
 
 .addAdmin, .adminUsers, .addBusiness, .businesses, .profileDetails{
@@ -87,7 +92,7 @@ ul ul a {
     margin-left: 2%;
 }
 
-#businessContainer textarea{
+#newBusinessContainer textarea{
     width: 82.5% !important;
 }
 
@@ -99,7 +104,7 @@ ul ul a {
     width: 18%;
 }
 
-.adminContainer h2, .businessContainer h2, .profileContainer h2{
+.adminContainer h2, .newBusinessContainer h2, .businessContainer h2, .profileContainer h2{
     font-size: 1.8rem;
 }
 
@@ -115,4 +120,10 @@ ul ul a {
 .adminUsers{
     overflow-y: scroll;
     height: 400px !important;
+}
+
+.businesses{
+    overflow-y: scroll;
+    height: 850px !important;
+    width: 1450px !important;
 }
