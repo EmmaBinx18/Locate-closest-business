@@ -49,11 +49,5 @@ namespace Locate_closest_business.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
-        [HttpPost]
-        public IActionResult Login(string email, string password)
-        {
-            return RedirectToAction("");
-        }
     }
 }

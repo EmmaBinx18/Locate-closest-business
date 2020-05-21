@@ -72,6 +72,7 @@ namespace Locate_closest_business.Controllers
         {
             List<BusinessModel> model = new List<BusinessModel>();
             //TODO: populate list with business registration requests
+            
             // BusinessModel business = new BusinessModel();
             // business.MemberIds = "";
             // business.CompanyName = "New Company";
