@@ -23,20 +23,29 @@ namespace Locate_closest_business.Controllers
             model.NewAdmin = new UserModel();
             model.AdminUsers = new List<UserModel>(); //TODO: populate list with admin users
 
-            UserModel user = new UserModel();
-            user.FirstName = "Emma";
-            user.LastName = "Coetzer";
-            user.Email = "emmac@bbd.co.za";
-            user.Phone = "0718831926";
+            // UserModel user = new UserModel();
+            // user.FirstName = "Emma";
+            // user.LastName = "Coetzer";
+            // user.Email = "emmac@bbd.co.za";
+            // user.Phone = "0718831926";
              
-            model.AdminUsers.Add(user);
-            model.AdminUsers.Add(user);
-            model.AdminUsers.Add(user);
-            model.AdminUsers.Add(user);
-            model.AdminUsers.Add(user);
-            model.AdminUsers.Add(user);
+            // model.AdminUsers.Add(user);
+            // model.AdminUsers.Add(user);
+            // model.AdminUsers.Add(user);
+            // model.AdminUsers.Add(user);
+            // model.AdminUsers.Add(user);
+            // model.AdminUsers.Add(user);
             
             return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult AddAdmin(UserModel user)
+        {
+             if(ModelState.IsValid){
+                return RedirectToAction("Admin");
+            }
+            return View(user);
         }
 
         [HttpPost]
@@ -52,11 +61,11 @@ namespace Locate_closest_business.Controllers
         }
 
         [HttpPost]
-        public IActionResult RegisterBusiness(UserModel user){
+        public IActionResult RegisterBusiness(BusinessModel business){
             if(ModelState.IsValid){
                 return RedirectToAction("");
             }
-            return View(user);
+            return View(business);
         }
 
         public IActionResult RegistrationRequests()
