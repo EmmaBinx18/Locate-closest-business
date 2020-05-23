@@ -26,5 +26,7 @@ namespace Locate_closest_business.Models
        public string AddressLongitude { get; set; }
 
        public string AddressTown { get; set; }
+
+       public string RequestStatus { get; set; }
     }
 }

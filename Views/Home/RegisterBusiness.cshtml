@@ -81,13 +81,45 @@
     </div>
     }
 
-    <div class="modal-dialog modal-lg" id="viewRequests">  
-        <div class="modal-content">  
+    <div class="requests-modal-dialog" id="viewRequests">  
+        <div class="requests-modal-content">  
             <button type="button" class="close" data-dismiss="modal">×</button>  
             <h4 class="modal-title">Your Businesses</h4>  
-            <h3>
-                
-            </h3>  
+            <br/><br/>
+            @if(Model.Businesses.Count == 0){
+                <h2>You do not currently have any businesses registered</h2>
+            }
+            else{
+                <table class="requestsTable table table-striped">
+                    <thead>
+                        <th scope="col">Company Name</th>
+                        <th scope="col">Registration Number</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">No. Employees</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Request Status</th>
+                        <th scope="col"></th>
+                    </thead>
+                    <tbody>
+                        @foreach(var business in Model.Businesses){
+                            <tr scope="row">
+                                <td>@business.CompanyName</td>
+                                <td>@business.RegistrationNumber</td>
+                                <td>@business.Category</td>
+                                <td>@business.NumEmployees</td>
+                                <td>@business.Address</td>
+                                <td>@business.RequestStatus</td>
+                                <td>
+                                    <form action="/Home/RemoveBusiness" method="Post">
+                                        <input name="@business.RegistrationNumber" style="display: none;" value="@business.RegistrationNumber" />
+                                        <input class="denyButton" type="button" value="Remove Business" />
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
             <br/><br/>
         </div>  
     </div> 

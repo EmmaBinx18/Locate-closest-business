@@ -2,6 +2,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@model Locate_closest_business.Models.BusinessManagementModel; 
+
 <header>
     <div class="top-modal">
         <h2>To get more information on South Africa and Covid-19, <a href="https://sacoronavirus.co.za/"><i>click here</i></a></h2>
@@ -58,6 +60,6 @@
     </div>
 </footer>
 
-@Html.Partial("~/Views/Home/RegisterBusiness.cshtml", new Locate_closest_business.Models.BusinessManagementModel())
+@Html.Partial("~/Views/Home/RegisterBusiness.cshtml", Model)
 @Html.Partial("~/Views/Login/Login.cshtml", new Locate_closest_business.Models.UserModel())
 @Html.Partial("~/Views/Login/Signup.cshtml", new Locate_closest_business.Models.UserModel())

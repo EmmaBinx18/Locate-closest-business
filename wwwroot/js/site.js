@@ -15,6 +15,7 @@
         //     }  
         //     else{
                 $("#registerBusinessModal").modal('show');  
+                // $('#registerBusinessModal .modal-content').attr('style', 'width: 900px !important');
                 $("#step1").css("display", "block");
                 $("#step2").css("display", "none");
                 $("#viewRequests").css("display", "none");
@@ -47,6 +48,8 @@
     $("#step1 .viewBusinessesButton").click(function() {
         $("#step1").css("display", "none");
         $("#viewRequests").css("display", "block");
+        // $('#viewRequests').removeClass('modal-dialog');
+        // $('#viewRequests').addClass('new-modal-dialog');
     });
 
     $("#stagesButton").click(function() {
