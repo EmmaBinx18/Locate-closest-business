@@ -27,9 +27,18 @@ namespace Locate_closest_business.Controllers
             return RedirectToAction("");
         }
 
+        private BusinessManagementModel BusinessModelHelper()
+        {
+            BusinessManagementModel model = new BusinessManagementModel();
+            model.NewBusiness = new BusinessModel();
+            model.Businesses = new List<BusinessModel>();
+            //TODO: populate list with their businesses
+            return model;
+        }
+
         public IActionResult RegisterBusiness()
         {
-            return View(new BusinessModel());
+            return View(BusinessManagementModel());
         }
 
         [HttpPost]
@@ -57,7 +66,9 @@ namespace Locate_closest_business.Controllers
                 return RedirectToAction("Index");
 
             }
-            return View(business);
+            BusinessManagamentModel model = BusinessManagementModel();
+            model.NewBusiness = business;
+            return View(model);
         }  
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

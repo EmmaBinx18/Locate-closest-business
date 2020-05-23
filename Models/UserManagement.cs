@@ -1,5 +1,4 @@
 using System.Collections.Generic;  
-using Locate_closest_business.Models;
 
 namespace Locate_closest_business.Models
 {

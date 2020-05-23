@@ -55,7 +55,7 @@ namespace Locate_closest_business.Controllers
         public IActionResult Signup(UserModel user)
         {
             if(ModelState.IsValid){
-                user.Password = Encryption.HashPassword(user.Password);
+                user.Password = EncryptionModel.HashPassword(user.Password);
                 user.ConfirmPassword = user.Password;
                 loggedInUser = user;
                 return RedirectToAction("");

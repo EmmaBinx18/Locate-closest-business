@@ -116,3 +116,4 @@ C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-busine
 C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
 C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Home\ViewBusinesses.cshtml.g.cs

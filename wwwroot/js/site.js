@@ -17,6 +17,7 @@
                 $("#registerBusinessModal").modal('show');  
                 $("#step1").css("display", "block");
                 $("#step2").css("display", "none");
+                $("#viewRequests").css("display", "none");
         //     }
         // }); 
     });
@@ -41,6 +42,11 @@
     $("#step1 .nextButton").click(function() {
         $("#step1").css("display", "none");
         $("#step2").css("display", "block");
+    });
+
+    $("#step1 .viewBusinessesButton").click(function() {
+        $("#step1").css("display", "none");
+        $("#viewRequests").css("display", "block");
     });
 
     $("#stagesButton").click(function() {
