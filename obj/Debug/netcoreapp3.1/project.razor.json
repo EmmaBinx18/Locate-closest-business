@@ -20531,6 +20531,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\bbdnet1724\\Documents\\BBD\\Grad Program\\C# Level-Up\\Locate-closest-business\\Views\\Admin\\Sidenav.cshtml",
+      "TargetPath": "Views\\Admin\\Sidenav.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\bbdnet1724\\Documents\\BBD\\Grad Program\\C# Level-Up\\Locate-closest-business\\Views\\Admin\\RegisterBusiness.cshtml",
       "TargetPath": "Views\\Admin\\RegisterBusiness.cshtml",
       "FileKind": "mvc"
