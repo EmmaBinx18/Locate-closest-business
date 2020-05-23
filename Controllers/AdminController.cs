@@ -102,20 +102,6 @@ namespace Locate_closest_business.Controllers
             return RedirectToAction("RegistrationRequests");
         }
 
-        public IActionResult Profile()
-        {
-            return View(); //TODO: return logged in user details
-        }
-
-        [HttpPost]
-        public IActionResult Profile(UserModel user)
-        {
-            if(ModelState.IsValid){
-                return RedirectToAction("");
-            }
-            return View(user);
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

@@ -35,10 +35,8 @@ namespace Locate_closest_business.Controllers
         [HttpPost]
         public IActionResult RegisterBusiness(BusinessModel business)
         {
-              System.Console.WriteLine("Model valid!");
             if (ModelState.IsValid)
             {
-                System.Console.WriteLine("Model valid!");
                 string CS = "data source=localhost\\SQLEXPRESS; database=EssentialBusinesses; integrated security=true;";
                 using (SqlConnection con = new SqlConnection(CS))
                 {
@@ -56,12 +54,10 @@ namespace Locate_closest_business.Controllers
                     cmd.ExecuteNonQuery();
                 }
                 ViewBag.SuccessfulSubmit = true;
-                return RedirectToAction("");
+                return RedirectToAction("Index");
 
-            } else {
-                System.Console.WriteLine("Model invalid!");
-                  return View(business);
             }
+            return View(business);
         }  
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

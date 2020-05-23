@@ -15,7 +15,7 @@ namespace Locate_closest_business.Models
 
        public string Category { get; set; }
 
-       [Required(ErrorMessage="Please enter the number of employees")]
+       [Required]
        public int NumEmployees { get; set; }
 
        [Required]
