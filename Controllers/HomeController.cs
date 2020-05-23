@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Locate_closest_business.Models;
+using System.Collections.Generic; 
 using System.Data;
 using System.Data.SqlClient;
 
@@ -38,7 +39,7 @@ namespace Locate_closest_business.Controllers
 
         public IActionResult RegisterBusiness()
         {
-            return View(BusinessManagementModel());
+            return View(BusinessModelHelper());
         }
 
         [HttpPost]
@@ -66,7 +67,8 @@ namespace Locate_closest_business.Controllers
                 return RedirectToAction("Index");
 
             }
-            BusinessManagamentModel model = BusinessManagementModel();
+
+            BusinessManagementModel model = BusinessModelHelper();
             model.NewBusiness = business;
             return View(model);
         }  
