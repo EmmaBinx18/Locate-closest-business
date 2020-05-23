@@ -4,10 +4,11 @@ function initialize() {
         document.getElementById('Address'), 
         {
             componentRestrictions: { country: 'ZA' }, 
-            types: ["geocode"]  // 'establishment' / 'address' / 'geocode'
-        });
+            types: ["geocode"]
+        }
+    );
+
     google.maps.event.addListener(autocomplete, 'place_changed', function () {
-        // Get the place details from the autocomplete object.
         var place = autocomplete.getPlace();
         var town;
         for (var i = 0; i < place.address_components.length; i++) {

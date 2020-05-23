@@ -164,11 +164,19 @@ td{
   background-color: #c7ebf1;
 }
 
+#stage1{
+  background-color: #bff0de;
+}
+
+.searchIcon{
+  width: 8%;
+  margin-left: 3%;
+}
+
 .errorLeftText4{
   margin-left: 49%;
 }
 
-/* css to allow google places dropdown to appear above modal */
 .pac-container {
   background-color: #FFF;
   z-index: 20;
@@ -183,12 +191,3 @@ td{
 .modal-backdrop{
   z-index: 10;        
 }​
-
-#stage1{
-  background-color: #bff0de;
-}
-
-.searchIcon{
-  width: 8%;
-  margin-left: 3%;
-}

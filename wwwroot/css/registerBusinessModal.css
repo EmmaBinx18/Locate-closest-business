@@ -5,9 +5,16 @@
 }
 
 #registerBusinessModal .form-control{
-    width: 36%;
     display: inline;
     margin-left: 2.5%;
+}
+
+.input{
+    width: 36% !important;
+}
+
+.address-control{
+    width: 75% !important;
 }
 
 #registerBusinessModal textarea{

@@ -9,16 +9,16 @@
     }); 
 
     $("#openRegisterBusinessModal").click(function () {
-        $.get("/Login/LoggedIn", function (data) {  
-            if(data == true){
-                $("#loginModal").modal('show');
-            }  
-            else{
+        // $.get("/Login/LoggedIn", function (data) {  
+        //     if(data == true){
+        //         $("#loginModal").modal('show');
+        //     }  
+        //     else{
                 $("#registerBusinessModal").modal('show');  
                 $("#step1").css("display", "block");
                 $("#step2").css("display", "none");
-            }
-        }); 
+        //     }
+        // }); 
     });
 
     $('#loginButton').click(function () {
