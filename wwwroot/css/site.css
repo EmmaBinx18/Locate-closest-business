@@ -118,7 +118,9 @@ img{
 .signupButton:hover,
 .addAdminButton:hover,
 .registerNewBusinessButton:hover,
-.updateProfile:hover{
+.updateProfile:hover
+.denyButton:hover,
+.confirmButton:hover{
   font-size: 1.12rem;
 }
 
