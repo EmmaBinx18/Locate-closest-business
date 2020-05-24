@@ -5,6 +5,8 @@ using System.Dynamic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Locate_closest_business.Models;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Locate_closest_business.Controllers
 {
@@ -36,6 +38,7 @@ namespace Locate_closest_business.Controllers
             // model.AdminUsers.Add(user);
             // model.AdminUsers.Add(user);
             
+            ViewBag.Current = "Admin";
             return View(model);
         }
 
@@ -57,6 +60,7 @@ namespace Locate_closest_business.Controllers
 
         public IActionResult RegisterBusiness()
         {
+            ViewBag.Current = "RegisterBusiness";
             return View(new BusinessModel());
         }
 
@@ -104,6 +108,8 @@ namespace Locate_closest_business.Controllers
             // model.Add(business);
             // model.Add(business);
             // model.Add(business);
+
+            ViewBag.Current = "RegistrationRequests";
             return View(model);
         }
 
