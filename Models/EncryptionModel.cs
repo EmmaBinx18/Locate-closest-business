@@ -1,6 +1,6 @@
 namespace Locate_closest_business.Models
 {
-    public class Encryption
+    public class EncryptionModel
     {
         private static string GenerateSalt(){
             return BCrypt.Net.BCrypt.GenerateSalt(12);

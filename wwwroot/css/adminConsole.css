@@ -55,39 +55,101 @@ ul ul a {
     padding-left: 30px !important;
 }
 
-.adminContainer{
+.admin-container, .new-business-container{
     width: 100%;
     position: relative;
     left: 12%;
 }
 
-.addAdmin, .adminUsers{
+.business-container{
+    width: 100%;
+    position: relative;
+}
+
+.addAdmin, .admin-users, .addBusiness, .businesses{
     border: 1px solid grey;
     width: 100%;
     margin: auto;
     border-radius: 10px;
     text-align: center;
+    box-shadow: rgb(99, 99, 99) 5px 8px 12px -8px;
 }
 
-.addAdmin{
+.addAdmin, .addBusiness{
     margin-top: 5%;
 }
 
-.adminUsers{
+.admin-users, .businesses{
     margin-top: 6%;
 }
 
-.adminContainer .form-control{
+.admin-container .form-control,
+.addBusiness .form-control,
+.profile-container .form-control{
     width: 40% !important;
     display: inline;
     margin-top: 1%;
     margin-left: 2%;
 }
 
-.addAdminButton{
+#new-business-container textarea{
+    width: 82.5% !important;
+}
+
+.add-admin-button{
     width: 14%;
 }
 
-.adminContainer h2{
+.register-new-business-button{
+    width: 18%;
+}
+
+.admin-container h2, .new-business-container h2, .business-container h2, .profile-container h2{
     font-size: 1.8rem;
+}
+
+.admin-table img{
+    width: 46px;
+}
+
+.table{
+    width: 95% !important;
+    margin: auto !important;
+}
+
+.admin-users{
+    overflow-y: scroll;
+    height: 400px !important;
+}
+
+.businesses{
+    overflow-y: scroll;
+    height: 850px !important;
+    width: 1450px !important;
+}
+
+.confirm-button, .deny-button, .remove-admin-button{
+    border: none;
+    border-radius: 0.25rem;
+    color: white;
+    padding: 6px;
+    box-shadow: rgb(99, 99, 99) 5px 8px 12px -8px;
+}
+
+.confirm-button{
+    background-color: rgb(2, 177, 75);
+}
+
+.remove-admin-button{
+    background-color: rgb(182, 0, 0);
+    width: 180px;
+}
+
+.deny-button{
+    background-color: rgb(182, 0, 0);
+    width: 70px;
+}
+
+.businesses form{
+    width: 40%;
 }

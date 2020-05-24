@@ -1,19 +1,19 @@
-#loginModal .modal-content {
+#login-admin .modal-content {
     width: 700px !important;
     margin: 20% auto !important;
     text-align: center;
 }
 
-#loginModal .form-control{
+#login-admin .form-control{
     width: 50%;
     margin: auto;
     margin-top: 3%;
 }
 
-#loginModal .modal-title{
+#login-admin .modal-title{
     font-size: 2rem;
 }
 
-.loginButton{
+.login-button{
     width: 15%;
 }

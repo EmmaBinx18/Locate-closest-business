@@ -1,35 +1,8 @@
-@model Locate_closest_business.Models.UserModel;
+@model Locate_closest_business.Models.UserManagementModel;
 
-<div class="wrapper">
-    <nav id="sidebar">
-        <div class="sidebar-header">
-            <h3>Administration Console</h3>
-        </div>
+@Html.Partial("~/Views/Admin/Sidenav.cshtml")
 
-        <ul class="list-unstyled components">
-            <li class="active">
-                <a href="#">User Management</a>
-            </li>
-            <li>
-                <a href="#">Busines Registration Requests</a>
-            </li>
-            <li>
-                <a href="#">Registered Businesses</a>
-            </li>
-            <li>
-                <a href="#">My Profile</a>
-            </li>
-            <li>
-                <a href="/Home/Index">Back to Home Page</a>
-            </li>
-            <li>
-                <a id="adminLogout" href="/Home/Index">Logout</a>
-            </li>
-        </ul>
-    </nav>
-</div>
-
-<div class="adminContainer">
+<div class="admin-container">
     <div class="addAdmin">
         <br/>
         <h2><b>Add Admin User</b></h2>
@@ -38,27 +11,45 @@
             @using (Html.BeginForm()){
                 <form id="addAdminForm" action="/Admin/AddAdmin" method="Post">  
                     <div class="form-group">  
-                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @placeholder="First Name" } })          
-                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", @placeholder="Last Name" } })      
+                        @Html.EditorFor(model => model.NewAdmin.FirstName, new { htmlAttributes = new { @class = "form-control", @placeholder="First Name" } })          
+                        @Html.EditorFor(model => model.NewAdmin.LastName, new { htmlAttributes = new { @class = "form-control", @placeholder="Last Name" } })      
                     </div> 
                     <div class="form-group">  
-                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder="Email" } })          
-                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", @placeholder="Phone" } })      
+                        @Html.EditorFor(model => model.NewAdmin.Email, new { htmlAttributes = new { @class = "form-control", @placeholder="Email" } })          
+                        @Html.EditorFor(model => model.NewAdmin.Phone, new { htmlAttributes = new { @class = "form-control", @placeholder="Phone" } })      
                     </div> 
                     <div class="form-group">  
-                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder="Password", @type="password" } })          
-                        @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", @placeholder="Confirm Password", @type="password" } })      
+                        @Html.EditorFor(model => model.NewAdmin.Password, new { htmlAttributes = new { @class = "form-control", @placeholder="Password", @type="password" } })          
+                        @Html.EditorFor(model => model.NewAdmin.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", @placeholder="Confirm Password", @type="password" } })      
                     </div> 
                     <br/>
-                    <input type="submit" class="addAdminButton" value="ADD ADMIN" />
+                    <input type="submit" class="add-admin-button" value="ADD ADMIN" />
                 </form> 
                 <br/><br/>
             }
         </div>
     </div>
-    <div class="adminUsers">
+    <div class="admin-users">
         <br/>
         <h2><b>Current Admin Users</b></h2>
         <br/>
+        <table class="admin-table table table-striped">
+            <tbody>
+                @foreach(var admin in Model.AdminUsers){
+                    <tr scope="row">
+                        <td><img src="~/images/profile.svg"/></td>
+                        <td>@admin.FirstName @admin.LastName</td>
+                        <td>@admin.Email</td>
+                        <td>@admin.Phone</td>
+                        <td>
+                            <form action="/Admin/RemoveAdmin" method="Post">
+                                <input name="@admin.Email" style="display: none;" value="@admin.Email" />
+                                <input class="remove-admin-button" type="button" value="Remove Admin User" />
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table><br/><br/>
     </div>
 </div>

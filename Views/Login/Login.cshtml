@@ -1,6 +1,6 @@
 @model Locate_closest_business.Models.UserModel;
 
-<div class="modal fade" tabindex="-1" id="loginModal" data-keyboard="false" data-backdrop="static">  
+<div class="modal fade" tabindex="-1" id="login-admin" data-keyboard="false" data-backdrop="static">  
     <div class="modal-dialog modal-lg">  
         <div class="modal-content"> 
             <button type="button" class="close" data-dismiss="modal">×</button>
@@ -14,11 +14,11 @@
                         @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder="Email" } })          
                         @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder="Password", @type="password" } }) 
                     </div> 
-                    <input type="submit" class="loginButton" value="LOGIN" />
+                    <input type="submit" class="login-button" value="LOGIN" />
                 </form> 
             }
             <br/><br/>  
-            <h2>Don't have an account? <a class="signUpLink"><b>SIGN UP</b></a></h2>
+            <h2>Don't have an account? <a class="signup-link"><b>SIGN UP</b></a></h2>
             <br/><br/>
         </div>
     </div>

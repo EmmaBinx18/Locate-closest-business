@@ -1,0 +1,25 @@
+<div class="wrapper">
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>Administration Console</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+            <li class="@(ViewBag.Current == "Admin" ? "active" : "")">
+                <a href="/Admin/Admin">User Management</a>
+            </li>
+            <li class="@(ViewBag.Current == "RegisterBusiness" ? "active" : "")">
+                <a href="/Admin/RegisterBusiness">Register a Business</a>
+            </li>
+            <li class="@(ViewBag.Current == "RegistrationRequests" ? "active" : "")">
+                <a href="/Admin/RegistrationRequests">Business Registration Requests</a>
+            </li>
+            <li>
+                <a href="/Home/Index">Back to Home Page</a>
+            </li>
+            <li>
+                <a id="admin-logout" href="/Home/Index">Logout</a>
+            </li>
+        </ul>
+    </nav>
+</div>

@@ -94,6 +94,9 @@ C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-busine
 C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Login\Signup.cshtml.g.cs
 C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Admin.cshtml.g.cs
+C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Admin\RegisterBusiness.cshtml.g.cs
+C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Admin\RegistrationRequests.cshtml.g.cs
+C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Sidenav.cshtml.g.cs
 >>>>>>> 05054cbf6071b9560398a28e3fff8de1e96d2e55
 C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\bin\Debug\netcoreapp3.1\BCrypt.Net.dll
 C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Admin.cshtml.g.cs
@@ -106,3 +109,10 @@ C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\bin\Debug\netcorea
 C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\bin\Debug\netcoreapp3.1\System.Web.WebPages.Razor.dll
 C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\bin\Debug\netcoreapp3.1\System.Web.WebPages.dll
 C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\bin\Debug\netcoreapp3.1\Microsoft.Web.Infrastructure.dll
+>>>>>>> master
+C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll

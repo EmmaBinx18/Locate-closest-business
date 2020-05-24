@@ -1,64 +1,65 @@
 ﻿$(document).ready(function () {      
     $.get("/Login/LoggedIn", function (data) {  
         if(data == true){
-            $("#loginButton").html('Login');
+            $("#login-button").html('Login');
         }  
         else{
-            $("#loginButton").html('Logout');  
+            $("#login-button").html('Logout');  
         }
     }); 
 
-    $("#openRegisterBusinessModal").click(function () {
+    $("#open-register-business-modal").click(function () {
         $.get("/Login/LoggedIn", function (data) {  
-            if(data == false){
-                $("#loginModal").modal('show');
+            if(data == true){
+                $("#login-admin").modal('show');
             }  
             else{
-                $("#registerBusinessModal").modal('show');  
+                $("#register-business-modal").modal('show');  
                 $("#step1").css("display", "block");
                 $("#step2").css("display", "none");
+                $("#view-requests").css("display", "none");
             }
         }); 
     });
 
-    $('#loginButton').click(function () {
-        if($("#loginButton").html() == 'Login'){
-            $("#loginModal").modal('show');
+    $('#login-button').click(function () {
+        if($("#login-button").html() == 'Login'){
+            $("#login-admin").modal('show');
         }
         else{
             $.get("/Login/Logout", function () {
-                $("#loginButton").html('Login');
+                $("#login-button").html('Login');
             });
         }
     });
 
-    $('#adminLogout').click(function () {
+    $('#admin-logout').click(function () {
         $.get("/Login/Logout", function () {
-            $("#loginButton").html('Login');
+            $("#login-button").html('Login');
         });
     });
     
-    $("#step1 .nextButton").click(function() {
+    $("#step1 .next-button").click(function() {
         $("#step1").css("display", "none");
         $("#step2").css("display", "block");
     });
 
-    $("#stagesButton").click(function() {
+    $("#step1 .view-businesses-button").click(function() {
+        $("#step1").css("display", "none");
+        $("#view-requests").css("display", "block");
+    });
+
+    $("#stages-button").click(function() {
         $("#stages").toggle();
     });
 
-    $(".signUpLink").click(function(){
-        $("#signupModal").modal('show');
-        $("#loginModal").modal('hide');
+    $(".signup-link").click(function(){
+        $("#signup-modal").modal('show');
+        $("#login-admin").modal('hide');
     });
 
-    $(".loginLink").click(function(){
-        $("#loginModal").modal('show');
-        $("#signupModal").modal('hide');
+    $(".login-link").click(function(){
+        $("#login-admin").modal('show');
+        $("#signup-modal").modal('hide');
     });
-
-    $(".list-unstyled a").click(function(){
-        $(".list-unstyled").find(".active").removeClass("active");
-        $(this).parent().addClass("active");
-     });
 });

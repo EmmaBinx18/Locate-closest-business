@@ -20531,6 +20531,40 @@
       "FileKind": "mvc"
     },
     {
+<<<<<<< HEAD
+      "FilePath": "c:\\Users\\bbdnet1724\\Documents\\BBD\\Grad Program\\C# Level-Up\\Locate-closest-business\\Views\\Admin\\Sidenav.cshtml",
+      "TargetPath": "Views\\Admin\\Sidenav.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\bbdnet1724\\Documents\\BBD\\Grad Program\\C# Level-Up\\Locate-closest-business\\Views\\Admin\\RegisterBusiness.cshtml",
+      "TargetPath": "Views\\Admin\\RegisterBusiness.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\bbdnet1724\\Documents\\BBD\\Grad Program\\C# Level-Up\\Locate-closest-business\\Views\\Admin\\RegistrationRequests.cshtml",
+      "TargetPath": "Views\\Admin\\RegistrationRequests.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\bbdnet1724\\Documents\\BBD\\Grad Program\\C# Level-Up\\Locate-closest-business\\Views\\Shared\\_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\bbdnet1724\\Documents\\BBD\\Grad Program\\C# Level-Up\\Locate-closest-business\\Views\\Admin\\Admin.cshtml",
+      "TargetPath": "Views\\Admin\\Admin.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\bbdnet1724\\Documents\\BBD\\Grad Program\\C# Level-Up\\Locate-closest-business\\Views\\Admin\\Profile.cshtml",
+      "TargetPath": "Views\\Admin\\Profile.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\bbdnet1724\\Documents\\BBD\\Grad Program\\C# Level-Up\\Locate-closest-business\\Views\\Home\\RegisterBusiness.cshtml",
+      "TargetPath": "Views\\Home\\RegisterBusiness.cshtml",
+=======
       "FilePath": "c:\\Users\\Ngoni\\Desktop\\BBD\\C#\\Project\\Locate-closest-business\\Views\\Login\\Signup.cshtml",
       "TargetPath": "Views\\Login\\Signup.cshtml",
       "FileKind": "mvc"
@@ -20538,6 +20572,7 @@
     {
       "FilePath": "c:\\Users\\Ngoni\\Desktop\\BBD\\C#\\Project\\Locate-closest-business\\Views\\Login\\Login.cshtml",
       "TargetPath": "Views\\Login\\Login.cshtml",
+>>>>>>> master
       "FileKind": "mvc"
     },
     {
