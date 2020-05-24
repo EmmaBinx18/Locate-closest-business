@@ -84,7 +84,6 @@ namespace Locate_closest_business.Controllers
                 }
                 ViewBag.SuccessfulSubmit = true;
                 return RedirectToAction("Index");
-
             }
 
             BusinessManagementModel model = BusinessModelHelper();
