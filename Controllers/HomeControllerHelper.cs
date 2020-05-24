@@ -13,7 +13,7 @@ using Newtonsoft.Json.Serialization;
 
 namespace Locate_closest_business.Controllers
 {
-    public partial class MapsController : Controller
+    public partial class HomeController : Controller
     {
         private async Task<MapsResponseWrapperModel> PerformNearbySearch(string pLat, string pLng, string pCategory, int pSearchRadius, bool pOpenNow)
         {
