@@ -14,7 +14,7 @@
     }
 </script>
 
-<div class="modal fade" tabindex="-1" id="registerBusinessModal" data-keyboard="false" data-backdrop="static">  
+<div class="modal fade" tabindex="-1" id="register-business-modal" data-keyboard="false" data-backdrop="static">  
     <div class="modal-dialog modal-lg" id="step1">  
         <div class="modal-content">  
             <button type="button" class="close" data-dismiss="modal">×</button>  
@@ -25,7 +25,7 @@
                 </i>
             </h3>  
             <br/>
-            <span><button class="viewBusinessesButton">VIEW MY BUSINESS REQUESTS</button><button class="nextButton">NEXT</button> </span> 
+            <span><button class="view-businesses-button">VIEW MY BUSINESS REQUESTS</button><button class="next-button">NEXT</button> </span> 
             <br/><br/>
         </div>  
     </div>  
@@ -75,13 +75,13 @@
                     @Html.HiddenFor(m => Model.NewBusiness.AddressTown, new { @id = "AddressTown" }) 
                 </div>
             </form> 
-            <input type="submit" class="submitRequestButton" value="SUBMIT REQUEST" />   
+            <input type="submit" class="submit-request-button" value="SUBMIT REQUEST" />   
             <br/><br/>
         </div>  
     </div>
     }
 
-    <div class="requests-modal-dialog" id="viewRequests">  
+    <div class="requests-modal-dialog" id="view-requests">  
         <div class="requests-modal-content">  
             <button type="button" class="close" data-dismiss="modal">×</button>  
             <h4 class="modal-title">Your Businesses</h4>  
@@ -112,7 +112,7 @@
                                 <td>
                                     <form action="/Home/RemoveBusiness" method="Post">
                                         <input name="@business.RegistrationNumber" style="display: none;" value="@business.RegistrationNumber" />
-                                        <input class="denyButton" type="button" value="Remove Business" />
+                                        <input class="deny-button" type="button" value="Remove Business" />
                                     </form>
                                 </td>
                             </tr>

@@ -22,18 +22,18 @@
     text-align: center;
 }
 
-#registerBusinessModal .modal-content {
+#register-business-modal .modal-content {
     margin: 10% auto !important;
     width: 900px !important;
     text-align: center;
 }
 
-#registerBusinessModal .form-control{
+#register-business-modal .form-control{
     display: inline;
     margin-left: 2.5%;
 }
 
-#registerBusinessModal .modal-title{
+#register-business-modal .modal-title{
     font-size: 1.6rem;
 }
 
@@ -45,12 +45,12 @@
     width: 75% !important;
 }
 
-#registerBusinessModal textarea{
+#register-business-modal textarea{
     width: 75% !important;
     margin-left: 22px;
 }
 
-#registerBusinessModal h3{
+#register-business-modal h3{
     margin-top: 4%;
     padding: 20px;
 }
@@ -59,15 +59,15 @@
     display: none;
 }
 
-.nextButton{
+.next-button{
     width: 15%;
     margin-left: 2%;
 }
   
-.viewBusinessesButton{
+.view-businesses-button{
     width: 35%;
 }
 
-#viewRequests .denyButton{
+#view-requests .deny-button{
     width: 90% !important;
 }

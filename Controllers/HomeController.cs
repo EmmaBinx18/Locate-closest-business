@@ -54,7 +54,6 @@ namespace Locate_closest_business.Controllers
 
         public IActionResult RegisterBusiness()
         {
-            System.Console.WriteLine("Here");
             return View(BusinessModelHelper());
         }
 

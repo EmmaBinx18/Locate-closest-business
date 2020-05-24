@@ -2,7 +2,7 @@
 
 @Html.Partial("~/Views/Admin/Sidenav.cshtml")
 
-<div class="adminContainer">
+<div class="admin-container">
     <div class="addAdmin">
         <br/>
         <h2><b>Add Admin User</b></h2>
@@ -23,17 +23,17 @@
                         @Html.EditorFor(model => model.NewAdmin.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", @placeholder="Confirm Password", @type="password" } })      
                     </div> 
                     <br/>
-                    <input type="submit" class="addAdminButton" value="ADD ADMIN" />
+                    <input type="submit" class="add-admin-button" value="ADD ADMIN" />
                 </form> 
                 <br/><br/>
             }
         </div>
     </div>
-    <div class="adminUsers">
+    <div class="admin-users">
         <br/>
         <h2><b>Current Admin Users</b></h2>
         <br/>
-        <table class="adminTable table table-striped">
+        <table class="admin-table table table-striped">
             <tbody>
                 @foreach(var admin in Model.AdminUsers){
                     <tr scope="row">
@@ -44,7 +44,7 @@
                         <td>
                             <form action="/Admin/RemoveAdmin" method="Post">
                                 <input name="@admin.Email" style="display: none;" value="@admin.Email" />
-                                <input class="removeAdminButton" type="button" value="Remove Admin User" />
+                                <input class="remove-admin-button" type="button" value="Remove Admin User" />
                             </form>
                         </td>
                     </tr>

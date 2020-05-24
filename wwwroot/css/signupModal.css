@@ -1,20 +1,20 @@
-#signupModal .modal-content {
+#signup-modal .modal-content {
     width: 800px !important;
     margin: 20% auto !important;
     text-align: center;
 }
 
-#signupModal .form-control{
+#signup-modal .form-control{
     width: 40%;
     display: inline;
     margin-top: 1%;
     margin-left: 2%;
 }
 
-#signupModal .modal-title{
+#signup-modal .modal-title{
     font-size: 2rem;
 }
 
-.signupButton{
+.signup-button{
     width: 22%;
 }

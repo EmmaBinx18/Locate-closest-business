@@ -46,14 +46,14 @@ a:hover {
   margin-top: 2%;
 }
 
-#searchModal{
+#search-modal{
   margin-top: 2%;
   margin-left: 2.6%;
   position: absolute;
   left: 0;
 }
 
-#searchModal .modal-content {
+#search-modal .modal-content {
   width: 480px !important;
   text-align: center;
   box-shadow: rgb(99, 99, 99) 10px 13px 22px -8px;
@@ -70,13 +70,13 @@ img{
   padding-bottom: 1%;
 }
 
-#searchModal .form-control{
+#search-modal .form-control{
   width: 75%;
   display: inline;
   margin-top: 6%;
 }
 
-#loginButton, .registerBusinessButton, .stagesButton{
+#login-button, .register-business-button, .stages-button{
   margin-left: 3%;
   border-radius: 6px;
   background-color: white;
@@ -85,18 +85,17 @@ img{
   box-shadow: rgb(99, 99, 99) 5px 8px 12px -8px;
 }
 
-.registerBusinessButton:hover, .stagesButton:hover, #loginButton:hover{
+.register-business-button:hover, .stages-button:hover, #login-button:hover{
   font-size: 1.1rem;
 }
 
-.nextButton, 
-.submitRequestButton, 
-.viewBusinessesButton, 
-.loginButton, 
-.signupButton, 
-.addAdminButton, 
-.registerNewBusinessButton,
-.updateProfile{
+.next-button, 
+.submit-request-button, 
+.view-businesses-button, 
+.login-button, 
+.signup-button, 
+.add-admin-button, 
+.register-new-business-button{
   background-color: rgb(182, 0, 0);
   border: none;
   border-radius: 0.25rem;
@@ -106,21 +105,20 @@ img{
   margin-top: 2%;
 }
 
-.submitRequestButton{
+.submit-request-button{
   margin-left: 41%;
   width: 20%;
 }
 
-.nextButton:hover, 
-.submitRequestButton:hover, 
-.viewBusinessesButton:hover, 
-.loginButton:hover, 
-.signupButton:hover,
-.addAdminButton:hover,
-.registerNewBusinessButton:hover,
-.updateProfile:hover
-.denyButton:hover,
-.confirmButton:hover{
+.next-button:hover, 
+.submit-request-button:hover, 
+.view-businesses-button:hover, 
+.login-button:hover, 
+.signup-button:hover,
+.add-admin-button:hover,
+.register-new-business-button:hover,
+.deny-button:hover,
+.confirm-button:hover{
   font-size: 1.12rem;
 }
 
@@ -170,7 +168,7 @@ td{
   background-color: #bff0de;
 }
 
-.searchIcon{
+.search-icon{
   width: 8%;
   margin-left: 3%;
 }
@@ -190,6 +188,6 @@ td{
   z-index: 20;   
 }
 
-.modal-backdrop{
+.modal-backdrop {
   z-index: 10;        
-}​
+}

@@ -55,18 +55,18 @@ ul ul a {
     padding-left: 30px !important;
 }
 
-.adminContainer, .newBusinessContainer, .profileContainer{
+.admin-container, .new-business-container{
     width: 100%;
     position: relative;
     left: 12%;
 }
 
-.businessContainer{
+.business-container{
     width: 100%;
     position: relative;
 }
 
-.addAdmin, .adminUsers, .addBusiness, .businesses, .profileDetails{
+.addAdmin, .admin-users, .addBusiness, .businesses{
     border: 1px solid grey;
     width: 100%;
     margin: auto;
@@ -75,40 +75,40 @@ ul ul a {
     box-shadow: rgb(99, 99, 99) 5px 8px 12px -8px;
 }
 
-.addAdmin, .addBusiness, .profileDetails{
+.addAdmin, .addBusiness{
     margin-top: 5%;
 }
 
-.adminUsers, .businesses{
+.admin-users, .businesses{
     margin-top: 6%;
 }
 
-.adminContainer .form-control,
+.admin-container .form-control,
 .addBusiness .form-control,
-.profileContainer .form-control{
+.profile-container .form-control{
     width: 40% !important;
     display: inline;
     margin-top: 1%;
     margin-left: 2%;
 }
 
-#newBusinessContainer textarea{
+#new-business-container textarea{
     width: 82.5% !important;
 }
 
-.addAdminButton, .updateProfile{
+.add-admin-button{
     width: 14%;
 }
 
-.registerNewBusinessButton{
+.register-new-business-button{
     width: 18%;
 }
 
-.adminContainer h2, .newBusinessContainer h2, .businessContainer h2, .profileContainer h2{
+.admin-container h2, .new-business-container h2, .business-container h2, .profile-container h2{
     font-size: 1.8rem;
 }
 
-.adminTable img{
+.admin-table img{
     width: 46px;
 }
 
@@ -117,7 +117,7 @@ ul ul a {
     margin: auto !important;
 }
 
-.adminUsers{
+.admin-users{
     overflow-y: scroll;
     height: 400px !important;
 }
@@ -128,7 +128,7 @@ ul ul a {
     width: 1450px !important;
 }
 
-.confirmButton, .denyButton, .removeAdminButton{
+.confirm-button, .deny-button, .remove-admin-button{
     border: none;
     border-radius: 0.25rem;
     color: white;
@@ -136,16 +136,16 @@ ul ul a {
     box-shadow: rgb(99, 99, 99) 5px 8px 12px -8px;
 }
 
-.confirmButton{
+.confirm-button{
     background-color: rgb(2, 177, 75);
 }
 
-.removeAdminButton{
+.remove-admin-button{
     background-color: rgb(182, 0, 0);
     width: 180px;
 }
 
-.denyButton{
+.deny-button{
     background-color: rgb(182, 0, 0);
     width: 70px;
 }

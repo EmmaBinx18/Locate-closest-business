@@ -2,7 +2,7 @@
 
 @Html.Partial("~/Views/Admin/Sidenav.cshtml")
 
-<div class="businessContainer">
+<div class="business-container">
     <div class="businesses">
         <br/>
         <h2><b>Registration Requests</b></h2>
@@ -31,13 +31,13 @@
                             <td>
                                 <form action="/Admin/ConfirmRegistration" method="Post">
                                     <input name="@business.RegistrationNumber" style="display: none;" value="@business.RegistrationNumber" />
-                                    <input class="confirmButton" type="button" value="Confirm" />
+                                    <input class="confirm-button" type="button" value="Confirm" />
                                 </form>
                             </td>
                             <td>
                                 <form action="/Admin/DenyRegistration" method="Post">
                                     <input name="@business.RegistrationNumber" style="display: none;" value="@business.RegistrationNumber" />
-                                    <input class="denyButton" type="button" value="Deny" />
+                                    <input class="deny-button" type="button" value="Deny" />
                                 </form>
                             </td>
                         </tr>
