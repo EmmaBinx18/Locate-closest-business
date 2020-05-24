@@ -62,7 +62,6 @@ namespace Locate_closest_business.Controllers
         private async Task<SpecificCountryStatisticsModel> GetSpecificCountryInfo(string pCountrySlug)
         {
             HttpClient _httpClient = new HttpClient();
-            Console.WriteLine(string.Format("https://api.covid19api.com/dayone/country/" + pCountrySlug + "/status/confirmed"));
             var task = await _httpClient.GetAsync(string.Format("https://api.covid19api.com/dayone/country/" + pCountrySlug + "/status/confirmed")).ConfigureAwait(false);
             task.EnsureSuccessStatusCode();
             var payload = task.Content.ReadAsStringAsync();
