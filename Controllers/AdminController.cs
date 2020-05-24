@@ -96,18 +96,28 @@ namespace Locate_closest_business.Controllers
             List<BusinessModel> model = new List<BusinessModel>();
             //TODO: populate list with business registration requests
             
-            // BusinessModel business = new BusinessModel();
-            // business.MemberIds = "";
-            // business.CompanyName = "New Company";
-            // business.RegistrationNumber = "1234567890";
-            // business.Category = "Food Delivery";
-            // business.NumEmployees = "24";
-            // business.Address = "12 Apple Str, Randpark Ridge, Randburg, 2156";
+            // BusinessModel business1 = new BusinessModel();
+            // business1.MemberIds = "";
+            // business1.CompanyName = "New Company";
+            // business1.RegistrationNumber = "1234567890";
+            // business1.Category = "Food Delivery";
+            // business1.NumEmployees = 12;
+            // business1.Address = "12 Apple Str, Randpark Ridge, Randburg, 2156";
+            // business1.RequestStatus = "Pending";
 
-            // model.Add(business);
-            // model.Add(business);
-            // model.Add(business);
-            // model.Add(business);
+            // BusinessModel business2 = new BusinessModel();
+            // business2.MemberIds = "";
+            // business2.CompanyName = "New Company";
+            // business2.RegistrationNumber = "1234567890";
+            // business2.Category = "Food Delivery";
+            // business2.NumEmployees = 24;
+            // business2.Address = "12 Apple Str, Randpark Ridge, Randburg, 2156";
+            // business2.RequestStatus = "Accepted";
+
+            // model.Add(business1);
+            // model.Add(business1);
+            // model.Add(business2);
+            // model.Add(business2);
 
             ViewBag.Current = "RegistrationRequests";
             return View(model);
