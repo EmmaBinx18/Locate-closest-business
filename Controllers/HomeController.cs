@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Dynamic;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Locate_closest_business.Models;
-using System.Threading.Tasks;
+using System;
+using System.Collections.Generic; 
+using System.Data;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 
 namespace Locate_closest_business.Controllers
 {
@@ -21,18 +21,17 @@ namespace Locate_closest_business.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.MapsAPISource = "https://maps.googleapis.com/maps/api/js?key=" + API_Keys.MapsAPI_Key;
-            return View();
+            return View(BusinessModelHelper());
         }
-
-        public JsonResult MapsNearbySearch([FromQuery]string lat, [FromQuery]string lng, [FromQuery]string category, int searchRadius = 1500, bool opennow = false)
+		
+		public JsonResult MapsNearbySearch([FromQuery]string lat, [FromQuery]string lng, [FromQuery]string category, int searchRadius = 1500, bool opennow = false)
         {
             var errorJSON = new
             {
                 errorMessage = "External_API_Unreachable"
             };
-            List<String> businessTypeList = new List<string>();
-            List<String> keywordSearchList = new List<string>();
+            List<string> businessTypeList = new List<string>();
+            List<string> keywordSearchList = new List<string>();
 
             switch (category)
             {
@@ -143,7 +142,7 @@ namespace Locate_closest_business.Controllers
                 MapsResponseWrapperModel compoundResponse = new MapsResponseWrapperModel();
                 compoundResponse.results = new List<MapsResponseWrapperModel.MapsNearbySearchResultModel>();
 
-                foreach (String vBusinessType in businessTypeList)
+                foreach (string vBusinessType in businessTypeList)
                 {
                     Task<MapsResponseWrapperModel> task = Task.Run<MapsResponseWrapperModel>(async () => await PerformNearbySearch(lat,lng,vBusinessType,"",searchRadius,opennow));
                     task.Wait();
@@ -151,7 +150,7 @@ namespace Locate_closest_business.Controllers
                     compoundResponse.results.AddRange(APIResponse.results);
                 }
 
-                foreach (String vKeyword in keywordSearchList)
+                foreach (string vKeyword in keywordSearchList)
                 {
                     Task<MapsResponseWrapperModel> task = Task.Run<MapsResponseWrapperModel>(async () => await PerformNearbySearch(lat,lng,"",vKeyword,searchRadius,opennow));
                     task.Wait();
@@ -190,22 +189,80 @@ namespace Locate_closest_business.Controllers
             }
         }
 
+        [HttpPost]
+        public IActionResult Search(string searchOption)
+        {
+            //TODO: need to perform actual search on map based on searchOptions
+            return RedirectToAction("Index");
+        }
+
+        private BusinessManagementModel BusinessModelHelper()
+        {
+            BusinessManagementModel model = new BusinessManagementModel();
+            model.NewBusiness = new BusinessModel();
+            model.Businesses = new List<BusinessModel>(); //TODO: populate list with their businesses
+
+            BusinessModel business = new BusinessModel();
+            business.MemberIds = "";
+            business.CompanyName = "New Company";
+            business.RegistrationNumber = "1234567890";
+            business.Category = "Food Delivery";
+            business.NumEmployees = 24;
+            business.Address = "12 Apple Str, Randpark Ridge, Randburg, 2156";
+            business.RequestStatus = "Pending";
+
+            model.Businesses.Add(business);
+            model.Businesses.Add(business);
+            model.Businesses.Add(business);
+            model.Businesses.Add(business);
+
+            return model;
+        }
+
         public IActionResult RegisterBusiness()
         {
-            ViewBag.SuccessfulSubmit = "none";
-            return View(new BusinessModel());
+            return View(BusinessModelHelper());
         }
 
         [HttpPost]
         public IActionResult RegisterBusiness(BusinessModel business)
         {
-            if(ModelState.IsValid){
-                ViewBag.SuccessfulSubmit = "block";
-                return RedirectToAction("");
+            if (ModelState.IsValid)
+            {
+                business.RequestStatus = "Pending";
+
+                string CS = "data source=localhost\\SQLEXPRESS; database=EssentialBusinesses; integrated security=true;";
+                using (SqlConnection con = new SqlConnection(CS))
+                {
+                    SqlCommand cmd = new SqlCommand("spAddNewBusiness", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    con.Open();
+                    cmd.Parameters.AddWithValue("@CompanyName", business.CompanyName);
+                    cmd.Parameters.AddWithValue("@RegistrationNumber", business.RegistrationNumber);
+                    cmd.Parameters.AddWithValue("@Category", business.Category);
+                    cmd.Parameters.AddWithValue("@NumEmployees", business.NumEmployees);
+                    cmd.Parameters.AddWithValue("@Address", business.Address);
+                    cmd.Parameters.AddWithValue("@AddressTown", business.AddressTown);
+                    cmd.Parameters.AddWithValue("@AddressLongitude", business.AddressLongitude);
+                    cmd.Parameters.AddWithValue("@AddressLatitude", business.AddressLatitude);
+                    cmd.Parameters.AddWithValue("@RequestStatus", business.RequestStatus);
+                    cmd.ExecuteNonQuery();
+                }
+                ViewBag.SuccessfulSubmit = true;
+                return RedirectToAction("Index");
             }
-            
-            return View(business);
-        }
+
+            BusinessManagementModel model = BusinessModelHelper();
+            model.NewBusiness = business;
+            return View(model);
+        } 
+
+        [HttpPost]
+        public IActionResult RemoveBusiness(string registrationNumber)
+        {
+            //TODO: remove business
+            return RedirectToAction("Index");
+        } 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

@@ -20526,8 +20526,38 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "d:\\Alles\\Grad Program\\C# & dotNet\\Locate Closest Business Project\\Views\\Admin\\RegisterBusiness.cshtml",
+      "TargetPath": "Views\\Admin\\RegisterBusiness.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\Alles\\Grad Program\\C# & dotNet\\Locate Closest Business Project\\Views\\_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\Alles\\Grad Program\\C# & dotNet\\Locate Closest Business Project\\Views\\Login\\Login.cshtml",
+      "TargetPath": "Views\\Login\\Login.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\Alles\\Grad Program\\C# & dotNet\\Locate Closest Business Project\\Views\\Admin\\Sidenav.cshtml",
+      "TargetPath": "Views\\Admin\\Sidenav.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\Alles\\Grad Program\\C# & dotNet\\Locate Closest Business Project\\Views\\Home\\Map.cshtml",
+      "TargetPath": "Views\\Home\\Map.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\Alles\\Grad Program\\C# & dotNet\\Locate Closest Business Project\\Views\\Admin\\Admin.cshtml",
+      "TargetPath": "Views\\Admin\\Admin.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\Alles\\Grad Program\\C# & dotNet\\Locate Closest Business Project\\Views\\Admin\\RegistrationRequests.cshtml",
+      "TargetPath": "Views\\Admin\\RegistrationRequests.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -20563,6 +20593,11 @@
     {
       "FilePath": "d:\\Alles\\Grad Program\\C# & dotNet\\Locate Closest Business Project\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\Alles\\Grad Program\\C# & dotNet\\Locate Closest Business Project\\Views\\Login\\Signup.cshtml",
+      "TargetPath": "Views\\Login\\Signup.cshtml",
       "FileKind": "mvc"
     },
     {

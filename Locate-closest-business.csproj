@@ -4,10 +4,13 @@
     <RootNamespace>Locate_closest_business</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="BCrypt.Net-Core" Version="1.6.0" />
     <PackageReference Include="Microsoft.jQuery.Unobtrusive.Ajax" Version="3.2.6" />
     <PackageReference Include="jQuery.Validation" Version="1.19.1" />
     <PackageReference Include="Microsoft.jQuery.Unobtrusive.Validation" Version="3.2.11" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
+    <PackageReference Include="BCrypt.Net" Version="*" />
+    <PackageReference Include="BCrypt-Official" Version="*" />
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="*" />
   </ItemGroup>
 </Project>

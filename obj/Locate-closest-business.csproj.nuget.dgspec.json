@@ -38,9 +38,17 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
-            "BCrypt.Net-Core": {
+            "BCrypt-Official": {
               "target": "Package",
-              "version": "[1.6.0, )"
+              "version": "[*, )"
+            },
+            "BCrypt.Net": {
+              "target": "Package",
+              "version": "[*, )"
+            },
+            "Microsoft.AspNet.Mvc": {
+              "target": "Package",
+              "version": "[*, )"
             },
             "Microsoft.jQuery.Unobtrusive.Ajax": {
               "target": "Package",
@@ -53,6 +61,10 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[12.0.3, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.1, )"
             },
             "jQuery.Validation": {
               "target": "Package",
