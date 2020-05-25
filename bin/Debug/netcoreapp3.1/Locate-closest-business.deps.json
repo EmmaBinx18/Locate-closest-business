@@ -26,6 +26,7 @@
         "dependencies": {
           "Microsoft.jQuery.Unobtrusive.Ajax": "3.2.6",
           "Microsoft.jQuery.Unobtrusive.Validation": "3.2.11",
+          "Newtonsoft.Json": "12.0.3",
           "jQuery.Validation": "1.19.1",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
@@ -332,6 +333,17 @@
         "dependencies": {
           "jQuery": "1.8.0",
           "jQuery.Validation": "1.19.1"
+        }
+      },
+      "Newtonsoft.Json/12.0.3": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.3.23909"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
@@ -2061,6 +2073,13 @@
       "sha512": "sha512-8qGe1q3vV5Fwbpb0OSI8SxSiIBeFt9sgAvFvPwgZuuL+PZ+z0VsPB5yeqT+SrvPKpyVpN33MLhgvSW5Zf07IsQ==",
       "path": "microsoft.jquery.unobtrusive.validation/3.2.11",
       "hashPath": "microsoft.jquery.unobtrusive.validation.3.2.11.nupkg.sha512"
+    },
+    "Newtonsoft.Json/12.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
+      "path": "newtonsoft.json/12.0.3",
+      "hashPath": "newtonsoft.json.12.0.3.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
       "type": "referenceassembly",

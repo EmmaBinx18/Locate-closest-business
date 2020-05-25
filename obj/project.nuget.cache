@@ -1,13 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "Fb9DvpeFlk+gt8UQTum1DO+gfEc9rs39o8dfTmWbinpFNgNXB47PdbKNYySkI+nEKF0gRv6sG9VgKFHD7OyY8w==",
+  "dgSpecHash": "K6Igkm3Z76UzrZ9TODmnHlFFHSwubUjSgYSastWyDGF6ULXTInuKHE8atgxHAlJeOf+912jLho8xGzrwKci8FA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\bbdnet1724\\Documents\\BBD\\Grad Program\\C# Level-Up\\Locate-closest-business\\Locate-closest-business.csproj",
+  "projectFilePath": "D:\\Alles\\Grad Program\\C# & dotNet\\Locate Closest Business Project\\Locate-closest-business.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\bbdnet1724\\.nuget\\packages\\jquery\\1.8.0\\jquery.1.8.0.nupkg.sha512",
-    "C:\\Users\\bbdnet1724\\.nuget\\packages\\jquery.validation\\1.19.1\\jquery.validation.1.19.1.nupkg.sha512",
-    "C:\\Users\\bbdnet1724\\.nuget\\packages\\microsoft.jquery.unobtrusive.ajax\\3.2.6\\microsoft.jquery.unobtrusive.ajax.3.2.6.nupkg.sha512",
-    "C:\\Users\\bbdnet1724\\.nuget\\packages\\microsoft.jquery.unobtrusive.validation\\3.2.11\\microsoft.jquery.unobtrusive.validation.3.2.11.nupkg.sha512"
+    "C:\\Users\\hexb\\.nuget\\packages\\jquery\\1.8.0\\jquery.1.8.0.nupkg.sha512",
+    "C:\\Users\\hexb\\.nuget\\packages\\jquery.validation\\1.19.1\\jquery.validation.1.19.1.nupkg.sha512",
+    "C:\\Users\\hexb\\.nuget\\packages\\microsoft.jquery.unobtrusive.ajax\\3.2.6\\microsoft.jquery.unobtrusive.ajax.3.2.6.nupkg.sha512",
+    "C:\\Users\\hexb\\.nuget\\packages\\microsoft.jquery.unobtrusive.validation\\3.2.11\\microsoft.jquery.unobtrusive.validation.3.2.11.nupkg.sha512",
+    "C:\\Users\\hexb\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\hexb\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\hexb\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512"
   ],
   "logs": []
 }

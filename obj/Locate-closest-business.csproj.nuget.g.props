@@ -13,6 +13,6 @@
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgjQuery Condition=" '$(PkgjQuery)' == '' ">C:\Users\bbdnet1724\.nuget\packages\jquery\1.8.0</PkgjQuery>
+    <PkgjQuery Condition=" '$(PkgjQuery)' == '' ">C:\Users\hexb\.nuget\packages\jquery\1.8.0</PkgjQuery>
   </PropertyGroup>
 </Project>
