@@ -1,0 +1,55 @@
+@model Locate_closest_business.Models.UserManagementModel;
+
+@Html.Partial("~/Views/Admin/Sidenav.cshtml")
+
+<div class="admin-container">
+    <div class="addAdmin">
+        <br/>
+        <h2><b>Add Admin User</b></h2>
+        <br/>
+        <div style="text-align: center;">
+            @using (Html.BeginForm()){
+                <form id="addAdminForm" action="/Admin/AddAdmin" method="Post">  
+                    <div class="form-group">  
+                        @Html.EditorFor(model => model.NewAdmin.FirstName, new { htmlAttributes = new { @class = "form-control", @placeholder="First Name" } })          
+                        @Html.EditorFor(model => model.NewAdmin.LastName, new { htmlAttributes = new { @class = "form-control", @placeholder="Last Name" } })      
+                    </div> 
+                    <div class="form-group">  
+                        @Html.EditorFor(model => model.NewAdmin.Email, new { htmlAttributes = new { @class = "form-control", @placeholder="Email" } })          
+                        @Html.EditorFor(model => model.NewAdmin.Phone, new { htmlAttributes = new { @class = "form-control", @placeholder="Phone" } })      
+                    </div> 
+                    <div class="form-group">  
+                        @Html.EditorFor(model => model.NewAdmin.Password, new { htmlAttributes = new { @class = "form-control", @placeholder="Password", @type="password" } })          
+                        @Html.EditorFor(model => model.NewAdmin.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", @placeholder="Confirm Password", @type="password" } })      
+                    </div> 
+                    <br/>
+                    <input type="submit" class="add-admin-button" value="ADD ADMIN" />
+                </form> 
+                <br/><br/>
+            }
+        </div>
+    </div>
+    <div class="admin-users">
+        <br/>
+        <h2><b>Current Admin Users</b></h2>
+        <br/>
+        <table class="admin-table table table-striped">
+            <tbody>
+                @foreach(var admin in Model.AdminUsers){
+                    <tr scope="row">
+                        <td><img src="~/images/profile.svg"/></td>
+                        <td>@admin.FirstName @admin.LastName</td>
+                        <td>@admin.Email</td>
+                        <td>@admin.Phone</td>
+                        <td>
+                            <form action="/Admin/RemoveAdmin" method="Post">
+                                <input name="@admin.Email" style="display: none;" value="@admin.Email" />
+                                <input class="remove-admin-button" type="button" value="Remove Admin User" />
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table><br/><br/>
+    </div>
+</div>

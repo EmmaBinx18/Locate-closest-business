@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Locate_closest_business.Models;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace Locate_closest_business.Controllers
 {

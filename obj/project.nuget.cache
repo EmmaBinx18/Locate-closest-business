@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "K6Igkm3Z76UzrZ9TODmnHlFFHSwubUjSgYSastWyDGF6ULXTInuKHE8atgxHAlJeOf+912jLho8xGzrwKci8FA==",
+  "dgSpecHash": "+iYfF1iXyT4uKjiQ9u9LU2ezTHEVNJbWyTIxEmJjZ4hLuwyeDBLpBxIV0M3EW3nxL6YTb9n3H/nPVd5qU0iJnw==",
   "success": true,
   "projectFilePath": "D:\\Alles\\Grad Program\\C# & dotNet\\Locate Closest Business Project\\Locate-closest-business.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\hexb\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\hexb\\.nuget\\packages\\jquery\\1.8.0\\jquery.1.8.0.nupkg.sha512",
     "C:\\Users\\hexb\\.nuget\\packages\\jquery.validation\\1.19.1\\jquery.validation.1.19.1.nupkg.sha512",
     "C:\\Users\\hexb\\.nuget\\packages\\microsoft.jquery.unobtrusive.ajax\\3.2.6\\microsoft.jquery.unobtrusive.ajax.3.2.6.nupkg.sha512",
