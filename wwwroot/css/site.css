@@ -88,6 +88,10 @@ img{
   box-shadow: rgb(99, 99, 99) 5px 8px 12px -8px;
 }
 
+#login-button{
+  margin-left: 7%;
+}
+
 .register-business-button:hover, .stages-button:hover, #login-button:hover{
   font-size: 1.1rem;
 }
