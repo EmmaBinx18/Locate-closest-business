@@ -61,6 +61,8 @@ a:hover {
   text-align: center;
   box-shadow: rgb(99, 99, 99) 10px 13px 22px -8px;
   margin-top: 20%;
+  background-color: white;
+  border: 2px solid #cccccc;
 }
 
 .modal-title{
@@ -82,10 +84,11 @@ img{
 #login-button, .register-business-button, .stages-button{
   margin-left: 3%;
   border-radius: 6px;
-  background-color: white;
   padding: 15px 30px 15px 30px;
-  margin-bottom: 3%;
+  margin-bottom: 5%;
   box-shadow: rgb(99, 99, 99) 5px 8px 12px -8px;
+  background-color: white;
+  border: 2px solid #cccccc;
 }
 
 #login-button{
@@ -178,10 +181,6 @@ td{
 .search-icon{
   width: 8%;
   margin-left: 3%;
-}
-
-.errorLeftText4{
-  margin-left: 49%;
 }
 
 .pac-container {
