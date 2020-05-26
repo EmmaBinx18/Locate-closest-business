@@ -13,19 +13,25 @@
 <div id="search-modal">  
     <div class="modal-content"> 
         <h4 class="modal-title">Search for essential service businesses near you</h4>  
-        <form id="searchForm" action="/Home/Search" method="Post">  
+        <form id="searchForm">  
             <div class="form-group">  
-                <select name="searchOption" class="form-control" id="essentialServiceOptions">
-                    <option value="{'1':'airport', '2':'taxi_stand', '3':'train_station'}">Airport, Taxi Station, Train Station</option>
-                    <option value="{'1':'atm', '2':'bank'}">ATM, Bank</option>
-                    <option value="{'1':'dentist', '2':'doctor', '3':'hospital', '4':'physiotherapist'}">Doctor, Dentis, Hospital, Physiotherapist</option>
-                    <option value="{'1':'fire_station', '2':'police'}">Emegency Services</option>
-                    <option value="{'1':'bakery', '2':'cafe', '3':'meal_delivery', '4':'meal_takeaway', '5':'restaurant', '6':'supermarket'}">Food Services</option>
-                    <option value="{'1':'drugstore', '2':'pharmacy'}">Pharmacy</option>
-                    <option value="{'1':'gas_station'}">Gas Station</option>
-                    <option value="{'1':'veterinary_care'}">Veterinary Care</option>
-                    <option value="{'1':'clothing_store, '2':'convenience_store', '3': 'department_store', '4':'shopping_mall', '5':'supermarket'}">Wholesale, Retail trade</option>
-                </select><span><input class="search-icon" type="image" src="~/images/search.svg" border="0" alt="Submit" /></span>
+                <select class="form-control" id="essentialServiceOptions">
+                            <option>Agriculture, hunting, forestry, fishing</option>
+                            <option>Electricity, Gas, Water supply</option>
+                            <option>Manufacturing</option>
+                            <option>Construction and related services</option>
+                            <option>Wholesale, Retail trade, Spaza shops</option>
+                            <option>Information and Communication services</option>
+                            <option>Media and Entertainment</option>
+                            <option>Financial and Business services</option>
+                            <option>Accommodation for quarantine, essential services</option>
+                            <option>Food services (Deliveries)</option>
+                            <option>Transport, Storage, Communication services</option>
+                            <option>Mining and Quarrying</option>
+                            <option>Repair and Related Emergency services</option>
+                            <option>Supply Chain</option>
+                            <option>Health, Social and Personal services</option>
+                        </select><img src="~/images/search.svg" onclick="javascript:performSearch()">
             </div> 
         </form>   
         <br/>
