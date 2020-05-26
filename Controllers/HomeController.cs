@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using Locate_closest_business.Models;
 using System;
 using System.Collections.Generic; 
+using System.Configuration; 
 using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
@@ -95,32 +96,31 @@ namespace Locate_closest_business.Controllers
             }
         }
 
-        [HttpPost]
-        public IActionResult Search(string searchOption)
-        {
-            //TODO: need to perform actual search on map based on searchOptions
-            return RedirectToAction("Index");
-        }
-
         private BusinessManagementModel BusinessModelHelper()
         {
             BusinessManagementModel model = new BusinessManagementModel();
             model.NewBusiness = new BusinessModel();
-            model.Businesses = new List<BusinessModel>(); //TODO: populate list with their businesses
+            model.Businesses = new List<BusinessModel>();
 
-            // BusinessModel business = new BusinessModel();
-            // business.MemberIds = "";
-            // business.CompanyName = "New Company";
-            // business.RegistrationNumber = "1234567890";
-            // business.Category = "Food Delivery";
-            // business.NumEmployees = 24;
-            // business.Address = "12 Apple Str, Randpark Ridge, Randburg, 2156";
-            // business.RequestStatus = "Pending";
-
-            // model.Businesses.Add(business);
-            // model.Businesses.Add(business);
-            // model.Businesses.Add(business);
-            // model.Businesses.Add(business);
+            using (SqlConnection con = new SqlConnection(CS))
+            {
+                SqlCommand cmd = new SqlCommand("spGetAllBusinesses", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                SqlDataReader sdr = cmd.ExecuteReader();
+                while(sdr.Read())
+                {
+                    BusinessModel business = new BusinessModel();
+                    business.MemberIds = sdr["MemberIds"];
+                    business.CompanyName = sdr["CompanyName"];
+                    business.RegistrationNumber = sdr["RegistrationNumber"];
+                    business.Category = sdr["Category"];
+                    business.NumEmployees = sdr["NumEmployees"];
+                    business.Address = sdr["Address"];
+                    business.RequestStatus = sdr["RequestStatus"];
+                    model.Businesses.Add(business);
+                }
+            }
 
             return model;
         }
@@ -142,6 +142,7 @@ namespace Locate_closest_business.Controllers
                     SqlCommand cmd = new SqlCommand("spAddNewBusiness", con);
                     cmd.CommandType = CommandType.StoredProcedure;
                     con.Open();
+                    cmd.Parameters.AddWithValue("@MemberIds", business.MemberIds);
                     cmd.Parameters.AddWithValue("@CompanyName", business.CompanyName);
                     cmd.Parameters.AddWithValue("@RegistrationNumber", business.RegistrationNumber);
                     cmd.Parameters.AddWithValue("@Category", business.Category);
@@ -165,7 +166,14 @@ namespace Locate_closest_business.Controllers
         [HttpPost]
         public IActionResult RemoveBusiness(string registrationNumber)
         {
-            //TODO: remove business
+            using (SqlConnection con = new SqlConnection(CS))
+            {
+                SqlCommand cmd = new SqlCommand("spRemoveBusiness", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                cmd.Parameters.AddWithValue("@RegistrationNumber", registrationNumber);
+                cmd.ExecuteNonQuery();
+            }
             return RedirectToAction("Index");
         } 
 
