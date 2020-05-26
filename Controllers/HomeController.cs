@@ -12,6 +12,7 @@ namespace Locate_closest_business.Controllers
 {
     public partial class HomeController : Controller
     {
+        private string CS = "data source=localhost\\SQLEXPRESS; database=EssentialBusinesses; integrated security=true;";
         public SearchModel searchModel = new SearchModel();
         private readonly ILogger<HomeController> _logger;
 
@@ -107,19 +108,19 @@ namespace Locate_closest_business.Controllers
             model.NewBusiness = new BusinessModel();
             model.Businesses = new List<BusinessModel>(); //TODO: populate list with their businesses
 
-            BusinessModel business = new BusinessModel();
-            business.MemberIds = "";
-            business.CompanyName = "New Company";
-            business.RegistrationNumber = "1234567890";
-            business.Category = "Food Delivery";
-            business.NumEmployees = 24;
-            business.Address = "12 Apple Str, Randpark Ridge, Randburg, 2156";
-            business.RequestStatus = "Pending";
+            // BusinessModel business = new BusinessModel();
+            // business.MemberIds = "";
+            // business.CompanyName = "New Company";
+            // business.RegistrationNumber = "1234567890";
+            // business.Category = "Food Delivery";
+            // business.NumEmployees = 24;
+            // business.Address = "12 Apple Str, Randpark Ridge, Randburg, 2156";
+            // business.RequestStatus = "Pending";
 
-            model.Businesses.Add(business);
-            model.Businesses.Add(business);
-            model.Businesses.Add(business);
-            model.Businesses.Add(business);
+            // model.Businesses.Add(business);
+            // model.Businesses.Add(business);
+            // model.Businesses.Add(business);
+            // model.Businesses.Add(business);
 
             return model;
         }
@@ -136,7 +137,6 @@ namespace Locate_closest_business.Controllers
             {
                 business.RequestStatus = "Pending";
 
-                string CS = "data source=localhost\\SQLEXPRESS; database=EssentialBusinesses; integrated security=true;";
                 using (SqlConnection con = new SqlConnection(CS))
                 {
                     SqlCommand cmd = new SqlCommand("spAddNewBusiness", con);

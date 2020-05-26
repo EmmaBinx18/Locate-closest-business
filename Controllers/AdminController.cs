@@ -12,6 +12,8 @@ namespace Locate_closest_business.Controllers
 {
     public class AdminController : Controller
     {
+        private string CS = "data source=localhost\\SQLEXPRESS; database=EssentialBusinesses; integrated security=true;";
+
         private readonly ILogger<AdminController> _logger;
 
         public AdminController(ILogger<AdminController> logger)
@@ -45,7 +47,8 @@ namespace Locate_closest_business.Controllers
         [HttpPost]
         public IActionResult AddAdmin(UserModel user)
         {
-             if(ModelState.IsValid){
+            if(ModelState.IsValid){
+                //TODO: add admin users
                 return RedirectToAction("Admin");
             }
             return View(user);
@@ -69,7 +72,6 @@ namespace Locate_closest_business.Controllers
             if(ModelState.IsValid){
                 business.RequestStatus = "Pending";
 
-                string CS = "data source=localhost\\SQLEXPRESS; database=EssentialBusinesses; integrated security=true;";
                 using (SqlConnection con = new SqlConnection(CS))
                 {
                     SqlCommand cmd = new SqlCommand("spAddNewBusiness", con);
@@ -86,7 +88,7 @@ namespace Locate_closest_business.Controllers
                     cmd.Parameters.AddWithValue("@RequestStatus", business.RequestStatus);
                     cmd.ExecuteNonQuery();
                 }
-                return View();
+                return View(new BusinessModel());
             }
             return View(business);
         }
@@ -94,6 +96,15 @@ namespace Locate_closest_business.Controllers
         public IActionResult RegistrationRequests()
         {
             List<BusinessModel> model = new List<BusinessModel>();
+            
+            using (SqlConnection con = new SqlConnection(CS))
+            {
+                SqlCommand cmd = new SqlCommand("spGetAllBusinesses", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+
             //TODO: populate list with business registration requests
             
             // BusinessModel business1 = new BusinessModel();

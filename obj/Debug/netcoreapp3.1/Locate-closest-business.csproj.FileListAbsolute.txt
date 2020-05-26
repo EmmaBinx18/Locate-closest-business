@@ -180,7 +180,6 @@ D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netc
 D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Razor\Views\Statistics\ListedCountries.cshtml.g.cs
 D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Razor\Views\Statistics\Summary.cshtml.g.cs
 C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
-C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Home\Map.cshtml.g.cs
 C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Statistics\HttpRequestError.cshtml.g.cs
 C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Statistics\ListedCountries.cshtml.g.cs
 C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Statistics\Summary.cshtml.g.cs

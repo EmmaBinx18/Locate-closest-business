@@ -42,7 +42,6 @@ CREATE PROCEDURE [dbo].[spAddNewBusiness]
    	@AddressTown varchar(100),
     @AddressLongitude varchar(20),
     @AddressLatitude varchar(20)  
-
 )  
 AS  
 BEGIN  
@@ -64,4 +63,11 @@ values(
 	@AddressTown,
 	@AddressLongitude,
 	@AddressLatitude)  
+END 
+
+GO
+CREATE PROCEDURE [dbo].[spGetAllBusinesses] 
+AS  
+BEGIN  
+	RETURN SELECT * FROM [dbo].[Businesses]
 END 
