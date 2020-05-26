@@ -1,0 +1,73 @@
+.requests-modal-dialog {
+    position: absolute;
+    top: 10%;
+    bottom: 0;
+    left: 11%;
+    z-index: 10040;
+    overflow: auto;
+    overflow-y: auto;
+}
+
+.requests-modal-content{
+    width: 1500px !important;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: .3rem;
+    outline: 0;
+    flex-direction: column;
+    display: flex;
+    position: relative;
+    text-align: center;
+}
+
+#register-business-modal .modal-content {
+    margin: 10% auto !important;
+    width: 900px !important;
+    text-align: center;
+}
+
+#register-business-modal .form-control{
+    display: inline;
+    margin-left: 2.5%;
+}
+
+#register-business-modal .modal-title{
+    font-size: 1.6rem;
+}
+
+.input{
+    width: 36% !important;
+}
+
+.address-control{
+    width: 75% !important;
+}
+
+#register-business-modal textarea{
+    width: 75% !important;
+    margin-left: 22px;
+}
+
+#register-business-modal h3{
+    margin-top: 4%;
+    padding: 20px;
+}
+
+#step2, #step3{
+    display: none;
+}
+
+.next-button{
+    width: 15%;
+    margin-left: 2%;
+}
+  
+.view-businesses-button{
+    width: 35%;
+}
+
+#view-requests .deny-button{
+    width: 90% !important;
+}

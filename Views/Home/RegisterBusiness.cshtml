@@ -1,24 +1,20 @@
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    var formSubmitSuccess = ViewBag.SuccessfulSubmit;
 }
 
-@model Locate_closest_business.Models.BusinessModel;  
+@model Locate_closest_business.Models.BusinessManagementModel;  
 
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $("#successful").css("display", "@ViewBag.SuccessfulSubmit");
-    });
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCsrxUyNDXzcp31HUoSxsLg3wlSHGvww3g"></script>
+<script src="~/js/autoComplete.js"></script>
+
+<script type="text/javascript">
+    var success = '@formSubmitSuccess';
+    if(success == true){
+        alert('Your request has been successfully submitted');
+    }
 </script>
 
-<div class="alert alert-success" role="alert" id="successful">
-    Your request has been successfully submitted
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-
-<div class="modal fade" tabindex="-1" id="registerBusinessModal" data-keyboard="false" data-backdrop="static">  
+<div class="modal fade" tabindex="-1" id="register-business-modal" data-keyboard="false" data-backdrop="static">  
     <div class="modal-dialog modal-lg" id="step1">  
         <div class="modal-content">  
             <button type="button" class="close" data-dismiss="modal">×</button>  
@@ -28,65 +24,103 @@
                     “All enterprises operating within the borders of the Republic of South Africa are expected to be closed during the lockdown period. Only enterprises which produce and/or provide, and/or distribute goods and services listed are exempted from the restrictions contemplated in the regulation issued in terms of the Disaster Management Act. Note, absolute minimum staff necessary to operate safely.”
                 </i>
             </h3>  
-            <button type="submit" class="nextButton">NEXT</button>   
             <br/>
+            <span><button class="view-businesses-button">VIEW MY BUSINESS REQUESTS</button><button class="next-button">NEXT</button> </span> 
+            <br/><br/>
         </div>  
     </div>  
 
-    @using (Html.BeginForm()){
+    @using (Html.BeginForm("RegisterBusiness", "Home", FormMethod.Post)){
         <div class="modal-dialog modal-lg" id="step2">  
             <div class="modal-content">  
                 <button type="button" class="close" data-dismiss="modal">×</button>  
                 <h4 class="modal-title">Register your business as an essential service</h4><br/>  
-                <h4>Director/Member Details</h4>
-                <br/><br/>
+                <br/>
                 <form id="registrationForm">
                     <div class="form-group">  
-                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @placeholder="First Name" } })          
-                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", @placeholder="Last Name" } })      
-                    </div>
-                    <div class="form-group"> 
-                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder="Email" } }) 
-                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", @placeholder="Phone" } })
-                    </div>
-                    <div class="form-group">  
-                        @Html.TextAreaFor(model => model.MemberIds, new { htmlAttributes = new { @class = "form-control", @placeholder="Provide all ID/Passport numbers of the current directors/members" } })
+                        @Html.TextAreaFor(model => model.NewBusiness.MemberIds, new { @class = "form-control", placeholder="Provide all ID/Passport numbers of the current directors/members"})
                     </div>
 
-                    <br/><h4>Company Details</h4><br/>
-                    <div class="form-group">  
-                        @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control", @placeholder="Registered Company Name" } })
-                        @Html.EditorFor(model => model.RegistrationNumber, new { htmlAttributes = new { @class = "form-control", @placeholder="Company Registration Number" } })
-                    </div>
-                    <div class="form-group">  
-                        @Html.DropDownListFor(model => model.Category,                
-                            new List<SelectListItem> { 
-                                new SelectListItem { Value = "Agriculture, hunting, forestry, fishing" , Text = "Agriculture, hunting, forestry, fishing" },
-                                new SelectListItem { Value = "Electricity, Gas, Water supply" , Text = "Electricity, Gas, Water supply" },
-                                new SelectListItem { Value = "Manufacturing" , Text = "Manufacturing" },
-                                new SelectListItem { Value = "Construction and related services" , Text = "Construction and related services" },
-                                new SelectListItem { Value = "Wholesale, Retail trade, Spaza shops" , Text = "Wholesale, Retail trade, Spaza shops" },
-                                new SelectListItem { Value = "Information and Communication services" , Text = "Information and Communication services" },
-                                new SelectListItem { Value = "Media and Entertainment" , Text = "Media and Entertainment" },
-                                new SelectListItem { Value = "Financial and Business services" , Text = "Financial and Business services" },
-                                new SelectListItem { Value = "Accommodation for quarantine, essential services" , Text = "Accommodation for quarantine, essential services" },
-                                new SelectListItem { Value = "Food services (Deliveries)" , Text = "Food services (Deliveries)" },
-                                new SelectListItem { Value = "Transport, Storage, Communication services" , Text = "Transport, Storage, Communication services" },
-                                new SelectListItem { Value = "Mining and Quarrying" , Text = "Mining and Quarrying" },
-                                new SelectListItem { Value = "Repair and Related Emergency services" , Text = "Repair and Related Emergency services" },
-                                new SelectListItem { Value = "Supply Chain" , Text = "Supply Chain" },
-                                new SelectListItem { Value = "Health, Social and Personal services" , Text = "Health, Social and Personal services" }
-                                },
-                            new { @class="form-control"})
-                        @Html.EditorFor(model => model.NumEmployees, new { htmlAttributes = new { @class = "form-control", @placeholder="Number Of Employees" } })
-                    </div>
-                    <div class="form-group">  
-                        @Html.TextAreaFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @placeholder="Company's physical address" } })
-                    </div>
-                </form> 
-                <input type="submit" class="submitRequestButton" value="SUBMIT REQUEST" />   
-                <br/><br/>
-            </div>  
-        </div>
+                <br/><h4>Company Details</h4><br/>
+                <div class="form-group">  
+                    @Html.EditorFor(model => model.NewBusiness.CompanyName, new { htmlAttributes = new { @class = "form-control input", @placeholder="Registered Company Name" } })
+                    @Html.EditorFor(model => model.NewBusiness.RegistrationNumber, new { htmlAttributes = new { @class = "form-control input", @placeholder="Company Registration Number" } })
+                </div>
+                <div class="form-group">  
+                    @Html.DropDownListFor(model => model.NewBusiness.Category,                
+                        new List<SelectListItem> { 
+                            new SelectListItem { Value = "Agriculture, hunting, forestry, fishing" , Text = "Agriculture, hunting, forestry, fishing" },
+                            new SelectListItem { Value = "Electricity, Gas, Water supply" , Text = "Electricity, Gas, Water supply" },
+                            new SelectListItem { Value = "Manufacturing" , Text = "Manufacturing" },
+                            new SelectListItem { Value = "Construction and related services" , Text = "Construction and related services" },
+                            new SelectListItem { Value = "Wholesale, Retail trade, Spaza shops" , Text = "Wholesale, Retail trade, Spaza shops" },
+                            new SelectListItem { Value = "Information and Communication services" , Text = "Information and Communication services" },
+                            new SelectListItem { Value = "Media and Entertainment" , Text = "Media and Entertainment" },
+                            new SelectListItem { Value = "Financial and Business services" , Text = "Financial and Business services" },
+                            new SelectListItem { Value = "Accommodation for quarantine, essential services" , Text = "Accommodation for quarantine, essential services" },
+                            new SelectListItem { Value = "Food services (Deliveries)" , Text = "Food services (Deliveries)" },
+                            new SelectListItem { Value = "Transport, Storage, Communication services" , Text = "Transport, Storage, Communication services" },
+                            new SelectListItem { Value = "Mining and Quarrying" , Text = "Mining and Quarrying" },
+                            new SelectListItem { Value = "Repair and Related Emergency services" , Text = "Repair and Related Emergency services" },
+                            new SelectListItem { Value = "Supply Chain" , Text = "Supply Chain" },
+                            new SelectListItem { Value = "Health, Social and Personal services" , Text = "Health, Social and Personal services" }
+                            },
+                        new { @class="form-control input"})
+                    @Html.EditorFor(model => model.NewBusiness.NumEmployees, new { htmlAttributes = new { @class = "form-control input", @placeholder="Number Of Employees" } })
+                </div>
+                <div class="form-group">  
+                    @Html.EditorFor(model => model.NewBusiness.Address, new { htmlAttributes = new { @class = "form-control address-control", @placeholder="Company's physical address", @id = "Address" } })
+                    @Html.HiddenFor(m => Model.NewBusiness.AddressLatitude, new { @id = "AddressLatitude" })  
+                    @Html.HiddenFor(m => Model.NewBusiness.AddressLongitude, new { @id = "AddressLongitude" }) 
+                    @Html.HiddenFor(m => Model.NewBusiness.AddressTown, new { @id = "AddressTown" }) 
+                </div>
+            </form> 
+            <input type="submit" class="submit-request-button" value="SUBMIT REQUEST" />   
+            <br/><br/>
+        </div>  
+    </div>
     }
-</div> 
+
+    <div class="requests-modal-dialog" id="view-requests">  
+        <div class="requests-modal-content">  
+            <button type="button" class="close" data-dismiss="modal">×</button>  
+            <h4 class="modal-title">Your Businesses</h4>  
+            <br/><br/>
+            @if(Model.Businesses.Count == 0){
+                <h2>You do not currently have any businesses registered</h2>
+            }
+            else{
+                <table class="requestsTable table table-striped">
+                    <thead>
+                        <th scope="col">Company Name</th>
+                        <th scope="col">Registration Number</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">No. Employees</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Request Status</th>
+                        <th scope="col"></th>
+                    </thead>
+                    <tbody>
+                        @foreach(var business in Model.Businesses){
+                            <tr scope="row">
+                                <td>@business.CompanyName</td>
+                                <td>@business.RegistrationNumber</td>
+                                <td>@business.Category</td>
+                                <td>@business.NumEmployees</td>
+                                <td>@business.Address</td>
+                                <td>@business.RequestStatus</td>
+                                <td>
+                                    <form action="/Home/RemoveBusiness" method="Post">
+                                        <input name="@business.RegistrationNumber" style="display: none;" value="@business.RegistrationNumber" />
+                                        <input class="deny-button" type="button" value="Remove Business" />
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            <br/><br/>
+        </div>  
+    </div> 
+</div>

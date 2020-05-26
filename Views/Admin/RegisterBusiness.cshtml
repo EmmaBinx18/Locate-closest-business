@@ -1,0 +1,52 @@
+@model Locate_closest_business.Models.BusinessModel;
+
+@Html.Partial("~/Views/Admin/Sidenav.cshtml")
+
+<div id="new-business-container" class="new-business-container">
+    <div class="addBusiness">
+        <br/>
+        <h2><b>Register your business as an essential service</b></h2>
+        <br/>
+        <div style="text-align: center;">
+            @using (Html.BeginForm()){
+                <form id="addAdminForm">  
+                    <div class="form-group">  
+                        @Html.TextAreaFor(model => model.MemberIds, new { @class = "form-control", placeholder="Provide all ID/Passport numbers of the current directors/members"})
+                    </div>
+                    <div class="form-group">  
+                        @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control", @placeholder="Registered Company Name" } })
+                        @Html.EditorFor(model => model.RegistrationNumber, new { htmlAttributes = new { @class = "form-control", @placeholder="Company Registration Number" } })
+                    </div>
+                    <div class="form-group">  
+                        @Html.DropDownListFor(model => model.Category,                
+                            new List<SelectListItem> { 
+                                new SelectListItem { Value = "Agriculture, hunting, forestry, fishing" , Text = "Agriculture, hunting, forestry, fishing" },
+                                new SelectListItem { Value = "Electricity, Gas, Water supply" , Text = "Electricity, Gas, Water supply" },
+                                new SelectListItem { Value = "Manufacturing" , Text = "Manufacturing" },
+                                new SelectListItem { Value = "Construction and related services" , Text = "Construction and related services" },
+                                new SelectListItem { Value = "Wholesale, Retail trade, Spaza shops" , Text = "Wholesale, Retail trade, Spaza shops" },
+                                new SelectListItem { Value = "Information and Communication services" , Text = "Information and Communication services" },
+                                new SelectListItem { Value = "Media and Entertainment" , Text = "Media and Entertainment" },
+                                new SelectListItem { Value = "Financial and Business services" , Text = "Financial and Business services" },
+                                new SelectListItem { Value = "Accommodation for quarantine, essential services" , Text = "Accommodation for quarantine, essential services" },
+                                new SelectListItem { Value = "Food services (Deliveries)" , Text = "Food services (Deliveries)" },
+                                new SelectListItem { Value = "Transport, Storage, Communication services" , Text = "Transport, Storage, Communication services" },
+                                new SelectListItem { Value = "Mining and Quarrying" , Text = "Mining and Quarrying" },
+                                new SelectListItem { Value = "Repair and Related Emergency services" , Text = "Repair and Related Emergency services" },
+                                new SelectListItem { Value = "Supply Chain" , Text = "Supply Chain" },
+                                new SelectListItem { Value = "Health, Social and Personal services" , Text = "Health, Social and Personal services" }
+                                },
+                            new { @class="form-control"})
+                        @Html.EditorFor(model => model.NumEmployees, new { htmlAttributes = new { @class = "form-control", @placeholder="Number Of Employees" } })
+                    </div>
+                    <div class="form-group">  
+                        @Html.TextAreaFor(model => model.Address, new { @class = "form-control", placeholder="Company's physical address" })
+                    </div>
+                    <br/>
+                    <input type="submit" class="register-new-business-button" value="REGISTER BUSINESS" />
+                </form> 
+                <br/><br/>
+            }
+        </div>
+    </div>
+</div>

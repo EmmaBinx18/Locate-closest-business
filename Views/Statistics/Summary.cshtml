@@ -1,0 +1,37 @@
+@model Locate_closest_business.Models.SummaryModel
+
+@{
+    ViewData["Title"] = "Global Summary";
+}
+
+<h2>@ViewData["Title"]</h2>
+<hr />
+
+
+    <h1 class="display-4">Statistic Summary</h1>
+    <div>
+    <dl class="dl-horizontal">
+        <dt>
+            Global
+        </dt>
+        <dd>
+            @Html.DisplayNameFor(model => model.Global.NewConfirmed) @Html.DisplayFor(model => @model.Global.NewConfirmed)<br>
+            @Html.DisplayNameFor(model => model.Global.TotalConfirmed) @Html.DisplayFor(model => model.Global.TotalConfirmed)<br>
+            @Html.DisplayNameFor(model => model.Global.NewDeaths) @Html.DisplayFor(model => model.Global.NewDeaths)<br>
+            @Html.DisplayNameFor(model => model.Global.TotalDeaths) @Html.DisplayFor(model => model.Global.TotalDeaths)<br>
+            @Html.DisplayNameFor(model => model.Global.NewRecovered) @Html.DisplayFor(model => model.Global.NewRecovered)<br>
+            @Html.DisplayNameFor(model => model.Global.TotalRecovered) @Html.DisplayFor(model => model.Global.TotalRecovered)<br>
+        </dd>
+        <dt>
+            @Model.Country.Country
+        </dt>
+            <dd style="text-indent:50px">New Confirmed @Model.Country.NewConfirmed</dd>
+            <dd style="text-indent:50px">Total Confirmed  @Model.Country.TotalConfirmed</dd>
+            <dd style="text-indent:50px">New Deaths @Model.Country.NewDeaths</dd>
+            <dd style="text-indent:50px">Total Deaths  @Model.Country.TotalDeaths</dd>
+            <dd style="text-indent:50px">New Recovered  @Model.Country.NewRecovered</dd>
+            <dd style="text-indent:50px">Total Recovered  @Model.Country.TotalRecovered</dd>
+            <dd style="text-indent:50px">Date Recorded  @Model.Country.Date</dd>
+            <br>
+    </dl>
+</div>
