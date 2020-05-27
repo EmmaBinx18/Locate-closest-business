@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ceSkbKExFS7XDeaNS+ORKluiCuEO4OzdN9b06ztnXjscE1TPx6DmsbsxV1bsoKkP/cqebSzR/5RHjiZ64hcULg==",
+  "dgSpecHash": "83D+oXsbM5r7ouALLmcl0fcUKzV6YVLxAMq4JwurR6xYwIDXEoWdUFYPAp+ggSpZhbX5pnDkF+RYdDeULMIfwg==",
   "success": true,
   "projectFilePath": "C:\\Users\\bbdnet1724\\Documents\\BBD\\Grad Program\\C# Level-Up\\Locate-closest-business\\Locate-closest-business.csproj",
   "expectedPackageFiles": [
@@ -16,6 +16,7 @@
     "C:\\Users\\bbdnet1724\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\bbdnet1724\\.nuget\\packages\\microsoft.web.infrastructure\\1.0.0\\microsoft.web.infrastructure.1.0.0.nupkg.sha512",
     "C:\\Users\\bbdnet1724\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
+    "C:\\Users\\bbdnet1724\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\bbdnet1724\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
     "C:\\Users\\bbdnet1724\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\bbdnet1724\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",

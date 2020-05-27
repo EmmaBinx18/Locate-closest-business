@@ -116,3 +116,70 @@ C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-busine
 C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
 C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Locate-closest-business.csprojAssemblyReference.cache
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Locate-closest-business.csproj.CoreCompileInputs.cache
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Locate-closest-business.MvcApplicationPartsAssemblyInfo.cache
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Locate-closest-business.RazorAssemblyInfo.cache
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Locate-closest-business.RazorAssemblyInfo.cs
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Locate-closest-business.AssemblyInfoInputs.cache
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Locate-closest-business.AssemblyInfo.cs
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Locate-closest-business.dll
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Locate-closest-business.pdb
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\bin\Debug\netcoreapp3.1\appsettings.Development.json
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\bin\Debug\netcoreapp3.1\appsettings.json
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\bin\Debug\netcoreapp3.1\package-lock.json
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\bin\Debug\netcoreapp3.1\Locate-closest-business.exe
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\bin\Debug\netcoreapp3.1\Locate-closest-business.deps.json
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\bin\Debug\netcoreapp3.1\Locate-closest-business.runtimeconfig.json
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\bin\Debug\netcoreapp3.1\Locate-closest-business.runtimeconfig.dev.json
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\bin\Debug\netcoreapp3.1\Locate-closest-business.dll
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\bin\Debug\netcoreapp3.1\Locate-closest-business.pdb
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\bin\Debug\netcoreapp3.1\Locate-closest-business.Views.dll
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\bin\Debug\netcoreapp3.1\Locate-closest-business.Views.pdb
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\bin\Debug\netcoreapp3.1\BCrypt.Net.dll
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\bin\Debug\netcoreapp3.1\System.Web.Mvc.dll
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\bin\Debug\netcoreapp3.1\System.Web.Razor.dll
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\bin\Debug\netcoreapp3.1\System.Web.Helpers.dll
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\bin\Debug\netcoreapp3.1\System.Web.WebPages.Deployment.dll
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\bin\Debug\netcoreapp3.1\System.Web.WebPages.Razor.dll
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\bin\Debug\netcoreapp3.1\System.Web.WebPages.dll
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\bin\Debug\netcoreapp3.1\Microsoft.Web.Infrastructure.dll
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Locate-closest-business.TagHelpers.input.cache
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Locate-closest-business.TagHelpers.output.cache
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Locate-closest-business.RazorCoreGenerate.cache
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Admin.cshtml.g.cs
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Razor\Views\Admin\RegisterBusiness.cshtml.g.cs
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Razor\Views\Admin\RegistrationRequests.cshtml.g.cs
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Sidenav.cshtml.g.cs
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Razor\Views\Home\RegisterBusiness.cshtml.g.cs
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Razor\Views\Login\Login.cshtml.g.cs
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Razor\Views\Login\Signup.cshtml.g.cs
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Locate-closest-business.RazorTargetAssemblyInfo.cache
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Locate-closest-business.RazorTargetAssemblyInfo.cs
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Locate-closest-business.Views.pdb
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Locate-closest-business.csproj.CopyComplete
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\staticwebassets\Locate-closest-business.StaticWebAssets.Manifest.cache
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\staticwebassets\Locate-closest-business.StaticWebAssets.xml
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Locate-closest-business.genruntimeconfig.cache
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Razor\Views\Home\Map.cshtml.g.cs
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Razor\Views\Statistics\HttpRequestError.cshtml.g.cs
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Razor\Views\Statistics\ListedCountries.cshtml.g.cs
+D:\Alles\Grad Program\C# & dotNet\Locate Closest Business Project\obj\Debug\netcoreapp3.1\Razor\Views\Statistics\Summary.cshtml.g.cs
+C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Statistics\HttpRequestError.cshtml.g.cs
+C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Statistics\ListedCountries.cshtml.g.cs
+C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Statistics\Summary.cshtml.g.cs

@@ -5,6 +5,7 @@ using System.Dynamic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Locate_closest_business.Models;
+using System.Configuration; 
 using System.Data;
 using System.Data.SqlClient;
 
@@ -12,6 +13,8 @@ namespace Locate_closest_business.Controllers
 {
     public class AdminController : Controller
     {
+        private string CS = "data source=localhost\\SQLEXPRESS; database=EssentialBusinesses; integrated security=true;";
+
         private readonly ILogger<AdminController> _logger;
 
         public AdminController(ILogger<AdminController> logger)
@@ -45,7 +48,8 @@ namespace Locate_closest_business.Controllers
         [HttpPost]
         public IActionResult AddAdmin(UserModel user)
         {
-             if(ModelState.IsValid){
+            if(ModelState.IsValid){
+                //TODO: add admin users
                 return RedirectToAction("Admin");
             }
             return View(user);
@@ -69,12 +73,12 @@ namespace Locate_closest_business.Controllers
             if(ModelState.IsValid){
                 business.RequestStatus = "Pending";
 
-                string CS = "data source=localhost\\SQLEXPRESS; database=EssentialBusinesses; integrated security=true;";
                 using (SqlConnection con = new SqlConnection(CS))
                 {
                     SqlCommand cmd = new SqlCommand("spAddNewBusiness", con);
                     cmd.CommandType = CommandType.StoredProcedure;
                     con.Open();
+                    cmd.Parameters.AddWithValue("@MemberIds", business.MemberIds);
                     cmd.Parameters.AddWithValue("@CompanyName", business.CompanyName);
                     cmd.Parameters.AddWithValue("@RegistrationNumber", business.RegistrationNumber);
                     cmd.Parameters.AddWithValue("@Category", business.Category);
@@ -86,7 +90,7 @@ namespace Locate_closest_business.Controllers
                     cmd.Parameters.AddWithValue("@RequestStatus", business.RequestStatus);
                     cmd.ExecuteNonQuery();
                 }
-                return View();
+                return View(new BusinessModel());
             }
             return View(business);
         }
@@ -94,30 +98,26 @@ namespace Locate_closest_business.Controllers
         public IActionResult RegistrationRequests()
         {
             List<BusinessModel> model = new List<BusinessModel>();
-            //TODO: populate list with business registration requests
             
-            // BusinessModel business1 = new BusinessModel();
-            // business1.MemberIds = "";
-            // business1.CompanyName = "New Company";
-            // business1.RegistrationNumber = "1234567890";
-            // business1.Category = "Food Delivery";
-            // business1.NumEmployees = 12;
-            // business1.Address = "12 Apple Str, Randpark Ridge, Randburg, 2156";
-            // business1.RequestStatus = "Pending";
-
-            // BusinessModel business2 = new BusinessModel();
-            // business2.MemberIds = "";
-            // business2.CompanyName = "New Company";
-            // business2.RegistrationNumber = "1234567890";
-            // business2.Category = "Food Delivery";
-            // business2.NumEmployees = 24;
-            // business2.Address = "12 Apple Str, Randpark Ridge, Randburg, 2156";
-            // business2.RequestStatus = "Accepted";
-
-            // model.Add(business1);
-            // model.Add(business1);
-            // model.Add(business2);
-            // model.Add(business2);
+            using (SqlConnection con = new SqlConnection(CS))
+            {
+                SqlCommand cmd = new SqlCommand("spGetAllBusinesses", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                SqlDataReader sdr = cmd.ExecuteReader();
+                while(sdr.Read())
+                {
+                    BusinessModel business = new BusinessModel();
+                    business.MemberIds = sdr["MemberIds"];
+                    business.CompanyName = sdr["CompanyName"];
+                    business.RegistrationNumber = sdr["RegistrationNumber"];
+                    business.Category = sdr["Category"];
+                    business.NumEmployees = sdr["NumEmployees"];
+                    business.Address = sdr["Address"];
+                    business.RequestStatus = sdr["RequestStatus"];
+                    model.Add(business);
+                }
+            }
 
             ViewBag.Current = "RegistrationRequests";
             return View(model);
@@ -126,16 +126,30 @@ namespace Locate_closest_business.Controllers
         [HttpPost]
         public IActionResult ConfirmRegistration(string registrationNumber)
         {
-            //TODO: add business
-            //TODO: change business request status to approved
+            using (SqlConnection con = new SqlConnection(CS))
+            {
+                SqlCommand cmd = new SqlCommand("spChangeBusinessRequestStatus", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                cmd.Parameters.AddWithValue("@RegistrationNumber", registrationNumber);
+                cmd.Parameters.AddWithValue("@RequestStatus", "Approved");
+                cmd.ExecuteNonQuery();
+            }
             return RedirectToAction("RegistrationRequests");
         }
 
         [HttpPost]
         public IActionResult DenyRegistration(string registrationNumber)
         {
-            //TODO: remove business registration request
-            //TODO: change business request status to denied
+            using (SqlConnection con = new SqlConnection(CS))
+            {
+                SqlCommand cmd = new SqlCommand("spChangeBusinessRequestStatus", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                cmd.Parameters.AddWithValue("@RegistrationNumber", registrationNumber);
+                cmd.Parameters.AddWithValue("@RequestStatus", "Denied");
+                cmd.ExecuteNonQuery();
+            }
             return RedirectToAction("RegistrationRequests");
         }
 
