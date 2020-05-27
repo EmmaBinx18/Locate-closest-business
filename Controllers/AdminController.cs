@@ -108,13 +108,13 @@ namespace Locate_closest_business.Controllers
                 while(sdr.Read())
                 {
                     BusinessModel business = new BusinessModel();
-                    // business.MemberIds = sdr["MemberIds"];
-                    // business.CompanyName = sdr["CompanyName"];
-                    // business.RegistrationNumber = sdr["RegistrationNumber"];
-                    // business.Category = sdr["Category"];
-                    // business.NumEmployees = sdr["NumEmployees"];
-                    // business.Address = sdr["Address"];
-                    // business.RequestStatus = sdr["RequestStatus"];
+                    business.MemberIds = sdr["MemberIds"];
+                    business.CompanyName = sdr["CompanyName"];
+                    business.RegistrationNumber = sdr["RegistrationNumber"];
+                    business.Category = sdr["Category"];
+                    business.NumEmployees = sdr["NumEmployees"];
+                    business.Address = sdr["Address"];
+                    business.RequestStatus = sdr["RequestStatus"];
                     model.Add(business);
                 }
             }
