@@ -26,5 +26,7 @@ namespace Locate_closest_business.Models
        [Compare("Password")]
        public string ConfirmPassword { get; set; }
 
+       public string UserId { get; set; }
+
     }
 }

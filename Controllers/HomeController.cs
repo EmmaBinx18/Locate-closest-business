@@ -24,6 +24,9 @@ namespace Locate_closest_business.Controllers
 
         public IActionResult Index()
         {
+            if(TempData["userId"] != null) {
+                ViewBag.userId = TempData["userId"]; 
+            } 
             return View(BusinessModelHelper());
         }
 		
@@ -111,13 +114,13 @@ namespace Locate_closest_business.Controllers
                 while(sdr.Read())
                 {
                     BusinessModel business = new BusinessModel();
-                    business.MemberIds = sdr["MemberIds"];
-                    business.CompanyName = sdr["CompanyName"];
-                    business.RegistrationNumber = sdr["RegistrationNumber"];
-                    business.Category = sdr["Category"];
-                    business.NumEmployees = sdr["NumEmployees"];
-                    business.Address = sdr["Address"];
-                    business.RequestStatus = sdr["RequestStatus"];
+                    // business.MemberIds = sdr["MemberIds"];
+                    // business.CompanyName = sdr["CompanyName"];
+                    // business.RegistrationNumber = sdr["RegistrationNumber"];
+                    // business.Category = sdr["Category"];
+                    // business.NumEmployees = sdr["NumEmployees"];
+                    // business.Address = sdr["Address"];
+                    // business.RequestStatus = sdr["RequestStatus"];
                     model.Businesses.Add(business);
                 }
             }
@@ -133,8 +136,10 @@ namespace Locate_closest_business.Controllers
         [HttpPost]
         public IActionResult RegisterBusiness(BusinessModel business)
         {
+            Console.WriteLine("Endoint reached!");
             if (ModelState.IsValid)
             {
+                Console.WriteLine("Model is valid");
                 business.RequestStatus = "Pending";
 
                 using (SqlConnection con = new SqlConnection(CS))
@@ -152,15 +157,18 @@ namespace Locate_closest_business.Controllers
                     cmd.Parameters.AddWithValue("@AddressLongitude", business.AddressLongitude);
                     cmd.Parameters.AddWithValue("@AddressLatitude", business.AddressLatitude);
                     cmd.Parameters.AddWithValue("@RequestStatus", business.RequestStatus);
+                    cmd.Parameters.AddWithValue("@UserId", business.UserId);
                     cmd.ExecuteNonQuery();
                 }
                 ViewBag.SuccessfulSubmit = true;
+                TempData["UserId"] = business.UserId;
                 return RedirectToAction("Index");
+            } else {
+                 Console.WriteLine("Model is NOT valid");
+                BusinessManagementModel model = BusinessModelHelper();
+                model.NewBusiness = business;
+                return View(model);
             }
-
-            BusinessManagementModel model = BusinessModelHelper();
-            model.NewBusiness = business;
-            return View(model);
         } 
 
         [HttpPost]
@@ -182,5 +190,6 @@ namespace Locate_closest_business.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
     }
 }

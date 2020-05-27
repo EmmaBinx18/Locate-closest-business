@@ -8,8 +8,7 @@
             <br/>
             <h2>To register you business, please register an account</h2>
             <br/>
-            @using (Html.BeginForm()){
-                <form id="loginForm" action="/Home/Login" method="Post">  
+            @using (Html.BeginForm("SignUp", "Login", FormMethod.Post)){
                     <div class="form-group">  
                         @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @placeholder="First Name" } })          
                         @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", @placeholder="Last Name" } })      
@@ -23,7 +22,6 @@
                         @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", @placeholder="Confirm Password", @type="password" } })      
                     </div> 
                     <input type="submit" class="signup-button" value="SIGN UP" />
-                </form> 
             }
             <br/><br/>  
             <h2>Don't have an account? <a class="login-link"><b>LOGIN</b></a></h2>
