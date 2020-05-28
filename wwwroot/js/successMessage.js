@@ -1,5 +1,5 @@
 $(document).ready(function () { 
-    var scripts = document.getElementsByTagName("script");
+    var scripts = document.getElementsByClassName("script");
     var message = "";
 
     for (var i = 0, len = scripts.length; i < len; i++) {

@@ -11,7 +11,7 @@ namespace Locate_closest_business.Models
        public string LastName { get; set; }
 
        [Required(ErrorMessage = "*")]
-       [EmailAddress]
+       [EmailAddress (ErrorMessage = "*")]
        public string Email { get; set; }
 
        [Required(ErrorMessage = "*")]
@@ -19,11 +19,11 @@ namespace Locate_closest_business.Models
        public string Phone { get; set; }
 
        [Required(AllowEmptyStrings = false, ErrorMessage = "*")]
-        [MinLength(8)]
+        [MinLength(8, ErrorMessage = "*")]
        public string Password { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "*")]
-        [Compare("Password")]
+        [Compare("Password", ErrorMessage = "*")]
        public string ConfirmPassword { get; set; }
 
        public string UserId { get; set; }
