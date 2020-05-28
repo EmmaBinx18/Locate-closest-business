@@ -158,7 +158,7 @@ CREATE PROCEDURE [dbo].[spAddNewUser]
 )
 AS  
 BEGIN  
-	INSERT INTO [dbo].[Users](UserId, Type) VALUES(@UserId, @FirstName, @LastName, @Email, @Phone, @Type)  
+	INSERT INTO [dbo].[Users](UserId, FirstName, LastName, Email, Phone, Type) VALUES(@UserId, @FirstName, @LastName, @Email, @Phone, @Type)  
 END 
 GO
 
@@ -173,7 +173,7 @@ GO
 
 DROP PROCEDURE IF EXISTS [dbo].[spGetAllAdminUsers]; 
 GO
-CREATE PROCEDURE [dbo].[spGetAllUsers] 
+CREATE PROCEDURE [dbo].[spGetAllAdminUsers] 
 AS  
 BEGIN  
 	SELECT UserId, FirstName, LastName, Email, Phone, Type FROM [dbo].[Users]
