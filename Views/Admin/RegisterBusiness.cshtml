@@ -54,3 +54,39 @@
         </div>
     </div>
 </div>
+
+<div class="display-error-message"></div>
+<div class="display-success-message"></div>
+
+@if(ViewBag.SuccessMessage != null){
+    <script type="text/javascript">
+        $(document).ready(function () { 
+            $('.display-error-message').css("display", "none");
+            $('.display-success-message').css("display", "block");
+            $('.display-success-message').html("@ViewBag.SuccessMessage");
+            setTimeout(function(){
+                $('.display-success-message').css("display", "none");
+            }, 3000); 
+        });
+    </script>
+}
+else if(ViewBag.ErrorMessage != null){
+    <script type="text/javascript">
+        $(document).ready(function () { 
+            $('.display-success-message').css("display", "none");
+            $('.display-error-message').css("display", "block");
+            $('.display-error-message').html("@ViewBag.ErrorMessage");
+            setTimeout(function(){
+                $('.display-error-message').css("display", "none");
+            }, 3000); 
+        });
+    </script>
+}
+else{
+    <script type="text/javascript">
+        $(document).ready(function () {  
+            $('.display-success-message').css("display", "none"); 
+            $('.display-error-message').css("display", "none");
+        });
+    </script>
+}

@@ -35,21 +35,21 @@ namespace Locate_closest_business.Controllers
             model.NewAdmin = new UserModel();
             model.AdminUsers = new List<UserModel>(); //TODO: populate list with admin users
 
-            using (SqlConnection con = new SqlConnection(CS))
-            {
-                SqlCommand cmd = new SqlCommand("spGetAllUsers", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                con.Open();
-                SqlDataReader sdr = cmd.ExecuteReader();
-                while(sdr.Read())
-                {
-                    string userId = sdr["UserId"].ToString();
-                    string type = sdr["Type"].ToString();
+            // using (SqlConnection con = new SqlConnection(CS))
+            // {
+            //     SqlCommand cmd = new SqlCommand("spGetAllUsers", con);
+            //     cmd.CommandType = CommandType.StoredProcedure;
+            //     con.Open();
+            //     SqlDataReader sdr = cmd.ExecuteReader();
+            //     while(sdr.Read())
+            //     {
+            //         string userId = sdr["UserId"].ToString();
+            //         string type = sdr["Type"].ToString();
                     
                     
-                    // model.Businesses.Add(business);
-                }
-            }
+            //         // model.Businesses.Add(business);
+            //     }
+            // }
 
             return model;
         }
@@ -61,7 +61,7 @@ namespace Locate_closest_business.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddAdmin(UserManagementModel managementModel)
+        public async Task<IActionResult> Admin(UserManagementModel managementModel)
         {
             if(ModelState.IsValid){
                 UserModel user = new UserModel(managementModel.NewAdmin);
@@ -72,7 +72,7 @@ namespace Locate_closest_business.Controllers
                     response.EnsureSuccessStatusCode();
                     var responseBody = await response.Content.ReadAsAsync<SuccessResponse>();
                     user.UserId = responseBody.localId;
-
+                    
                     using (SqlConnection con = new SqlConnection(CS))
                     {
                         SqlCommand cmd = new SqlCommand("spAddNewUser", con);
@@ -82,11 +82,13 @@ namespace Locate_closest_business.Controllers
                         cmd.Parameters.AddWithValue("@Type", "Admin");
                         cmd.ExecuteNonQuery();
                     }
-                    return View(new UserManagementModel());
+                    ViewBag.SuccessMessage = "Successfully created Admin user";
+                    return RedirectToAction("Admin");
                 }
                 catch(HttpRequestException)
                 {
-                    return View(AdminModelHelper());
+                    ViewBag.ErrorMessage = "Something went wrong. Please try again later";
+                    return View(managementModel);
                 }
             }
             return View(managementModel);
@@ -95,15 +97,23 @@ namespace Locate_closest_business.Controllers
         [HttpPost]
         public IActionResult RemoveAdmin(string userId)
         {
-            using (SqlConnection con = new SqlConnection(CS))
-            {
-                SqlCommand cmd = new SqlCommand("spRemoveAdmin", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                con.Open();
-                cmd.Parameters.AddWithValue("@UserId", userId);
-                cmd.ExecuteNonQuery();
+            try{
+                using (SqlConnection con = new SqlConnection(CS))
+                {
+                    SqlCommand cmd = new SqlCommand("spRemoveAdmin", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    con.Open();
+                    cmd.Parameters.AddWithValue("@UserId", userId);
+                    cmd.ExecuteNonQuery();
+                }
+                ViewBag.SuccessMessage = "Successfully removed Admin user";
+                return RedirectToAction("Admin");
             }
-            return RedirectToAction("Admin");
+            catch(Exception)
+            {
+                ViewBag.ErrorMessage = "Something went wrong. Please try again later";
+                return RedirectToAction("Admin");
+            }
         }
 
         public IActionResult RegisterBusiness()
@@ -136,11 +146,11 @@ namespace Locate_closest_business.Controllers
                         cmd.Parameters.AddWithValue("@UserId", business.UserId);
                         cmd.ExecuteNonQuery();
                     }
-                    ViewBag.Message = "Successfully submitted business registration request";
-                    return View(new BusinessModel());
+                    ViewBag.SuccessMessage = "Successfully submitted business registration request";
+                    return RedirectToAction("RegisterBusiness");
                 }
                 catch(Exception){
-                    ViewBag.Message = "Something went wrong. Please try again later.";
+                    ViewBag.ErrorMessage = "Something went wrong. Please try again later.";
                     return View(business);
                 }
             }
@@ -176,7 +186,7 @@ namespace Locate_closest_business.Controllers
         }
 
         [HttpPost]
-        public IActionResult ConfirmRegistration(string registrationNumber)
+        public IActionResult ConfirmRegistration(string confirmNumber)
         {
             try{
                 using (SqlConnection con = new SqlConnection(CS))
@@ -184,20 +194,20 @@ namespace Locate_closest_business.Controllers
                     SqlCommand cmd = new SqlCommand("spChangeBusinessRequestStatus", con);
                     cmd.CommandType = CommandType.StoredProcedure;
                     con.Open();
-                    cmd.Parameters.AddWithValue("@RegistrationNumber", registrationNumber);
+                    cmd.Parameters.AddWithValue("@RegistrationNumber", confirmNumber);
                     cmd.Parameters.AddWithValue("@RequestStatus", "Approved");
                     cmd.ExecuteNonQuery();
                 }
-                ViewBag.Message = "Successfully approved business registration request";
+                ViewBag.SuccessMessage = "Successfully approved business registration request";
             }
             catch(Exception){
-                ViewBag.Message = "Something went wrong. Please try again later.";
+                ViewBag.ErrorMessage = "Something went wrong. Please try again later.";
             }
             return RedirectToAction("RegistrationRequests");
         }
 
         [HttpPost]
-        public IActionResult DenyRegistration(string registrationNumber)
+        public IActionResult DenyRegistration(string denyNumber)
         {
             try{
                 using (SqlConnection con = new SqlConnection(CS))
@@ -205,14 +215,14 @@ namespace Locate_closest_business.Controllers
                     SqlCommand cmd = new SqlCommand("spChangeBusinessRequestStatus", con);
                     cmd.CommandType = CommandType.StoredProcedure;
                     con.Open();
-                    cmd.Parameters.AddWithValue("@RegistrationNumber", registrationNumber);
+                    cmd.Parameters.AddWithValue("@RegistrationNumber", denyNumber);
                     cmd.Parameters.AddWithValue("@RequestStatus", "Denied");
                     cmd.ExecuteNonQuery();
                 }
-                ViewBag.Message = "Successfully denied business registration request";
+                ViewBag.SuccessMessage = "Successfully denied business registration request";
             }
             catch(Exception){
-                ViewBag.Message = "Something went wrong. Please try again later.";
+                ViewBag.ErrorMessage = "Something went wrong. Please try again later.";
             }
 
             return RedirectToAction("RegistrationRequests");

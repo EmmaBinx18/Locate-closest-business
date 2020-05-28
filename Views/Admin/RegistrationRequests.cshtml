@@ -2,13 +2,6 @@
 
 @Html.Partial("~/Views/Admin/Sidenav.cshtml")
 
-@* <script type="text/javascript">
-    var message = '@ViewBag.Message';
-    if(message != null){
-        alert(message);
-    }
-</script> *@
-
 <div class="business-container">
     <div class="businesses">
         <br/>
@@ -38,14 +31,14 @@
                             <td>@business.Address</td>
                             <td>
                                 <form action="/Admin/ConfirmRegistration" method="Post">
-                                    <input name="@business.RegistrationNumber" style="display: none;" value="@business.RegistrationNumber" />
-                                    <input class="confirm-button" type="button" value="Confirm" />
+                                    <input name="confirmNumber" style="display: none;" value="@business.RegistrationNumber" />
+                                    <input class="confirm-button" type="submit" value="Confirm" />
                                 </form>
                             </td>
                             <td>
                                 <form action="/Admin/DenyRegistration" method="Post">
-                                    <input name="@business.RegistrationNumber" style="display: none;" value="@business.RegistrationNumber" />
-                                    <input class="deny-button" type="button" value="Deny" />
+                                    <input name="denyNumber" style="display: none;" value="@business.RegistrationNumber" />
+                                    <input class="deny-button" type="submit" value="Deny" />
                                 </form>
                             </td>
                         </tr>
@@ -56,3 +49,39 @@
         <br/><br/>
     </div>
 </div>
+
+<div class="display-error-message"></div>
+<div class="display-success-message"></div>
+
+@if(ViewBag.SuccessMessage != null){
+    <script type="text/javascript">
+        $(document).ready(function () { 
+            $('.display-error-message').css("display", "none");
+            $('.display-success-message').css("display", "block");
+            $('.display-success-message').html("@ViewBag.SuccessMessage");
+            setTimeout(function(){
+                $('.display-success-message').css("display", "none");
+            }, 3000); 
+        });
+    </script>
+}
+else if(ViewBag.ErrorMessage != null){
+    <script type="text/javascript">
+        $(document).ready(function () { 
+            $('.display-success-message').css("display", "none");
+            $('.display-error-message').css("display", "block");
+            $('.display-error-message').html("@ViewBag.ErrorMessage");
+            setTimeout(function(){
+                $('.display-error-message').css("display", "none");
+            }, 3000); 
+        });
+    </script>
+}
+else{
+    <script type="text/javascript">
+        $(document).ready(function () {  
+            $('.display-success-message').css("display", "none"); 
+            $('.display-error-message').css("display", "none");
+        });
+    </script>
+}
