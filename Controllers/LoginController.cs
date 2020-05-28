@@ -55,15 +55,6 @@ namespace Locate_closest_business.Controllers
             }
         }
 
-        public bool LoggedIn()
-        {
-           return loggedInUser == null;
-        }
-
-        public void Logout(){
-            loggedInUser = null;
-        }
-
         public IActionResult Signup()
         {
             return View(new UserModel());
@@ -102,7 +93,7 @@ namespace Locate_closest_business.Controllers
         }      
 
     }
-    
+
     public class SuccessResponse {
         public string localId { get; set; }
     }
