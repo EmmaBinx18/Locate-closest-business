@@ -1,19 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-<<<<<<< HEAD
       "C:\\Users\\bbdnet1724\\.dotnet\\store\\|arch|\\|tfm|",
       "C:\\Users\\bbdnet1724\\.nuget\\packages"
-=======
-<<<<<<< HEAD
-      "C:\\Users\\bbdnet1724\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\bbdnet1724\\.nuget\\packages"
-=======
-      "C:\\Users\\bbdnet2165\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\bbdnet2165\\.nuget\\packages",
-      "C:\\Microsoft\\Xamarin\\NuGet"
->>>>>>> master
->>>>>>> master
     ]
   }
 }
