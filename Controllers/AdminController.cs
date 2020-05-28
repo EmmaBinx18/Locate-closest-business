@@ -44,10 +44,10 @@ namespace Locate_closest_business.Controllers
                 while(sdr.Read())
                 {
                     string userId = sdr["UserId"].ToString();
-                    string type = = sdr["Type"].ToString();
+                    string type = sdr["Type"].ToString();
                     
                     
-                    model.Businesses.Add(business);
+                    // model.Businesses.Add(business);
                 }
             }
 
