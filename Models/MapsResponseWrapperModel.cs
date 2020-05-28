@@ -29,10 +29,10 @@ namespace Locate_closest_business.Models
         
     }
     public struct Coordinate
-        {
-            public double lat {get; set;}
-            public double lng {get; set;}
-        }
+    {
+        public double lat {get; set;}
+        public double lng {get; set;}
+    }
 
     public struct OpeningHours
     {

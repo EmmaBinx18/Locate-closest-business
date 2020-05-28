@@ -47,11 +47,9 @@ function performSearch() {
         },
         success: function (returnData)
         {
-            if (returnData.status === "OK") {
-                clearMarkers(map);
-                for (var i = 0; i < returnData.results.length; i++) {
-                    createMarker(returnData.results[i]);
-                }
+            clearMarkers(map);
+            for (var i = 0; i < returnData.results.length; i++) {
+                createMarker(returnData.results[i]);
             }
         }
     });
