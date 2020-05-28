@@ -19,6 +19,9 @@ namespace Locate_closest_business.Controllers
     public class LoginController : Controller
     {
         private string CS = "data source=localhost\\SQLEXPRESS; database=EssentialBusinesses; integrated security=true;";
+        private string FB_SignIn = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBH0hd7PJ8tFZ1aK18OypZV_Ki6kWDpqGQ";
+        private string FB_SignUp = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBH0hd7PJ8tFZ1aK18OypZV_Ki6kWDpqGQ";
+        
         static HttpClient client = new HttpClient();
         private readonly ILogger<LoginController> _logger;
 
@@ -38,7 +41,7 @@ namespace Locate_closest_business.Controllers
             if (ModelState.GetValidationState("Email") == ModelValidationState.Valid
                 && ModelState.GetFieldValidationState("Password") == ModelValidationState.Valid){
                 UserLoginDetails details = new UserLoginDetails(user);   
-                HttpResponseMessage response = await client.PostAsJsonAsync("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBH0hd7PJ8tFZ1aK18OypZV_Ki6kWDpqGQ", details);
+                HttpResponseMessage response = await client.PostAsJsonAsync(FB_SignIn, details);
                 
                 try {
                     response.EnsureSuccessStatusCode();
@@ -84,7 +87,7 @@ namespace Locate_closest_business.Controllers
                 user.Password = EncryptionModel.HashPassword(user.Password);
                 user.ConfirmPassword = user.Password;
                 UserLoginDetails details = new UserLoginDetails(user);    
-                HttpResponseMessage response = await client.PostAsJsonAsync("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBH0hd7PJ8tFZ1aK18OypZV_Ki6kWDpqGQ",details);
+                HttpResponseMessage response = await client.PostAsJsonAsync(FB_SignUp, details);
                 
                 try {
                     response.EnsureSuccessStatusCode();
