@@ -35,25 +35,21 @@ namespace Locate_closest_business.Controllers
             model.NewAdmin = new UserModel();
             model.AdminUsers = new List<UserModel>(); //TODO: populate list with admin users
 
-            // using (SqlConnection con = new SqlConnection(CS))
-            // {
-            //     SqlCommand cmd = new SqlCommand("spGetAllBusinesses", con);
-            //     cmd.CommandType = CommandType.StoredProcedure;
-            //     con.Open();
-            //     SqlDataReader sdr = cmd.ExecuteReader();
-            //     while(sdr.Read())
-            //     {
-            //         BusinessModel business = new BusinessModel();
-            //         business.CompanyName = sdr["CompanyName"].ToString();
-            //         business.RegistrationNumber = sdr["RegistrationNumber"].ToString();
-            //         business.Category = sdr["Category"].ToString();
-            //         business.NumEmployees = (int)sdr["NumEmployees"];
-            //         business.Address = sdr["Address"].ToString();
-            //         business.RequestStatus = sdr["RequestStatus"].ToString();
-            //         business.UserId = sdr["UserId"].ToString();
-            //         model.Businesses.Add(business);
-            //     }
-            // }
+            using (SqlConnection con = new SqlConnection(CS))
+            {
+                SqlCommand cmd = new SqlCommand("spGetAllUsers", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                SqlDataReader sdr = cmd.ExecuteReader();
+                while(sdr.Read())
+                {
+                    string userId = sdr["UserId"].ToString();
+                    string type = = sdr["Type"].ToString();
+                    
+                    
+                    model.Businesses.Add(business);
+                }
+            }
 
             return model;
         }
@@ -97,8 +93,16 @@ namespace Locate_closest_business.Controllers
         }
 
         [HttpPost]
-        public IActionResult RemoveAdmin(string email)
+        public IActionResult RemoveAdmin(string userId)
         {
+            using (SqlConnection con = new SqlConnection(CS))
+            {
+                SqlCommand cmd = new SqlCommand("spRemoveAdmin", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                cmd.Parameters.AddWithValue("@UserId", userId);
+                cmd.ExecuteNonQuery();
+            }
             return RedirectToAction("Admin");
         }
 
@@ -149,7 +153,7 @@ namespace Locate_closest_business.Controllers
             
             using (SqlConnection con = new SqlConnection(CS))
             {
-                SqlCommand cmd = new SqlCommand("spGetAllBusinesses", con);
+                SqlCommand cmd = new SqlCommand("spGetAllBusinessesPending", con);
                 cmd.CommandType = CommandType.StoredProcedure;
                 con.Open();
                 SqlDataReader sdr = cmd.ExecuteReader();

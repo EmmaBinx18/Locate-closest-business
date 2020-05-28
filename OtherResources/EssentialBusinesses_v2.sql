@@ -90,6 +90,16 @@ BEGIN
 END
 GO
 
+DROP PROCEDURE IF EXISTS [dbo].[spGetAllBusinessesPending];  
+GO
+CREATE PROCEDURE [dbo].[spGetAllBusinessesPending] 
+AS  
+BEGIN  
+	SELECT CompanyName, RegistrationNumber, Category, NumEmployees, Address, AddressTown, AddressLongitude, AddressLatitude, RequestStatus, UserId FROM [dbo].[Businesses]
+	WHERE RequestStatus = 'Pending'
+END
+GO
+
 DROP PROCEDURE IF EXISTS [dbo].[spGetBusinessesByUser]; 
 GO
 CREATE PROCEDURE [dbo].[spGetBusinessesByUser] 
@@ -144,6 +154,19 @@ BEGIN
 END 
 GO
 
+DROP PROCEDURE IF EXISTS [dbo].[spGetAllUsers]; 
+GO
+CREATE PROCEDURE [dbo].[spGetAllUsers] 
+(
+	@UserId varchar(100), 
+	@Type varchar(20)
+)
+AS  
+BEGIN  
+	SELECT UserId, Type FROM [dbo].[Users]
+END 
+GO
+
 DROP PROCEDURE IF EXISTS [dbo].[spUserTypeById];  
 GO
 CREATE PROCEDURE [dbo].[spUserTypeById] 
@@ -153,6 +176,20 @@ CREATE PROCEDURE [dbo].[spUserTypeById]
 AS  
 BEGIN  
 	SELECT Type FROM [dbo].[Users]
+	WHERE UserId = @UserId
+END 
+GO
+
+DROP PROCEDURE IF EXISTS [dbo].[spRemoveAdmin];  
+GO
+CREATE PROCEDURE [dbo].[spRemoveAdmin] 
+(
+	@UserId varchar(100) 
+)
+AS  
+BEGIN  
+	UPDATE [dbo].[Users]
+	SET Type = 'Standard'
 	WHERE UserId = @UserId
 END 
 GO

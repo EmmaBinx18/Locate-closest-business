@@ -30,27 +30,25 @@
                 </thead>
                 <tbody>
                     @foreach(var business in Model){
-                        @if(business.RequestStatus == "Pending"){
-                            <tr scope="row">
-                                <td>@business.CompanyName</td>
-                                <td>@business.RegistrationNumber</td>
-                                <td>@business.Category</td>
-                                <td>@business.NumEmployees</td>
-                                <td>@business.Address</td>
-                                <td>
-                                    <form action="/Admin/ConfirmRegistration" method="Post">
-                                        <input name="@business.RegistrationNumber" style="display: none;" value="@business.RegistrationNumber" />
-                                        <input class="confirm-button" type="button" value="Confirm" />
-                                    </form>
-                                </td>
-                                <td>
-                                    <form action="/Admin/DenyRegistration" method="Post">
-                                        <input name="@business.RegistrationNumber" style="display: none;" value="@business.RegistrationNumber" />
-                                        <input class="deny-button" type="button" value="Deny" />
-                                    </form>
-                                </td>
-                            </tr>
-                        }
+                        <tr scope="row">
+                            <td>@business.CompanyName</td>
+                            <td>@business.RegistrationNumber</td>
+                            <td>@business.Category</td>
+                            <td>@business.NumEmployees</td>
+                            <td>@business.Address</td>
+                            <td>
+                                <form action="/Admin/ConfirmRegistration" method="Post">
+                                    <input name="@business.RegistrationNumber" style="display: none;" value="@business.RegistrationNumber" />
+                                    <input class="confirm-button" type="button" value="Confirm" />
+                                </form>
+                            </td>
+                            <td>
+                                <form action="/Admin/DenyRegistration" method="Post">
+                                    <input name="@business.RegistrationNumber" style="display: none;" value="@business.RegistrationNumber" />
+                                    <input class="deny-button" type="button" value="Deny" />
+                                </form>
+                            </td>
+                        </tr>
                     }
                 </tbody>
             </table>
