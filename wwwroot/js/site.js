@@ -47,13 +47,6 @@
         $("#stages").toggle();
     });
 
-    $("#statistics-button").click(function() {
-        $("#statistics").toggle();
-        if($('#statistics').css('display') != "none"){
-            $("#statistics").load('/Statistics/Summary');
-        }
-    });
-
     $(".signup-link").click(function(){
         $("#signup-modal").modal('show');
         $("#login-admin").modal('hide');
