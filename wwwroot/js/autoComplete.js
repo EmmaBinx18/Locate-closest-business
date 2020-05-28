@@ -27,6 +27,5 @@ function initialize() {
         $('#AddressLongitude').val(place.geometry.location.lng());  
         $('#AddressTown').val(town); 
         $('#BusinessCreatorUserId').val($("#userId").val()); 
-        console.log($('#BusinessCreatorUserId').val());
     });
 }

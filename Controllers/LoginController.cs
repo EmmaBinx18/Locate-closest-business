@@ -42,27 +42,18 @@ namespace Locate_closest_business.Controllers
                  try {
                     response.EnsureSuccessStatusCode();
                     var responseBody = await response.Content.ReadAsAsync<SuccessResponse>();
-                    // Console.WriteLine(responseBody.localId);
                     user.UserId = responseBody.localId;
                     TempData["userId"] = user.UserId;
-                    loggedInUser = user;
                     //  return RedirectToAction("Admin", "Admin"); to go to Admin console
                      return RedirectToAction("Index", "Home");
                 }
                 catch(HttpRequestException e)
                 {
-                    // Console.WriteLine("\nException Caught!");	
-                    // Console.WriteLine("Message :{0} ",e.Message);
                     return RedirectToAction("Index", "Home");
                 }
-                //On succesful validation:
-                //loggedInUser = found user;
-                //If user is an admin -> redirect to admin return RedirectToAction("Admin/Admin");
-                
             } else {
                return RedirectToAction("Index", "Home");
             }
-            
         }
 
         public bool LoggedIn()
@@ -92,17 +83,13 @@ namespace Locate_closest_business.Controllers
                  try {
                     response.EnsureSuccessStatusCode();
                     var responseBody = await response.Content.ReadAsAsync<SuccessResponse>();
-                    // Console.WriteLine(responseBody.localId);
                     user.UserId = responseBody.localId;
                     TempData["userId"] = user.UserId;
-                    loggedInUser = user;
                     //  return RedirectToAction("Admin", "Admin"); to go to Admin console
                      return RedirectToAction("Index", "Home");
                 }
                 catch(HttpRequestException e)
                 {
-                    // Console.WriteLine("\nException Caught!");	
-                    // Console.WriteLine("Message :{0} ",e.Message);
                     return RedirectToAction("Index", "Home");
                 }
             } else {

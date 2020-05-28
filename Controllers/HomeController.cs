@@ -136,10 +136,8 @@ namespace Locate_closest_business.Controllers
         [HttpPost]
         public IActionResult RegisterBusiness(BusinessModel business)
         {
-            Console.WriteLine("Endoint reached!");
             if (ModelState.IsValid)
             {
-                Console.WriteLine("Model is valid");
                 business.RequestStatus = "Pending";
 
                 using (SqlConnection con = new SqlConnection(CS))
