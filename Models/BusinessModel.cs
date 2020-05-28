@@ -5,9 +5,6 @@ namespace Locate_closest_business.Models
     public class BusinessModel
     {
        [Required]
-       public string MemberIds { get; set; }
-
-       [Required]
        public string CompanyName { get; set; }
 
        [Required]

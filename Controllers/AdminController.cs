@@ -79,7 +79,6 @@ namespace Locate_closest_business.Controllers
                         SqlCommand cmd = new SqlCommand("spAddNewBusiness", con);
                         cmd.CommandType = CommandType.StoredProcedure;
                         con.Open();
-                        cmd.Parameters.AddWithValue("@MemberIds", business.MemberIds);
                         cmd.Parameters.AddWithValue("@CompanyName", business.CompanyName);
                         cmd.Parameters.AddWithValue("@RegistrationNumber", business.RegistrationNumber);
                         cmd.Parameters.AddWithValue("@Category", business.Category);
@@ -115,7 +114,6 @@ namespace Locate_closest_business.Controllers
                 while(sdr.Read())
                 {
                     BusinessModel business = new BusinessModel();
-                    business.MemberIds = sdr["MemberIds"].ToString();
                     business.CompanyName = sdr["CompanyName"].ToString();
                     business.RegistrationNumber = sdr["RegistrationNumber"].ToString();
                     business.Category = sdr["Category"].ToString();

@@ -11,9 +11,6 @@
             @using (Html.BeginForm()){
                 <form id="addAdminForm">  
                     <div class="form-group">  
-                        @Html.TextAreaFor(model => model.MemberIds, new { @class = "form-control", placeholder="Provide all ID/Passport numbers of the current directors/members"})
-                    </div>
-                    <div class="form-group">  
                         @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control", @placeholder="Registered Company Name" } })
                         @Html.EditorFor(model => model.RegistrationNumber, new { htmlAttributes = new { @class = "form-control", @placeholder="Company Registration Number" } })
                     </div>

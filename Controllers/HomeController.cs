@@ -142,7 +142,6 @@ namespace Locate_closest_business.Controllers
                     SqlCommand cmd = new SqlCommand("spAddNewBusiness", con);
                     cmd.CommandType = CommandType.StoredProcedure;
                     con.Open();
-                    cmd.Parameters.AddWithValue("@MemberIds", business.MemberIds);
                     cmd.Parameters.AddWithValue("@CompanyName", business.CompanyName);
                     cmd.Parameters.AddWithValue("@RegistrationNumber", business.RegistrationNumber);
                     cmd.Parameters.AddWithValue("@Category", business.Category);

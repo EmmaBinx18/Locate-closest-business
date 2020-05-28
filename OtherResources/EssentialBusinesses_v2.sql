@@ -12,7 +12,6 @@ USE EssentialBusinesses;
 DROP TABLE IF EXISTS [dbo].[Businesses];
 CREATE TABLE [dbo].[Businesses](  
     [ID] [int] IDENTITY(1,1) NOT NULL, 
-	[MemberIds] [varchar](100) NOT NULL, 
     [CompanyName] [varchar](100) NOT NULL,
     [RegistrationNumber] [varchar](100) NOT NULL,
     [Category] [varchar](100) NOT NULL,
@@ -36,7 +35,6 @@ DROP PROCEDURE IF EXISTS [dbo].[spAddNewBusiness];
 GO
 CREATE PROCEDURE [dbo].[spAddNewBusiness]  
 (  
-	@MemberIds varchar(100),
     @CompanyName varchar(100),
     @RegistrationNumber varchar(100),
     @Category varchar(100),
@@ -50,7 +48,6 @@ CREATE PROCEDURE [dbo].[spAddNewBusiness]
 AS  
 BEGIN  
 INSERT INTO [dbo].[Businesses](
-	MemberIds,
 	CompanyName,
 	RegistrationNumber,
 	Category,
@@ -61,7 +58,6 @@ INSERT INTO [dbo].[Businesses](
 	AddressLatitude,
 	RequestStatus)  
 values(	
-	@MemberIds,
 	@CompanyName,
 	@RegistrationNumber,
 	@Category,
@@ -77,7 +73,7 @@ GO
 CREATE PROCEDURE [dbo].[spGetAllBusinesses] 
 AS  
 BEGIN  
-	SELECT MemberIds, CompanyName, RegistrationNumber, Category, NumEmployees, Address, RequestStatus FROM [dbo].[Businesses]
+	SELECT CompanyName, RegistrationNumber, Category, NumEmployees, Address, RequestStatus FROM [dbo].[Businesses]
 END 
 
 GO

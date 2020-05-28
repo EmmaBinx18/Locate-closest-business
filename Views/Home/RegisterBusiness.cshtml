@@ -37,10 +37,6 @@
                 <h4 class="modal-title">Register your business as an essential service</h4><br/>  
                 <br/>
                 <form id="registrationForm">
-                    <div class="form-group">  
-                        @Html.TextAreaFor(model => model.NewBusiness.MemberIds, new { @class = "form-control", placeholder="Provide all ID/Passport numbers of the current directors/members"})
-                    </div>
-
                 <br/><h4>Company Details</h4><br/>
                 <div class="form-group">  
                     @Html.EditorFor(model => model.NewBusiness.CompanyName, new { htmlAttributes = new { @class = "form-control input", @placeholder="Registered Company Name" } })
