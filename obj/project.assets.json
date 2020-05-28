@@ -5231,20 +5231,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Ngoni\\.nuget\\packages\\": {}
+    "C:\\Users\\bbdnet2165\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ngoni\\Desktop\\BBD\\C#\\Project\\Locate-closest-business\\Locate-closest-business.csproj",
+      "projectUniqueName": "C:\\Users\\bbdnet2165\\Documents\\Grad Program\\Test\\Locate-closest-business\\Locate-closest-business.csproj",
       "projectName": "Locate-closest-business",
-      "projectPath": "C:\\Users\\Ngoni\\Desktop\\BBD\\C#\\Project\\Locate-closest-business\\Locate-closest-business.csproj",
-      "packagesPath": "C:\\Users\\Ngoni\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ngoni\\Desktop\\BBD\\C#\\Project\\Locate-closest-business\\obj\\",
+      "projectPath": "C:\\Users\\bbdnet2165\\Documents\\Grad Program\\Test\\Locate-closest-business\\Locate-closest-business.csproj",
+      "packagesPath": "C:\\Users\\bbdnet2165\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\bbdnet2165\\Documents\\Grad Program\\Test\\Locate-closest-business\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Ngoni\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\bbdnet2165\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -5314,12 +5319,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[3.1.2, 3.1.2]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -5328,7 +5327,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
       }
     }
   },

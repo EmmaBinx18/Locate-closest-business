@@ -9,7 +9,10 @@
     //         $("#login-button").html('Logout');  
     //     }
     // }); 
-
+    $('#buttonStats').click(function () {
+        $("#WorldStats").modal('show');
+    });
+    
     if(!isUserLoggedIn()){
         $("#login-button").html('Login');
     }  
