@@ -4,26 +4,26 @@ namespace Locate_closest_business.Models
 {
     public class UserModel
     {
-       [Required]
+       [Required(ErrorMessage = "*")]
        public string FirstName { get; set; }
 
-       [Required]
+       [Required(ErrorMessage = "*")]
        public string LastName { get; set; }
 
-       [Required]
+       [Required(ErrorMessage = "*")]
        [EmailAddress]
        public string Email { get; set; }
 
-       [Required]
+       [Required(ErrorMessage = "*")]
        [Phone]
        public string Phone { get; set; }
 
-       [Required(AllowEmptyStrings = false)]
-       [MinLength(8)]
+       [Required(AllowEmptyStrings = false, ErrorMessage = "*")]
+        [MinLength(8)]
        public string Password { get; set; }
 
-       [Required(AllowEmptyStrings = false)]
-       [Compare("Password")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "*")]
+        [Compare("Password")]
        public string ConfirmPassword { get; set; }
 
        public string UserId { get; set; }
