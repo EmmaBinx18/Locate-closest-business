@@ -51,7 +51,6 @@ namespace Locate_closest_business.Controllers
 
             try
             {
-                //Perform search using Google Maps API
                 MapsResponseWrapperModel compoundResponse = new MapsResponseWrapperModel();
                 compoundResponse.results = new List<MapsNearbySearchResultModel>();
 
@@ -73,7 +72,6 @@ namespace Locate_closest_business.Controllers
 
                 float f = float.Parse(lat, CultureInfo.InvariantCulture);
 
-                //Perform Database search on Custom Added Businesses
                 try
                 {
                     using (SqlConnection con = new SqlConnection(CS))
@@ -119,7 +117,6 @@ namespace Locate_closest_business.Controllers
                 }
 
                 compoundResponse.status = "OK";
-
                 return Json(compoundResponse);
             }
             catch (Exception exp)
@@ -178,7 +175,6 @@ namespace Locate_closest_business.Controllers
                     }
                 }
             }
-
             return model;
         }
 
@@ -192,28 +188,33 @@ namespace Locate_closest_business.Controllers
         {
             if (ModelState.IsValid)
             {
-                BusinessModel business = new BusinessModel(businessManagementModel.NewBusiness);
-                business.RequestStatus = "Pending";
-                business.UserId = TempData["UserId"].ToString();
+                try{
+                    BusinessModel business = new BusinessModel(businessManagementModel.NewBusiness);
+                    business.RequestStatus = "Pending";
+                    business.UserId = TempData["UserId"].ToString();
 
-                using (SqlConnection con = new SqlConnection(CS))
-                {
-                    SqlCommand cmd = new SqlCommand("spAddNewBusiness", con);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    con.Open();
-                    cmd.Parameters.AddWithValue("@CompanyName", business.CompanyName);
-                    cmd.Parameters.AddWithValue("@RegistrationNumber", business.RegistrationNumber);
-                    cmd.Parameters.AddWithValue("@Category", business.Category);
-                    cmd.Parameters.AddWithValue("@NumEmployees", business.NumEmployees);
-                    cmd.Parameters.AddWithValue("@Address", business.Address);
-                    cmd.Parameters.AddWithValue("@AddressTown", business.AddressTown);
-                    cmd.Parameters.AddWithValue("@AddressLongitude", business.AddressLongitude);
-                    cmd.Parameters.AddWithValue("@AddressLatitude", business.AddressLatitude);
-                    cmd.Parameters.AddWithValue("@RequestStatus", business.RequestStatus);
-                    cmd.Parameters.AddWithValue("@UserId", business.UserId);
-                    cmd.ExecuteNonQuery();
+                    using (SqlConnection con = new SqlConnection(CS))
+                    {
+                        SqlCommand cmd = new SqlCommand("spAddNewBusiness", con);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        con.Open();
+                        cmd.Parameters.AddWithValue("@CompanyName", business.CompanyName);
+                        cmd.Parameters.AddWithValue("@RegistrationNumber", business.RegistrationNumber);
+                        cmd.Parameters.AddWithValue("@Category", business.Category);
+                        cmd.Parameters.AddWithValue("@NumEmployees", business.NumEmployees);
+                        cmd.Parameters.AddWithValue("@Address", business.Address);
+                        cmd.Parameters.AddWithValue("@AddressTown", business.AddressTown);
+                        cmd.Parameters.AddWithValue("@AddressLongitude", business.AddressLongitude);
+                        cmd.Parameters.AddWithValue("@AddressLatitude", business.AddressLatitude);
+                        cmd.Parameters.AddWithValue("@RequestStatus", business.RequestStatus);
+                        cmd.Parameters.AddWithValue("@UserId", business.UserId);
+                        cmd.ExecuteNonQuery();
+                    }
+                    TempData["SuccessMessage"] = "Successfully sent business registration request";
                 }
-                ViewBag.SuccessfulSubmit = true;
+                catch(Exception){
+                    TempData["ErrorMessage"] = "Something went wrong. Please try again later.";
+                }
                 return RedirectToAction("Index");
             }
             BusinessManagementModel model = BusinessModelHelper();
@@ -224,13 +225,19 @@ namespace Locate_closest_business.Controllers
         [HttpPost]
         public IActionResult RemoveBusiness(string removeBusiness)
         {
-            using (SqlConnection con = new SqlConnection(CS))
-            {
-                SqlCommand cmd = new SqlCommand("spRemoveBusiness", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                con.Open();
-                cmd.Parameters.AddWithValue("@RegistrationNumber", removeBusiness);
-                cmd.ExecuteNonQuery();
+            try{
+                using (SqlConnection con = new SqlConnection(CS))
+                {
+                    SqlCommand cmd = new SqlCommand("spRemoveBusiness", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    con.Open();
+                    cmd.Parameters.AddWithValue("@RegistrationNumber", removeBusiness);
+                    cmd.ExecuteNonQuery();
+                }
+                TempData["SuccessMessage"] = "Successfully removed business";
+            }
+            catch(Exception){
+                TempData["ErrorMessage"] = "Something went wrong. Please try again later.";
             }
             return RedirectToAction("Index");
         } 
