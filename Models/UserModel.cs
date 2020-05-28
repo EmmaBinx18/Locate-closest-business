@@ -28,5 +28,27 @@ namespace Locate_closest_business.Models
 
        public string UserId { get; set; }
 
+       public UserModel()
+       {
+           this.FirstName = "";
+           this.LastName = "";
+           this.Email = "";
+           this.Phone = "";
+           this.Password = "";
+           this.ConfirmPassword = "";
+           this.UserId = "";
+       }
+
+       public UserModel(UserModel model)
+       {
+           this.FirstName = model.FirstName;
+           this.LastName = model.LastName;
+           this.Email = model.Email;
+           this.Phone = model.Phone;
+           this.Password = model.Password;
+           this.ConfirmPassword = model.ConfirmPassword;
+           this.UserId = "";
+       }
+
     }
 }

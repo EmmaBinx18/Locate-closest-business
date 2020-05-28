@@ -2,13 +2,6 @@
 
 @Html.Partial("~/Views/Admin/Sidenav.cshtml")
 
-<script type="text/javascript">
-    var message = '@ViewBag.Message';
-    if(message != null){
-        alert(message);
-    }
-</script>
-
 <div class="business-container">
     <div class="businesses">
         <br/>
@@ -30,27 +23,25 @@
                 </thead>
                 <tbody>
                     @foreach(var business in Model){
-                        @if(business.RequestStatus == "Pending"){
-                            <tr scope="row">
-                                <td>@business.CompanyName</td>
-                                <td>@business.RegistrationNumber</td>
-                                <td>@business.Category</td>
-                                <td>@business.NumEmployees</td>
-                                <td>@business.Address</td>
-                                <td>
-                                    <form action="/Admin/ConfirmRegistration" method="Post">
-                                        <input name="@business.RegistrationNumber" style="display: none;" value="@business.RegistrationNumber" />
-                                        <input class="confirm-button" type="button" value="Confirm" />
-                                    </form>
-                                </td>
-                                <td>
-                                    <form action="/Admin/DenyRegistration" method="Post">
-                                        <input name="@business.RegistrationNumber" style="display: none;" value="@business.RegistrationNumber" />
-                                        <input class="deny-button" type="button" value="Deny" />
-                                    </form>
-                                </td>
-                            </tr>
-                        }
+                        <tr scope="row">
+                            <td>@business.CompanyName</td>
+                            <td>@business.RegistrationNumber</td>
+                            <td>@business.Category</td>
+                            <td>@business.NumEmployees</td>
+                            <td>@business.Address</td>
+                            <td>
+                                <form action="/Admin/ConfirmRegistration" method="Post">
+                                    <input name="confirmNumber" style="display: none;" value="@business.RegistrationNumber" />
+                                    <input class="confirm-button" type="submit" value="Confirm" />
+                                </form>
+                            </td>
+                            <td>
+                                <form action="/Admin/DenyRegistration" method="Post">
+                                    <input name="denyNumber" style="display: none;" value="@business.RegistrationNumber" />
+                                    <input class="deny-button" type="submit" value="Deny" />
+                                </form>
+                            </td>
+                        </tr>
                     }
                 </tbody>
             </table>
@@ -58,3 +49,21 @@
         <br/><br/>
     </div>
 </div>
+
+<div class="display-error-message"></div>
+<div class="display-success-message"></div>
+
+@if(ViewBag.SuccessMessage != null){
+    <script src="~/js/successMessage.js?@ViewBag.SuccessMessage"type="text/javascript"></script>
+}
+else if(ViewBag.ErrorMessage != null){
+    <script src="~/js/errorMessage.js?@ViewBag.ErrorMessage" type="text/javascript"></script>
+}
+else{
+    <script type="text/javascript">
+        $(document).ready(function () {  
+            $('.display-success-message').css("display", "none"); 
+            $('.display-error-message').css("display", "none");
+        });
+    </script>
+}

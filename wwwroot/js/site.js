@@ -1,4 +1,4 @@
-﻿$(document).ready(function () {      
+﻿$(document).ready(function () {          
     if(!isUserLoggedIn()){
         $("#login-button").html('Login');
     }  
@@ -57,8 +57,8 @@
         $("#signup-modal").modal('hide');
     });
 
-    $("#admin-logout").click(function() {
-        logout();
+    $('#buttonStats').click(function () {
+        $("#WorldStats").modal('show');
     });
 });
 

@@ -49,7 +49,7 @@ a:hover {
 }
 
 #search-modal{
-  margin-top: 1%;
+  margin-top: 0%;
   margin-left: 2.6%;
   position: absolute;
   left: 0;
@@ -81,7 +81,7 @@ img{
   margin-top: 6%;
 }
 
-#login-button, .register-business-button, .stages-button, .statistics-button{
+#login-button, .register-business-button, .stages-button, .stats-button{
   border-radius: 6px;
   padding: 15px 30px 15px 30px;
   margin-bottom: 2%;
@@ -91,18 +91,18 @@ img{
 }
 
 .register-business-button, .stages-button{
-  margin-left: 1%;
+  margin-left: 2%;
+}
+
+.stats-button{
+  margin-left: 56%;
 }
 
 #login-button{
   margin-left: 3%;
 }
 
-.statistics-button{
-  margin-left: 55%;
-}
-
-.register-business-button:hover, .stages-button:hover, #login-button:hover, .statistics-button:hover{
+.register-business-button:hover, .stages-button:hover, #login-button:hover, #buttonStats:hover{
   font-size: 1.1rem;
 }
 
@@ -146,14 +146,16 @@ img{
 
 #stages{
   display: none;
-  width: 100%;
+  width: 30%;
   border: grey;
   box-shadow: rgb(99, 99, 99) 5px 8px 12px -8px;
   margin-left: 3%;
   border-radius: 6px;
   background-color: white;
-  margin-bottom: 2%;
+  margin-bottom: 1%;
   padding: 20px;
+  z-index: 4;
+  border: 2px solid #cccccc;
 }
 
 tr{
@@ -213,6 +215,34 @@ td{
 
 .gm-control-active, .gmnoprint{
   display: none !important;
+}
+
+.display-error-message{
+  display: none;
+  position: fixed;
+  top: 2%;
+  left: 40%;
+  background-color: #f8ccc8;
+  padding: 10px;
+  padding-left: 100px;
+  padding-right: 100px;
+  border-radius: 6px;
+  box-shadow: rgb(99, 99, 99) 5px 8px 12px -8px;
+  font-size: 1.2rem;
+}
+
+.display-success-message{
+  display: none;
+  position: fixed;
+  top: 2%;
+  left: 40%;
+  background-color: #bff0de;
+  padding: 10px;
+  padding-left: 100px;
+  padding-right: 100px;
+  border-radius: 6px;
+  box-shadow: rgb(99, 99, 99) 5px 8px 12px -8px;
+  font-size: 1.2rem;
 }
 
 #stats {

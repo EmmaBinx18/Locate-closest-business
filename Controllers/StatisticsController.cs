@@ -27,7 +27,7 @@ namespace Locate_closest_business.Controllers
                 SummaryModel requestedSummary = new SummaryModel();
                 requestedSummary.Global = APIResponse.Global;
                 requestedSummary.Country = APIResponse.Countries.Find(i => i.Country == "South Africa");
-                return View(requestedSummary);
+                return PartialView("Summary", requestedSummary);
             }
             catch (Exception exp)
             {

@@ -33,8 +33,12 @@ DROP TABLE IF EXISTS [dbo].[Users];
 CREATE TABLE [dbo].[Users](  
     [ID] [int] IDENTITY(1,1) NOT NULL, 
 	[UserId] [varchar](100) NOT NULL, 
+	[FirstName] [varchar](100) NOT NULL,
+	[LastName] [varchar](100) NOT NULL,
+	[Email] [varchar](50) NOT NULL,
+	[Phone] [varchar](12) NOT NULL,
 	[Type] [varchar](20) NOT NULL,  
- CONSTRAINT [PK_Businesses] PRIMARY KEY CLUSTERED ([ID] ASC)
+ CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED ([ID] ASC)
 ) ON [PRIMARY]  
 GO  
   
@@ -79,14 +83,39 @@ VALUES(
 	@RequestStatus,
 	@UserId)  
 END 
+GO
 
 DROP PROCEDURE IF EXISTS [dbo].[spGetAllBusinesses];  
 GO
 CREATE PROCEDURE [dbo].[spGetAllBusinesses] 
 AS  
 BEGIN  
-	SELECT CompanyName, RegistrationNumber, Category, NumEmployees, Address, RequestStatus FROM [dbo].[Businesses]
+	SELECT CompanyName, RegistrationNumber, Category, NumEmployees, Address, AddressTown, AddressLongitude, AddressLatitude, RequestStatus, UserId FROM [dbo].[Businesses]
+END
+GO
+
+DROP PROCEDURE IF EXISTS [dbo].[spGetAllBusinessesPending];  
+GO
+CREATE PROCEDURE [dbo].[spGetAllBusinessesPending] 
+AS  
+BEGIN  
+	SELECT CompanyName, RegistrationNumber, Category, NumEmployees, Address, AddressTown, AddressLongitude, AddressLatitude, RequestStatus, UserId FROM [dbo].[Businesses]
+	WHERE RequestStatus = 'Pending'
+END
+GO
+
+DROP PROCEDURE IF EXISTS [dbo].[spGetBusinessesByUser]; 
+GO
+CREATE PROCEDURE [dbo].[spGetBusinessesByUser] 
+(
+	@UserId varchar(100) 
+)
+AS  
+BEGIN  
+	SELECT CompanyName, RegistrationNumber, Category, NumEmployees, Address, AddressTown, AddressLongitude, AddressLatitude, RequestStatus, UserId FROM [dbo].[Businesses]
+	WHERE UserId = @UserId
 END 
+GO
 
 DROP PROCEDURE IF EXISTS [dbo].[spChangeBusinessRequestStatus]; 
 GO
@@ -101,6 +130,7 @@ BEGIN
 	SET RequestStatus = @RequestStatus
 	WHERE RegistrationNumber = @RegistrationNumber
 END 
+GO
 
 DROP PROCEDURE IF EXISTS [dbo].[spRemoveBusiness]; 
 GO
@@ -113,18 +143,43 @@ BEGIN
 	DELETE [dbo].[Businesses]
 	WHERE RegistrationNumber = @RegistrationNumber
 END 
+GO
 
 DROP PROCEDURE IF EXISTS [dbo].[spAddNewUser]; 
 GO
 CREATE PROCEDURE [dbo].[spAddNewUser] 
 (
 	@UserId varchar(100), 
+	@FirstName varchar(100),
+	@LastName varchar(100),
+	@Email varchar(50),
+	@Phone varchar(12),
 	@Type varchar(20)
 )
 AS  
 BEGIN  
-	INSERT INTO [dbo].[Users](UserId, Type) VALUES(@UserId, @Type)  
+	INSERT INTO [dbo].[Users](UserId, FirstName, LastName, Email, Phone, Type) VALUES(@UserId, @FirstName, @LastName, @Email, @Phone, @Type)  
 END 
+GO
+
+DROP PROCEDURE IF EXISTS [dbo].[spGetAllUsers]; 
+GO
+CREATE PROCEDURE [dbo].[spGetAllUsers] 
+AS  
+BEGIN  
+	SELECT UserId, FirstName, LastName, Email, Phone, Type FROM [dbo].[Users]
+END 
+GO
+
+DROP PROCEDURE IF EXISTS [dbo].[spGetAllAdminUsers]; 
+GO
+CREATE PROCEDURE [dbo].[spGetAllAdminUsers] 
+AS  
+BEGIN  
+	SELECT UserId, FirstName, LastName, Email, Phone, Type FROM [dbo].[Users]
+	WHERE Type = 'Admin'
+END 
+GO
 
 DROP PROCEDURE IF EXISTS [dbo].[spUserTypeById];  
 GO
@@ -137,6 +192,21 @@ BEGIN
 	SELECT Type FROM [dbo].[Users]
 	WHERE UserId = @UserId
 END 
+GO
+
+DROP PROCEDURE IF EXISTS [dbo].[spRemoveAdmin];  
+GO
+CREATE PROCEDURE [dbo].[spRemoveAdmin] 
+(
+	@UserId varchar(100) 
+)
+AS  
+BEGIN  
+	UPDATE [dbo].[Users]
+	SET Type = 'Standard'
+	WHERE UserId = @UserId
+END 
+GO
 
 DROP PROCEDURE IF EXISTS [dbo].[spSearchOpenBusinesses];  
 GO
@@ -153,4 +223,4 @@ BEGIN
 	FROM [dbo].[Businesses] b
 	WHERE ((@userLocation.STDistance(geography::Point(b.AddressLatitude, b.AddressLongitude, '4326'))) < @radius) AND b.Category = @businessCategory AND b.RequestStatus = 'Approved'
 END 
-
+GO

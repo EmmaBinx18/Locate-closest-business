@@ -1,5 +1,8 @@
 @model Locate_closest_business.Models.BusinessModel;
 
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCsrxUyNDXzcp31HUoSxsLg3wlSHGvww3g"></script>
+<script src="~/js/autoComplete.js"></script>
+
 @Html.Partial("~/Views/Admin/Sidenav.cshtml")
 
 <div id="new-business-container" class="new-business-container">
@@ -37,7 +40,11 @@
                         @Html.EditorFor(model => model.NumEmployees, new { htmlAttributes = new { @class = "form-control", @placeholder="Number Of Employees" } })
                     </div>
                     <div class="form-group">  
-                        @Html.TextAreaFor(model => model.Address, new { @class = "form-control", placeholder="Company's physical address" })
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control address-control", @placeholder="Company's physical address", @id = "Address" } })
+                        @Html.HiddenFor(model => model.AddressLatitude, new { @id = "AddressLatitude" })  
+                        @Html.HiddenFor(model => model.AddressLongitude, new { @id = "AddressLongitude" }) 
+                        @Html.HiddenFor(model => model.AddressTown, new { @id = "AddressTown" }) 
+                        @Html.HiddenFor(model => model.UserId, new { @id = "BusinessCreatorUserId" }) 
                     </div>
                     <br/>
                     <input type="submit" class="register-new-business-button" value="REGISTER BUSINESS" />
@@ -47,3 +54,21 @@
         </div>
     </div>
 </div>
+
+<div class="display-error-message"></div>
+<div class="display-success-message"></div>
+
+@if(ViewBag.SuccessMessage != null){
+    <script src="~/js/successMessage.js?@ViewBag.SuccessMessage"type="text/javascript"></script>
+}
+else if(ViewBag.ErrorMessage != null){
+    <script src="~/js/errorMessage.js?@ViewBag.ErrorMessage" type="text/javascript"></script>
+}
+else{
+    <script type="text/javascript">
+        $(document).ready(function () {  
+            $('.display-success-message').css("display", "none"); 
+            $('.display-error-message').css("display", "none");
+        });
+    </script>
+}

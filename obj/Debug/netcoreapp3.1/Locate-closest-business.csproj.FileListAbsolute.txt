@@ -192,10 +192,8 @@ C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\obj\Debug\netcorea
 C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Statistics\HttpRequestError.cshtml.g.cs
 C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Statistics\ListedCountries.cshtml.g.cs
 C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Statistics\Summary.cshtml.g.cs
-<<<<<<< HEAD
 C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
 C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
-=======
 C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Locate-closest-business.csprojAssemblyReference.cache
 C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Locate-closest-business.csproj.CoreCompileInputs.cache
 C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Locate-closest-business.MvcApplicationPartsAssemblyInfo.cache
@@ -261,4 +259,4 @@ C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debu
 C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\staticwebassets\Locate-closest-business.StaticWebAssets.Manifest.cache
 C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\staticwebassets\Locate-closest-business.StaticWebAssets.xml
 C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Locate-closest-business.genruntimeconfig.cache
->>>>>>> master
+C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Statistics\CurrentWorldStatistics.cshtml.g.cs
