@@ -9,6 +9,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using System.Globalization;
+using System.Linq;
 
 namespace Locate_closest_business.Controllers
 {
@@ -34,12 +35,17 @@ namespace Locate_closest_business.Controllers
             return View(BusinessModelHelper());
         }
 		
-		public JsonResult MapsNearbySearch([FromQuery]string lat, [FromQuery]string lng, [FromQuery]string category, int searchRadius = 1500, bool opennow = false)
+        public JsonResult MapsNearbySearch([FromQuery]string lat, [FromQuery]string lng, [FromQuery]string category, int searchRadius = 1500, bool opennow = false)
         {
             var errorJSON = new{errorMessage = "External_API_Unreachable"};
+            bool mapsSearchSuccess = false;
+            bool dbSearchSuccess = false;
 
             List<string> businessTypeList = new List<string>();
             List<string> keywordSearchList = new List<string>();
+
+            MapsResponseWrapperModel compoundResponse = new MapsResponseWrapperModel();
+            compoundResponse.results = new List<MapsNearbySearchResultModel>();
 
             foreach(string item in searchModel.serviceDictionary[category]["businessList"]){
                 businessTypeList.Add(item);
@@ -48,18 +54,18 @@ namespace Locate_closest_business.Controllers
             foreach(string item in searchModel.serviceDictionary[category]["keywordList"]){
                 keywordSearchList.Add(item);
             }
-
+            
             try
             {
-                MapsResponseWrapperModel compoundResponse = new MapsResponseWrapperModel();
-                compoundResponse.results = new List<MapsNearbySearchResultModel>();
+                //Perform search using Google Maps API
+                string business_status_criteria = "OPERATIONAL";
 
                 foreach (string vBusinessType in businessTypeList)
                 {
                     Task<MapsResponseWrapperModel> task = Task.Run<MapsResponseWrapperModel>(async () => await PerformNearbySearch(lat,lng,vBusinessType,"",searchRadius,opennow));
                     task.Wait();
                     MapsResponseWrapperModel APIResponse = task.Result;
-                    compoundResponse.results.AddRange(APIResponse.results);
+                    compoundResponse.results.AddRange(APIResponse.results.Where(p => String.Equals(p.business_status, business_status_criteria, StringComparison.CurrentCulture)));
                 }
 
                 foreach (string vKeyword in keywordSearchList)
@@ -67,84 +73,79 @@ namespace Locate_closest_business.Controllers
                     Task<MapsResponseWrapperModel> task = Task.Run<MapsResponseWrapperModel>(async () => await PerformNearbySearch(lat,lng,"",vKeyword,searchRadius,opennow));
                     task.Wait();
                     MapsResponseWrapperModel APIResponse = task.Result;
-                    compoundResponse.results.AddRange(APIResponse.results);
+                    compoundResponse.results.AddRange(APIResponse.results.Where(p => String.Equals(p.business_status, business_status_criteria, StringComparison.CurrentCulture)));
                 }
+                mapsSearchSuccess = true;
+            }
+            catch (Exception MapsAPIException)
+            {
+                Console.WriteLine("Exception in HomeController.cs -> MapsNearbySearch Google Maps API search:\n" + MapsAPIException);
+            }
 
-                float f = float.Parse(lat, CultureInfo.InvariantCulture);
-
-                try
+            //Perform Database search on Custom Added Businesses
+            try
+            {
+                using (SqlConnection con = new SqlConnection(CS))
                 {
-                    using (SqlConnection con = new SqlConnection(CS))
+                    SqlCommand cmd = new SqlCommand("spSearchOpenBusinesses", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@lat", SqlDbType.Float).Value = float.Parse(lat, CultureInfo.InvariantCulture);
+                    cmd.Parameters.Add("@lng", SqlDbType.Float).Value = float.Parse(lng, CultureInfo.InvariantCulture);
+                    cmd.Parameters.Add("@radius", SqlDbType.Int).Value = searchRadius;
+                    cmd.Parameters.Add("@businessCategory", SqlDbType.VarChar).Value = category;
+
+                    con.Open();
+                    SqlDataReader sdr = cmd.ExecuteReader();
+                    while(sdr.Read())
                     {
-                        SqlCommand cmd = new SqlCommand("spSearchOpenBusinesses", con);
-                        cmd.CommandType = CommandType.StoredProcedure;
-
-                        cmd.Parameters.Add("@lat", SqlDbType.Float).Value = float.Parse(lat, CultureInfo.InvariantCulture);
-                        cmd.Parameters.Add("@lng", SqlDbType.Float).Value = float.Parse(lng, CultureInfo.InvariantCulture);
-                        cmd.Parameters.Add("@radius", SqlDbType.Int).Value = searchRadius;
-                        cmd.Parameters.Add("@businessCategory", SqlDbType.VarChar).Value = category;
-
-                        con.Open();
-                        SqlDataReader sdr = cmd.ExecuteReader();
-                        while(sdr.Read())
-                        {
-                            MapsNearbySearchResultModel business = new MapsNearbySearchResultModel();
-                            business.business_status = "OPERATIONAL";
-                            business.geometry = new GeometryWrapper{
-                                location = new Coordinate{
-                                    lat = double.Parse(sdr["AddressLatitude"].ToString(), CultureInfo.InvariantCulture),
-                                    lng = double.Parse(sdr["AddressLongitude"].ToString(), CultureInfo.InvariantCulture)
-                                }
-                            };
-                            business.icon = "";
-                            business.id = "";
-                            business.name = sdr["CompanyName"].ToString();
-                            business.opening_hours = new OpeningHours{
-                                open_now = true
-                            };
-                            business.place_id = "";
-                            business.price_level = "";
-                            string[] categoryArray = new string[1];
-                            categoryArray[0] = category;
-                            business.types = categoryArray;
-                            compoundResponse.results.Add(business);
-                        }
+                        MapsNearbySearchResultModel business = new MapsNearbySearchResultModel();
+                        business.business_status = "OPERATIONAL";
+                        business.geometry = new GeometryWrapper{
+                            location = new Coordinate{
+                                lat = double.Parse(sdr["AddressLatitude"].ToString(), CultureInfo.InvariantCulture),
+                                lng = double.Parse(sdr["AddressLongitude"].ToString(), CultureInfo.InvariantCulture)
+                            }
+                        };
+                        business.icon = "";
+                        business.id = "";
+                        business.name = sdr["CompanyName"].ToString();
+                        business.opening_hours = new OpeningHours{
+                            open_now = true
+                        };
+                        business.place_id = "";
+                        business.price_level = "";
+                        string[] categoryArray = new string[1];
+                        categoryArray[0] = category;
+                        business.types = categoryArray;
+                        compoundResponse.results.Add(business);
                     }
                 }
-                catch(Exception DBException)
-                {
-                    Console.WriteLine("Exception in HomeController.cs -> MapsNearbySearch Database read::\n" + DBException);
-                }
-
-                compoundResponse.status = "OK";
-                return Json(compoundResponse);
+                dbSearchSuccess = true;
             }
-            catch (Exception exp)
+            catch(Exception DBException)
             {
-                if (exp.Message.Contains("No such host is known."))
-                {
-                    Console.WriteLine(exp);
-                    return Json(errorJSON);
-                }
-                else if (exp.Message.Contains("Response status code does not indicate success: 404 (Not Found)"))
-                {
-                    Console.WriteLine(exp);
-                    var incorrectParamsContent = new
-                    {
-                        errorMessage = "Specified_Country_Slug_Not_Found"
-                    };
-                    return Json(incorrectParamsContent);
-                }
-                else
-                {
-                    Console.WriteLine(exp);
-                    var unexpectedErrorContent = new
-                    {
-                        errorMessage = exp.Message
-                    };
-                    return Json(unexpectedErrorContent);
-                }
+                Console.WriteLine("Exception in HomeController.cs -> MapsNearbySearch Database read::\n" + DBException);
             }
+
+            if ((dbSearchSuccess && mapsSearchSuccess) == true)
+            {
+                compoundResponse.status = "OK";
+            }
+            else if ((dbSearchSuccess && mapsSearchSuccess) == false)
+            {
+                compoundResponse.status = "FAILED";
+            }
+            else if (mapsSearchSuccess == false)
+            {
+                compoundResponse.status = "MAPS_UNAVAILABLE";
+            }
+            else
+            {
+                compoundResponse.status = "DB_UNAVAILABLE";
+            }
+            
+            return Json(compoundResponse);
         }
 
         private BusinessManagementModel BusinessModelHelper()
