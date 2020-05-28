@@ -17,7 +17,6 @@ namespace Locate_closest_business.Controllers
     public class LoginController : Controller
     {
         static HttpClient client = new HttpClient();
-        UserModel loggedInUser = null;
         private readonly ILogger<LoginController> _logger;
 
         public LoginController(ILogger<LoginController> logger)
@@ -76,11 +75,10 @@ namespace Locate_closest_business.Controllers
             if(ModelState.IsValid){
                 user.Password = EncryptionModel.HashPassword(user.Password);
                 user.ConfirmPassword = user.Password;
-    UserLoginDetails details = new UserLoginDetails(user);    
-                HttpResponseMessage response = await client.PostAsJsonAsync(
-                "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBH0hd7PJ8tFZ1aK18OypZV_Ki6kWDpqGQ",
-                 details);
-                 try {
+                UserLoginDetails details = new UserLoginDetails(user);    
+                HttpResponseMessage response = await client.PostAsJsonAsync("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBH0hd7PJ8tFZ1aK18OypZV_Ki6kWDpqGQ",details);
+                
+                try {
                     response.EnsureSuccessStatusCode();
                     var responseBody = await response.Content.ReadAsAsync<SuccessResponse>();
                     user.UserId = responseBody.localId;
@@ -104,21 +102,7 @@ namespace Locate_closest_business.Controllers
         }      
 
     }
-
-    public class UserLoginDetails{
-        public string email { get; set; }
-
-        public string password { get; set; }
-
-        public bool returnSecureToken { get; set; }
-
-        public UserLoginDetails(UserModel user) {
-            this.email = user.Email;
-            this.password = user.Password;
-            this.returnSecureToken = true;
-        }
-    }
-
+    
     public class SuccessResponse {
         public string localId { get; set; }
     }
