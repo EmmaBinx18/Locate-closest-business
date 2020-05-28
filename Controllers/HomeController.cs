@@ -28,6 +28,8 @@ namespace Locate_closest_business.Controllers
             if(TempData["userId"] != null) {
                 ViewBag.userId = TempData["userId"]; 
             } 
+            List<AllCountryStatisticsModel> listOfCountrySummaries = new StatisticsController().GetAllCountryStats();
+            ViewBag.listOfCountries = listOfCountrySummaries;
             return View(BusinessModelHelper());
         }
 		

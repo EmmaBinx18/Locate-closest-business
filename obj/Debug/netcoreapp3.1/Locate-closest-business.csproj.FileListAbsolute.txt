@@ -192,5 +192,73 @@ C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\obj\Debug\netcorea
 C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Statistics\HttpRequestError.cshtml.g.cs
 C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Statistics\ListedCountries.cshtml.g.cs
 C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Statistics\Summary.cshtml.g.cs
+<<<<<<< HEAD
 C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
 C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+=======
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Locate-closest-business.csprojAssemblyReference.cache
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Locate-closest-business.csproj.CoreCompileInputs.cache
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Locate-closest-business.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Locate-closest-business.RazorAssemblyInfo.cache
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Locate-closest-business.RazorAssemblyInfo.cs
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Locate-closest-business.AssemblyInfoInputs.cache
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Locate-closest-business.AssemblyInfo.cs
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Locate-closest-business.dll
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Locate-closest-business.pdb
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\bin\Debug\netcoreapp3.1\package-lock.json
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\bin\Debug\netcoreapp3.1\Locate-closest-business.exe
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\bin\Debug\netcoreapp3.1\Locate-closest-business.deps.json
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\bin\Debug\netcoreapp3.1\Locate-closest-business.runtimeconfig.json
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\bin\Debug\netcoreapp3.1\Locate-closest-business.runtimeconfig.dev.json
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\bin\Debug\netcoreapp3.1\Locate-closest-business.dll
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\bin\Debug\netcoreapp3.1\Locate-closest-business.pdb
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\bin\Debug\netcoreapp3.1\Locate-closest-business.Views.dll
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\bin\Debug\netcoreapp3.1\Locate-closest-business.Views.pdb
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\bin\Debug\netcoreapp3.1\BCrypt.Net.dll
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\bin\Debug\netcoreapp3.1\System.Web.Mvc.dll
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\bin\Debug\netcoreapp3.1\System.Web.Razor.dll
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\bin\Debug\netcoreapp3.1\System.Web.Helpers.dll
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\bin\Debug\netcoreapp3.1\System.Web.WebPages.Deployment.dll
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\bin\Debug\netcoreapp3.1\System.Web.WebPages.Razor.dll
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\bin\Debug\netcoreapp3.1\System.Web.WebPages.dll
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\bin\Debug\netcoreapp3.1\Microsoft.Web.Infrastructure.dll
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Locate-closest-business.TagHelpers.input.cache
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Locate-closest-business.TagHelpers.output.cache
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Locate-closest-business.RazorCoreGenerate.cache
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Admin.cshtml.g.cs
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Admin\RegisterBusiness.cshtml.g.cs
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Admin\RegistrationRequests.cshtml.g.cs
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Sidenav.cshtml.g.cs
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Home\RegisterBusiness.cshtml.g.cs
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Login\Login.cshtml.g.cs
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Login\Signup.cshtml.g.cs
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Statistics\CurrentWorldStatistics.cshtml.g.cs
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Statistics\HttpRequestError.cshtml.g.cs
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Statistics\ListedCountries.cshtml.g.cs
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Statistics\Summary.cshtml.g.cs
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Locate-closest-business.RazorTargetAssemblyInfo.cache
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Locate-closest-business.RazorTargetAssemblyInfo.cs
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Locate-closest-business.Views.pdb
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Locate-closest-business.csproj.CopyComplete
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\staticwebassets\Locate-closest-business.StaticWebAssets.Manifest.cache
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\staticwebassets\Locate-closest-business.StaticWebAssets.xml
+C:\Users\bbdnet2165\Documents\Grad Program\Test\Locate-closest-business\obj\Debug\netcoreapp3.1\Locate-closest-business.genruntimeconfig.cache
+>>>>>>> master

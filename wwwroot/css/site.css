@@ -214,3 +214,15 @@ td{
 .gm-control-active, .gmnoprint{
   display: none !important;
 }
+
+#stats {
+  display: none;
+  width: 100%;
+  border: grey;
+  box-shadow: rgb(99, 99, 99) 5px 8px 12px -8px;
+  margin-left: 3%;
+  border-radius: 6px;
+  background-color: white;
+  margin-bottom: 2%;
+  padding: 20px;
+}
