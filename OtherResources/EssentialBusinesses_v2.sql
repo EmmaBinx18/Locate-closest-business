@@ -79,6 +79,7 @@ VALUES(
 	@RequestStatus,
 	@UserId)  
 END 
+GO
 
 DROP PROCEDURE IF EXISTS [dbo].[spGetAllBusinesses];  
 GO
@@ -87,6 +88,7 @@ AS
 BEGIN  
 	SELECT CompanyName, RegistrationNumber, Category, NumEmployees, Address, AddressTown, AddressLongitude, AddressLatitude, RequestStatus, UserId FROM [dbo].[Businesses]
 END
+GO
 
 DROP PROCEDURE IF EXISTS [dbo].[spGetBusinessesByUser]; 
 GO
@@ -99,6 +101,7 @@ BEGIN
 	SELECT CompanyName, RegistrationNumber, Category, NumEmployees, Address, AddressTown, AddressLongitude, AddressLatitude, RequestStatus, UserId FROM [dbo].[Businesses]
 	WHERE UserId = @UserId
 END 
+GO
 
 DROP PROCEDURE IF EXISTS [dbo].[spChangeBusinessRequestStatus]; 
 GO
@@ -113,6 +116,7 @@ BEGIN
 	SET RequestStatus = @RequestStatus
 	WHERE RegistrationNumber = @RegistrationNumber
 END 
+GO
 
 DROP PROCEDURE IF EXISTS [dbo].[spRemoveBusiness]; 
 GO
@@ -125,6 +129,7 @@ BEGIN
 	DELETE [dbo].[Businesses]
 	WHERE RegistrationNumber = @RegistrationNumber
 END 
+GO
 
 DROP PROCEDURE IF EXISTS [dbo].[spAddNewUser]; 
 GO
@@ -137,6 +142,7 @@ AS
 BEGIN  
 	INSERT INTO [dbo].[Users](UserId, Type) VALUES(@UserId, @Type)  
 END 
+GO
 
 DROP PROCEDURE IF EXISTS [dbo].[spUserTypeById];  
 GO

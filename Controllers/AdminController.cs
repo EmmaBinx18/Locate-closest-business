@@ -69,8 +69,6 @@ namespace Locate_closest_business.Controllers
         {
             if(ModelState.IsValid){
                 UserModel user = new UserModel(managementModel.NewAdmin);
-                // user.Password = EncryptionModel.HashPassword(user.Password);
-                // user.ConfirmPassword = user.Password;
                 UserLoginDetails details = new UserLoginDetails(user);    
                 HttpResponseMessage response = await client.PostAsJsonAsync(FB_SignUp, details);
                 

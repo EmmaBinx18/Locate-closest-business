@@ -46,7 +46,6 @@ namespace Locate_closest_business.Controllers
         {
             if (ModelState.GetValidationState("Email") == ModelValidationState.Valid
                 && ModelState.GetFieldValidationState("Password") == ModelValidationState.Valid){
-                // boolean valid = Encryption.Verify(user.Password, )
                 UserLoginDetails details = new UserLoginDetails(user);   
                 HttpResponseMessage response = await client.PostAsJsonAsync(FB_SignIn, details);
                 
@@ -91,7 +90,6 @@ namespace Locate_closest_business.Controllers
         public async Task<IActionResult> Signup(UserModel user)
         {
             if(ModelState.IsValid){
-                // user.Password = EncryptionModel.HashPassword(user.Password);
                 user.ConfirmPassword = user.Password;
                 UserLoginDetails details = new UserLoginDetails(user);    
                 HttpResponseMessage response = await client.PostAsJsonAsync(FB_SignUp, details);
