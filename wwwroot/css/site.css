@@ -81,7 +81,7 @@ img{
   margin-top: 6%;
 }
 
-#login-button, .register-business-button, .stages-button{
+#login-button, .register-business-button, .stages-button, .stats-button{
   margin-left: 3%;
   border-radius: 6px;
   padding: 15px 30px 15px 30px;
@@ -95,7 +95,7 @@ img{
   margin-left: 9%;
 }
 
-.register-business-button:hover, .stages-button:hover, #login-button:hover{
+.register-business-button:hover, .stages-button:hover, #login-button:hover, #buttonStats:hover{
   font-size: 1.1rem;
 }
 
@@ -206,4 +206,16 @@ td{
 
 .gm-control-active, .gmnoprint{
   display: none !important;
+}
+
+#stats {
+  display: none;
+  width: 100%;
+  border: grey;
+  box-shadow: rgb(99, 99, 99) 5px 8px 12px -8px;
+  margin-left: 3%;
+  border-radius: 6px;
+  background-color: white;
+  margin-bottom: 2%;
+  padding: 20px;
 }
