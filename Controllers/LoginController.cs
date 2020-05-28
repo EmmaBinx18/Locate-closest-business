@@ -67,6 +67,8 @@ namespace Locate_closest_business.Controllers
                         {
                             string type = sdr["Type"].ToString();
                             if(type == "Admin"){
+                                TempData["UserId"] = user.UserId;
+                                TempData.Keep("UserID");
                                 TempData["SuccessMessage"] = "Successfully logged in";
                                 return RedirectToAction("Admin", "Admin");
                             }
