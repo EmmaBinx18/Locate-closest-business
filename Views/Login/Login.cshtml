@@ -6,16 +6,14 @@
             <button type="button" class="close" data-dismiss="modal">×</button>
             <h4 class="modal-title">LOGIN</h4>  
             <br/>
-            <h2>Please log into your account to register your business</h2>
+            <h2>Enter your email and password to log in</h2>
             <br/>
-            @using (Html.BeginForm()){
-                <form id="loginForm" action="/Home/Login" method="Post">  
-                    <div class="form-group">  
-                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder="Email" } })          
-                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder="Password", @type="password" } }) 
-                    </div> 
-                    <input type="submit" class="login-button" value="LOGIN" />
-                </form> 
+            @using (Html.BeginForm("Login", "Login", FormMethod.Post)){
+                <div class="form-group">  
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder="Email" } })          
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder="Password", @type="password" } }) 
+                </div> 
+                <input type="submit" class="login-button" value="LOGIN" />
             }
             <br/><br/>  
             <h2>Don't have an account? <a class="signup-link"><b>SIGN UP</b></a></h2>

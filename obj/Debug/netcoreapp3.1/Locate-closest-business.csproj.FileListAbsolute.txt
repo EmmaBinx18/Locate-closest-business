@@ -183,3 +183,12 @@ C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-busine
 C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Statistics\HttpRequestError.cshtml.g.cs
 C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Statistics\ListedCountries.cshtml.g.cs
 C:\Users\bbdnet1724\Documents\BBD\Grad Program\C# Level-Up\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Statistics\Summary.cshtml.g.cs
+C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Admin\RegisterBusiness.cshtml.g.cs
+C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Admin\RegistrationRequests.cshtml.g.cs
+C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Sidenav.cshtml.g.cs
+C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Statistics\HttpRequestError.cshtml.g.cs
+C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Statistics\ListedCountries.cshtml.g.cs
+C:\Users\Ngoni\Desktop\BBD\C#\Project\Locate-closest-business\obj\Debug\netcoreapp3.1\Razor\Views\Statistics\Summary.cshtml.g.cs

@@ -24,6 +24,9 @@ namespace Locate_closest_business.Controllers
 
         public IActionResult Index()
         {
+            if(TempData["userId"] != null) {
+                ViewBag.userId = TempData["userId"]; 
+            } 
             return View(BusinessModelHelper());
         }
 		
@@ -150,15 +153,18 @@ namespace Locate_closest_business.Controllers
                     cmd.Parameters.AddWithValue("@AddressLongitude", business.AddressLongitude);
                     cmd.Parameters.AddWithValue("@AddressLatitude", business.AddressLatitude);
                     cmd.Parameters.AddWithValue("@RequestStatus", business.RequestStatus);
+                    cmd.Parameters.AddWithValue("@UserId", business.UserId);
                     cmd.ExecuteNonQuery();
                 }
                 ViewBag.SuccessfulSubmit = true;
+                TempData["UserId"] = business.UserId;
                 return RedirectToAction("Index");
+            } else {
+                 Console.WriteLine("Model is NOT valid");
+                BusinessManagementModel model = BusinessModelHelper();
+                model.NewBusiness = business;
+                return View(model);
             }
-
-            BusinessManagementModel model = BusinessModelHelper();
-            model.NewBusiness = business;
-            return View(model);
         } 
 
         [HttpPost]
@@ -180,5 +186,6 @@ namespace Locate_closest_business.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
     }
 }

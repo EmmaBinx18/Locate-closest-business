@@ -20,7 +20,8 @@ CREATE TABLE [dbo].[Businesses](
    	[AddressTown] [varchar](100) NOT NULL,
     [AddressLongitude] [varchar](20) NOT NULL,
     [AddressLatitude] [varchar](20) NOT NULL,
-	[RequestStatus] [varchar](20) NOT NULL    
+	[RequestStatus] [varchar](20) NOT NULL,
+	[UserId] [varchar](100) NOT NULL,   
  CONSTRAINT [PK_Businesses] PRIMARY KEY CLUSTERED   
 (  
     [ID] ASC  
@@ -43,7 +44,8 @@ CREATE PROCEDURE [dbo].[spAddNewBusiness]
    	@AddressTown varchar(100),
     @AddressLongitude varchar(20),
     @AddressLatitude varchar(20),
-	@RequestStatus varchar(20)  
+	@RequestStatus varchar(20),
+	@UserId varchar(100)  
 )  
 AS  
 BEGIN  
@@ -56,7 +58,8 @@ INSERT INTO [dbo].[Businesses](
 	AddressTown,
 	AddressLongitude,
 	AddressLatitude,
-	RequestStatus)  
+	RequestStatus,
+	UserId)
 values(	
 	@CompanyName,
 	@RegistrationNumber,
@@ -66,7 +69,8 @@ values(
 	@AddressTown,
 	@AddressLongitude,
 	@AddressLatitude,
-	@RequestStatus)  
+	@RequestStatus,
+	@UserId)  
 END 
 
 GO
@@ -84,7 +88,7 @@ CREATE PROCEDURE [dbo].[spChangeBusinessRequestStatus]
 )
 AS  
 BEGIN  
-	UPDATE [dbo].[Business]
+	UPDATE [dbo].[Businesses]
 	SET RequestStatus = @RequestStatus
 	WHERE RegistrationNumber = @RegistrationNumber
 END 
@@ -96,6 +100,6 @@ CREATE PROCEDURE [dbo].[spRemoveBusiness]
 )
 AS  
 BEGIN  
-	DELETE [dbo].[Business]
+	DELETE [dbo].[Businesses]
 	WHERE RegistrationNumber = @RegistrationNumber
 END 

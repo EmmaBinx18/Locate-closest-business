@@ -1,25 +1,44 @@
 ﻿$(document).ready(function () {      
-    $.get("/Login/LoggedIn", function (data) {  
-        if(data == true){
-            $("#login-button").html('Login');
-        }  
-        else{
-            $("#login-button").html('Logout');  
-        }
-    }); 
+
+    // $.get("/Login/LoggedIn", function (data) {  
+    //     console.log(data);
+    //     if(data == true){
+    //         $("#login-button").html('Login');
+    //     }  
+    //     else{
+    //         $("#login-button").html('Logout');  
+    //     }
+    // }); 
+
+    if(!isUserLoggedIn()){
+        $("#login-button").html('Login');
+    }  
+    else{
+        $("#login-button").html('Logout');  
+    }
 
     $("#open-register-business-modal").click(function () {
-        $.get("/Login/LoggedIn", function (data) {  
-            if(data == true){
-                $("#login-admin").modal('show');
-            }  
-            else{
-                $("#register-business-modal").modal('show');  
-                $("#step1").css("display", "block");
-                $("#step2").css("display", "none");
-                $("#view-requests").css("display", "none");
-            }
-        }); 
+        // $.get("/Login/LoggedIn", function (data) {  
+        //     console.log(data);
+        //     if(data == true){
+        //         $("#login-admin").modal('show');
+        //     }  
+        //     else{
+        //         $("#register-business-modal").modal('show');  
+        //         $("#step1").css("display", "block");
+        //         $("#step2").css("display", "none");
+        //         $("#view-requests").css("display", "none");
+        //     }
+        // }); 
+        if(!isUserLoggedIn()){
+            $("#login-admin").modal('show');
+        }  
+        else{
+            $("#register-business-modal").modal('show');  
+            $("#step1").css("display", "block");
+            $("#step2").css("display", "none");
+            $("#view-requests").css("display", "none");
+        }
     });
 
     $('#login-button').click(function () {
@@ -27,9 +46,10 @@
             $("#login-admin").modal('show');
         }
         else{
-            $.get("/Login/Logout", function () {
-                $("#login-button").html('Login');
-            });
+            logout();
+            // $.get("/Login/Logout", function () {
+            //     $("#login-button").html('Login');
+            // });
         }
     });
 
@@ -150,4 +170,14 @@ function clearMarkers(map) {
         searchMarkers[i].setMap(null);
     }
     searchMarkers = [];
+}
+
+function isUserLoggedIn(){
+    var userId = $("#userId").val();
+    return (userId && userId.length > 0);
+}
+
+function logout(){
+    $("#userId").val("");
+    $("#login-button").html('Login');
 }
