@@ -23,7 +23,11 @@ namespace Locate_closest_business.Controllers
                 Task<SummaryResponseWrapperModel> task = Task.Run<SummaryResponseWrapperModel>(async () => await GetCovidSummary());
                 task.Wait();
                 SummaryResponseWrapperModel APIResponse = task.Result;
-
+                while (task.Result == null)
+                {
+                    task = Task.Run<SummaryResponseWrapperModel>(async () => await GetCovidSummary());
+                    task.Wait();
+                }
                 SummaryModel requestedSummary = new SummaryModel();
                 requestedSummary.Global = APIResponse.Global;
                 requestedSummary.Country = APIResponse.Countries.Find(i => i.Country == "South Africa");
@@ -42,6 +46,11 @@ namespace Locate_closest_business.Controllers
             {
                 Task<List<CountrySummaryModel>> task = Task.Run<List<CountrySummaryModel>>(async () => await GetListedCountries());
                 task.Wait();
+                while (task.Result == null)
+                {
+                    task = Task.Run<List<CountrySummaryModel>>(async () => await GetListedCountries());
+                    task.Wait();
+                }
                 List<CountrySummaryModel> APIResponse = task.Result;
 
                 ViewBag.listOfCountries = task.Result.OrderBy(o=>o.Country).ToList();
@@ -107,6 +116,11 @@ namespace Locate_closest_business.Controllers
             {
                 Task<SummaryResponseWrapperModel> task = Task.Run<SummaryResponseWrapperModel>(async () => await GetCovidSummary());
                 task.Wait();
+                while (task.Result == null)
+                {
+                    task = Task.Run<SummaryResponseWrapperModel>(async () => await GetCovidSummary());
+                    task.Wait();
+                }
                 SummaryResponseWrapperModel APIResponse = task.Result;
                 List<AllCountryStatisticsModel> countrySpecificStats = new List<AllCountryStatisticsModel>();
                 foreach (var item in APIResponse.Countries)
