@@ -25,6 +25,7 @@ namespace Locate_closest_business.Controllers
         public IActionResult Index()
         {
             if(TempData["UserId"] != null) {
+                TempData.Keep("UserID");
                 ViewBag.userId = TempData["UserId"]; 
             } 
             return View(BusinessModelHelper());
@@ -169,14 +170,14 @@ namespace Locate_closest_business.Controllers
         } 
 
         [HttpPost]
-        public IActionResult RemoveBusiness(string registrationNumber)
+        public IActionResult RemoveBusiness(string removeBusiness)
         {
             using (SqlConnection con = new SqlConnection(CS))
             {
                 SqlCommand cmd = new SqlCommand("spRemoveBusiness", con);
                 cmd.CommandType = CommandType.StoredProcedure;
                 con.Open();
-                cmd.Parameters.AddWithValue("@RegistrationNumber", registrationNumber);
+                cmd.Parameters.AddWithValue("@RegistrationNumber", removeBusiness);
                 cmd.ExecuteNonQuery();
             }
             return RedirectToAction("Index");

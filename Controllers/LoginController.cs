@@ -54,6 +54,7 @@ namespace Locate_closest_business.Controllers
                     var responseBody = await response.Content.ReadAsAsync<SuccessResponse>();
                     user.UserId = responseBody.localId;
                     TempData["UserId"] = user.UserId;
+                    TempData.Keep("UserID");
 
                     using (SqlConnection con = new SqlConnection(CS))
                     {
@@ -99,6 +100,7 @@ namespace Locate_closest_business.Controllers
                     var responseBody = await response.Content.ReadAsAsync<SuccessResponse>();
                     user.UserId = responseBody.localId;
                     TempData["UserId"] = user.UserId;
+                    TempData.Keep("UserID");
 
                     using (SqlConnection con = new SqlConnection(CS))
                     {
