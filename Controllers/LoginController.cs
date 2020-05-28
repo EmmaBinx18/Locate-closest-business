@@ -108,6 +108,10 @@ namespace Locate_closest_business.Controllers
                         cmd.CommandType = CommandType.StoredProcedure;
                         con.Open();
                         cmd.Parameters.AddWithValue("@UserId", user.UserId);
+                        cmd.Parameters.AddWithValue("@FirstName", user.FirstName);
+                        cmd.Parameters.AddWithValue("@LastName", user.LastName);
+                        cmd.Parameters.AddWithValue("@Email", user.Email);
+                        cmd.Parameters.AddWithValue("@Phone", user.Phone);
                         cmd.Parameters.AddWithValue("@Type", "Standard");
                         cmd.ExecuteNonQuery();
                     }
