@@ -9,12 +9,13 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using System.Globalization;
+using System.Linq;
 
 namespace Locate_closest_business.Controllers
 {
     public partial class HomeController : Controller
     {
-        private string CS = "data source=localhost\\SQLEXPRESS; database=EssentialBusinesses; integrated security=true;";
+        private string CS = "data source=localhost\\SQLEXPRESSB; database=EssentialBusinesses; integrated security=true;";
         public SearchModel searchModel = new SearchModel();
         private readonly ILogger<HomeController> _logger;
 
@@ -54,13 +55,14 @@ namespace Locate_closest_business.Controllers
                 //Perform search using Google Maps API
                 MapsResponseWrapperModel compoundResponse = new MapsResponseWrapperModel();
                 compoundResponse.results = new List<MapsNearbySearchResultModel>();
+                string business_status_criteria = "OPERATIONAL";
 
                 foreach (string vBusinessType in businessTypeList)
                 {
                     Task<MapsResponseWrapperModel> task = Task.Run<MapsResponseWrapperModel>(async () => await PerformNearbySearch(lat,lng,vBusinessType,"",searchRadius,opennow));
                     task.Wait();
                     MapsResponseWrapperModel APIResponse = task.Result;
-                    compoundResponse.results.AddRange(APIResponse.results);
+                    compoundResponse.results.AddRange(APIResponse.results.Where(p => String.Equals(p.business_status, business_status_criteria, StringComparison.CurrentCulture)));
                 }
 
                 foreach (string vKeyword in keywordSearchList)
@@ -68,7 +70,7 @@ namespace Locate_closest_business.Controllers
                     Task<MapsResponseWrapperModel> task = Task.Run<MapsResponseWrapperModel>(async () => await PerformNearbySearch(lat,lng,"",vKeyword,searchRadius,opennow));
                     task.Wait();
                     MapsResponseWrapperModel APIResponse = task.Result;
-                    compoundResponse.results.AddRange(APIResponse.results);
+                    compoundResponse.results.AddRange(APIResponse.results.Where(p => String.Equals(p.business_status, business_status_criteria, StringComparison.CurrentCulture)));
                 }
 
                 float f = float.Parse(lat, CultureInfo.InvariantCulture);
