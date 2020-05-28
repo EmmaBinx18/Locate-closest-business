@@ -18,7 +18,9 @@ namespace Locate_closest_business.Models
         public string name {get; set;}
         public OpeningHours opening_hours {get; set;}
         public string place_id {get; set;}
+        public double rating {get; set;}
         public string price_level {get; set;}
+        public string vicinity {get; set;}
         public string[] types {get; set;}
 
     }

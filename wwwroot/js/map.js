@@ -68,15 +68,39 @@ function performSearch() {
 
 function createMarker(place) {
     if (place.business_status == "OPERATIONAL") {
+        var customIcon = {
+            url: place.icon,
+            scaledSize: new google.maps.Size(35, 35),
+            origin: new google.maps.Point(0,0),
+            anchor: new google.maps.Point(0, 0)
+        };
 
-        var marker = new google.maps.Marker({
-            map: map,
-            position: place.geometry.location,
-            label: place.name
-        });
+        if (place.icon != "")
+        {
+            var marker = new google.maps.Marker({
+                map: map,
+                position: place.geometry.location,
+                label: place.name,
+                icon: customIcon
+            });
+        }
+        else
+        {
+            var marker = new google.maps.Marker({
+                map: map,
+                position: place.geometry.location,
+                label: place.name
+            });
+        }
 
         google.maps.event.addListener(marker, 'click', function () {
-            infowindow.setContent(place.business_status);
+            var infoContent = place.name + "<br>Status: " + place.business_status;
+
+            if (place.rating != null  && place.rating < 6) {infoContent += "<br>Rating: " + place.rating;}
+            if (place.price_level != null  && place.price_level != "6") {infoContent += "<br>Price Level: " + place.price_level;}
+            if (place.vicinity != null && place.vicinity != "") {infoContent += "<br>Vacinity: " + place.vicinity;}
+
+            infowindow.setContent(infoContent);
             infowindow.open(map, this);
         });
 
