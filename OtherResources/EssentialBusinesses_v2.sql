@@ -33,6 +33,10 @@ DROP TABLE IF EXISTS [dbo].[Users];
 CREATE TABLE [dbo].[Users](  
     [ID] [int] IDENTITY(1,1) NOT NULL, 
 	[UserId] [varchar](100) NOT NULL, 
+	[FirstName] [varchar](100) NOT NULL,
+	[LastName] [varchar](100) NOT NULL,
+	[Email] [varchar](50) NOT NULL,
+	[Phone] [varchar](12) NOT NULL,
 	[Type] [varchar](20) NOT NULL,  
  CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED ([ID] ASC)
 ) ON [PRIMARY]  
@@ -146,24 +150,34 @@ GO
 CREATE PROCEDURE [dbo].[spAddNewUser] 
 (
 	@UserId varchar(100), 
+	@FirstName varchar(100),
+	@LastName varchar(100),
+	@Email varchar(50),
+	@Phone varchar(12),
 	@Type varchar(20)
 )
 AS  
 BEGIN  
-	INSERT INTO [dbo].[Users](UserId, Type) VALUES(@UserId, @Type)  
+	INSERT INTO [dbo].[Users](UserId, Type) VALUES(@UserId, @FirstName, @LastName, @Email, @Phone, @Type)  
 END 
 GO
 
 DROP PROCEDURE IF EXISTS [dbo].[spGetAllUsers]; 
 GO
 CREATE PROCEDURE [dbo].[spGetAllUsers] 
-(
-	@UserId varchar(100), 
-	@Type varchar(20)
-)
 AS  
 BEGIN  
-	SELECT UserId, Type FROM [dbo].[Users]
+	SELECT UserId, FirstName, LastName, Email, Phone, Type FROM [dbo].[Users]
+END 
+GO
+
+DROP PROCEDURE IF EXISTS [dbo].[spGetAllAdminUsers]; 
+GO
+CREATE PROCEDURE [dbo].[spGetAllUsers] 
+AS  
+BEGIN  
+	SELECT UserId, FirstName, LastName, Email, Phone, Type FROM [dbo].[Users]
+	WHERE Type = 'Admin'
 END 
 GO
 

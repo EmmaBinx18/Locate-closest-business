@@ -219,7 +219,6 @@ td{
 
 .display-error-message{
   display: none;
-  display: block;
   position: fixed;
   top: 2%;
   left: 40%;
@@ -234,7 +233,6 @@ td{
 
 .display-success-message{
   display: none;
-  display: block;
   position: fixed;
   top: 2%;
   left: 40%;

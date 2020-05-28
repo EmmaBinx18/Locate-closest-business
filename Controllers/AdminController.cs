@@ -33,24 +33,27 @@ namespace Locate_closest_business.Controllers
         {
             UserManagementModel model = new UserManagementModel();
             model.NewAdmin = new UserModel();
-            model.AdminUsers = new List<UserModel>(); //TODO: populate list with admin users
+            model.AdminUsers = new List<UserModel>();
 
-            // using (SqlConnection con = new SqlConnection(CS))
-            // {
-            //     SqlCommand cmd = new SqlCommand("spGetAllUsers", con);
-            //     cmd.CommandType = CommandType.StoredProcedure;
-            //     con.Open();
-            //     SqlDataReader sdr = cmd.ExecuteReader();
-            //     while(sdr.Read())
-            //     {
-            //         string userId = sdr["UserId"].ToString();
-            //         string type = sdr["Type"].ToString();
-                    
-                    
-            //         // model.Businesses.Add(business);
-            //     }
-            // }
-
+            using (SqlConnection con = new SqlConnection(CS))
+            {
+                SqlCommand cmd = new SqlCommand("spGetAllAdminUsers", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                SqlDataReader sdr = cmd.ExecuteReader();
+                while(sdr.Read())
+                {
+                    UserModel user = new UserModel();
+                    user.UserId = sdr["UserId"].ToString();
+                    user.FirstName = sdr["FirstName"].ToString();
+                    user.LastName = sdr["LastName"].ToString();
+                    user.Email = sdr["Email"].ToString();
+                    user.Phone = sdr["Phone"].ToString();
+                    user.Password = "";
+                    user.ConfirmPassword = "";
+                    model.AdminUsers.Add(user);
+                }
+            }
             return model;
         }
 
