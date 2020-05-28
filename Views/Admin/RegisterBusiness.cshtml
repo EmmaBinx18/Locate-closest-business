@@ -1,3 +1,8 @@
+@{
+    var successMessage = (string)TempData["SuccessMessage"];
+    var errorMessage = (string)TempData["ErrorMessage"];
+}
+
 @model Locate_closest_business.Models.BusinessModel;
 
 <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCsrxUyNDXzcp31HUoSxsLg3wlSHGvww3g"></script>
@@ -55,14 +60,14 @@
     </div>
 </div>
 
-<div class="display-error-message"></div>
-<div class="display-success-message"></div>
+<div class="display-error-message message-boxes"></div>
+<div class="display-success-message message-boxes"></div>
 
-@if(ViewBag.SuccessMessage != null){
-    <script src="~/js/successMessage.js?@ViewBag.SuccessMessage"type="text/javascript"></script>
+@if(successMessage != null){
+    <script src="~/js/successMessage.js?@successMessage" class="script" type="text/javascript"></script>
 }
-else if(ViewBag.ErrorMessage != null){
-    <script src="~/js/errorMessage.js?@ViewBag.ErrorMessage" type="text/javascript"></script>
+else if(errorMessage != null){
+    <script src="~/js/errorMessage.js?@errorMessage" class="script" type="text/javascript"></script>
 }
 else{
     <script type="text/javascript">

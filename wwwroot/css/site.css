@@ -218,31 +218,27 @@ td{
 }
 
 .display-error-message{
-  display: none;
-  position: fixed;
-  top: 2%;
-  left: 40%;
   background-color: #f8ccc8;
-  padding: 10px;
-  padding-left: 100px;
-  padding-right: 100px;
-  border-radius: 6px;
-  box-shadow: rgb(99, 99, 99) 5px 8px 12px -8px;
-  font-size: 1.2rem;
+  border: 1.5px solid #fcaaa3;
 }
 
 .display-success-message{
+  background-color: #bff0de;
+  border: 1.5px solid #85f8ce;
+}
+
+.message-boxes{
   display: none;
   position: fixed;
-  top: 2%;
+  bottom: 4%;
   left: 40%;
-  background-color: #bff0de;
   padding: 10px;
   padding-left: 100px;
   padding-right: 100px;
   border-radius: 6px;
   box-shadow: rgb(99, 99, 99) 5px 8px 12px -8px;
   font-size: 1.2rem;
+  z-index: 7;
 }
 
 #stats {

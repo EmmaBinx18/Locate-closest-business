@@ -67,18 +67,21 @@ namespace Locate_closest_business.Controllers
                         {
                             string type = sdr["Type"].ToString();
                             if(type == "Admin"){
+                                TempData["SuccessMessage"] = "Successfully logged in";
                                 return RedirectToAction("Admin", "Admin");
                             }
-                            return RedirectToAction("Index", "Home");
                         }
                     }
+                    TempData["SuccessMessage"] = "Successfully logged in";
                     return RedirectToAction("Index", "Home");
                 }
                 catch(HttpRequestException e)
                 {
+                    TempData["ErrorMessage"] = "Something went wrong. Please try again later.";
                     return RedirectToAction("Index", "Home");
                 }
             }
+            TempData["ErrorMessage"] = "Something went wrong. Please try again later.";
             return RedirectToAction("Index", "Home");
         }
 
@@ -115,11 +118,12 @@ namespace Locate_closest_business.Controllers
                         cmd.Parameters.AddWithValue("@Type", "Standard");
                         cmd.ExecuteNonQuery();
                     }
-                    
+                    TempData["SuccessMessage"] = "Successfully created account";
                     return RedirectToAction("Index", "Home");
                 }
                 catch(HttpRequestException)
                 {
+                    TempData["ErrorMessage"] = "Something went wrong. Please try again later.";
                     return RedirectToAction("Index", "Home");
                 }
             }
