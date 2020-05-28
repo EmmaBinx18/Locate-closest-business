@@ -37,7 +37,7 @@ namespace Locate_closest_business.Controllers
 
         public IActionResult Logout()
         {  
-            TempData["userId"] = null;
+            TempData["UserId"] = null;
             return RedirectToAction("Index", "Home");
         }
 
@@ -53,7 +53,7 @@ namespace Locate_closest_business.Controllers
                     response.EnsureSuccessStatusCode();
                     var responseBody = await response.Content.ReadAsAsync<SuccessResponse>();
                     user.UserId = responseBody.localId;
-                    TempData["userId"] = user.UserId;
+                    TempData["UserId"] = user.UserId;
 
                     using (SqlConnection con = new SqlConnection(CS))
                     {
@@ -98,7 +98,7 @@ namespace Locate_closest_business.Controllers
                     response.EnsureSuccessStatusCode();
                     var responseBody = await response.Content.ReadAsAsync<SuccessResponse>();
                     user.UserId = responseBody.localId;
-                    TempData["userId"] = user.UserId;
+                    TempData["UserId"] = user.UserId;
 
                     using (SqlConnection con = new SqlConnection(CS))
                     {

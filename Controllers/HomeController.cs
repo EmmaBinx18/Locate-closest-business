@@ -24,8 +24,8 @@ namespace Locate_closest_business.Controllers
 
         public IActionResult Index()
         {
-            if(TempData["userId"] != null) {
-                ViewBag.userId = TempData["userId"]; 
+            if(TempData["UserId"] != null) {
+                ViewBag.userId = TempData["UserId"]; 
             } 
             return View(BusinessModelHelper());
         }
@@ -103,12 +103,12 @@ namespace Locate_closest_business.Controllers
             model.NewBusiness = new BusinessModel();
             model.Businesses = new List<BusinessModel>();
 
-            if(TempData["userId"] != null){
+            if(TempData["UserId"] != null){
                 using (SqlConnection con = new SqlConnection(CS))
                 {
                     SqlCommand cmd = new SqlCommand("spGetBusinessesByUser", con);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@UserId", TempData["userId"].ToString());
+                    cmd.Parameters.AddWithValue("@UserId", TempData["UserId"].ToString());
                     con.Open();
                     SqlDataReader sdr = cmd.ExecuteReader();
                     while(sdr.Read())
@@ -141,7 +141,7 @@ namespace Locate_closest_business.Controllers
             {
                 BusinessModel business = new BusinessModel(businessManagementModel.NewBusiness);
                 business.RequestStatus = "Pending";
-                business.UserId = TempData["userId"].ToString();
+                business.UserId = TempData["UserId"].ToString();
 
                 using (SqlConnection con = new SqlConnection(CS))
                 {

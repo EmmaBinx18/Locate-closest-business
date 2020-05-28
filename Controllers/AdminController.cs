@@ -112,7 +112,7 @@ namespace Locate_closest_business.Controllers
         public IActionResult RegisterBusiness(BusinessModel business){
             if(ModelState.IsValid){
                 business.RequestStatus = "Pending";
-                business.UserId = TempData["userId"].ToString();
+                business.UserId = TempData["UserId"].ToString();
 
                 try{
                     using (SqlConnection con = new SqlConnection(CS))
