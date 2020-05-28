@@ -228,3 +228,27 @@ td{
   padding-left: 0px !important;
   margin-right: 10% !important;
 }
+
+.display-error-message{
+  background-color: #f8ccc8;
+  border: 1.5px solid #fcaaa3;
+}
+
+.display-success-message{
+  background-color: #bff0de;
+  border: 1.5px solid #85f8ce;
+}
+
+.message-boxes{
+  display: none;
+  position: fixed;
+  bottom: 4%;
+  left: 40%;
+  padding: 10px;
+  padding-left: 100px;
+  padding-right: 100px;
+  border-radius: 6px;
+  box-shadow: rgb(99, 99, 99) 5px 8px 12px -8px;
+  font-size: 1.2rem;
+  z-index: 7;
+}
