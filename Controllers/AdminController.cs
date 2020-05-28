@@ -43,18 +43,20 @@ namespace Locate_closest_business.Controllers
                 SqlDataReader sdr = cmd.ExecuteReader();
                 while(sdr.Read())
                 {
-                    UserModel user = new UserModel();
-                    user.UserId = sdr["UserId"].ToString();
-                    user.FirstName = sdr["FirstName"].ToString();
-                    user.LastName = sdr["LastName"].ToString();
-                    user.Email = sdr["Email"].ToString();
-                    user.Phone = sdr["Phone"].ToString();
-                    user.Password = "";
-                    user.ConfirmPassword = "";
-                    model.AdminUsers.Add(user);
+                    if(sdr["UserId"].ToString() != (string)TempData["UserId"]){
+                        UserModel user = new UserModel();
+                        user.UserId = sdr["UserId"].ToString();
+                        user.FirstName = sdr["FirstName"].ToString();
+                        user.LastName = sdr["LastName"].ToString();
+                        user.Email = sdr["Email"].ToString();
+                        user.Phone = sdr["Phone"].ToString();
+                        user.Password = "";
+                        user.ConfirmPassword = "";
+                        model.AdminUsers.Add(user);
+                    }
                 }
             }
-            // model.AdminUsers.RemoveAll(m => m.UserId == TempData["UserId"]);
+
             return model;
         }
 
