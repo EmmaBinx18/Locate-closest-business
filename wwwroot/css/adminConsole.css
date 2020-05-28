@@ -40,6 +40,7 @@
     font-size: 1.1em;
     display: block;
 }
+
 #sidebar ul li a:hover {
     color: black;
     background: #fff;
@@ -84,7 +85,6 @@ ul ul a {
 }
 
 .admin-container .form-control,
-.addBusiness .form-control,
 .profile-container .form-control{
     width: 40% !important;
     display: inline;
@@ -92,7 +92,15 @@ ul ul a {
     margin-left: 2%;
 }
 
-#new-business-container textarea{
+.addBusiness .form-control{
+    width: 40%;
+    display: inline;
+    margin-top: 1%;
+    margin-left: 2%;
+}
+
+#new-business-container textarea,
+.addBusiness .address-control{
     width: 82.5% !important;
 }
 
