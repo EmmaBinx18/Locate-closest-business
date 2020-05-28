@@ -40,7 +40,7 @@ namespace Locate_closest_business.Controllers
             else
             {
                 APIResponse = new MapsResponseWrapperModel();
-                APIResponse.results = new List<MapsResponseWrapperModel.MapsNearbySearchResultModel>();
+                APIResponse.results = new List<MapsNearbySearchResultModel>();
                 return APIResponse;
             }
 
