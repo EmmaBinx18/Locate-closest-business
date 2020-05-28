@@ -101,6 +101,31 @@ namespace Locate_closest_business.Controllers
             }
         }
 
+        public List<AllCountryStatisticsModel> GetAllCountryStats()
+        {
+            try
+            {
+                Task<SummaryResponseWrapperModel> task = Task.Run<SummaryResponseWrapperModel>(async () => await GetCovidSummary());
+                task.Wait();
+                SummaryResponseWrapperModel APIResponse = task.Result;
+                List<AllCountryStatisticsModel> countrySpecificStats = new List<AllCountryStatisticsModel>();
+                foreach (var item in APIResponse.Countries)
+                {
+                    countrySpecificStats.Add(new AllCountryStatisticsModel(item.Country, item.NewConfirmed, item.TotalConfirmed, item.NewDeaths, item.TotalDeaths, item.NewRecovered, item.TotalRecovered));
+                }
+              
+                List<AllCountryStatisticsModel> countrys = new List<AllCountryStatisticsModel>();
+
+
+                return countrySpecificStats;
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("StatisticsController.GetAllCountryStats Exception::" + exp);
+                return null ;
+            }
+        }
+
         public IActionResult HttpRequestError()
         {
             return View();
