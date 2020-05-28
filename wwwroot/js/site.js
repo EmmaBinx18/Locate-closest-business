@@ -1,15 +1,4 @@
 ﻿$(document).ready(function () {      
-
-    // $.get("/Login/LoggedIn", function (data) {  
-    //     console.log(data);
-    //     if(data == true){
-    //         $("#login-button").html('Login');
-    //     }  
-    //     else{
-    //         $("#login-button").html('Logout');  
-    //     }
-    // }); 
-
     if(!isUserLoggedIn()){
         $("#login-button").html('Login');
     }  
@@ -18,18 +7,6 @@
     }
 
     $("#open-register-business-modal").click(function () {
-        // $.get("/Login/LoggedIn", function (data) {  
-        //     console.log(data);
-        //     if(data == true){
-        //         $("#login-admin").modal('show');
-        //     }  
-        //     else{
-        //         $("#register-business-modal").modal('show');  
-        //         $("#step1").css("display", "block");
-        //         $("#step2").css("display", "none");
-        //         $("#view-requests").css("display", "none");
-        //     }
-        // }); 
         if(!isUserLoggedIn()){
             $("#login-admin").modal('show');
         }  
@@ -47,9 +24,6 @@
         }
         else{
             logout();
-            // $.get("/Login/Logout", function () {
-            //     $("#login-button").html('Login');
-            // });
         }
     });
 
@@ -81,6 +55,10 @@
     $(".login-link").click(function(){
         $("#login-admin").modal('show');
         $("#signup-modal").modal('hide');
+    });
+
+    $("#admin-logout").click(function() {
+        logout();
     });
 });
 
