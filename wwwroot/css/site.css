@@ -82,8 +82,6 @@ img{
 }
 
 #login-button, .register-business-button, .stages-button, .stats-button{
-  margin-left: 3%;
-#login-button, .register-business-button, .stages-button, .statistics-button{
   border-radius: 6px;
   padding: 15px 30px 15px 30px;
   margin-bottom: 2%;
@@ -94,6 +92,10 @@ img{
 
 .register-business-button, .stages-button{
   margin-left: 1%;
+}
+
+.stats-button{
+  margin-left: 57%;
 }
 
 #login-button{

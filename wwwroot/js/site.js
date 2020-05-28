@@ -1,18 +1,4 @@
-﻿$(document).ready(function () {      
-
-    // $.get("/Login/LoggedIn", function (data) {  
-    //     console.log(data);
-    //     if(data == true){
-    //         $("#login-button").html('Login');
-    //     }  
-    //     else{
-    //         $("#login-button").html('Logout');  
-    //     }
-    // }); 
-    $('#buttonStats').click(function () {
-        $("#WorldStats").modal('show');
-    });
-    
+﻿$(document).ready(function () {          
     if(!isUserLoggedIn()){
         $("#login-button").html('Login');
     }  
@@ -69,6 +55,10 @@
     $(".login-link").click(function(){
         $("#login-admin").modal('show');
         $("#signup-modal").modal('hide');
+    });
+
+    $('#buttonStats').click(function () {
+        $("#WorldStats").modal('show');
     });
 });
 
