@@ -12,7 +12,6 @@ USE EssentialBusinesses;
 DROP TABLE IF EXISTS [dbo].[Businesses];
 CREATE TABLE [dbo].[Businesses](  
     [ID] [int] IDENTITY(1,1) NOT NULL, 
-	[MemberIds] [varchar](100) NOT NULL, 
     [CompanyName] [varchar](100) NOT NULL,
     [RegistrationNumber] [varchar](100) NOT NULL,
     [Category] [varchar](100) NOT NULL,
@@ -27,17 +26,23 @@ CREATE TABLE [dbo].[Businesses](
 (  
     [ID] ASC  
 )
+) ON [PRIMARY]   
+GO  
+
+DROP TABLE IF EXISTS [dbo].[Users];
+CREATE TABLE [dbo].[Users](  
+    [ID] [int] IDENTITY(1,1) NOT NULL, 
+	[UserId] [varchar](100) NOT NULL, 
+	[Type] [varchar](20) NOT NULL,  
+ CONSTRAINT [PK_Businesses] PRIMARY KEY CLUSTERED ([ID] ASC)
 ) ON [PRIMARY]  
-  
 GO  
   
 
 DROP PROCEDURE IF EXISTS [dbo].[spAddNewBusiness];  
-
 GO
 CREATE PROCEDURE [dbo].[spAddNewBusiness]  
 (  
-	@MemberIds varchar(100),
     @CompanyName varchar(100),
     @RegistrationNumber varchar(100),
     @Category varchar(100),
@@ -52,7 +57,6 @@ CREATE PROCEDURE [dbo].[spAddNewBusiness]
 AS  
 BEGIN  
 INSERT INTO [dbo].[Businesses](
-	MemberIds,
 	CompanyName,
 	RegistrationNumber,
 	Category,
@@ -63,8 +67,7 @@ INSERT INTO [dbo].[Businesses](
 	AddressLatitude,
 	RequestStatus,
 	UserId)
-values(	
-	@MemberIds,
+VALUES(	
 	@CompanyName,
 	@RegistrationNumber,
 	@Category,
@@ -77,13 +80,15 @@ values(
 	@UserId)  
 END 
 
+DROP PROCEDURE IF EXISTS [dbo].[spGetAllBusinesses];  
 GO
 CREATE PROCEDURE [dbo].[spGetAllBusinesses] 
 AS  
 BEGIN  
-	SELECT MemberIds, CompanyName, RegistrationNumber, Category, NumEmployees, Address, RequestStatus FROM [dbo].[Businesses]
+	SELECT CompanyName, RegistrationNumber, Category, NumEmployees, Address, RequestStatus FROM [dbo].[Businesses]
 END 
 
+DROP PROCEDURE IF EXISTS [dbo].[spChangeBusinessRequestStatus]; 
 GO
 CREATE PROCEDURE [dbo].[spChangeBusinessRequestStatus] 
 (
@@ -97,6 +102,7 @@ BEGIN
 	WHERE RegistrationNumber = @RegistrationNumber
 END 
 
+DROP PROCEDURE IF EXISTS [dbo].[spRemoveBusiness]; 
 GO
 CREATE PROCEDURE [dbo].[spRemoveBusiness] 
 (
@@ -107,3 +113,44 @@ BEGIN
 	DELETE [dbo].[Businesses]
 	WHERE RegistrationNumber = @RegistrationNumber
 END 
+
+DROP PROCEDURE IF EXISTS [dbo].[spAddNewUser]; 
+GO
+CREATE PROCEDURE [dbo].[spAddNewUser] 
+(
+	@UserId varchar(100), 
+	@Type varchar(20)
+)
+AS  
+BEGIN  
+	INSERT INTO [dbo].[Users](UserId, Type) VALUES(@UserId, @Type)  
+END 
+
+DROP PROCEDURE IF EXISTS [dbo].[spUserTypeById];  
+GO
+CREATE PROCEDURE [dbo].[spUserTypeById] 
+(
+	@UserId varchar(100) 
+)
+AS  
+BEGIN  
+	SELECT Type FROM [dbo].[Users]
+	WHERE UserId = @UserId
+END 
+
+DROP PROCEDURE IF EXISTS [dbo].[spSearchOpenBusinesses];  
+GO
+CREATE PROCEDURE [dbo].[spSearchOpenBusinesses]
+	@lat float,   
+    @lng float,
+	@radius int,
+	@businessCategory varchar(60)
+AS 
+DECLARE @userLocation geography = geography::Point(@lat, @lng, 4326);
+
+BEGIN  
+	SELECT b.CompanyName, b.Address, b.AddressLongitude, b.AddressLatitude
+	FROM [dbo].[Businesses] b
+	WHERE ((@userLocation.STDistance(geography::Point(b.AddressLatitude, b.AddressLongitude, '4326'))) < @radius) AND b.Category = @businessCategory AND b.RequestStatus = 'Approved'
+END 
+

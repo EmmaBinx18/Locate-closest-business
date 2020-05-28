@@ -8,6 +8,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace Locate_closest_business.Controllers
 {
@@ -51,8 +52,9 @@ namespace Locate_closest_business.Controllers
 
             try
             {
+                //Perform search using Google Maps API
                 MapsResponseWrapperModel compoundResponse = new MapsResponseWrapperModel();
-                compoundResponse.results = new List<MapsResponseWrapperModel.MapsNearbySearchResultModel>();
+                compoundResponse.results = new List<MapsNearbySearchResultModel>();
 
                 foreach (string vBusinessType in businessTypeList)
                 {
@@ -69,6 +71,54 @@ namespace Locate_closest_business.Controllers
                     MapsResponseWrapperModel APIResponse = task.Result;
                     compoundResponse.results.AddRange(APIResponse.results);
                 }
+
+                float f = float.Parse(lat, CultureInfo.InvariantCulture);
+
+                //Perform Database search on Custom Added Businesses
+                try
+                {
+                    using (SqlConnection con = new SqlConnection(CS))
+                    {
+                        SqlCommand cmd = new SqlCommand("spSearchOpenBusinesses", con);
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.Add("@lat", SqlDbType.Float).Value = float.Parse(lat, CultureInfo.InvariantCulture);
+                        cmd.Parameters.Add("@lng", SqlDbType.Float).Value = float.Parse(lng, CultureInfo.InvariantCulture);
+                        cmd.Parameters.Add("@radius", SqlDbType.Int).Value = searchRadius;
+                        cmd.Parameters.Add("@businessCategory", SqlDbType.VarChar).Value = category;
+
+                        con.Open();
+                        SqlDataReader sdr = cmd.ExecuteReader();
+                        while(sdr.Read())
+                        {
+                            MapsNearbySearchResultModel business = new MapsNearbySearchResultModel();
+                            business.business_status = "OPERATIONAL";
+                            business.geometry = new GeometryWrapper{
+                                location = new Coordinate{
+                                    lat = double.Parse(sdr["AddressLatitude"].ToString(), CultureInfo.InvariantCulture),
+                                    lng = double.Parse(sdr["AddressLongitude"].ToString(), CultureInfo.InvariantCulture)
+                                }
+                            };
+                            business.icon = "";
+                            business.id = "";
+                            business.name = sdr["CompanyName"].ToString();
+                            business.opening_hours = new OpeningHours{
+                                open_now = true
+                            };
+                            business.place_id = "";
+                            business.price_level = "";
+                            string[] categoryArray = new string[1];
+                            categoryArray[0] = category;
+                            business.types = categoryArray;
+                            compoundResponse.results.Add(business);
+                        }
+                    }
+                }
+                catch(Exception DBException)
+                {
+                    Console.WriteLine("Exception in HomeController.cs -> MapsNearbySearch Database read::\n" + DBException);
+                }
+
                 compoundResponse.status = "OK";
 
                 return Json(compoundResponse);
@@ -116,13 +166,12 @@ namespace Locate_closest_business.Controllers
                 while(sdr.Read())
                 {
                     BusinessModel business = new BusinessModel();
-                    // business.MemberIds = sdr["MemberIds"];
-                    // business.CompanyName = sdr["CompanyName"];
-                    // business.RegistrationNumber = sdr["RegistrationNumber"];
-                    // business.Category = sdr["Category"];
-                    // business.NumEmployees = sdr["NumEmployees"];
-                    // business.Address = sdr["Address"];
-                    // business.RequestStatus = sdr["RequestStatus"];
+                    business.CompanyName = sdr["CompanyName"].ToString();
+                    business.RegistrationNumber = sdr["RegistrationNumber"].ToString();
+                    business.Category = sdr["Category"].ToString();
+                    business.NumEmployees = (int)sdr["NumEmployees"];
+                    business.Address = sdr["Address"].ToString();
+                    business.RequestStatus = sdr["RequestStatus"].ToString();
                     model.Businesses.Add(business);
                 }
             }
@@ -147,7 +196,6 @@ namespace Locate_closest_business.Controllers
                     SqlCommand cmd = new SqlCommand("spAddNewBusiness", con);
                     cmd.CommandType = CommandType.StoredProcedure;
                     con.Open();
-                    cmd.Parameters.AddWithValue("@MemberIds", business.MemberIds);
                     cmd.Parameters.AddWithValue("@CompanyName", business.CompanyName);
                     cmd.Parameters.AddWithValue("@RegistrationNumber", business.RegistrationNumber);
                     cmd.Parameters.AddWithValue("@Category", business.Category);

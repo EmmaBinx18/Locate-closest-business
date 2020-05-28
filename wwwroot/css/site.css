@@ -38,7 +38,7 @@ a:hover {
   position: fixed;
   left: 0;
   bottom: 0;
-  width: 30%;
+  width: 100%;
   z-index: 3 !important;
 }
 
@@ -81,21 +81,28 @@ img{
   margin-top: 6%;
 }
 
-#login-button, .register-business-button, .stages-button, .stats-button{
-  margin-left: 3%;
+#login-button, .register-business-button, .stages-button, .statistics-button{
   border-radius: 6px;
   padding: 15px 30px 15px 30px;
-  margin-bottom: 5%;
+  margin-bottom: 2%;
   box-shadow: rgb(99, 99, 99) 5px 8px 12px -8px;
   background-color: white;
   border: 2px solid #cccccc;
 }
 
-#login-button{
-  margin-left: 9%;
+.register-business-button, .stages-button{
+  margin-left: 1%;
 }
 
-.register-business-button:hover, .stages-button:hover, #login-button:hover, #buttonStats:hover{
+#login-button{
+  margin-left: 3%;
+}
+
+.statistics-button{
+  margin-left: 55%;
+}
+
+.register-business-button:hover, .stages-button:hover, #login-button:hover, .statistics-button:hover{
   font-size: 1.1rem;
 }
 
