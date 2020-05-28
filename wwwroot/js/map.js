@@ -35,6 +35,7 @@ function performSearch() {
     clearMarkers();
 
     var pServiceCategory = document.getElementById("essentialServiceOptions").options[document.getElementById("essentialServiceOptions").selectedIndex].text;
+    var checkbox = document.getElementById('open');
 
     $.ajax({
         type: 'GET',
@@ -43,12 +44,13 @@ function performSearch() {
             "lat": usersPosition.lat(),
             "lng" : usersPosition.lng(),
             "category" : pServiceCategory,
-            "searchRadius" : 2500
+            "searchRadius" : 2500,
+            "opennow": checkbox.checked
         },
         success: function (returnData)
         {
             if (returnData.status === "OK") {
-                clearMarkers(map);
+                clearMarkers();
                 for (var i = 0; i < returnData.results.length; i++) {
                     createMarker(returnData.results[i]);
                 }
@@ -77,7 +79,7 @@ function createMarker(place) {
     }         
 }
 
-function clearMarkers(map) {
+function clearMarkers() {
     for (var i = 0; i < searchMarkers.length; i++) {
         searchMarkers[i].setMap(null);
     }

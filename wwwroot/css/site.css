@@ -223,3 +223,8 @@ td{
   height: 920px !important;
   overflow: auto;
 }
+
+.custom-control{
+  padding-left: 0px !important;
+  margin-right: 10% !important;
+}
