@@ -209,4 +209,4 @@ BEGIN
 	FROM [dbo].[Businesses] b
 	WHERE ((@userLocation.STDistance(geography::Point(b.AddressLatitude, b.AddressLongitude, '4326'))) < @radius) AND b.Category = @businessCategory AND b.RequestStatus = 'Approved'
 END 
-
+GO
