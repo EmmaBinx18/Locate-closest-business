@@ -193,3 +193,20 @@ BEGIN
 	WHERE UserId = @UserId
 END 
 GO
+
+DROP PROCEDURE IF EXISTS [dbo].[spSearchOpenBusinesses];  
+GO
+CREATE PROCEDURE [dbo].[spSearchOpenBusinesses]
+	@lat float,   
+    @lng float,
+	@radius int,
+	@businessCategory varchar(60)
+AS 
+DECLARE @userLocation geography = geography::Point(@lat, @lng, 4326);
+
+BEGIN  
+	SELECT b.CompanyName, b.Address, b.AddressLongitude, b.AddressLatitude
+	FROM [dbo].[Businesses] b
+	WHERE ((@userLocation.STDistance(geography::Point(b.AddressLatitude, b.AddressLongitude, '4326'))) < @radius) AND b.Category = @businessCategory AND b.RequestStatus = 'Approved'
+END 
+
