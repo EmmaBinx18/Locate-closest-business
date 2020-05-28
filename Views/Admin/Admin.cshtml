@@ -13,24 +13,33 @@
         <h2><b>Add Admin User</b></h2>
         <br/>
         <div style="text-align: center;">
-            @using (Html.BeginForm("Admin", "Admin", FormMethod.Post)){
-                <form id="addAdminForm">  
-                    <div class="form-group">  
-                        @Html.EditorFor(model => model.NewAdmin.FirstName, new { htmlAttributes = new { @class = "form-control", @placeholder="First Name" } })          
-                        @Html.EditorFor(model => model.NewAdmin.LastName, new { htmlAttributes = new { @class = "form-control", @placeholder="Last Name" } })      
-                    </div> 
-                    <div class="form-group">  
-                        @Html.EditorFor(model => model.NewAdmin.Email, new { htmlAttributes = new { @class = "form-control", @placeholder="Email" } })          
-                        @Html.EditorFor(model => model.NewAdmin.Phone, new { htmlAttributes = new { @class = "form-control", @placeholder="Phone" } })      
-                    </div> 
-                    <div class="form-group">  
-                        @Html.EditorFor(model => model.NewAdmin.Password, new { htmlAttributes = new { @class = "form-control", @placeholder="Password", @type="password" } })          
-                        @Html.EditorFor(model => model.NewAdmin.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", @placeholder="Confirm Password", @type="password" } })      
-                    </div> 
-                    <br/>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @using (Html.BeginForm())
+            {
+                <form id="addAdminForm" action="/Admin/AddAdmin" method="Post">
+                    <div class="form-group">
+                        @Html.ValidationMessageFor(model => model.NewAdmin.FirstName, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.NewAdmin.FirstName, new { htmlAttributes = new { @class = "form-control", @placeholder = "First Name" } })
+                        @Html.EditorFor(model => model.NewAdmin.LastName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Last Name" } })
+                        @Html.ValidationMessageFor(model => model.NewAdmin.LastName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.ValidationMessageFor(model => model.NewAdmin.Email, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.NewAdmin.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email" } })
+                        @Html.EditorFor(model => model.NewAdmin.Phone, new { htmlAttributes = new { @class = "form-control", @placeholder = "Phone" } })
+                        @Html.ValidationMessageFor(model => model.NewAdmin.Phone, "", new { @class = "text-danger" })
+
+                    </div>
+                    <div class="form-group">
+                        @Html.ValidationMessageFor(model => model.NewAdmin.Password, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.NewAdmin.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password", @type = "password" } })
+                        @Html.EditorFor(model => model.NewAdmin.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Confirm Password", @type = "password" } })
+                        @Html.ValidationMessageFor(model => model.NewAdmin.ConfirmPassword, "", new { @class = "text-danger" })
+                    </div>
+                    <br />
                     <input type="submit" class="add-admin-button" value="ADD ADMIN" />
-                </form> 
-                <br/><br/>
+                </form>
+                <br /><br />
             }
         </div>
     </div>

@@ -4,18 +4,21 @@ namespace Locate_closest_business.Models
 {
     public class BusinessModel
     {
-       [Required]
+       [Required (ErrorMessage = "*")]
+       public string MemberIds { get; set; }
+
+       [Required(ErrorMessage = "*")] 
        public string CompanyName { get; set; }
 
-       [Required]
+       [Required(ErrorMessage = "*")]
        public string RegistrationNumber { get; set; }
 
        public string Category { get; set; }
 
-       [Required]
+       [Required(ErrorMessage = "*")]
        public int NumEmployees { get; set; }
 
-       [Required]
+       [Required(ErrorMessage = "*")]
        public string Address { get; set; }
 
        public string AddressLatitude { get; set; }
