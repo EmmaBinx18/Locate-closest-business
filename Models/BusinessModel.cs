@@ -4,7 +4,7 @@ namespace Locate_closest_business.Models
 {
     public class BusinessModel
     {
-       [Required(ErrorMessage = "*")] 
+       [Required (ErrorMessage = "*")]
        public string CompanyName { get; set; }
 
        [Required(ErrorMessage = "*")]

@@ -16,19 +16,15 @@
         <h2><b>Register your business as an essential service</b></h2>
         <br/>
         <div style="text-align: center;">
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @using (Html.BeginForm())
-            {
-                <form id="addBusinessForm">
-                    <div class="form-group">
-                        @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
-                        @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Registered Company Name" } })
-                        @Html.EditorFor(model => model.RegistrationNumber, new { htmlAttributes = new { @class = "form-control", @placeholder = "Company Registration Number" } })
-                        @Html.ValidationMessageFor(model => model.RegistrationNumber, "", new { @class = "text-danger" })
+            @using (Html.BeginForm()){
+                <form id="addAdminForm">  
+                    <div class="form-group">  
+                        @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control", @placeholder="Registered Company Name" } })
+                        @Html.EditorFor(model => model.RegistrationNumber, new { htmlAttributes = new { @class = "form-control", @placeholder="Company Registration Number" } })
                     </div>
-                    <div class="form-group">
-                        @Html.DropDownListFor(model => model.Category,
-                            new List<SelectListItem> {
+                    <div class="form-group">  
+                        @Html.DropDownListFor(model => model.Category,                
+                            new List<SelectListItem> { 
                                 new SelectListItem { Value = "Agriculture, hunting, forestry, fishing" , Text = "Agriculture, hunting, forestry, fishing" },
                                 new SelectListItem { Value = "Electricity, Gas, Water supply" , Text = "Electricity, Gas, Water supply" },
                                 new SelectListItem { Value = "Manufacturing" , Text = "Manufacturing" },
@@ -45,11 +41,10 @@
                                 new SelectListItem { Value = "Supply Chain" , Text = "Supply Chain" },
                                 new SelectListItem { Value = "Health, Social and Personal services" , Text = "Health, Social and Personal services" }
                                 },
-                            new { @class = "form-control" })
-                        @Html.EditorFor(model => model.NumEmployees, new { htmlAttributes = new { @class = "form-control", @placeholder = "Number Of Employees" } })
-                        @Html.ValidationMessageFor(model => model.NumEmployees, "", new { @class = "text-danger" })
+                            new { @class="form-control"})
+                        @Html.EditorFor(model => model.NumEmployees, new { htmlAttributes = new { @class = "form-control", @placeholder="Number Of Employees" } })
                     </div>
-                    <div class="form-group">
+                    <div class="form-group">  
                         @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control address-control", @placeholder="Company's physical address", @id = "Address" } })
                         @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
                         @Html.HiddenFor(model => model.AddressLatitude, new { @id = "AddressLatitude" })  
@@ -57,10 +52,10 @@
                         @Html.HiddenFor(model => model.AddressTown, new { @id = "AddressTown" }) 
                         @Html.HiddenFor(model => model.UserId, new { @id = "BusinessCreatorUserId" }) 
                     </div>
-                    <br />
+                    <br/>
                     <input type="submit" class="register-new-business-button" value="REGISTER BUSINESS" />
-                </form>
-                <br /><br />
+                </form> 
+                <br/><br/>
             }
         </div>
     </div>
