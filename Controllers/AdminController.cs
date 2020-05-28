@@ -73,24 +73,31 @@ namespace Locate_closest_business.Controllers
             if(ModelState.IsValid){
                 business.RequestStatus = "Pending";
 
-                using (SqlConnection con = new SqlConnection(CS))
-                {
-                    SqlCommand cmd = new SqlCommand("spAddNewBusiness", con);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    con.Open();
-                    cmd.Parameters.AddWithValue("@MemberIds", business.MemberIds);
-                    cmd.Parameters.AddWithValue("@CompanyName", business.CompanyName);
-                    cmd.Parameters.AddWithValue("@RegistrationNumber", business.RegistrationNumber);
-                    cmd.Parameters.AddWithValue("@Category", business.Category);
-                    cmd.Parameters.AddWithValue("@NumEmployees", business.NumEmployees);
-                    cmd.Parameters.AddWithValue("@Address", business.Address);
-                    cmd.Parameters.AddWithValue("@AddressTown", business.AddressTown);
-                    cmd.Parameters.AddWithValue("@AddressLongitude", business.AddressLongitude);
-                    cmd.Parameters.AddWithValue("@AddressLatitude", business.AddressLatitude);
-                    cmd.Parameters.AddWithValue("@RequestStatus", business.RequestStatus);
-                    cmd.ExecuteNonQuery();
+                try{
+                    using (SqlConnection con = new SqlConnection(CS))
+                    {
+                        SqlCommand cmd = new SqlCommand("spAddNewBusiness", con);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        con.Open();
+                        cmd.Parameters.AddWithValue("@MemberIds", business.MemberIds);
+                        cmd.Parameters.AddWithValue("@CompanyName", business.CompanyName);
+                        cmd.Parameters.AddWithValue("@RegistrationNumber", business.RegistrationNumber);
+                        cmd.Parameters.AddWithValue("@Category", business.Category);
+                        cmd.Parameters.AddWithValue("@NumEmployees", business.NumEmployees);
+                        cmd.Parameters.AddWithValue("@Address", business.Address);
+                        cmd.Parameters.AddWithValue("@AddressTown", business.AddressTown);
+                        cmd.Parameters.AddWithValue("@AddressLongitude", business.AddressLongitude);
+                        cmd.Parameters.AddWithValue("@AddressLatitude", business.AddressLatitude);
+                        cmd.Parameters.AddWithValue("@RequestStatus", business.RequestStatus);
+                        cmd.ExecuteNonQuery();
+                    }
+                    ViewBag.Message = "Successfully submitted business registration request";
+                    return View(new BusinessModel());
                 }
-                return View(new BusinessModel());
+                catch(Exception exp){
+                    ViewBag.Message = "Something went wrong. Please try again later.";
+                    return View(business);
+                }
             }
             return View(business);
         }
@@ -108,17 +115,17 @@ namespace Locate_closest_business.Controllers
                 while(sdr.Read())
                 {
                     BusinessModel business = new BusinessModel();
-                    business.MemberIds = sdr["MemberIds"];
-                    business.CompanyName = sdr["CompanyName"];
-                    business.RegistrationNumber = sdr["RegistrationNumber"];
-                    business.Category = sdr["Category"];
-                    business.NumEmployees = sdr["NumEmployees"];
-                    business.Address = sdr["Address"];
-                    business.RequestStatus = sdr["RequestStatus"];
+                    business.MemberIds = sdr["MemberIds"].ToString();
+                    business.CompanyName = sdr["CompanyName"].ToString();
+                    business.RegistrationNumber = sdr["RegistrationNumber"].ToString();
+                    business.Category = sdr["Category"].ToString();
+                    business.NumEmployees = (int)sdr["NumEmployees"];
+                    business.Address = sdr["Address"].ToString();
+                    business.RequestStatus = sdr["RequestStatus"].ToString();
                     model.Add(business);
                 }
             }
-
+            
             ViewBag.Current = "RegistrationRequests";
             return View(model);
         }
@@ -126,14 +133,20 @@ namespace Locate_closest_business.Controllers
         [HttpPost]
         public IActionResult ConfirmRegistration(string registrationNumber)
         {
-            using (SqlConnection con = new SqlConnection(CS))
-            {
-                SqlCommand cmd = new SqlCommand("spChangeBusinessRequestStatus", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                con.Open();
-                cmd.Parameters.AddWithValue("@RegistrationNumber", registrationNumber);
-                cmd.Parameters.AddWithValue("@RequestStatus", "Approved");
-                cmd.ExecuteNonQuery();
+            try{
+                using (SqlConnection con = new SqlConnection(CS))
+                {
+                    SqlCommand cmd = new SqlCommand("spChangeBusinessRequestStatus", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    con.Open();
+                    cmd.Parameters.AddWithValue("@RegistrationNumber", registrationNumber);
+                    cmd.Parameters.AddWithValue("@RequestStatus", "Approved");
+                    cmd.ExecuteNonQuery();
+                }
+                ViewBag.Message = "Successfully approved business registration request";
+            }
+            catch(Exception exp){
+                ViewBag.Message = "Something went wrong. Please try again later.";
             }
             return RedirectToAction("RegistrationRequests");
         }
@@ -141,15 +154,22 @@ namespace Locate_closest_business.Controllers
         [HttpPost]
         public IActionResult DenyRegistration(string registrationNumber)
         {
-            using (SqlConnection con = new SqlConnection(CS))
-            {
-                SqlCommand cmd = new SqlCommand("spChangeBusinessRequestStatus", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                con.Open();
-                cmd.Parameters.AddWithValue("@RegistrationNumber", registrationNumber);
-                cmd.Parameters.AddWithValue("@RequestStatus", "Denied");
-                cmd.ExecuteNonQuery();
+            try{
+                using (SqlConnection con = new SqlConnection(CS))
+                {
+                    SqlCommand cmd = new SqlCommand("spChangeBusinessRequestStatus", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    con.Open();
+                    cmd.Parameters.AddWithValue("@RegistrationNumber", registrationNumber);
+                    cmd.Parameters.AddWithValue("@RequestStatus", "Denied");
+                    cmd.ExecuteNonQuery();
+                }
+                ViewBag.Message = "Successfully denied business registration request";
             }
+            catch(Exception exp){
+                ViewBag.Message = "Something went wrong. Please try again later.";
+            }
+
             return RedirectToAction("RegistrationRequests");
         }
 
