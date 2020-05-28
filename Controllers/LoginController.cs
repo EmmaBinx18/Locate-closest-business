@@ -10,12 +10,15 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using System.Data;
+using System.Data.SqlClient;
 
 
 namespace Locate_closest_business.Controllers
 {
     public class LoginController : Controller
     {
+        private string CS = "data source=localhost\\SQLEXPRESS; database=EssentialBusinesses; integrated security=true;";
         static HttpClient client = new HttpClient();
         private readonly ILogger<LoginController> _logger;
 
@@ -34,25 +37,39 @@ namespace Locate_closest_business.Controllers
         {
             if (ModelState.GetValidationState("Email") == ModelValidationState.Valid
                 && ModelState.GetFieldValidationState("Password") == ModelValidationState.Valid){
-                UserLoginDetails details = new UserLoginDetails(user);    
-                HttpResponseMessage response = await client.PostAsJsonAsync(
-                "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBH0hd7PJ8tFZ1aK18OypZV_Ki6kWDpqGQ",
-                 details);
-                 try {
+                UserLoginDetails details = new UserLoginDetails(user);   
+                HttpResponseMessage response = await client.PostAsJsonAsync("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBH0hd7PJ8tFZ1aK18OypZV_Ki6kWDpqGQ", details);
+                
+                try {
                     response.EnsureSuccessStatusCode();
                     var responseBody = await response.Content.ReadAsAsync<SuccessResponse>();
                     user.UserId = responseBody.localId;
                     TempData["userId"] = user.UserId;
-                    //  return RedirectToAction("Admin", "Admin"); to go to Admin console
-                     return RedirectToAction("Index", "Home");
+
+                    using (SqlConnection con = new SqlConnection(CS))
+                    {
+                        SqlCommand cmd = new SqlCommand("spUserTypeById", con);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@UserId", user.UserId);
+                        con.Open();
+                        SqlDataReader sdr = cmd.ExecuteReader();
+                        while(sdr.Read())
+                        {
+                            string type = sdr["CompanyName"].ToString();
+                            if(type == "Admin"){
+                                return RedirectToAction("Admin", "Admin");
+                            }
+                            return RedirectToAction("Index", "Home");
+                        }
+                    }
+                    return RedirectToAction("Index", "Home");
                 }
                 catch(HttpRequestException e)
                 {
                     return RedirectToAction("Index", "Home");
                 }
-            } else {
-               return RedirectToAction("Index", "Home");
             }
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult Signup()
@@ -74,16 +91,25 @@ namespace Locate_closest_business.Controllers
                     var responseBody = await response.Content.ReadAsAsync<SuccessResponse>();
                     user.UserId = responseBody.localId;
                     TempData["userId"] = user.UserId;
-                    //  return RedirectToAction("Admin", "Admin"); to go to Admin console
-                     return RedirectToAction("Index", "Home");
+
+                    using (SqlConnection con = new SqlConnection(CS))
+                    {
+                        SqlCommand cmd = new SqlCommand("spAddNewUser", con);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        con.Open();
+                        cmd.Parameters.AddWithValue("@UserId", user.UserId);
+                        cmd.Parameters.AddWithValue("@Type", "Standard");
+                        cmd.ExecuteNonQuery();
+                    }
+                    
+                    return RedirectToAction("Index", "Home");
                 }
-                catch(HttpRequestException e)
+                catch(HttpRequestException)
                 {
                     return RedirectToAction("Index", "Home");
                 }
-            } else {
-               return RedirectToAction("Index", "Home");
             }
+            return View(user);
         }  
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -91,7 +117,6 @@ namespace Locate_closest_business.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }      
-
     }
 
     public class SuccessResponse {

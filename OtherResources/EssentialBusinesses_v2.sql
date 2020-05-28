@@ -34,7 +34,7 @@ CREATE TABLE [dbo].[Users](
     [ID] [int] IDENTITY(1,1) NOT NULL, 
 	[UserId] [varchar](100) NOT NULL, 
 	[Type] [varchar](20) NOT NULL,  
- CONSTRAINT [PK_Businesses] PRIMARY KEY CLUSTERED ([ID] ASC)
+ CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED ([ID] ASC)
 ) ON [PRIMARY]  
 GO  
   
@@ -85,7 +85,19 @@ GO
 CREATE PROCEDURE [dbo].[spGetAllBusinesses] 
 AS  
 BEGIN  
-	SELECT CompanyName, RegistrationNumber, Category, NumEmployees, Address, RequestStatus FROM [dbo].[Businesses]
+	SELECT CompanyName, RegistrationNumber, Category, NumEmployees, Address, AddressTown, AddressLongitude, AddressLatitude, RequestStatus, UserId FROM [dbo].[Businesses]
+END
+
+DROP PROCEDURE IF EXISTS [dbo].[spGetBusinessesByUser]; 
+GO
+CREATE PROCEDURE [dbo].[spGetBusinessesByUser] 
+(
+	@UserId varchar(100) 
+)
+AS  
+BEGIN  
+	SELECT CompanyName, RegistrationNumber, Category, NumEmployees, Address, AddressTown, AddressLongitude, AddressLatitude, RequestStatus, UserId FROM [dbo].[Businesses]
+	WHERE UserId = @UserId
 END 
 
 DROP PROCEDURE IF EXISTS [dbo].[spChangeBusinessRequestStatus]; 

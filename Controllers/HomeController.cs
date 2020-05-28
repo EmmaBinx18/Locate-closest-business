@@ -32,10 +32,8 @@ namespace Locate_closest_business.Controllers
 		
 		public JsonResult MapsNearbySearch([FromQuery]string lat, [FromQuery]string lng, [FromQuery]string category, int searchRadius = 1500, bool opennow = false)
         {
-            var errorJSON = new
-            {
-                errorMessage = "External_API_Unreachable"
-            };
+            var errorJSON = new{errorMessage = "External_API_Unreachable"};
+
             List<string> businessTypeList = new List<string>();
             List<string> keywordSearchList = new List<string>();
 
@@ -107,8 +105,9 @@ namespace Locate_closest_business.Controllers
 
             using (SqlConnection con = new SqlConnection(CS))
             {
-                SqlCommand cmd = new SqlCommand("spGetAllBusinesses", con);
+                SqlCommand cmd = new SqlCommand("spGetBusinessesByUser", con);
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@UserId", TempData["userId"].ToString());
                 con.Open();
                 SqlDataReader sdr = cmd.ExecuteReader();
                 while(sdr.Read())
@@ -120,6 +119,7 @@ namespace Locate_closest_business.Controllers
                     business.NumEmployees = (int)sdr["NumEmployees"];
                     business.Address = sdr["Address"].ToString();
                     business.RequestStatus = sdr["RequestStatus"].ToString();
+                    business.UserId = sdr["UserId"].ToString();
                     model.Businesses.Add(business);
                 }
             }
@@ -133,11 +133,14 @@ namespace Locate_closest_business.Controllers
         }
 
         [HttpPost]
-        public IActionResult RegisterBusiness(BusinessModel business)
+        public IActionResult RegisterBusiness(BusinessManagementModel businessManagementModel)
         {
             if (ModelState.IsValid)
             {
+                BusinessModel business = new BusinessModel(businessManagementModel.NewBusiness);
+                Console.WriteLine(business);
                 business.RequestStatus = "Pending";
+                business.UserId = TempData["userId"].ToString();
 
                 using (SqlConnection con = new SqlConnection(CS))
                 {
@@ -157,14 +160,11 @@ namespace Locate_closest_business.Controllers
                     cmd.ExecuteNonQuery();
                 }
                 ViewBag.SuccessfulSubmit = true;
-                TempData["UserId"] = business.UserId;
                 return RedirectToAction("Index");
-            } else {
-                 Console.WriteLine("Model is NOT valid");
-                BusinessManagementModel model = BusinessModelHelper();
-                model.NewBusiness = business;
-                return View(model);
             }
+            BusinessManagementModel model = BusinessModelHelper();
+            model.NewBusiness = businessManagementModel.NewBusiness;
+            return View(model);
         } 
 
         [HttpPost]

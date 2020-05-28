@@ -2,7 +2,7 @@
     var formSubmitSuccess = ViewBag.SuccessfulSubmit;
 }
 
-@model Locate_closest_business.Models.BusinessModel;  
+@model Locate_closest_business.Models.BusinessManagementModel;  
 
 <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCsrxUyNDXzcp31HUoSxsLg3wlSHGvww3g"></script>
 <script src="~/js/autoComplete.js"></script>
@@ -37,13 +37,13 @@
                 <h4 class="modal-title">Register your business as an essential service</h4><br/>  
                 <br/>
                 <form id="registrationForm">
-                <br/><h4>Company Details</h4><br/>
+                <h4>Company Details</h4><br/>
                 <div class="form-group">  
-                    @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control input", @placeholder="Registered Company Name" } })
-                    @Html.EditorFor(model => model.RegistrationNumber, new { htmlAttributes = new { @class = "form-control input", @placeholder="Company Registration Number" } })
+                    @Html.EditorFor(model => model.NewBusiness.CompanyName, new { htmlAttributes = new { @class = "form-control input", @placeholder="Registered Company Name" } })
+                    @Html.EditorFor(model => model.NewBusiness.RegistrationNumber, new { htmlAttributes = new { @class = "form-control input", @placeholder="Company Registration Number" } })
                 </div>
                 <div class="form-group">  
-                    @Html.DropDownListFor(model => model.Category,                
+                    @Html.DropDownListFor(model => model.NewBusiness.Category,                
                         new List<SelectListItem> { 
                             new SelectListItem { Value = "Agriculture, hunting, forestry, fishing" , Text = "Agriculture, hunting, forestry, fishing" },
                             new SelectListItem { Value = "Electricity, Gas, Water supply" , Text = "Electricity, Gas, Water supply" },
@@ -62,14 +62,14 @@
                             new SelectListItem { Value = "Health, Social and Personal services" , Text = "Health, Social and Personal services" }
                             },
                         new { @class="form-control input"})
-                    @Html.EditorFor(model => model.NumEmployees, new { htmlAttributes = new { @class = "form-control input", @placeholder="Number Of Employees" } })
+                    @Html.EditorFor(model => model.NewBusiness.NumEmployees, new { htmlAttributes = new { @class = "form-control input", @placeholder="Number Of Employees" } })
                 </div>
                 <div class="form-group">  
-                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control address-control", @placeholder="Company's physical address", @id = "Address" } })
-                    @Html.HiddenFor(m => Model.AddressLatitude, new { @id = "AddressLatitude" })  
-                    @Html.HiddenFor(m => Model.AddressLongitude, new { @id = "AddressLongitude" }) 
-                    @Html.HiddenFor(m => Model.AddressTown, new { @id = "AddressTown" }) 
-                    @Html.HiddenFor(m => Model.UserId, new { @id = "BusinessCreatorUserId" }) 
+                    @Html.EditorFor(model => model.NewBusiness.Address, new { htmlAttributes = new { @class = "form-control address-control", @placeholder="Company's physical address", @id = "Address" } })
+                    @Html.HiddenFor(model => model.NewBusiness.AddressLatitude, new { @id = "AddressLatitude" })  
+                    @Html.HiddenFor(model => model.NewBusiness.AddressLongitude, new { @id = "AddressLongitude" }) 
+                    @Html.HiddenFor(model => model.NewBusiness.AddressTown, new { @id = "AddressTown" }) 
+                    @Html.HiddenFor(model => model.NewBusiness.UserId, new { @id = "BusinessCreatorUserId" }) 
                 </div>
             </form> 
             <input type="submit" class="submit-request-button" value="SUBMIT REQUEST" />   
@@ -78,7 +78,7 @@
     </div>
     }
 
-    @* <div class="requests-modal-dialog" id="view-requests">  
+    <div class="requests-modal-dialog" id="view-requests">  
         <div class="requests-modal-content">  
             <button type="button" class="close" data-dismiss="modal">×</button>  
             <h4 class="modal-title">Your Businesses</h4>  
@@ -118,6 +118,6 @@
                 </table>
             }
             <br/><br/>
-        </div>   *@
+        </div>  
     </div> 
 </div>

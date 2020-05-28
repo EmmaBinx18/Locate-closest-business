@@ -8,12 +8,17 @@ using Locate_closest_business.Models;
 using System.Configuration; 
 using System.Data;
 using System.Data.SqlClient;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 
 namespace Locate_closest_business.Controllers
 {
     public class AdminController : Controller
     {
         private string CS = "data source=localhost\\SQLEXPRESS; database=EssentialBusinesses; integrated security=true;";
+        static HttpClient client = new HttpClient();
 
         private readonly ILogger<AdminController> _logger;
 
@@ -22,43 +27,79 @@ namespace Locate_closest_business.Controllers
             _logger = logger;
         }
 
-        public IActionResult Admin()
+        private UserManagementModel AdminModelHelper()
         {
             UserManagementModel model = new UserManagementModel();
             model.NewAdmin = new UserModel();
             model.AdminUsers = new List<UserModel>(); //TODO: populate list with admin users
 
-            // UserModel user = new UserModel();
-            // user.FirstName = "Emma";
-            // user.LastName = "Coetzer";
-            // user.Email = "emmac@bbd.co.za";
-            // user.Phone = "0718831926";
-             
-            // model.AdminUsers.Add(user);
-            // model.AdminUsers.Add(user);
-            // model.AdminUsers.Add(user);
-            // model.AdminUsers.Add(user);
-            // model.AdminUsers.Add(user);
-            // model.AdminUsers.Add(user);
-            
+            // using (SqlConnection con = new SqlConnection(CS))
+            // {
+            //     SqlCommand cmd = new SqlCommand("spGetAllBusinesses", con);
+            //     cmd.CommandType = CommandType.StoredProcedure;
+            //     con.Open();
+            //     SqlDataReader sdr = cmd.ExecuteReader();
+            //     while(sdr.Read())
+            //     {
+            //         BusinessModel business = new BusinessModel();
+            //         business.CompanyName = sdr["CompanyName"].ToString();
+            //         business.RegistrationNumber = sdr["RegistrationNumber"].ToString();
+            //         business.Category = sdr["Category"].ToString();
+            //         business.NumEmployees = (int)sdr["NumEmployees"];
+            //         business.Address = sdr["Address"].ToString();
+            //         business.RequestStatus = sdr["RequestStatus"].ToString();
+            //         business.UserId = sdr["UserId"].ToString();
+            //         model.Businesses.Add(business);
+            //     }
+            // }
+
+            return model;
+        }
+
+        public IActionResult Admin()
+        {            
             ViewBag.Current = "Admin";
-            return View(model);
+            return View(AdminModelHelper());
         }
 
         [HttpPost]
-        public IActionResult AddAdmin(UserModel user)
+        public async Task<IActionResult> AddAdmin(UserManagementModel managementModel)
         {
             if(ModelState.IsValid){
-                //TODO: add admin users
-                return RedirectToAction("Admin");
+                UserModel user = new UserModel(managementModel.NewAdmin);
+                user.Password = EncryptionModel.HashPassword(user.Password);
+                user.ConfirmPassword = user.Password;
+                UserLoginDetails details = new UserLoginDetails(user);    
+                HttpResponseMessage response = await client.PostAsJsonAsync("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBH0hd7PJ8tFZ1aK18OypZV_Ki6kWDpqGQ",details);
+                
+                try {
+                    response.EnsureSuccessStatusCode();
+                    var responseBody = await response.Content.ReadAsAsync<SuccessResponse>();
+                    user.UserId = responseBody.localId;
+                    TempData["userId"] = user.UserId;
+
+                    using (SqlConnection con = new SqlConnection(CS))
+                    {
+                        SqlCommand cmd = new SqlCommand("spAddNewUser", con);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        con.Open();
+                        cmd.Parameters.AddWithValue("@UserId", user.UserId);
+                        cmd.Parameters.AddWithValue("@Type", "Admin");
+                        cmd.ExecuteNonQuery();
+                    }
+                    return View(new UserManagementModel());
+                }
+                catch(HttpRequestException)
+                {
+                    return View(AdminModelHelper());
+                }
             }
-            return View(user);
+            return View(managementModel);
         }
 
         [HttpPost]
         public IActionResult RemoveAdmin(string email)
         {
-            //TODO: remove user
             return RedirectToAction("Admin");
         }
 
@@ -72,6 +113,7 @@ namespace Locate_closest_business.Controllers
         public IActionResult RegisterBusiness(BusinessModel business){
             if(ModelState.IsValid){
                 business.RequestStatus = "Pending";
+                business.UserId = TempData["userId"].ToString();
 
                 try{
                     using (SqlConnection con = new SqlConnection(CS))
@@ -88,12 +130,13 @@ namespace Locate_closest_business.Controllers
                         cmd.Parameters.AddWithValue("@AddressLongitude", business.AddressLongitude);
                         cmd.Parameters.AddWithValue("@AddressLatitude", business.AddressLatitude);
                         cmd.Parameters.AddWithValue("@RequestStatus", business.RequestStatus);
+                        cmd.Parameters.AddWithValue("@UserId", business.UserId);
                         cmd.ExecuteNonQuery();
                     }
                     ViewBag.Message = "Successfully submitted business registration request";
                     return View(new BusinessModel());
                 }
-                catch(Exception exp){
+                catch(Exception){
                     ViewBag.Message = "Something went wrong. Please try again later.";
                     return View(business);
                 }
@@ -120,6 +163,7 @@ namespace Locate_closest_business.Controllers
                     business.NumEmployees = (int)sdr["NumEmployees"];
                     business.Address = sdr["Address"].ToString();
                     business.RequestStatus = sdr["RequestStatus"].ToString();
+                    business.UserId = sdr["UserId"].ToString();
                     model.Add(business);
                 }
             }
@@ -143,7 +187,7 @@ namespace Locate_closest_business.Controllers
                 }
                 ViewBag.Message = "Successfully approved business registration request";
             }
-            catch(Exception exp){
+            catch(Exception){
                 ViewBag.Message = "Something went wrong. Please try again later.";
             }
             return RedirectToAction("RegistrationRequests");
@@ -164,7 +208,7 @@ namespace Locate_closest_business.Controllers
                 }
                 ViewBag.Message = "Successfully denied business registration request";
             }
-            catch(Exception exp){
+            catch(Exception){
                 ViewBag.Message = "Something went wrong. Please try again later.";
             }
 
