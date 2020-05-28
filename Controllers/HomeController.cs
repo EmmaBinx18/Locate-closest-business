@@ -140,7 +140,6 @@ namespace Locate_closest_business.Controllers
             if (ModelState.IsValid)
             {
                 BusinessModel business = new BusinessModel(businessManagementModel.NewBusiness);
-                Console.WriteLine(business);
                 business.RequestStatus = "Pending";
                 business.UserId = TempData["userId"].ToString();
 

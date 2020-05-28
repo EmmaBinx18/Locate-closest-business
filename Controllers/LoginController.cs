@@ -35,6 +35,12 @@ namespace Locate_closest_business.Controllers
             return View(new UserModel());
         }
 
+        public IActionResult Logout()
+        {  
+            TempData["userId"] = null;
+            return RedirectToAction("Index", "Home");
+        }
+
         [HttpPost]
         public async Task<IActionResult> Login(UserModel user)
         {
@@ -59,7 +65,7 @@ namespace Locate_closest_business.Controllers
                         SqlDataReader sdr = cmd.ExecuteReader();
                         while(sdr.Read())
                         {
-                            string type = sdr["CompanyName"].ToString();
+                            string type = sdr["Type"].ToString();
                             if(type == "Admin"){
                                 return RedirectToAction("Admin", "Admin");
                             }

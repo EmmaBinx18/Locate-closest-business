@@ -56,10 +56,6 @@
         $("#login-admin").modal('show');
         $("#signup-modal").modal('hide');
     });
-
-    $("#admin-logout").click(function() {
-        logout();
-    });
 });
 
 function isUserLoggedIn(){

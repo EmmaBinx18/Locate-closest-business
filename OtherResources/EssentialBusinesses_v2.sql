@@ -149,3 +149,4 @@ BEGIN
 	SELECT Type FROM [dbo].[Users]
 	WHERE UserId = @UserId
 END 
+GO
