@@ -4,9 +4,6 @@ namespace Locate_closest_business.Models
 {
     public class BusinessModel
     {
-       [Required (ErrorMessage = "*")]
-       public string MemberIds { get; set; }
-
        [Required(ErrorMessage = "*")] 
        public string CompanyName { get; set; }
 

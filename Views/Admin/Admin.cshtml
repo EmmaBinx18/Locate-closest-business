@@ -14,8 +14,7 @@
         <br/>
         <div style="text-align: center;">
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @using (Html.BeginForm())
-            {
+            @using (Html.BeginForm("Admin", "Admin", FormMethod.Post)){
                 <form id="addAdminForm" action="/Admin/AddAdmin" method="Post">
                     <div class="form-group">
                         @Html.ValidationMessageFor(model => model.NewAdmin.FirstName, "", new { @class = "text-danger" })

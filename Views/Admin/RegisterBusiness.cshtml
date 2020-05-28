@@ -19,11 +19,7 @@
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @using (Html.BeginForm())
             {
-                <form id="addAdminForm">
-                    <div class="form-group">
-                        @Html.TextAreaFor(model => model.MemberIds, new { @class = "form-control", placeholder = "Provide all ID/Passport numbers of the current directors/members" })
-                        @Html.ValidationMessageFor(model => model.MemberIds, "", new { @class = "text-danger" })
-                    </div>
+                <form id="addBusinessForm">
                     <div class="form-group">
                         @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
                         @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Registered Company Name" } })
@@ -54,10 +50,8 @@
                         @Html.ValidationMessageFor(model => model.NumEmployees, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group">
-                        @Html.TextAreaFor(model => model.Address, new { @class = "form-control", placeholder = "Company's physical address" })
-                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
-                    <div class="form-group">  
                         @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control address-control", @placeholder="Company's physical address", @id = "Address" } })
+                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
                         @Html.HiddenFor(model => model.AddressLatitude, new { @id = "AddressLatitude" })  
                         @Html.HiddenFor(model => model.AddressLongitude, new { @id = "AddressLongitude" }) 
                         @Html.HiddenFor(model => model.AddressTown, new { @id = "AddressTown" }) 
