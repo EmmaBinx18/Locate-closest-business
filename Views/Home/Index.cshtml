@@ -1,6 +1,8 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     var uid = ViewBag.userId; 
+    var successMessage = (string)TempData["SuccessMessage"];
+    var errorMessage = (string)TempData["ErrorMessage"];
 }
 
 @model Locate_closest_business.Models.BusinessManagementModel; 
@@ -41,7 +43,11 @@
                     <option>Health, Social and Personal services</option>
                 </select><img src="~/images/search.svg" onclick="javascript:performSearch()">
             </div> 
-        </form>   
+        </form> 
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="open">
+            <label class="custom-control-label" for="open">Only search for businesses currently open?</label>
+        </div> 
         <br/>
     </div>  
 </div>
@@ -69,13 +75,29 @@
             </tr>
         </table>
     </div>
-    <div id="statistics"></div>
     <div>
-        <button id="login-button">Login</button><button id="open-register-business-modal" class="register-business-button" >Register Your Business</button><button id="stages-button" class="stages-button" >Stages</button><button id="buttonStats" class="stats-button">Current World Statistics</button>
+        <button id="login-button">Login</button><button id="open-register-business-modal" class="register-business-button" >Register Your Business</button><button id="stages-button" class="stages-button" >Stages</button><button id="button-stats" class="stats-button">Current World Statistics</button>
     </div>
     <input type="hidden" value="@ViewBag.userId" id="userId" /> 
 </footer>
 
+<div class="display-error-message message-boxes"></div>
+<div class="display-success-message message-boxes"></div>
+
+@if(successMessage != null){
+    <script src="~/js/successMessage.js?@successMessage" class="script" type="text/javascript"></script>
+}
+else if(errorMessage != null){
+    <script src="~/js/errorMessage.js?@errorMessage" class="script" type="text/javascript"></script>
+}
+else{
+    <script type="text/javascript">
+        $(document).ready(function () {  
+            $('.display-success-message').css("display", "none"); 
+            $('.display-error-message').css("display", "none");
+        });
+    </script>
+}
 
 @Html.Partial("~/Views/Home/RegisterBusiness.cshtml", Model)
 @Html.Partial("~/Views/Login/Login.cshtml", new Locate_closest_business.Models.UserModel())

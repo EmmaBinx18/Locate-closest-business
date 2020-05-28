@@ -43,17 +43,20 @@ namespace Locate_closest_business.Controllers
                 SqlDataReader sdr = cmd.ExecuteReader();
                 while(sdr.Read())
                 {
-                    UserModel user = new UserModel();
-                    user.UserId = sdr["UserId"].ToString();
-                    user.FirstName = sdr["FirstName"].ToString();
-                    user.LastName = sdr["LastName"].ToString();
-                    user.Email = sdr["Email"].ToString();
-                    user.Phone = sdr["Phone"].ToString();
-                    user.Password = "";
-                    user.ConfirmPassword = "";
-                    model.AdminUsers.Add(user);
+                    if(sdr["UserId"].ToString() != (string)TempData["UserId"]){
+                        UserModel user = new UserModel();
+                        user.UserId = sdr["UserId"].ToString();
+                        user.FirstName = sdr["FirstName"].ToString();
+                        user.LastName = sdr["LastName"].ToString();
+                        user.Email = sdr["Email"].ToString();
+                        user.Phone = sdr["Phone"].ToString();
+                        user.Password = "";
+                        user.ConfirmPassword = "";
+                        model.AdminUsers.Add(user);
+                    }
                 }
             }
+
             return model;
         }
 
@@ -89,13 +92,13 @@ namespace Locate_closest_business.Controllers
                         cmd.Parameters.AddWithValue("@Type", "Admin");
                         cmd.ExecuteNonQuery();
                     }
-                    ViewBag.SuccessMessage = "Successfully created Admin user";
+                    TempData["SuccessMessage"] = "Successfully created Admin user";
                     return RedirectToAction("Admin");
                 }
                 catch(HttpRequestException)
                 {
-                    ViewBag.ErrorMessage = "Something went wrong. Please try again later";
-                    return View(managementModel);
+                    TempData["ErrorMessage"] = "Something went wrong. Please try again later";
+                    return RedirectToAction("Admin");
                 }
             }
             return View(managementModel);
@@ -113,12 +116,12 @@ namespace Locate_closest_business.Controllers
                     cmd.Parameters.AddWithValue("@UserId", userId);
                     cmd.ExecuteNonQuery();
                 }
-                ViewBag.SuccessMessage = "Successfully removed Admin user";
+                TempData["SuccessMessage"] = "Successfully removed Admin user";
                 return RedirectToAction("Admin");
             }
             catch(Exception)
             {
-                ViewBag.ErrorMessage = "Something went wrong. Please try again later";
+                TempData["ErrorMessage"] = "Something went wrong. Please try again later";
                 return RedirectToAction("Admin");
             }
         }
@@ -153,11 +156,11 @@ namespace Locate_closest_business.Controllers
                         cmd.Parameters.AddWithValue("@UserId", business.UserId);
                         cmd.ExecuteNonQuery();
                     }
-                    ViewBag.SuccessMessage = "Successfully submitted business registration request";
+                    TempData["SuccessMessage"] = "Successfully submitted business registration request";
                     return RedirectToAction("RegisterBusiness");
                 }
                 catch(Exception){
-                    ViewBag.ErrorMessage = "Something went wrong. Please try again later.";
+                    TempData["ErrorMessage"] = "Something went wrong. Please try again later.";
                     return View(business);
                 }
             }
@@ -205,10 +208,10 @@ namespace Locate_closest_business.Controllers
                     cmd.Parameters.AddWithValue("@RequestStatus", "Approved");
                     cmd.ExecuteNonQuery();
                 }
-                ViewBag.SuccessMessage = "Successfully approved business registration request";
+                TempData["SuccessMessage"] = "Successfully approved business registration request";
             }
             catch(Exception){
-                ViewBag.ErrorMessage = "Something went wrong. Please try again later.";
+                TempData["ErrorMessage"] = "Something went wrong. Please try again later.";
             }
             return RedirectToAction("RegistrationRequests");
         }
@@ -226,10 +229,10 @@ namespace Locate_closest_business.Controllers
                     cmd.Parameters.AddWithValue("@RequestStatus", "Denied");
                     cmd.ExecuteNonQuery();
                 }
-                ViewBag.SuccessMessage = "Successfully denied business registration request";
+                TempData["SuccessMessage"] = "Successfully denied business registration request";
             }
             catch(Exception){
-                ViewBag.ErrorMessage = "Something went wrong. Please try again later.";
+                TempData["ErrorMessage"] = "Something went wrong. Please try again later.";
             }
 
             return RedirectToAction("RegistrationRequests");

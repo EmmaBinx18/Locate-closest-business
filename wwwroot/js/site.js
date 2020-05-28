@@ -57,7 +57,7 @@
         $("#signup-modal").modal('hide');
     });
 
-    $('#buttonStats').click(function () {
+    $('#button-stats').click(function () {
         $("#WorldStats").modal('show');
     });
 });

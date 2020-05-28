@@ -49,7 +49,7 @@ a:hover {
 }
 
 #search-modal{
-  margin-top: 0%;
+  margin-top: 1%;
   margin-left: 2.6%;
   position: absolute;
   left: 0;
@@ -88,6 +88,11 @@ img{
   box-shadow: rgb(99, 99, 99) 5px 8px 12px -8px;
   background-color: white;
   border: 2px solid #cccccc;
+  display: inline;
+}
+
+#login-button{
+  margin-left: 3%;
 }
 
 .register-business-button, .stages-button{
@@ -95,14 +100,10 @@ img{
 }
 
 .stats-button{
-  margin-left: 56%;
+  margin-left: 55%;
 }
 
-#login-button{
-  margin-left: 3%;
-}
-
-.register-business-button:hover, .stages-button:hover, #login-button:hover, #buttonStats:hover{
+.register-business-button:hover, .stages-button:hover, #login-button:hover, #button-stats:hover{
   font-size: 1.1rem;
 }
 
@@ -154,7 +155,6 @@ img{
   background-color: white;
   margin-bottom: 1%;
   padding: 20px;
-  z-index: 4;
   border: 2px solid #cccccc;
 }
 
@@ -217,42 +217,38 @@ td{
   display: none !important;
 }
 
+#WorldStats .modal-content{
+  width: 1300px !important;
+  right: 30% !important;
+  height: 920px !important;
+  overflow: auto;
+}
+
+.custom-control{
+  padding-left: 0px !important;
+  margin-right: 10% !important;
+}
+
 .display-error-message{
-  display: none;
-  position: fixed;
-  top: 2%;
-  left: 40%;
   background-color: #f8ccc8;
-  padding: 10px;
-  padding-left: 100px;
-  padding-right: 100px;
-  border-radius: 6px;
-  box-shadow: rgb(99, 99, 99) 5px 8px 12px -8px;
-  font-size: 1.2rem;
+  border: 1.5px solid #fcaaa3;
 }
 
 .display-success-message{
+  background-color: #bff0de;
+  border: 1.5px solid #85f8ce;
+}
+
+.message-boxes{
   display: none;
   position: fixed;
-  top: 2%;
+  bottom: 4%;
   left: 40%;
-  background-color: #bff0de;
   padding: 10px;
   padding-left: 100px;
   padding-right: 100px;
   border-radius: 6px;
   box-shadow: rgb(99, 99, 99) 5px 8px 12px -8px;
   font-size: 1.2rem;
-}
-
-#stats {
-  display: none;
-  width: 100%;
-  border: grey;
-  box-shadow: rgb(99, 99, 99) 5px 8px 12px -8px;
-  margin-left: 3%;
-  border-radius: 6px;
-  background-color: white;
-  margin-bottom: 2%;
-  padding: 20px;
+  z-index: 7;
 }

@@ -13,7 +13,7 @@ var myStyles = [
     }
 ];
 
-function getUserLocation () {
+window.onload = function () {
     if (this.navigator.geolocation) {
         this.navigator.geolocation.getCurrentPosition(function (position) {
             usersPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -35,6 +35,7 @@ function performSearch() {
     clearMarkers();
 
     var pServiceCategory = document.getElementById("essentialServiceOptions").options[document.getElementById("essentialServiceOptions").selectedIndex].text;
+    var checkbox = document.getElementById('open');
 
     $.ajax({
         type: 'GET',
@@ -43,13 +44,16 @@ function performSearch() {
             "lat": usersPosition.lat(),
             "lng" : usersPosition.lng(),
             "category" : pServiceCategory,
-            "searchRadius" : 2500
+            "searchRadius" : 2500,
+            "opennow": checkbox.checked
         },
         success: function (returnData)
         {
-            clearMarkers(map);
-            for (var i = 0; i < returnData.results.length; i++) {
-                createMarker(returnData.results[i]);
+            if (returnData.status === "OK") {
+                clearMarkers();
+                for (var i = 0; i < returnData.results.length; i++) {
+                    createMarker(returnData.results[i]);
+                }
             }
         }
     });
@@ -75,7 +79,7 @@ function createMarker(place) {
     }         
 }
 
-function clearMarkers(map) {
+function clearMarkers() {
     for (var i = 0; i < searchMarkers.length; i++) {
         searchMarkers[i].setMap(null);
     }

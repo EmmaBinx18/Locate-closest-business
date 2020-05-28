@@ -2,30 +2,40 @@
 
 <div class="modal fade" tabindex="-1" id="signup-modal" data-keyboard="false" data-backdrop="static">  
     <div class="modal-dialog modal-lg">  
-        <div class="modal-content"> 
+        <div class="modal-content">
             <button type="button" class="close" data-dismiss="modal">×</button>
-            <h4 class="modal-title">SIGN UP</h4>  
-            <br/>
+            <h4 class="modal-title">SIGN UP</h4>
+            <br />
             <h2>To register you business, please register an account</h2>
-            <br/>
-            @using (Html.BeginForm("SignUp", "Login", FormMethod.Post)){
-                    <div class="form-group">  
-                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @placeholder="First Name" } })          
-                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", @placeholder="Last Name" } })      
-                    </div> 
-                    <div class="form-group">  
-                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder="Email" } })          
-                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", @placeholder="Phone" } })      
-                    </div> 
-                    <div class="form-group">  
-                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder="Password", @type="password" } })          
-                        @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", @placeholder="Confirm Password", @type="password" } })      
-                    </div> 
-                    <input type="submit" class="signup-button" value="SIGN UP" />
+            <br />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @using (Html.BeginForm("SignUp", "Login", FormMethod.Post))
+            {
+                <div class="form-group">
+                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @placeholder = "First Name" } })
+                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Last Name" } })
+                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="form-group">
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email" } })
+                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", @placeholder = "Phone" } })
+                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="form-group">
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password", @type = "password" } })
+                    @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Confirm Password", @type = "password" } })
+                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                </div>
+                <input type="submit" class="signup-button" value="SIGN UP" />
             }
-            <br/><br/>  
+            <br /><br />
             <h2>Don't have an account? <a class="login-link"><b>LOGIN</b></a></h2>
-            <br/><br/>
+            <br /><br />
         </div>
     </div>
 </div> 
