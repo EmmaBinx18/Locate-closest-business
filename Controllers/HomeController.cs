@@ -103,24 +103,26 @@ namespace Locate_closest_business.Controllers
             model.NewBusiness = new BusinessModel();
             model.Businesses = new List<BusinessModel>();
 
-            using (SqlConnection con = new SqlConnection(CS))
-            {
-                SqlCommand cmd = new SqlCommand("spGetBusinessesByUser", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@UserId", TempData["userId"].ToString());
-                con.Open();
-                SqlDataReader sdr = cmd.ExecuteReader();
-                while(sdr.Read())
+            if(TempData["userId"] != null){
+                using (SqlConnection con = new SqlConnection(CS))
                 {
-                    BusinessModel business = new BusinessModel();
-                    business.CompanyName = sdr["CompanyName"].ToString();
-                    business.RegistrationNumber = sdr["RegistrationNumber"].ToString();
-                    business.Category = sdr["Category"].ToString();
-                    business.NumEmployees = (int)sdr["NumEmployees"];
-                    business.Address = sdr["Address"].ToString();
-                    business.RequestStatus = sdr["RequestStatus"].ToString();
-                    business.UserId = sdr["UserId"].ToString();
-                    model.Businesses.Add(business);
+                    SqlCommand cmd = new SqlCommand("spGetBusinessesByUser", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@UserId", TempData["userId"].ToString());
+                    con.Open();
+                    SqlDataReader sdr = cmd.ExecuteReader();
+                    while(sdr.Read())
+                    {
+                        BusinessModel business = new BusinessModel();
+                        business.CompanyName = sdr["CompanyName"].ToString();
+                        business.RegistrationNumber = sdr["RegistrationNumber"].ToString();
+                        business.Category = sdr["Category"].ToString();
+                        business.NumEmployees = (int)sdr["NumEmployees"];
+                        business.Address = sdr["Address"].ToString();
+                        business.RequestStatus = sdr["RequestStatus"].ToString();
+                        business.UserId = sdr["UserId"].ToString();
+                        model.Businesses.Add(business);
+                    }
                 }
             }
 

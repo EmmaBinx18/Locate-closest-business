@@ -36,6 +36,7 @@ namespace Locate_closest_business.Models
            this.Phone = "";
            this.Password = "";
            this.ConfirmPassword = "";
+           this.UserId = "";
        }
 
        public UserModel(UserModel model)
@@ -46,6 +47,7 @@ namespace Locate_closest_business.Models
            this.Phone = model.Phone;
            this.Password = model.Password;
            this.ConfirmPassword = model.ConfirmPassword;
+           this.UserId = "";
        }
 
     }

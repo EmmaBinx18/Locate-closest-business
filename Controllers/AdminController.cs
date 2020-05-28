@@ -19,7 +19,7 @@ namespace Locate_closest_business.Controllers
     {
         private string CS = "data source=localhost\\SQLEXPRESS; database=EssentialBusinesses; integrated security=true;";
         private string FB_SignUp = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBH0hd7PJ8tFZ1aK18OypZV_Ki6kWDpqGQ";
-        
+
         static HttpClient client = new HttpClient();
 
         private readonly ILogger<AdminController> _logger;
@@ -69,8 +69,8 @@ namespace Locate_closest_business.Controllers
         {
             if(ModelState.IsValid){
                 UserModel user = new UserModel(managementModel.NewAdmin);
-                user.Password = EncryptionModel.HashPassword(user.Password);
-                user.ConfirmPassword = user.Password;
+                // user.Password = EncryptionModel.HashPassword(user.Password);
+                // user.ConfirmPassword = user.Password;
                 UserLoginDetails details = new UserLoginDetails(user);    
                 HttpResponseMessage response = await client.PostAsJsonAsync(FB_SignUp, details);
                 
