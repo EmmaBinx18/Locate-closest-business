@@ -36,17 +36,22 @@ function performSearch() {
 
     var pServiceCategory = document.getElementById("essentialServiceOptions").options[document.getElementById("essentialServiceOptions").selectedIndex].text;
     var checkbox = document.getElementById('open');
+    var requestData = {
+        "lat": usersPosition.lat(),
+        "lng" : usersPosition.lng(),
+        "category" : pServiceCategory,
+        "searchRadius" : 2500
+    };
+
+    if (checkbox.checked == true)
+    {
+        requestData["opennow"] = true;
+    }
 
     $.ajax({
         type: 'GET',
         url: 'Home/MapsNearbySearch',
-        data: {
-            "lat": usersPosition.lat(),
-            "lng" : usersPosition.lng(),
-            "category" : pServiceCategory,
-            "searchRadius" : 2500,
-            "opennow": checkbox.checked
-        },
+        data: requestData,
         success: function (returnData)
         {
             if (returnData.status === "OK") {
