@@ -26,13 +26,20 @@ CREATE TABLE [dbo].[Businesses](
 (  
     [ID] ASC  
 )
+) ON [PRIMARY]   
+GO  
+
+DROP TABLE IF EXISTS [dbo].[Users];
+CREATE TABLE [dbo].[Users](  
+    [ID] [int] IDENTITY(1,1) NOT NULL, 
+	[UserId] [varchar](100) NOT NULL, 
+	[Type] [varchar](20) NOT NULL,  
+ CONSTRAINT [PK_Businesses] PRIMARY KEY CLUSTERED ([ID] ASC)
 ) ON [PRIMARY]  
-  
 GO  
   
 
 DROP PROCEDURE IF EXISTS [dbo].[spAddNewBusiness];  
-
 GO
 CREATE PROCEDURE [dbo].[spAddNewBusiness]  
 (  
@@ -60,7 +67,7 @@ INSERT INTO [dbo].[Businesses](
 	AddressLatitude,
 	RequestStatus,
 	UserId)
-values(	
+VALUES(	
 	@CompanyName,
 	@RegistrationNumber,
 	@Category,
@@ -73,6 +80,7 @@ values(
 	@UserId)  
 END 
 
+DROP PROCEDURE IF EXISTS [dbo].[spGetAllBusinesses];  
 GO
 CREATE PROCEDURE [dbo].[spGetAllBusinesses] 
 AS  
@@ -80,6 +88,7 @@ BEGIN
 	SELECT CompanyName, RegistrationNumber, Category, NumEmployees, Address, RequestStatus FROM [dbo].[Businesses]
 END 
 
+DROP PROCEDURE IF EXISTS [dbo].[spChangeBusinessRequestStatus]; 
 GO
 CREATE PROCEDURE [dbo].[spChangeBusinessRequestStatus] 
 (
@@ -93,6 +102,7 @@ BEGIN
 	WHERE RegistrationNumber = @RegistrationNumber
 END 
 
+DROP PROCEDURE IF EXISTS [dbo].[spRemoveBusiness]; 
 GO
 CREATE PROCEDURE [dbo].[spRemoveBusiness] 
 (
@@ -102,4 +112,28 @@ AS
 BEGIN  
 	DELETE [dbo].[Businesses]
 	WHERE RegistrationNumber = @RegistrationNumber
+END 
+
+DROP PROCEDURE IF EXISTS [dbo].[spAddNewUser]; 
+GO
+CREATE PROCEDURE [dbo].[spAddNewUser] 
+(
+	@UserId varchar(100), 
+	@Type varchar(20)
+)
+AS  
+BEGIN  
+	INSERT INTO [dbo].[Users](UserId, Type) VALUES(@UserId, @Type)  
+END 
+
+DROP PROCEDURE IF EXISTS [dbo].[spUserTypeById];  
+GO
+CREATE PROCEDURE [dbo].[spUserTypeById] 
+(
+	@UserId varchar(100) 
+)
+AS  
+BEGIN  
+	SELECT Type FROM [dbo].[Users]
+	WHERE UserId = @UserId
 END 
