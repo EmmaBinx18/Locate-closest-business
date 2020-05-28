@@ -13,7 +13,7 @@ var myStyles = [
     }
 ];
 
-window.onload = function () {
+function getUserLocation () {
     if (this.navigator.geolocation) {
         this.navigator.geolocation.getCurrentPosition(function (position) {
             usersPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
