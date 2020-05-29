@@ -68,28 +68,10 @@ function performSearch() {
 
 function createMarker(place) {
     if (place.business_status == "OPERATIONAL") {
-        var customIcon = {
-            url: place.icon,
-            scaledSize: new google.maps.Size(30, 30),
-            origin: new google.maps.Point(0,0),
-            anchor: new google.maps.Point(0, 0)
-        };
-
-        if (place.icon != "")
-        {
-            var marker = new google.maps.Marker({
-                map: map,
-                position: place.geometry.location,
-                icon: customIcon
-            });
-        }
-        else
-        {
-            var marker = new google.maps.Marker({
-                map: map,
-                position: place.geometry.location
-            });
-        }
+        var marker = new google.maps.Marker({
+            map: map,
+            position: place.geometry.location
+        });
 
         google.maps.event.addListener(marker, 'click', function () {
             var infoContent = place.name + "<br>Status: " + place.business_status;
