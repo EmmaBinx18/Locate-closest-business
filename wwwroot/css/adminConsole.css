@@ -132,8 +132,8 @@ ul ul a {
 
 .businesses{
     overflow-y: scroll;
-    height: 850px !important;
-    width: 1450px !important;
+    height: 650px !important;
+    width: 1050px !important;
 }
 
 .confirm-button, .deny-button, .remove-admin-button{
