@@ -129,14 +129,32 @@ namespace Locate_closest_business.Controllers
                 }
               
                 List<AllCountryStatisticsModel> countrys = new List<AllCountryStatisticsModel>();
-
-
                 return countrySpecificStats;
             }
             catch (Exception exp)
             {
-                Console.WriteLine("StatisticsController.GetAllCountryStats Exception::" + exp);
-                return null ;
+                Console.WriteLine("Failed to get Statistics (StatisticsController.cs GetAllCountryStats(), retrying once..");
+                try
+                {
+                    System.Threading.Thread.Sleep(100);
+
+                    Task<SummaryResponseWrapperModel> task = Task.Run<SummaryResponseWrapperModel>(async () => await GetCovidSummary());
+                    task.Wait();
+                    SummaryResponseWrapperModel APIResponse = task.Result;
+                    List<AllCountryStatisticsModel> countrySpecificStats = new List<AllCountryStatisticsModel>();
+                    foreach (var item in APIResponse.Countries)
+                    {
+                        countrySpecificStats.Add(new AllCountryStatisticsModel(item.Country, item.NewConfirmed, item.TotalConfirmed, item.NewDeaths, item.TotalDeaths, item.NewRecovered, item.TotalRecovered));
+                    }
+                
+                    List<AllCountryStatisticsModel> countrys = new List<AllCountryStatisticsModel>();
+                    return countrySpecificStats;
+                }
+                catch (Exception exp2)
+                {
+                    Console.WriteLine("StatisticsController.GetAllCountryStats 2nd Exception, not retrying agian::" + exp);
+                    return null;
+                }
             }
         }
 

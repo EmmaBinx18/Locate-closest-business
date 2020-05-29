@@ -9,6 +9,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using System.Globalization;
+using System.Linq;
 
 namespace Locate_closest_business.Controllers
 {
@@ -34,12 +35,17 @@ namespace Locate_closest_business.Controllers
             return View(BusinessModelHelper());
         }
 		
-		public JsonResult MapsNearbySearch([FromQuery]string lat, [FromQuery]string lng, [FromQuery]string category, int searchRadius = 1500, bool opennow = false)
+        public JsonResult MapsNearbySearch([FromQuery]string lat, [FromQuery]string lng, [FromQuery]string category, int searchRadius = 1500, bool opennow = false)
         {
             var errorJSON = new{errorMessage = "External_API_Unreachable"};
+            bool mapsSearchSuccess = false;
+            bool dbSearchSuccess = false;
 
             List<string> businessTypeList = new List<string>();
             List<string> keywordSearchList = new List<string>();
+
+            MapsResponseWrapperModel compoundResponse = new MapsResponseWrapperModel();
+            compoundResponse.results = new List<MapsNearbySearchResultModel>();
 
             foreach(string item in searchModel.serviceDictionary[category]["businessList"]){
                 businessTypeList.Add(item);
@@ -48,30 +54,37 @@ namespace Locate_closest_business.Controllers
             foreach(string item in searchModel.serviceDictionary[category]["keywordList"]){
                 keywordSearchList.Add(item);
             }
-
+            
             try
             {
-                MapsResponseWrapperModel compoundResponse = new MapsResponseWrapperModel();
-                compoundResponse.results = new List<MapsNearbySearchResultModel>();
-
-                foreach (string vBusinessType in businessTypeList)
+                try
                 {
-                    Task<MapsResponseWrapperModel> task = Task.Run<MapsResponseWrapperModel>(async () => await PerformNearbySearch(lat,lng,vBusinessType,"",searchRadius,opennow));
-                    task.Wait();
-                    MapsResponseWrapperModel APIResponse = task.Result;
-                    compoundResponse.results.AddRange(APIResponse.results);
+                    //Perform search using Google Maps API
+                    string business_status_criteria = "OPERATIONAL";
+
+                    foreach (string vBusinessType in businessTypeList)
+                    {
+                        Task<MapsResponseWrapperModel> task = Task.Run<MapsResponseWrapperModel>(async () => await PerformNearbySearch(lat,lng,vBusinessType,"",searchRadius,opennow));
+                        task.Wait();
+                        MapsResponseWrapperModel APIResponse = task.Result;
+                        compoundResponse.results.AddRange(APIResponse.results.Where(p => String.Equals(p.business_status, business_status_criteria, StringComparison.CurrentCulture)));
+                    }
+
+                    foreach (string vKeyword in keywordSearchList)
+                    {
+                        Task<MapsResponseWrapperModel> task = Task.Run<MapsResponseWrapperModel>(async () => await PerformNearbySearch(lat,lng,"",vKeyword,searchRadius,opennow));
+                        task.Wait();
+                        MapsResponseWrapperModel APIResponse = task.Result;
+                        compoundResponse.results.AddRange(APIResponse.results.Where(p => String.Equals(p.business_status, business_status_criteria, StringComparison.CurrentCulture)));
+                    }
+                    mapsSearchSuccess = true;
+                }
+                catch (Exception MapsAPIException)
+                {
+                    Console.WriteLine("Exception in HomeController.cs -> MapsNearbySearch Google Maps API search:\n" + MapsAPIException);
                 }
 
-                foreach (string vKeyword in keywordSearchList)
-                {
-                    Task<MapsResponseWrapperModel> task = Task.Run<MapsResponseWrapperModel>(async () => await PerformNearbySearch(lat,lng,"",vKeyword,searchRadius,opennow));
-                    task.Wait();
-                    MapsResponseWrapperModel APIResponse = task.Result;
-                    compoundResponse.results.AddRange(APIResponse.results);
-                }
-
-                float f = float.Parse(lat, CultureInfo.InvariantCulture);
-
+                //Perform Database search on Custom Added Businesses
                 try
                 {
                     using (SqlConnection con = new SqlConnection(CS))
@@ -103,13 +116,15 @@ namespace Locate_closest_business.Controllers
                                 open_now = true
                             };
                             business.place_id = "";
-                            business.price_level = "";
+                            business.price_level = "6";
+                            business.rating = 6;
                             string[] categoryArray = new string[1];
                             categoryArray[0] = category;
                             business.types = categoryArray;
                             compoundResponse.results.Add(business);
                         }
                     }
+                    dbSearchSuccess = true;
                 }
                 catch(Exception DBException)
                 {
@@ -119,31 +134,10 @@ namespace Locate_closest_business.Controllers
                 compoundResponse.status = "OK";
                 return Json(compoundResponse);
             }
-            catch (Exception exp)
+            catch(Exception exc)
             {
-                if (exp.Message.Contains("No such host is known."))
-                {
-                    Console.WriteLine(exp);
-                    return Json(errorJSON);
-                }
-                else if (exp.Message.Contains("Response status code does not indicate success: 404 (Not Found)"))
-                {
-                    Console.WriteLine(exp);
-                    var incorrectParamsContent = new
-                    {
-                        errorMessage = "Specified_Country_Slug_Not_Found"
-                    };
-                    return Json(incorrectParamsContent);
-                }
-                else
-                {
-                    Console.WriteLine(exp);
-                    var unexpectedErrorContent = new
-                    {
-                        errorMessage = exp.Message
-                    };
-                    return Json(unexpectedErrorContent);
-                }
+                Console.WriteLine(exc);
+                return Json(compoundResponse);
             }
         }
 
