@@ -70,7 +70,7 @@ function createMarker(place) {
     if (place.business_status == "OPERATIONAL") {
         var customIcon = {
             url: place.icon,
-            scaledSize: new google.maps.Size(35, 35),
+            scaledSize: new google.maps.Size(30, 30),
             origin: new google.maps.Point(0,0),
             anchor: new google.maps.Point(0, 0)
         };
@@ -80,7 +80,6 @@ function createMarker(place) {
             var marker = new google.maps.Marker({
                 map: map,
                 position: place.geometry.location,
-                label: place.name,
                 icon: customIcon
             });
         }
@@ -88,8 +87,7 @@ function createMarker(place) {
         {
             var marker = new google.maps.Marker({
                 map: map,
-                position: place.geometry.location,
-                label: place.name
+                position: place.geometry.location
             });
         }
 
