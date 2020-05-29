@@ -1,15 +1,14 @@
 .requests-modal-dialog {
     position: absolute;
     top: 10%;
-    bottom: 0;
-    left: 11%;
+    left: 19%;
     z-index: 10040;
     overflow: auto;
     overflow-y: auto;
 }
 
 .requests-modal-content{
-    width: 1000px !important;
+    width: 1200px !important;
     pointer-events: auto;
     background-color: #fff;
     background-clip: padding-box;

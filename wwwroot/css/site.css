@@ -49,11 +49,10 @@ a:hover {
 }
 
 #search-modal{
-  margin-top: 1%;
   margin-left: 2.6%;
   position: absolute;
   left: 0;
-  z-index: 4 !important;
+  z-index: 4;
 }
 
 #search-modal .modal-content {
